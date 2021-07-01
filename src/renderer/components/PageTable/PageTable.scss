@@ -1,0 +1,33 @@
+.PageTable {
+  $self: &;
+  padding: var(--page-table-padding);
+
+  &__row {
+    &:hover {
+      background: var(--color-gray-100);
+    }
+  }
+
+  &__td,
+  &__th {
+    padding: 12px 8px;
+  }
+
+  &__td {
+    vertical-align: top;
+    white-space: nowrap;
+
+    &--checkbox {
+      padding: 7px 4px 0;
+    }
+  }
+
+  &__th {
+    white-space: nowrap;
+  }
+
+  &__thead {
+    color: var(--color-gray-500);
+    text-align: left;
+  }
+}

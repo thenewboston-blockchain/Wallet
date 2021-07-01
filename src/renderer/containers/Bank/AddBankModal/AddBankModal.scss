@@ -1,0 +1,9 @@
+.AddBankModal {
+  width: 384px;
+
+  &__form-error {
+    color: var(--color-alert);
+    display: block;
+    margin-bottom: 6px;
+  }
+}

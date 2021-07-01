@@ -1,0 +1,42 @@
+{
+  "publish": {
+    "owner": "thenewboston-developers",
+    "provider": "github",
+    "repo": "Account-Manager"
+  },
+  "productName": "TNB Wallet",
+  "appId": "com.thenewboston.account.manager.app",
+  "directories": {
+    "buildResources": "assets",
+    "output": "release"
+  },
+  "asar": true,
+  "files": ["bundle/**/*", "!build", "!node_modules", "package.json", "app-information"],
+  "mac": {
+    "target": ["dmg", "zip"],
+    "artifactName": "${productName}-${version}-${os}.${ext}",
+    "icon": "./assets/mac/icons/app_icon.icns"
+  },
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": ["x64", "ia32"]
+      },
+      {
+        "target": "zip"
+      }
+    ],
+    "artifactName": "${productName}-${version}-${os}.${ext}"
+  },
+  "linux": {
+    "target": ["AppImage"],
+    "artifactName": "${productName}-${version}-${os}.${ext}"
+  },
+  "dmg": {
+    "title": "${productName}-${version}",
+    "icon": "./assets/mac/icons/dmg_icon.icns"
+  },
+  "afterSign": "./assets/scripts/notarize.js",
+  "extends": null
+}

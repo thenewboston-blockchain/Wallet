@@ -1,0 +1,23 @@
+.TileAccountNumber {
+  $self: &;
+
+  &__account-number {
+    margin-bottom: 12px;
+    word-wrap: break-word;
+  }
+
+  &__copy-icon {
+    color: var(--color-secondary);
+  }
+
+  &__title {
+    color: var(--color-gray-500);
+  }
+
+  &__top {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+}

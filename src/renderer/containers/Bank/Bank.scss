@@ -1,0 +1,13 @@
+@use 'styles/layout';
+
+.Bank {
+  @include layout.main-container;
+
+  &__Badge {
+    margin-right: 12px;
+  }
+
+  &__chain-link-icon {
+    color: var(--color-secondary);
+  }
+}

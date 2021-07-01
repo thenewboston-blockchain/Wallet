@@ -1,0 +1,23 @@
+.ValidatorOverview {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-columns: 370px 314px;
+  padding: var(--page-padding);
+
+  &__left,
+  &__right {
+    > * {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__link {
+    color: var(--color-secondary);
+    text-decoration: none;
+
+    &:focus,
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+.TopNav {
+  align-items: center;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 12px;
+
+  &__change-bank {
+    color: var(--color-primary);
+    cursor: pointer;
+    margin-right: 12px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__container {
+    align-items: center;
+    color: var(--color-gray-700);
+    display: flex;
+  }
+
+  &__icon {
+    margin: 0 4px;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    &--dev {
+      &:hover {
+        color: var(--color-red-500);
+      }
+    }
+  }
+}

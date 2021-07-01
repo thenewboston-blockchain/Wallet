@@ -1,0 +1,31 @@
+.LeftSubmenu {
+  padding: 12px 0;
+
+  &__header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2px;
+    padding: 0 12px 0 10px;
+  }
+
+  &__left-items {
+    align-items: center;
+    display: flex;
+  }
+
+  &__right {
+    color: var(--color-secondary);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  &__title {
+    color: var(--color-gray-500);
+    cursor: default;
+    padding: 2px 0 0 10px;
+  }
+}

@@ -2,10 +2,11 @@ import React, {CSSProperties, FC, ReactNode, useMemo} from 'react';
 import {createPortal} from 'react-dom';
 import clsx from 'clsx';
 import noop from 'lodash/noop';
-import {ButtonType, ButtonVariant, Icon, IconType} from '@thenewboston/ui';
+import {Icon, IconType} from '@thenewboston/ui';
 import {bemify} from '@thenewboston/utils';
 
 import {Form, FormButton, FormButtonProps} from '@renderer/components/FormComponents';
+import {ButtonType, ButtonVariant} from '@renderer/components/FormElements';
 import Loader from '@renderer/components/FormElements/Loader';
 
 import {GenericFormValues, GenericFunction} from '@renderer/types';

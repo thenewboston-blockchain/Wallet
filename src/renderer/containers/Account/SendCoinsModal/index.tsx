@@ -1,8 +1,9 @@
 import React, {FC, ReactNode, useCallback, useMemo, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {ButtonType, ButtonVariant, Icon, IconType} from '@thenewboston/ui';
+import {Icon, IconType} from '@thenewboston/ui';
 
 import {FormButton} from '@renderer/components/FormComponents';
+import {ButtonType, ButtonVariant} from '@renderer/components/FormElements';
 import Modal from '@renderer/components/Modal';
 import {INVALID_AMOUNT_ERROR, MATCH_ERROR} from '@renderer/constants/form-validation';
 import {fetchAccountBalance} from '@renderer/dispatchers/balances';

@@ -2,10 +2,9 @@
 
 import React, {FC, useMemo} from 'react';
 import {useFormikContext} from 'formik';
-import {Button, ButtonProps, ButtonType} from '@thenewboston/ui';
-import {Loader} from '@renderer/components/FormElements';
+import {Button, BaseButtonProps, ButtonType, Loader} from '@renderer/components/FormElements';
 
-export interface FormButtonProps extends ButtonProps {
+export interface FormButtonProps extends BaseButtonProps {
   ignoreDirty?: boolean;
   submitting?: boolean;
 }

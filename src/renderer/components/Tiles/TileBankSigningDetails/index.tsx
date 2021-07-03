@@ -2,8 +2,9 @@ import React, {FC, ReactNode, RefObject, useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import clsx from 'clsx';
-import {Button, ButtonColor, Icon, IconType} from '@thenewboston/ui';
+import {Icon, IconType} from '@thenewboston/ui';
 
+import {Button, ButtonColor} from '@renderer/components/FormElements';
 import AddBankSigningKeysModal from '@renderer/containers/Bank/AddBankSigningKeysModal';
 import {useAddress, useBooleanState} from '@renderer/hooks';
 import {getIsManagedBank, getManagedBanks} from '@renderer/selectors';

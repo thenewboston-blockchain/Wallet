@@ -1,9 +1,9 @@
 import React, {FC, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import {ButtonType} from '@thenewboston/ui';
 
 import {Form, FormButton, FormInput, FormSelect} from '@renderer/components/FormComponents';
+import {ButtonType} from '@renderer/components/FormElements';
 import Logo from '@renderer/components/Logo';
 import {connectAndStoreLocalData} from '@renderer/dispatchers/app';
 import {getActiveBankConfig} from '@renderer/selectors';

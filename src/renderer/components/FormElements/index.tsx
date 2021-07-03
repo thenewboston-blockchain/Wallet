@@ -1,3 +1,4 @@
+import Button, {BaseButtonProps, ButtonColor, ButtonType, ButtonVariant} from './Button';
 import Checkbox, {BaseCheckboxProps} from './Checkbox';
 import Input, {BaseInputProps} from './Input';
 import Loader from './Loader';
@@ -8,11 +9,16 @@ import Switch, {BaseSwitchProps} from './Switch';
 import TextArea from './TextArea';
 
 export {
+  BaseButtonProps,
   BaseCheckboxProps,
   BaseInputProps,
   BaseRadioProps,
   BaseSelectProps,
   BaseSwitchProps,
+  Button,
+  ButtonColor,
+  ButtonType,
+  ButtonVariant,
   Checkbox,
   Input,
   Loader,

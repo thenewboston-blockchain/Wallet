@@ -1,0 +1,12 @@
+.TextField {
+  $self: &;
+
+  // add specificity to override MUI's css
+  &.TextField {
+    margin-top: 6px;
+  }
+
+  #{$self}__label {
+    color: var(--color-neutral-400);
+  }
+}

@@ -17,6 +17,10 @@
     cursor: auto;
   }
 
+  &--full-width {
+    width: 100%;
+  }
+
   &--contained {
     border-width: 2px;
     color: var(--color-white);

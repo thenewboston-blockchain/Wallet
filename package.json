@@ -121,6 +121,7 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.4",
     "@thenewboston/ui": "^0.1.12",
     "@thenewboston/utils": "^1.0.0",
     "app-root-path": "3.0.0",

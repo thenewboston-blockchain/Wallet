@@ -9,7 +9,7 @@ import 'normalize.css';
 import App from '@renderer/containers/App';
 import store from '@renderer/store';
 
-import '@thenewboston/ui/src/styles/font.css';
+import './index.scss';
 import './styles/main.scss';
 
 const theme = createMuiTheme({
@@ -19,7 +19,7 @@ const theme = createMuiTheme({
     },
     error: {
       main: '#ed5f74', // --color-red-400
-    }
+    },
   },
 });
 

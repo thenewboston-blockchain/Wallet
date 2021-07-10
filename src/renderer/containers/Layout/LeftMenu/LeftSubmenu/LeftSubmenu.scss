@@ -1,12 +1,19 @@
-.LeftSubmenu {
-  padding: 12px 0;
+@use 'styles/font';
 
-  &__header {
+.LeftSubmenu {
+  margin-bottom: 42px;
+
+  &__header-container {
+    @include font.h3-regular;
     align-items: center;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2px;
-    padding: 0 12px 0 10px;
+    margin-bottom: 8px;
+  }
+
+  &__left-icon {
+    margin-right: 12px;
+    width: 16px;
   }
 
   &__left-items {
@@ -14,18 +21,11 @@
     display: flex;
   }
 
-  &__right {
-    color: var(--color-secondary);
-    cursor: pointer;
-
-    &:hover {
-      color: var(--color-primary);
-    }
-  }
-
   &__title {
-    color: var(--color-gray-500);
+    color: var(--color-neutral-600);
     cursor: default;
-    padding: 2px 0 0 10px;
+    display: block;
+    flex: 1;
+    user-select: none;
   }
 }

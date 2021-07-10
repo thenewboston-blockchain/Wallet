@@ -7,23 +7,23 @@ import {useBooleanState} from '@renderer/hooks';
 import './LeftSubmenu.scss';
 
 interface ComponentProps {
-  leftIcon?: ReactNode;
   menuItems: ReactNode[];
   rightOnClick?(): void;
-  rightText?: string;
   title: string;
 }
 
-const LeftSubmenu: FC<ComponentProps> = ({leftIcon, menuItems, rightOnClick, rightText, title}) => {
+const LeftSubmenu: FC<ComponentProps> = ({menuItems, rightOnClick, title}) => {
   const [expanded, toggleExpanded] = useBooleanState(true);
 
   const renderHeaderContent = (): ReactNode => {
     return (
       <>
-        <div className="LeftSubmenu__left-items">
-          {leftIcon || <ArrowToggle expanded={expanded} onClick={toggleExpanded} />}
-          <span className="LeftSubmenu__title">{title}</span>
+        <div className="LeftSubmenu__left-icon">
+          <ArrowToggle expanded={expanded} onClick={toggleExpanded} />
         </div>
+        <span className="LeftSubmenu__title" onClick={toggleExpanded}>
+          {title}
+        </span>
         {rightOnClick ? renderRightSection() : null}
       </>
     );
@@ -31,13 +31,6 @@ const LeftSubmenu: FC<ComponentProps> = ({leftIcon, menuItems, rightOnClick, rig
 
   const renderRightSection = (): ReactNode => {
     if (!rightOnClick) return null;
-    if (rightText) {
-      return (
-        <span className="LeftSubmenu__right" onClick={rightOnClick}>
-          {rightText}
-        </span>
-      );
-    }
 
     return (
       <Icon className="LeftSubmenu__add-icon" icon={IconType.plus} onClick={rightOnClick} size={20} totalSize={20} />
@@ -46,7 +39,7 @@ const LeftSubmenu: FC<ComponentProps> = ({leftIcon, menuItems, rightOnClick, rig
 
   return (
     <div className="LeftSubmenu">
-      <div className="LeftSubmenu__header">{renderHeaderContent()}</div>
+      <div className="LeftSubmenu__header-container">{renderHeaderContent()}</div>
       {expanded && menuItems}
     </div>
   );

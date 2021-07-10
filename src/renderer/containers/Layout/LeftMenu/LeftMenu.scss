@@ -1,8 +1,5 @@
 .LeftMenu {
   display: flex;
   flex-direction: column;
-
-  &__purchase-confirmation-services {
-    color: var(--color-secondary);
-  }
+  padding: 20px 18px;
 }

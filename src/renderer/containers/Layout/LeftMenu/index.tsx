@@ -1,15 +1,13 @@
-import React, {FC, ReactNode, useEffect, useMemo, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, {FC, ReactNode, useMemo} from 'react';
+import {useSelector} from 'react-redux';
 
 import CreateAccountModal from '@renderer/containers/Account/CreateAccountModal';
 import AddBankModal from '@renderer/containers/Bank/AddBankModal';
 import AddFriendModal from '@renderer/containers/Account/AddFriendModal';
 import AddValidatorModal from '@renderer/containers/Validator/AddValidatorModal';
-import {fetchAccountBalance} from '@renderer/dispatchers/balances';
 import {useBooleanState} from '@renderer/hooks';
 import {
   getBankConfigs,
-  getCoinBalance,
   getHasAuthenticatedBanks,
   getManagedAccounts,
   getManagedBanks,
@@ -17,10 +15,9 @@ import {
   getManagedValidators,
   getValidatorConfigs,
 } from '@renderer/selectors';
-import {AppDispatch, ManagedAccount, ManagedFriend, ManagedNode, RootState} from '@renderer/types';
+import {ManagedAccount, ManagedFriend, ManagedNode, RootState} from '@renderer/types';
 import {formatAddressFromNode, formatPathFromNode} from '@renderer/utils/address';
 import {sortByBooleanKey, sortDictValuesByPreferredKey} from '@renderer/utils/sort';
-import {displayErrorToast} from '@renderer/utils/toast';
 
 import LeftSubmenu from './LeftSubmenu';
 import LeftSubmenuItem from './LeftSubmenuItem';
@@ -30,7 +27,6 @@ import './LeftMenu.scss';
 const LeftMenuSelector = (state: RootState) => {
   return {
     bankConfigs: getBankConfigs(state),
-    coinBalance: getCoinBalance(state),
     managedAccounts: getManagedAccounts(state),
     managedBanks: getManagedBanks(state),
     managedFriends: getManagedFriends(state),
@@ -40,40 +36,14 @@ const LeftMenuSelector = (state: RootState) => {
 };
 
 const LeftMenu: FC = () => {
-  const {
-    bankConfigs,
-    coinBalance,
-    managedAccounts,
-    managedBanks,
-    managedFriends,
-    managedValidators,
-    validatorConfigs,
-  } = useSelector(LeftMenuSelector);
+  const {bankConfigs, managedAccounts, managedBanks, managedFriends, managedValidators, validatorConfigs} = useSelector(
+    LeftMenuSelector,
+  );
   const [addBankModalIsOpen, toggleAddBankModal] = useBooleanState(false);
   const [addFriendModalIsOpen, toggleAddFriendModal] = useBooleanState(false);
   const [addValidatorModalIsOpen, toggleAddValidatorModal] = useBooleanState(false);
   const [createAccountModalIsOpen, toggleCreateAccountModal] = useBooleanState(false);
-  const dispatch = useDispatch<AppDispatch>();
   const hasAuthenticatedBanks = useSelector(getHasAuthenticatedBanks);
-  const [loadingBalance, setLoadingBalance] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoadingBalance(true);
-        const managedAccountNumbers = Object.keys(managedAccounts);
-        await Promise.all(managedAccountNumbers.map((accountNumber) => dispatch(fetchAccountBalance(accountNumber))));
-        setLoadingBalance(false);
-      } catch (error) {
-        displayErrorToast('There was an error fetching your account balances');
-      }
-    };
-
-    fetchData();
-
-    // suppressing exhaustive-deps so that this only runs initially
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const accountItems = useMemo<ReactNode[]>(() => {
     const getRelatedNodePath = (signingKey: string) => {
@@ -177,10 +147,6 @@ const LeftMenu: FC = () => {
 
   return (
     <div className="LeftMenu">
-      <div className="coins">
-        <div className="coins__title">Balance</div>
-        <div className="coins__amount">{loadingBalance ? '-' : coinBalance.toLocaleString()}</div>
-      </div>
       <LeftSubmenu menuItems={validatorMenuItems} rightOnClick={toggleAddValidatorModal} title="Validators" />
       <LeftSubmenu menuItems={bankMenuItems} rightOnClick={toggleAddBankModal} title="Banks" />
       <LeftSubmenu menuItems={accountItems} rightOnClick={toggleCreateAccountModal} title="My Accounts" />

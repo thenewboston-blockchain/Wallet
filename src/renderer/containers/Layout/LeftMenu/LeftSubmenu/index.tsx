@@ -1,10 +1,10 @@
 import React, {FC, ReactNode} from 'react';
-import {Icon, IconType} from '@thenewboston/ui';
 
 import ArrowToggle from '@renderer/components/ArrowToggle';
+import {PlusIcon} from '@renderer/components/Icon';
 import {useBooleanState} from '@renderer/hooks';
 
-import './LeftSubmenu.scss';
+import * as S from './LeftSubmenuStyles';
 
 interface ComponentProps {
   menuItems: ReactNode[];
@@ -17,31 +17,27 @@ const LeftSubmenu: FC<ComponentProps> = ({menuItems, rightOnClick, title}) => {
 
   const renderHeaderContent = (): ReactNode => {
     return (
-      <>
-        <div className="LeftSubmenu__left-icon">
+      <S.HeaderContainer>
+        <S.LeftIconContainer>
           <ArrowToggle expanded={expanded} onClick={toggleExpanded} />
-        </div>
-        <span className="LeftSubmenu__title" onClick={toggleExpanded}>
-          {title}
-        </span>
+        </S.LeftIconContainer>
+        <S.Title onClick={toggleExpanded}>{title}</S.Title>
         {rightOnClick ? renderRightSection() : null}
-      </>
+      </S.HeaderContainer>
     );
   };
 
   const renderRightSection = (): ReactNode => {
     if (!rightOnClick) return null;
 
-    return (
-      <Icon className="LeftSubmenu__add-icon" icon={IconType.plus} onClick={rightOnClick} size={20} totalSize={20} />
-    );
+    return <PlusIcon onClick={rightOnClick} size={20} totalSize={20} />;
   };
 
   return (
-    <div className="LeftSubmenu">
-      <div className="LeftSubmenu__header-container">{renderHeaderContent()}</div>
+    <S.Container>
+      {renderHeaderContent()}
       {expanded && menuItems}
-    </div>
+    </S.Container>
   );
 };
 

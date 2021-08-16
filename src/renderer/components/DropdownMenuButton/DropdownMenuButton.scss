@@ -2,6 +2,7 @@ $button-height: 24px;
 
 .DropdownMenuButton {
   $self: &;
+  border-radius: 6px;
 
   &--active {
     background: var(--color-gray-100);

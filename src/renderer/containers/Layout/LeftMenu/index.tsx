@@ -18,9 +18,9 @@ import {truncateLongText} from '@renderer/utils/accounts';
 import {formatAddressFromNode, formatPathFromNode} from '@renderer/utils/address';
 import {sortByBooleanKey, sortDictValuesByPreferredKey} from '@renderer/utils/sort';
 
+import * as S from './LeftMenuStyles';
 import LeftSubmenu from './LeftSubmenu';
 import LeftSubmenuItem from './LeftSubmenuItem';
-import './LeftMenu.scss';
 
 const LeftMenuSelector = (state: RootState) => {
   return {
@@ -95,7 +95,7 @@ const LeftMenu: FC = () => {
   );
 
   return (
-    <div className="LeftMenu">
+    <S.Container>
       <LeftSubmenu menuItems={accountItems} rightOnClick={toggleCreateAccountModal} title="My Wallets" />
       <LeftSubmenu menuItems={friendMenuItems} rightOnClick={toggleAddFriendModal} title="My Friends" />
       <LeftSubmenu menuItems={communityItems} title="Community" />
@@ -103,7 +103,7 @@ const LeftMenu: FC = () => {
       {addFriendModalIsOpen && <AddFriendModal close={toggleAddFriendModal} />}
       {addValidatorModalIsOpen && <AddValidatorModal close={toggleAddValidatorModal} />}
       {createAccountModalIsOpen && <CreateAccountModal close={toggleCreateAccountModal} />}
-    </div>
+    </S.Container>
   );
 };
 

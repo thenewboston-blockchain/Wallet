@@ -8,8 +8,6 @@ import './Button.scss';
 
 export enum ButtonColor {
   primary = 'primary',
-  // secondary = 'secondary',
-  // tertiary = 'tertiary',
 }
 
 export enum ButtonType {
@@ -68,8 +66,6 @@ const Button: FC<BaseButtonProps> = ({
         return disabled || submitting;
     }
   }, [disabled, dirty, ignoreDirty, isValid, submitting, type]);
-
-  console.log({dirty, isValid, buttonIsDisabled});
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     e?.preventDefault();

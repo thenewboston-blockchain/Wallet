@@ -28,8 +28,16 @@ const Account: FC = () => {
   }, [managedAccount, managedFriend]);
 
   const managedAccountOrFriend = useMemo<ManagedAccount | ManagedFriend | null>(() => {
-    return [];
-  }, []);
+    let output: ManagedAccount | ManagedFriend | null = null;
+
+    if (managedAccount) {
+      output = managedAccount;
+    } else if (managedFriend) {
+      output = managedFriend;
+    }
+
+    return output;
+  }, [managedAccount, managedFriend]);
 
   return (
     <MainContainer>

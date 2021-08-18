@@ -1,15 +1,15 @@
-import React, {FC, useCallback, useEffect, useRef} from 'react';
-import CopyToClipboard from 'react-copy-to-clipboard';
-import clsx from 'clsx';
-import {Icon, IconType} from '@thenewboston/ui';
-import {bemify} from '@thenewboston/utils';
+import React, { FC, useCallback, useEffect, useRef } from "react";
+import CopyToClipboard from "react-copy-to-clipboard";
+import clsx from "clsx";
+import { Icon, IconType } from "@thenewboston/ui";
+import { bemify } from "@thenewboston/utils";
 
-import {useBooleanState, useWriteIpc} from '@renderer/hooks';
-import {displayToast} from '@renderer/utils/toast';
-import {IpcChannel} from '@shared/ipc';
+import { useBooleanState, useWriteIpc } from "@renderer/hooks";
+import { displayToast, ToastType } from "@renderer/utils/toast";
+import { IpcChannel } from "@shared/ipc";
 
-import Tile from '../Tile';
-import './TileSigningKey.scss';
+import Tile from "../Tile";
+import "./TileSigningKey.scss";
 
 interface ComponentProps {
   accountNumber: string;
@@ -18,11 +18,11 @@ interface ComponentProps {
 }
 
 const downloadSuccessToast = () => {
-  displayToast('Signing Key has been saved locally', 'success');
+  displayToast('Signing Key has been saved locally', ToastType.success);
 };
 
 const downloadFailToast = (e: any, error: string) => {
-  displayToast(`Could not save signing key: ${error}`);
+  displayToast(`Could not save signing key: ${error}`, ToastType.error);
 };
 
 const TileSigningKey: FC<ComponentProps> = ({accountNumber, className, signingKey}) => {
@@ -50,7 +50,7 @@ const TileSigningKey: FC<ComponentProps> = ({accountNumber, className, signingKe
   }, [accountNumber, hideSigningKey]);
 
   const handleCopy = (): void => {
-    displayToast('Signing Key copied to the clipboard', 'success');
+    displayToast('Signing Key copied to the clipboard', ToastType.success);
     copyRef.current?.blur();
   };
 

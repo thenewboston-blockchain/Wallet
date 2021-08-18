@@ -12,29 +12,29 @@ import {useBooleanState, useIpcEffect, useNavigationalHistory, useReadIpc, useWr
 import {getPrimaryValidatorConfig} from '@renderer/selectors';
 import localStore from '@renderer/store/local';
 import {AppDispatch, LocalStore} from '@renderer/types';
-import {displayToast} from '@renderer/utils/toast';
+import {displayToast, ToastType} from '@renderer/utils/toast';
 import {getFailChannel, getSuccessChannel, IpcChannel} from '@shared/ipc';
 
 import './TopNav.scss';
 
 const exportSuccessToast = () => {
-  displayToast('Store Data has successfully been exported', 'success');
+  displayToast('Store Data has successfully been exported', ToastType.success);
 };
 
 const exportFailToast = (event: any, errorMessage: string) => {
-  displayToast(`Could not export Store Data: ${errorMessage}`);
+  displayToast(`Could not export Store Data: ${errorMessage}`, ToastType.error);
 };
 
 const importFailToast = (event: any, errorMessage: string) => {
-  displayToast(`Could not import Store Data: ${errorMessage}`);
+  displayToast(`Could not import Store Data: ${errorMessage}`, ToastType.error);
 };
 
 const restartAppSuccessToast = () => {
-  displayToast('Successfully Imported Data', 'success');
+  displayToast('Successfully Imported Data', ToastType.success);
 };
 
 const restartAppFailToast = (event: any, errorMessage: string) => {
-  displayToast(`There was a problem restarting the app: ${errorMessage}`);
+  displayToast(`There was a problem restarting the app: ${errorMessage}`, ToastType.error);
 };
 
 const TopNav: FC = () => {

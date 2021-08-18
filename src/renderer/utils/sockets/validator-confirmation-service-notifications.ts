@@ -1,7 +1,7 @@
-import {setValidatorConfirmationServiceNotification} from '@renderer/store/notifications';
-import {AppDispatch} from '@renderer/types';
-import {displayToast} from '@renderer/utils/toast';
-import {generateUuid} from '@renderer/utils/local';
+import { setValidatorConfirmationServiceNotification } from "@renderer/store/notifications";
+import { AppDispatch } from "@renderer/types";
+import { displayToast, ToastType } from "@renderer/utils/toast";
+import { generateUuid } from "@renderer/utils/local";
 
 const handleValidatorConfirmationServiceNotifications = async (
   bankSocketAddress: string,
@@ -18,9 +18,9 @@ const handleValidatorConfirmationServiceNotifications = async (
       }),
     );
 
-    displayToast(`Your bank purchased a validator confirmation service`, 'success');
+    displayToast(`Your bank purchased a validator confirmation service`, ToastType.success);
   } catch (err) {
-    displayToast('An error occurred');
+    displayToast('An error occurred', ToastType.error);
   }
 };
 

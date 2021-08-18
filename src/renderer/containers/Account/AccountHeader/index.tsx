@@ -1,25 +1,39 @@
-import React, {FC, ReactNode, useMemo} from 'react';
-import noop from 'lodash/noop';
+import React, { FC, ReactNode, useCallback, useMemo, useRef } from "react";
 
-import DropdownMenuButton from '@renderer/components/DropdownMenuButton';
-import QrcodeModal from '@renderer/containers/Account/QrcodeModal';
-import SendCoinsModal from '@renderer/containers/Account/SendCoinsModal';
-import {useBooleanState} from '@renderer/hooks';
-import {AccountType} from '@renderer/types';
-import {truncateLongText} from '@renderer/utils/accounts';
+import DropdownMenuButton from "@renderer/components/DropdownMenuButton";
+import QrcodeModal from "@renderer/containers/Account/QrcodeModal";
+import SendCoinsModal from "@renderer/containers/Account/SendCoinsModal";
+import { useBooleanState, useWriteIpc } from "@renderer/hooks";
+import { AccountType } from "@renderer/types";
+import { truncateLongText } from "@renderer/utils/accounts";
+import { displayToast, ToastType } from "@renderer/utils/toast";
+import { IpcChannel } from "@shared/ipc";
 
-import * as S from './AccountHeaderStyles';
+import * as S from "./Styles";
 
 interface AccountHeaderProps {
   accountNumber: string;
   className?: string;
   nickname: string | null;
+  signingKey: string;
   type: AccountType | null;
 }
 
-const AccountHeader: FC<AccountHeaderProps> = ({accountNumber, className, nickname, type}) => {
-  const [sendCoinsModalIsOpen, toggleSendCoinsModal] = useBooleanState(false);
+const downloadSuccessToast = () => {
+  displayToast('Signing Key has been saved locally', ToastType.success);
+};
+
+const downloadFailToast = (e: any, error: string) => {
+  displayToast(`Could not save signing key: ${error}`, ToastType.error);
+};
+
+const AccountHeader: FC<AccountHeaderProps> = ({accountNumber, className, nickname, signingKey, type}) => {
+  const accountNumberCopyRef = useRef<HTMLDivElement>(null);
+  const signingKeyCopyRef = useRef<HTMLDivElement>(null);
+  const signingKeyDownloadRef = useRef<HTMLDivElement>(null);
   const [qrcodeModalIsOpen, toggleQrcodeModal] = useBooleanState(false);
+  const [sendCoinsModalIsOpen, toggleSendCoinsModal] = useBooleanState(false);
+  const [signingKeyIsVisible, toggleSigningKeyIsVisible] = useBooleanState(false);
 
   const accountLabel = useMemo<string>(() => {
     if (type === AccountType.managedAccount) {
@@ -30,6 +44,30 @@ const AccountHeader: FC<AccountHeaderProps> = ({accountNumber, className, nickna
     }
     return 'Account Number';
   }, [type]);
+
+  const handleAccountNumberCopy = (): void => {
+    displayToast('Account Number copied to the clipboard', ToastType.success);
+    accountNumberCopyRef.current?.blur();
+  };
+
+  const handleSigningKeyCopy = (): void => {
+    displayToast('Signing Key copied to the clipboard. Do not share!', ToastType.warning);
+    signingKeyCopyRef.current?.blur();
+  };
+
+  const handleDownloadBlur = useCallback(() => {
+    signingKeyDownloadRef.current?.blur();
+  }, [signingKeyDownloadRef]);
+
+  const handleDownloadClick = useWriteIpc({
+    channel: IpcChannel.downloadSigningKey,
+    downloadOptions: {buttonLabel: 'Save', defaultPath: `${accountNumber}.txt`, title: 'Save Signing Key'},
+    extension: 'txt',
+    failCallback: downloadFailToast,
+    payload: signingKey,
+    postSendCallback: handleDownloadBlur,
+    successCallback: downloadSuccessToast,
+  });
 
   const sendCoinsInitialRecipient = useMemo<string>(() => {
     let output: string;
@@ -70,6 +108,10 @@ const AccountHeader: FC<AccountHeaderProps> = ({accountNumber, className, nickna
     );
   };
 
+  const renderSigningKey = (): ReactNode => {
+    return truncateLongText(signingKeyIsVisible ? signingKey : '*'.repeat(64));
+  };
+
   const renderAccountNumberItem = (): ReactNode => {
     return (
       <S.LeftItem>
@@ -77,7 +119,7 @@ const AccountHeader: FC<AccountHeaderProps> = ({accountNumber, className, nickna
         <S.LeftBody>
           <S.LeftMainText>{truncateLongText(accountNumber)}</S.LeftMainText>
           <S.QrcodeIcon onClick={toggleQrcodeModal} size={16} totalSize={20} />
-          <S.ContentCopyIcon onClick={noop} size={16} totalSize={20} />
+          <S.ContentCopyIcon onClick={handleAccountNumberCopy} size={16} totalSize={20} ref={accountNumberCopyRef} />
         </S.LeftBody>
       </S.LeftItem>
     );
@@ -88,10 +130,14 @@ const AccountHeader: FC<AccountHeaderProps> = ({accountNumber, className, nickna
       <S.LeftItem>
         <S.LeftTitle>My Signing Key</S.LeftTitle>
         <S.LeftBody>
-          <S.LeftMainText>{truncateLongText('*'.repeat(64))}</S.LeftMainText>
-          <S.EyeIcon onClick={noop} size={16} totalSize={20} />
-          <S.DownloadIcon onClick={noop} size={16} totalSize={20} />
-          <S.ContentCopyIcon onClick={noop} size={16} totalSize={20} />
+          <S.LeftMainText isSigningKey>{renderSigningKey()}</S.LeftMainText>
+          {signingKeyIsVisible ? (
+            <S.EyeOffIcon onClick={toggleSigningKeyIsVisible} size={16} totalSize={20} />
+          ) : (
+            <S.EyeIcon onClick={toggleSigningKeyIsVisible} size={16} totalSize={20} />
+          )}
+          <S.DownloadIcon onClick={handleDownloadClick} size={16} totalSize={20} ref={signingKeyDownloadRef} />
+          <S.ContentCopyIcon onClick={handleSigningKeyCopy} size={16} totalSize={20} ref={signingKeyCopyRef} />
         </S.LeftBody>
       </S.LeftItem>
     );

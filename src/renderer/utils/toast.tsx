@@ -1,6 +1,9 @@
 import React, {ReactNode} from 'react';
 import {toast} from 'react-toastify';
-import Toast, {ToastType} from '@renderer/components/Toast';
+import Toast from '@renderer/components/Toast';
+import {ToastType} from '@renderer/types/toast';
+
+export {ToastType};
 
 export const displayErrorToast = (error: any) => {
   let errorStr: string;
@@ -15,10 +18,10 @@ export const displayErrorToast = (error: any) => {
     errorStr = JSON.stringify(error);
   }
 
-  displayToast(errorStr);
+  displayToast(errorStr, ToastType.error);
 };
 
-export const displayToast = (message: ReactNode, type: ToastType = 'warning', className?: string): void => {
+export const displayToast = (message: ReactNode, type: ToastType, className?: string): void => {
   toast(
     <Toast className={className} type={type}>
       {message}

@@ -1,17 +1,17 @@
-import {useCallback, useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {useParams} from 'react-router-dom';
-import axios from 'axios';
+import { useCallback, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
-import {AXIOS_TIMEOUT_MS} from '@renderer/config';
-import {getCrawlSockets} from '@renderer/selectors';
-import {toggleCrawlProcess} from '@renderer/store/sockets';
-import {AddressParams, AppDispatch, CrawlStatus, ManagedNode, NodeCrawlStatusWithAddress} from '@renderer/types';
-import {generateUuid} from '@renderer/utils/local';
-import {displayToast} from '@renderer/utils/toast';
-import {formatAddress} from '@renderer/utils/address';
+import { AXIOS_TIMEOUT_MS } from "@renderer/config";
+import { getCrawlSockets } from "@renderer/selectors";
+import { toggleCrawlProcess } from "@renderer/store/sockets";
+import { AddressParams, AppDispatch, CrawlStatus, ManagedNode, NodeCrawlStatusWithAddress } from "@renderer/types";
+import { generateUuid } from "@renderer/utils/local";
+import { displayToast, ToastType } from "@renderer/utils/toast";
+import { formatAddress } from "@renderer/utils/address";
 
-import useAddress from './useAddress';
+import useAddress from "./useAddress";
 
 const useNetworkCrawlFetcher = (
   managedNode: ManagedNode | undefined,
@@ -46,7 +46,7 @@ const useNetworkCrawlFetcher = (
         setCrawlStatus(data.crawl_status || CrawlStatus.notCrawling);
         setCrawlLastCompleted(data.crawl_last_completed);
       } catch (error) {
-        displayToast('An error occurred when getting crawl status');
+        displayToast('An error occurred when getting crawl status', ToastType.error);
       } finally {
         setLoading(false);
       }

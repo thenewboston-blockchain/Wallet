@@ -6,7 +6,7 @@ import MainContainer from '@renderer/styles/components/MainContainer';
 import {getManagedAccounts, getManagedFriends} from '@renderer/selectors';
 import {AccountNumberParams, AccountType, ManagedAccount, ManagedFriend} from '@renderer/types';
 
-import * as S from './AccountStyles';
+import * as S from './Styles';
 
 const Account: FC = () => {
   const {accountNumber} = useParams<AccountNumberParams>();
@@ -41,7 +41,12 @@ const Account: FC = () => {
 
   return (
     <MainContainer>
-      <S.AccountHeader accountNumber={accountNumber} nickname={managedAccountOrFriend?.nickname || null} type={type} />
+      <S.AccountHeader
+        accountNumber={accountNumber}
+        nickname={managedAccountOrFriend?.nickname || null}
+        signingKey={managedAccount.signing_key}
+        type={type}
+      />
       <S.AccountGraph />
     </MainContainer>
   );

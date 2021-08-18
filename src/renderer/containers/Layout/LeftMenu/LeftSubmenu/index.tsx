@@ -4,7 +4,7 @@ import ArrowToggle from '@renderer/components/ArrowToggle';
 import {PlusIcon} from '@renderer/components/Icon';
 import {useBooleanState} from '@renderer/hooks';
 
-import * as S from './LeftSubmenuStyles';
+import * as S from './Styles';
 
 interface ComponentProps {
   menuItems: ReactNode[];

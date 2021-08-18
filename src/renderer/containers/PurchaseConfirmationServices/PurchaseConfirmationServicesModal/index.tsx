@@ -1,26 +1,26 @@
-import React, {FC, useCallback, useMemo, useState} from 'react';
-import {useSelector} from 'react-redux';
+import React, { FC, useCallback, useMemo, useState } from "react";
+import { useSelector } from "react-redux";
 
-import Modal from '@renderer/components/Modal';
-import {INVALID_AMOUNT_ERROR} from '@renderer/constants/form-validation';
+import Modal from "@renderer/components/Modal";
+import { INVALID_AMOUNT_ERROR } from "@renderer/constants/form-validation";
 import {
   getAccountBalances,
   getActiveBankConfig,
-  getPrimaryValidatorConfig,
   getAuthenticatedBanks,
   getBankConfigs,
-} from '@renderer/selectors';
-import {BaseValidator} from '@renderer/types';
-import {sendBlock} from '@renderer/utils/blocks';
-import yup from '@renderer/utils/forms/yup';
-import {getKeyPairFromSigningKeyHex} from '@renderer/utils/signing';
-import {displayErrorToast, displayToast} from '@renderer/utils/toast';
-import {getBankTxFee, getPrimaryValidatorTxFee} from '@renderer/utils/transactions';
+  getPrimaryValidatorConfig
+} from "@renderer/selectors";
+import { BaseValidator } from "@renderer/types";
+import { sendBlock } from "@renderer/utils/blocks";
+import yup from "@renderer/utils/forms/yup";
+import { getKeyPairFromSigningKeyHex } from "@renderer/utils/signing";
+import { displayErrorToast, displayToast, ToastType } from "@renderer/utils/toast";
+import { getBankTxFee, getPrimaryValidatorTxFee } from "@renderer/utils/transactions";
 
-import ConnectionStatus from '../ConnectionStatus';
-import {checkConnectionBankToValidator, checkConnectionValidatorToBank, ValidatorConnectionStatus} from '../utils';
-import PurchaseConfirmationServicesModalFields, {FormValues} from './PurchaseConfirmationServicesModalFields';
-import './PurchaseConfirmationServicesModal.scss';
+import ConnectionStatus from "../ConnectionStatus";
+import { checkConnectionBankToValidator, checkConnectionValidatorToBank, ValidatorConnectionStatus } from "../utils";
+import PurchaseConfirmationServicesModalFields, { FormValues } from "./PurchaseConfirmationServicesModalFields";
+import "./PurchaseConfirmationServicesModal.scss";
 
 interface ComponentProps {
   close(): void;
@@ -50,7 +50,7 @@ const PurchaseConfirmationServicesModal: FC<ComponentProps> = ({close, initialBa
       await sendBlock(activeBankConfig, activePrimaryValidator, selectedBank.account_signing_key, bankAccountNumber, [
         {accountNumber: validator.account_number, amount: parseInt(amount, 10)},
       ]);
-      displayToast('Your payment has been sent', 'success');
+      displayToast('Your payment has been sent', ToastType.success);
       close();
     } catch (error) {
       displayErrorToast(error);

@@ -1,19 +1,19 @@
-import React, {FC, useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import React, { FC, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-import {Form, FormButton, FormInput, FormSelect} from '@renderer/components/FormComponents';
-import {ButtonType} from '@renderer/components/FormElements';
-import Logo from '@renderer/components/Logo';
-import {connectAndStoreLocalData} from '@renderer/dispatchers/app';
-import {getActiveBankConfig} from '@renderer/selectors';
-import {AppDispatch, InputOption, ProtocolType} from '@renderer/types';
-import {formatPathFromNode} from '@renderer/utils/address';
-import {getIpAddressField, getNicknameField, getPortField, getProtocolField} from '@renderer/utils/forms/fields';
-import yup from '@renderer/utils/forms/yup';
-import {displayErrorToast, displayToast} from '@renderer/utils/toast';
+import { Form, FormButton, FormInput, FormSelect } from "@renderer/components/FormComponents";
+import { ButtonType } from "@renderer/components/FormElements";
+import Logo from "@renderer/components/Logo";
+import { connectAndStoreLocalData } from "@renderer/dispatchers/app";
+import { getActiveBankConfig } from "@renderer/selectors";
+import { AppDispatch, InputOption, ProtocolType } from "@renderer/types";
+import { formatPathFromNode } from "@renderer/utils/address";
+import { getIpAddressField, getNicknameField, getPortField, getProtocolField } from "@renderer/utils/forms/fields";
+import yup from "@renderer/utils/forms/yup";
+import { displayErrorToast, displayToast, ToastType } from "@renderer/utils/toast";
 
-import './Connect.scss';
+import "./Connect.scss";
 
 const initialValues = {
   ipAddress: '54.183.16.194',
@@ -56,7 +56,7 @@ const Connect: FC = () => {
         displayErrorToast(response.error);
       }
     } catch (error) {
-      displayToast('An error occurred');
+      displayToast('An error occurred', ToastType.error);
     } finally {
       setSubmitting(false);
     }

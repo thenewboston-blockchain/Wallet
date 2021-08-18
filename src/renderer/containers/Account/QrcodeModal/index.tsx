@@ -4,8 +4,8 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 import {ContentCopyIcon} from '@renderer/components/Icon';
 import Modal from '@renderer/components/Modal';
 import Qr from '@renderer/components/Qr';
-import {displayToast} from '@renderer/utils/toast';
-import * as S from './QrcodeModalStyles';
+import {displayToast, ToastType} from '@renderer/utils/toast';
+import * as S from './Styles';
 
 interface QrcodeModalProps {
   accountLabel: string;
@@ -24,7 +24,7 @@ const QrcodeModal: FC<QrcodeModalProps> = ({accountLabel, accountNumber, close})
   const copyIconRef = useRef<HTMLDivElement>(null);
 
   const handleCopy = (): void => {
-    displayToast('Account Number copied to the clipboard', 'success');
+    displayToast('Account Number copied to the clipboard', ToastType.success);
     copyIconRef.current?.blur();
   };
 

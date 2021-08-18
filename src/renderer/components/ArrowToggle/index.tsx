@@ -1,5 +1,5 @@
 import React, {FC, useRef} from 'react';
-import * as S from './ArrowToggleStyles';
+import * as S from './Styles';
 
 interface ComponentProps {
   className?: string;

@@ -1,7 +1,7 @@
 import React, {FC, ReactNode} from 'react';
 import {useLocation} from 'react-router-dom';
 
-import * as S from './LeftSubmenuItemStyles';
+import * as S from './Styles';
 
 export interface LeftSubmenuItemProps {
   baseUrl: string;

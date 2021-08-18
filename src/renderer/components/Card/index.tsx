@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import * as S from './CardStyles';
+import * as S from './Styles';
 
 interface CardProps {
   className?: string;

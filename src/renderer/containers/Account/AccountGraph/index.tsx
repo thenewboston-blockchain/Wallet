@@ -2,7 +2,7 @@ import React, {FC, useState} from 'react';
 import {CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis} from 'recharts';
 import colors from '@renderer/styles/colors';
 
-import * as S from './AccountGraphStyles';
+import * as S from './Styles';
 
 interface AccountGraphProps {
   className?: string;

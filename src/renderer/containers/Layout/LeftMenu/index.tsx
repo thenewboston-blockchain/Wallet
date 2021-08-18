@@ -18,9 +18,9 @@ import {truncateLongText} from '@renderer/utils/accounts';
 import {formatAddressFromNode, formatPathFromNode} from '@renderer/utils/address';
 import {sortByBooleanKey, sortDictValuesByPreferredKey} from '@renderer/utils/sort';
 
-import * as S from './LeftMenuStyles';
 import LeftSubmenu from './LeftSubmenu';
 import LeftSubmenuItem from './LeftSubmenuItem';
+import * as S from './Styles';
 
 const LeftMenuSelector = (state: RootState) => {
   return {

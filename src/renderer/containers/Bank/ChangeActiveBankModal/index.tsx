@@ -1,24 +1,24 @@
-import React, {FC, useMemo, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import React, { FC, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-import {connectAndStoreLocalData} from '@renderer/dispatchers/app';
-import Modal from '@renderer/components/Modal';
-import {AppDispatch, ProtocolType} from '@renderer/types';
-import {formatPathFromNode} from '@renderer/utils/address';
+import { connectAndStoreLocalData } from "@renderer/dispatchers/app";
+import Modal from "@renderer/components/Modal";
+import { AppDispatch, ProtocolType } from "@renderer/types";
+import { formatPathFromNode } from "@renderer/utils/address";
 import {
   getAddressFormField,
   getIpAddressField,
   getNicknameField,
   getPortField,
-  getProtocolField,
-} from '@renderer/utils/forms/fields';
-import yup from '@renderer/utils/forms/yup';
-import {displayErrorToast, displayToast} from '@renderer/utils/toast';
-import {getManagedBanks} from '@renderer/selectors';
+  getProtocolField
+} from "@renderer/utils/forms/fields";
+import yup from "@renderer/utils/forms/yup";
+import { displayErrorToast, displayToast, ToastType } from "@renderer/utils/toast";
+import { getManagedBanks } from "@renderer/selectors";
 
-import ChangeActiveBankModalFields from './ChangeActiveBankModalFields';
-import './ChangeActiveBankModal.scss';
+import ChangeActiveBankModalFields from "./ChangeActiveBankModalFields";
+import "./ChangeActiveBankModal.scss";
 
 const initialValues = {
   form: '',
@@ -59,7 +59,7 @@ const ChangeActiveBankModal: FC<ComponentProps> = ({close}) => {
       }
       close();
     } catch (error) {
-      displayToast('An error occurred');
+      displayToast('An error occurred', ToastType.error);
       setSubmitting(false);
     }
   };

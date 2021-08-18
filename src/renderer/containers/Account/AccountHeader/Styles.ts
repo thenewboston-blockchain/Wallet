@@ -4,6 +4,7 @@ import {
   ContentCopyIcon as UContentCopyIcon,
   DownloadIcon as UDownloadIcon,
   EyeIcon as UEyeIcon,
+  EyeOffIcon as UEyeOffIcon,
   QrcodeIcon as UQrcodeIcon,
 } from '@renderer/components/Icon';
 import colors from '@renderer/styles/colors';
@@ -45,8 +46,9 @@ export const LeftBody = styled.div`
   height: 20px;
 `;
 
-export const LeftMainText = styled.h3`
+export const LeftMainText = styled.h3<{isSigningKey?: boolean}>`
   max-width: ${maxWidthText};
+  min-width: ${({isSigningKey}) => (isSigningKey ? '165px' : null)};
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -74,6 +76,10 @@ export const ContentCopyIcon = styled(UContentCopyIcon)`
 `;
 
 export const EyeIcon = styled(UEyeIcon)`
+  ${leftIconStyle};
+`;
+
+export const EyeOffIcon = styled(UEyeOffIcon)`
   ${leftIconStyle};
 `;
 

@@ -1,17 +1,17 @@
-import {useCallback, useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {useParams} from 'react-router-dom';
-import axios from 'axios';
+import { useCallback, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
-import {AXIOS_TIMEOUT_MS} from '@renderer/config';
-import {getCleanSockets} from '@renderer/selectors';
-import {toggleCleanProcess} from '@renderer/store/sockets';
-import {AddressParams, AppDispatch, CleanStatus, ManagedNode, NodeCleanStatusWithAddress} from '@renderer/types';
-import {generateUuid} from '@renderer/utils/local';
-import {displayToast} from '@renderer/utils/toast';
-import {formatAddress} from '@renderer/utils/address';
+import { AXIOS_TIMEOUT_MS } from "@renderer/config";
+import { getCleanSockets } from "@renderer/selectors";
+import { toggleCleanProcess } from "@renderer/store/sockets";
+import { AddressParams, AppDispatch, CleanStatus, ManagedNode, NodeCleanStatusWithAddress } from "@renderer/types";
+import { generateUuid } from "@renderer/utils/local";
+import { displayToast, ToastType } from "@renderer/utils/toast";
+import { formatAddress } from "@renderer/utils/address";
 
-import useAddress from './useAddress';
+import useAddress from "./useAddress";
 
 const useNetworkCleanFetcher = (
   managedNode: ManagedNode | undefined,
@@ -46,7 +46,7 @@ const useNetworkCleanFetcher = (
         setCleanStatus(data.clean_status || CleanStatus.notCleaning);
         setCleanLastCompleted(data.clean_last_completed);
       } catch (error) {
-        displayToast('An error occurred when getting clean status');
+        displayToast('An error occurred when getting clean status', ToastType.error);
       } finally {
         setLoading(false);
       }

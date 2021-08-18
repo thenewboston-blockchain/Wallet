@@ -1,12 +1,12 @@
-import React, {FC, useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import React, { FC, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-import Modal from '@renderer/components/Modal';
-import {connectAndStoreLocalData} from '@renderer/dispatchers/app';
-import {AppDispatch, ManagedNode} from '@renderer/types';
-import {formatPathFromNode} from '@renderer/utils/address';
-import {displayErrorToast, displayToast} from '@renderer/utils/toast';
+import Modal from "@renderer/components/Modal";
+import { connectAndStoreLocalData } from "@renderer/dispatchers/app";
+import { AppDispatch, ManagedNode } from "@renderer/types";
+import { formatPathFromNode } from "@renderer/utils/address";
+import { displayErrorToast, displayToast, ToastType } from "@renderer/utils/toast";
 
 interface ComponentProps {
   bank: ManagedNode;
@@ -32,7 +32,7 @@ const SetAsActiveBankModal: FC<ComponentProps> = ({bank, close}) => {
       }
       close();
     } catch (error) {
-      displayToast('An error occurred');
+      displayToast('An error occurred', ToastType.error);
       setSubmitting(false);
     }
   };

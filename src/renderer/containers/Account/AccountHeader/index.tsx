@@ -2,6 +2,7 @@ import React, {FC, ReactNode, useMemo} from 'react';
 import noop from 'lodash/noop';
 
 import DropdownMenuButton from '@renderer/components/DropdownMenuButton';
+import QrcodeModal from '@renderer/containers/Account/QrcodeModal';
 import SendCoinsModal from '@renderer/containers/Account/SendCoinsModal';
 import {useBooleanState} from '@renderer/hooks';
 import {AccountType} from '@renderer/types';
@@ -18,15 +19,16 @@ interface AccountHeaderProps {
 
 const AccountHeader: FC<AccountHeaderProps> = ({accountNumber, className, nickname, type}) => {
   const [sendCoinsModalIsOpen, toggleSendCoinsModal] = useBooleanState(false);
+  const [qrcodeModalIsOpen, toggleQrcodeModal] = useBooleanState(false);
 
-  const accountTypeLabelPrefix = useMemo<string>(() => {
+  const accountLabel = useMemo<string>(() => {
     if (type === AccountType.managedAccount) {
-      return 'My ';
+      return 'My Account Number';
     }
     if (type === AccountType.managedFriend) {
-      return "Friend's ";
+      return "Friend's Account Number";
     }
-    return '';
+    return 'Account Number';
   }, [type]);
 
   const sendCoinsInitialRecipient = useMemo<string>(() => {
@@ -71,10 +73,10 @@ const AccountHeader: FC<AccountHeaderProps> = ({accountNumber, className, nickna
   const renderAccountNumberItem = (): ReactNode => {
     return (
       <S.LeftItem>
-        <S.LeftTitle>{accountTypeLabelPrefix}Account Number</S.LeftTitle>
+        <S.LeftTitle>{accountLabel}</S.LeftTitle>
         <S.LeftBody>
           <S.LeftMainText>{truncateLongText(accountNumber)}</S.LeftMainText>
-          <S.QrcodeIcon onClick={noop} size={16} totalSize={20} />
+          <S.QrcodeIcon onClick={toggleQrcodeModal} size={16} totalSize={20} />
           <S.ContentCopyIcon onClick={noop} size={16} totalSize={20} />
         </S.LeftBody>
       </S.LeftItem>
@@ -112,6 +114,9 @@ const AccountHeader: FC<AccountHeaderProps> = ({accountNumber, className, nickna
           initialRecipient={sendCoinsInitialRecipient}
           initialSender={sendCoinsInitialSender}
         />
+      )}
+      {qrcodeModalIsOpen && (
+        <QrcodeModal accountLabel={accountLabel} accountNumber={accountNumber} close={toggleQrcodeModal} />
       )}
     </S.MainContainer>
   );

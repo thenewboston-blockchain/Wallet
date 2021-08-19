@@ -6,7 +6,7 @@ import {
   EyeIcon as UEyeIcon,
   EyeOffIcon as UEyeOffIcon,
   QrcodeIcon as UQrcodeIcon,
-} from '@renderer/components/Icon';
+} from '@renderer/components/Icons';
 import colors from '@renderer/styles/colors';
 import {b3} from '@renderer/styles/fonts';
 

@@ -1,7 +1,7 @@
 import React, {FC, useRef} from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
-import {ContentCopyIcon} from '@renderer/components/Icon';
+import {ContentCopyIcon} from '@renderer/components/Icons';
 import Modal from '@renderer/components/Modal';
 import Qr from '@renderer/components/Qr';
 import {displayToast, ToastType} from '@renderer/utils/toast';

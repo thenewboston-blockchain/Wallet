@@ -1,7 +1,7 @@
 import React, {FC, ReactNode} from 'react';
 
 import ArrowToggle from '@renderer/components/ArrowToggle';
-import {PlusIcon} from '@renderer/components/Icon';
+import {PlusIcon} from '@renderer/components/Icons';
 import {useBooleanState} from '@renderer/hooks';
 
 import * as S from './Styles';

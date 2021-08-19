@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {
   AlertCircleOutlineIcon as UAlertCircleOutlineIcon,
   CheckCircleIcon as UCheckCircleIcon,
-} from '@renderer/components/Icon';
+} from '@renderer/components/Icons';
 import colors from '@renderer/styles/colors';
 import {ToastType} from '@renderer/types/toast';
 

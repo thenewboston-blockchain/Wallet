@@ -1,7 +1,7 @@
 import React, {forwardRef} from 'react';
 import MdiReactIcon from 'mdi-react/EyeIcon';
-import IconWrapper from '@renderer/components/Icon/IconWrapper';
-import {IconProps} from '@renderer/components/Icon/types';
+import IconWrapper from '@renderer/components/Icons/IconWrapper';
+import {IconProps} from '@renderer/components/Icons/types';
 
 const EyeIcon = forwardRef<HTMLDivElement, IconProps>(({size = 24, ...props}, ref) => {
   return (

@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import {PlayIcon} from '@renderer/components/Icon';
+import {PlayIcon} from '@renderer/components/Icons';
 import colors from '@renderer/styles/colors';
 
 interface ArrowToggleProps {

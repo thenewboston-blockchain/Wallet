@@ -37,7 +37,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: Install dependencies
-        run: npm install --network-timeout 1000000
+        run: npm install
 
       - name: Test
         run: npm run test --ci --coverage --maxWorkers=2

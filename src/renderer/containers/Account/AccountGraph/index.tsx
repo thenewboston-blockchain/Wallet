@@ -1,8 +1,17 @@
 import React, {FC, useState} from 'react';
-import {CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis} from 'recharts';
+import format from 'date-fns/format';
+import getTime from 'date-fns/getTime';
+import parseISO from 'date-fns/parseISO';
+import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts';
 import colors from '@renderer/styles/colors';
 
+import {mockBalanceData} from './data';
 import * as S from './Styles';
+
+const transformedData = mockBalanceData.map((data) => ({
+  balance: data.balance,
+  date: getTime(parseISO(data.date)),
+}));
 
 interface AccountGraphProps {
   className?: string;
@@ -14,12 +23,6 @@ export enum GraphFilter {
   year = '1Y',
   all = 'ALL',
 }
-
-const mockData = Array.from(Array(1000).keys()).map((i) => ({date: i, balance: i}));
-
-const CustomizedDot = () => {
-  return null;
-};
 
 const AccountGraph: FC<AccountGraphProps> = ({className}) => {
   const [filter, setFilter] = useState<GraphFilter>(GraphFilter.month);
@@ -42,7 +45,7 @@ const AccountGraph: FC<AccountGraphProps> = ({className}) => {
       <S.Top>
         <div>
           <S.TopLabel>Wallet Balance</S.TopLabel>
-          <S.Balance>0.0000</S.Balance>
+          <S.Balance>310,720.0000</S.Balance>
         </div>
         <S.TopRight>
           {renderFilterButton(GraphFilter.month)}
@@ -52,11 +55,20 @@ const AccountGraph: FC<AccountGraphProps> = ({className}) => {
         </S.TopRight>
       </S.Top>
       <ResponsiveContainer width="100%" height={368}>
-        <LineChart data={mockData}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" />
-          <YAxis />
-          <Line type="monotone" dataKey="date" stroke={colors.palette.blue['400']} dot={<CustomizedDot />} />
+        <LineChart data={transformedData}>
+          <CartesianGrid stroke={colors.palette.neutral['075']} />
+          <XAxis
+            dataKey="date"
+            tickFormatter={(date) => format(date, 'MMM d')}
+            minTickGap={100}
+            stroke={colors.palette.neutral['400']}
+          />
+          <YAxis hide />
+          <Line activeDot={{r: 6}} dataKey="balance" dot={false} stroke={colors.palette.blue['400']} />
+          <Tooltip
+            labelFormatter={(date) => format(date, 'yyyy MMM dd')}
+            formatter={(amount: number) => amount.toLocaleString()}
+          />
         </LineChart>
       </ResponsiveContainer>
     </S.Container>

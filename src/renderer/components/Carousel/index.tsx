@@ -31,7 +31,7 @@ const Carousel: FC<CarouselProps> = ({children, className}) => {
     let dots: ReactNode[] = [];
 
     for (let i = 0; i < numOfSlides; i++) {
-      dots.push(<S.Dot isActive={i === currentSlide} onClick={() => setCurrentSlide(i)} />);
+      dots.push(<S.Dot key={i} isActive={i === currentSlide} onClick={() => setCurrentSlide(i)} />);
     }
 
     return <S.DotsContainer>{dots}</S.DotsContainer>;

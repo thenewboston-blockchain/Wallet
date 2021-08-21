@@ -1,25 +1,13 @@
 import React, {FC, useEffect, useMemo, useRef} from 'react';
 import clsx from 'clsx';
-import {bemify} from '@thenewboston/utils';
 
 import {useFormContext2} from '@renderer/hooks/useFormContext';
 import {Loader} from '@renderer/components/FormElements';
-import './Button.scss';
 
-export enum ButtonColor {
-  primary = 'primary',
-}
+import * as S from './Styles';
+import {ButtonColor, ButtonType, ButtonVariant} from './types';
 
-export enum ButtonType {
-  button = 'button',
-  reset = 'reset',
-  submit = 'submit',
-}
-
-export enum ButtonVariant {
-  contained = 'contained',
-  link = 'link',
-}
+export {ButtonColor, ButtonType, ButtonVariant};
 
 export interface BaseButtonProps {
   className?: string;
@@ -79,22 +67,18 @@ const Button: FC<BaseButtonProps> = ({
   };
 
   return (
-    <button
-      className={clsx('Button', `Button--${variant}`, `Button--${color}`, className, {
-        'Button--disabled': buttonIsDisabled,
-        'Button--full-width': fullWidth,
-        ...bemify(className, `--${variant}`),
-        ...bemify(className, `--${color}`),
-        ...bemify(className, '--disabled', buttonIsDisabled),
-        ...bemify(className, '--full-width', fullWidth),
-      })}
+    <S.Button
+      className={clsx('Button', className)}
+      color={color}
       disabled={buttonIsDisabled}
+      fullWidth={fullWidth}
       onClick={handleClick}
       ref={buttonRef}
       type={type}
+      variant={variant}
     >
       {type === ButtonType.submit && submitting ? <Loader /> : children}
-    </button>
+    </S.Button>
   );
 };
 

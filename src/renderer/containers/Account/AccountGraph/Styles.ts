@@ -48,3 +48,8 @@ export const TopRight = styled.div`
     margin-left: 24px;
   }
 `;
+
+export const BottomContainer = styled.div`
+  border-top: 1px solid ${colors.palette.neutral['075']};
+  padding: 3px 6px;
+`;

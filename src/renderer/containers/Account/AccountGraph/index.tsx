@@ -3,6 +3,8 @@ import format from 'date-fns/format';
 import getTime from 'date-fns/getTime';
 import parseISO from 'date-fns/parseISO';
 import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts';
+
+import Link from '@renderer/components/Link';
 import colors from '@renderer/styles/colors';
 
 import {mockBalanceData} from './data';
@@ -71,6 +73,11 @@ const AccountGraph: FC<AccountGraphProps> = ({className}) => {
           />
         </LineChart>
       </ResponsiveContainer>
+      <S.BottomContainer>
+        <Link to="/" withChevron>
+          View Details
+        </Link>
+      </S.BottomContainer>
     </S.Container>
   );
 };

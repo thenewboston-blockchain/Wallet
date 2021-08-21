@@ -1,6 +1,5 @@
 import styled, {css} from 'styled-components';
 import colors from '@renderer/styles/colors';
-import {IconProps} from '../types';
 
 const buttonStyle = css`
   cursor: pointer;
@@ -24,7 +23,15 @@ const sizeStyle = (size = 24, totalSize = 30) => css`
   width: ${Math.max(size, totalSize)}px;
 `;
 
-export const Wrapper = styled.div<IconProps>`
+interface WrapperProps {
+  disabled: boolean;
+  hasOnClickHandler: boolean;
+  size?: number;
+  totalSize?: number | 'unset';
+  unfocusable: boolean;
+}
+
+export const Wrapper = styled.div<WrapperProps>`
   align-items: center;
   border-radius: 50%;
   display: flex;
@@ -32,12 +39,12 @@ export const Wrapper = styled.div<IconProps>`
   transition: background-color 0.3s, color 0.3s;
 
   :focus {
-    background: ${colors.palette.gray['100']};
+    background: ${({unfocusable}) => (unfocusable ? null : colors.palette.gray['100'])};
   }
 
-  ${({size, totalSize}) => totalSize !== 'unset' && sizeStyle(size, totalSize)}
+  ${({size, totalSize}) => totalSize !== 'unset' && sizeStyle(size, totalSize)};
 
-  ${({onClick}) => !!onClick && buttonStyle}
+  ${({hasOnClickHandler}) => !!hasOnClickHandler && buttonStyle};
 
-  ${({disabled}) => !!disabled && disabledStyle}
+  ${({disabled}) => !!disabled && disabledStyle};
 `;

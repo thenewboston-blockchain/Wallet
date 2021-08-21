@@ -1,7 +1,7 @@
 import React, {forwardRef, useMemo} from 'react';
 
 import {IconProps} from '../types';
-import * as S from './IconWrapperStyle';
+import * as S from './Styles';
 
 const IconWrapper = forwardRef<HTMLDivElement, IconProps>(
   (
@@ -33,11 +33,12 @@ const IconWrapper = forwardRef<HTMLDivElement, IconProps>(
     return (
       <S.Wrapper
         className={className}
-        dataTestId={dataTestId || 'Icon'}
+        data-testid={dataTestId || 'Icon'}
         disabled={disabled}
         ref={ref}
         role={!!onClick ? 'button' : 'img'}
         onClick={handleClick}
+        hasOnClickHandler={!!onClick}
         onKeyDown={handleKeyDown}
         size={size}
         tabIndex={tabIndex}

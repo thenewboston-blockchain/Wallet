@@ -7,7 +7,7 @@ import MainContainer from '@renderer/styles/components/MainContainer';
 import {getManagedAccounts, getManagedFriends} from '@renderer/selectors';
 import {AccountNumberParams, AccountType, ManagedAccount, ManagedFriend} from '@renderer/types';
 
-import AccountOverviewCarousel, {AccountCarouselType} from './AccountCarousel';
+import AccountOverviewCarousel, {AccountCarouselTopic} from './AccountCarousel';
 import * as S from './Styles';
 
 const Account: FC = () => {
@@ -46,13 +46,17 @@ const Account: FC = () => {
       <S.Header
         accountNumber={accountNumber}
         nickname={managedAccountOrFriend?.nickname || null}
-        signingKey={managedAccount.signing_key}
+        signingKey={type === AccountType.managedAccount ? managedAccount.signing_key : null}
         type={type}
       />
       <S.Graph />
       <S.BottomRow>
-        <AccountOverviewCarousel type={AccountCarouselType.depositCoins} onClick={noop} />
-        <AccountOverviewCarousel type={AccountCarouselType.registerWallet} onClick={noop} />
+        <AccountOverviewCarousel accountType={type} carouselTopic={AccountCarouselTopic.depositCoins} onClick={noop} />
+        <AccountOverviewCarousel
+          accountType={type}
+          carouselTopic={AccountCarouselTopic.registerWallet}
+          onClick={noop}
+        />
       </S.BottomRow>
     </MainContainer>
   );

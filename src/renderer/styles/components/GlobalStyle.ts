@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
     line-height: ${font.lineHeight.default};
+    user-select: none;
   }
   
   body {

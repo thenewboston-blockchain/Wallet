@@ -16,11 +16,25 @@ export const Carousel = styled(UCarousel)`
   width: 100%;
 `;
 
-export const ImageContainer = styled.div`
+export const CarouselImageContainer = styled.div`
   align-items: center;
   display: flex;
   height: 140px;
   justify-content: center;
+`;
+
+export const EmptyStateImageContainer = styled.div`
+  align-items: center;
+  display: flex;
+  height: 187px;
+  margin-top: 16px;
+  justify-content: center;
+`;
+
+export const EmptyStateText = styled.h3`
+  ${h3.medium};
+  margin-bottom: 16px;
+  margin-top: 40px;
 `;
 
 export const Image = styled.img`

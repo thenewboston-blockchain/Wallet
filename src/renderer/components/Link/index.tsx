@@ -10,7 +10,7 @@ interface LinkProps extends RRLinkProps {
 
 const Link: FC<LinkProps> = ({children, className, disabled = false, withChevron = false, ...rrLinkProps}) => {
   return (
-    <S.Link className={className} disabled={disabled} showRightChevron={withChevron} {...rrLinkProps}>
+    <S.Link className={className} disabled={disabled} {...rrLinkProps}>
       {children}
       {withChevron && <S.ChevronRightIcon unfocusable />}
     </S.Link>

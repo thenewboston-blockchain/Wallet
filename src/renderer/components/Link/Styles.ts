@@ -5,7 +5,6 @@ import colors from '@renderer/styles/colors';
 
 interface LinkProps extends RRLinkProps {
   disabled: boolean;
-  showRightChevron: boolean;
 }
 
 export const Link = styled(RRLink)<LinkProps>`

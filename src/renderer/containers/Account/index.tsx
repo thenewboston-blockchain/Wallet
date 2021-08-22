@@ -1,6 +1,6 @@
 import React, {FC, useEffect, useMemo} from 'react';
 import {useSelector} from 'react-redux';
-import {Route, Switch, useHistory, useParams} from 'react-router-dom';
+import {Redirect, Route, Switch, useHistory, useParams} from 'react-router-dom';
 
 import MainContainer from '@renderer/styles/components/MainContainer';
 import {getManagedAccounts, getManagedFriends} from '@renderer/selectors';
@@ -14,9 +14,14 @@ import {
 } from '@renderer/types';
 
 import AccountOverview from './AccountOverview';
+import AccountTransactions from './AccountTransactions';
 import * as S from './Styles';
 
 type AccountParams = AccountNumberParams & SectionParams<AccountSection>;
+
+// TODO:
+// Transactions
+// AccountContext
 
 const Account: FC = () => {
   const history = useHistory();
@@ -66,8 +71,14 @@ const Account: FC = () => {
         type={type}
       />
       <Switch>
-        <Route path="/account/:accountNumber/overview" exact>
-          <AccountOverview type={type} />
+        <Route path={`/account/:accountNumber/${AccountSection.overview}`} exact>
+          <AccountOverview accountNumber={accountNumber} type={type} />
+        </Route>
+        <Route path={`/account/:accountNumber/${AccountSection.transaction}`} exact>
+          <AccountTransactions />
+        </Route>
+        <Route path="/account/:accountNumber">
+          <Redirect to={`/account/${accountNumber}/${AccountSection.overview}`} />
         </Route>
       </Switch>
     </MainContainer>

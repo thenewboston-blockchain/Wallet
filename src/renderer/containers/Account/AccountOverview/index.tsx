@@ -6,13 +6,14 @@ import AccountOverviewCarousel, {AccountCarouselTopic} from '../AccountCarousel'
 import * as S from './Styles';
 
 interface AccountOverviewProps {
+  accountNumber: string;
   type: AccountType | null;
 }
 
-const AccountOverview: FC<AccountOverviewProps> = ({type}) => {
+const AccountOverview: FC<AccountOverviewProps> = ({accountNumber, type}) => {
   return (
     <>
-      <S.Graph />
+      <S.Graph accountNumber={accountNumber} />
       <S.BottomRow>
         <AccountOverviewCarousel accountType={type} carouselTopic={AccountCarouselTopic.depositCoins} onClick={noop} />
         <AccountOverviewCarousel

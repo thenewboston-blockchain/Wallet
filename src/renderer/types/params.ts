@@ -12,6 +12,7 @@ export interface AddressParams {
 
 export enum AccountSection {
   overview = 'overview',
+  transaction = 'transaction',
 }
 
 export type SectionParams<T> = {

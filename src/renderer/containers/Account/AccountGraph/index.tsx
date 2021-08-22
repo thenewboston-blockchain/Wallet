@@ -6,6 +6,7 @@ import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAx
 
 import Link from '@renderer/components/Link';
 import colors from '@renderer/styles/colors';
+import {AccountSection} from '@renderer/types';
 
 import {mockBalanceData} from './data';
 import * as S from './Styles';
@@ -16,7 +17,7 @@ const transformedData = mockBalanceData.map((data) => ({
 }));
 
 interface AccountGraphProps {
-  className?: string;
+  accountNumber: string;
 }
 
 export enum GraphFilter {
@@ -26,7 +27,7 @@ export enum GraphFilter {
   all = 'ALL',
 }
 
-const AccountGraph: FC<AccountGraphProps> = ({className}) => {
+const AccountGraph: FC<AccountGraphProps> = ({accountNumber}) => {
   const [filter, setFilter] = useState<GraphFilter>(GraphFilter.month);
 
   const handleFilterOnClick = (filterParam: GraphFilter) => () => {
@@ -43,7 +44,7 @@ const AccountGraph: FC<AccountGraphProps> = ({className}) => {
   };
 
   return (
-    <S.Container className={className}>
+    <S.Container>
       <S.Top>
         <div>
           <S.TopLabel>Wallet Balance</S.TopLabel>
@@ -74,7 +75,7 @@ const AccountGraph: FC<AccountGraphProps> = ({className}) => {
         </LineChart>
       </ResponsiveContainer>
       <S.BottomContainer>
-        <Link to="/" withChevron>
+        <Link to={`/account/${accountNumber}/${AccountSection.transaction}`} withChevron>
           View Details
         </Link>
       </S.BottomContainer>

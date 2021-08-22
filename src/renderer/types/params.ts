@@ -9,3 +9,11 @@ export interface AddressParams {
   port: string;
   protocol: ProtocolType;
 }
+
+export enum AccountSection {
+  overview = 'overview',
+}
+
+export type SectionParams<T> = {
+  section: T;
+};

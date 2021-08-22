@@ -32,7 +32,7 @@ export const Layout: FC = () => {
           <Route path="/main_window" exact>
             {activeBankConfig ? <Redirect to={`/bank/${formatPathFromNode(activeBankConfig)}/overview`} /> : null}
           </Route>
-          <Route path="/account/:accountNumber">
+          <Route path="/account/:accountNumber/:section">
             <Account />
           </Route>
           <Route path="/bank/:protocol/:ipAddress/:port">

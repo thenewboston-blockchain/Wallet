@@ -1,21 +1,37 @@
-import React, {FC, useMemo} from 'react';
+import React, {FC, useEffect, useMemo} from 'react';
 import {useSelector} from 'react-redux';
-import {useParams} from 'react-router-dom';
-import noop from 'lodash/noop';
+import {Route, Switch, useHistory, useParams} from 'react-router-dom';
 
 import MainContainer from '@renderer/styles/components/MainContainer';
 import {getManagedAccounts, getManagedFriends} from '@renderer/selectors';
-import {AccountNumberParams, AccountType, ManagedAccount, ManagedFriend} from '@renderer/types';
+import {
+  AccountNumberParams,
+  AccountSection,
+  AccountType,
+  ManagedAccount,
+  ManagedFriend,
+  SectionParams,
+} from '@renderer/types';
 
-import AccountOverviewCarousel, {AccountCarouselTopic} from './AccountCarousel';
+import AccountOverview from './AccountOverview';
 import * as S from './Styles';
 
+type AccountParams = AccountNumberParams & SectionParams<AccountSection>;
+
 const Account: FC = () => {
-  const {accountNumber} = useParams<AccountNumberParams>();
+  const history = useHistory();
+  const {accountNumber, section} = useParams<AccountParams>();
   const managedAccounts = useSelector(getManagedAccounts);
   const managedFriends = useSelector(getManagedFriends);
   const managedAccount = managedAccounts[accountNumber];
   const managedFriend = managedFriends[accountNumber];
+
+  useEffect(() => {
+    if (!section || !Object.values(AccountSection).includes(section)) {
+      history.replace(`/account/${accountNumber}/${AccountSection.overview}`);
+      return;
+    }
+  }, [accountNumber, section]);
 
   const type = useMemo<AccountType | null>(() => {
     let output: AccountType | null = null;
@@ -49,15 +65,11 @@ const Account: FC = () => {
         signingKey={type === AccountType.managedAccount ? managedAccount.signing_key : null}
         type={type}
       />
-      <S.Graph />
-      <S.BottomRow>
-        <AccountOverviewCarousel accountType={type} carouselTopic={AccountCarouselTopic.depositCoins} onClick={noop} />
-        <AccountOverviewCarousel
-          accountType={type}
-          carouselTopic={AccountCarouselTopic.registerWallet}
-          onClick={noop}
-        />
-      </S.BottomRow>
+      <Switch>
+        <Route path="/account/:accountNumber/overview" exact>
+          <AccountOverview type={type} />
+        </Route>
+      </Switch>
     </MainContainer>
   );
 };

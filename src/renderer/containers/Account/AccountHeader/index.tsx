@@ -1,23 +1,25 @@
-import React, {FC, ReactNode, useCallback, useMemo} from 'react';
+import React, {FC, ReactNode, useCallback, useContext, useMemo} from 'react';
 
 import DropdownMenuButton from '@renderer/components/DropdownMenuButton';
 import SendCoinsModal from '@renderer/containers/Account/SendCoinsModal';
+import {AccountContext} from '@renderer/context';
 import {useBooleanState} from '@renderer/hooks';
 import {AccountType} from '@renderer/types';
 
 import {AccountHeaderAccountNumber, AccountHeaderNickname, AccountHeaderSigningKey} from './AccountHeaderSection';
 import * as S from './Styles';
 
-interface AccountHeaderProps {
-  accountNumber: string;
-  className?: string;
-  nickname: string | null;
-  signingKey: string | null;
-  type: AccountType | null;
-}
-
-const AccountHeader: FC<AccountHeaderProps> = ({accountNumber, className, nickname, signingKey, type}) => {
+const AccountHeader: FC = () => {
+  const {accountNumber, managedAccount, managedFriend, type} = useContext(AccountContext);
   const [sendCoinsModalIsOpen, toggleSendCoinsModal] = useBooleanState(false);
+
+  const nickname = useMemo(() => {
+    return managedAccount?.nickname || managedFriend?.nickname || null;
+  }, [managedAccount, managedFriend]);
+
+  const signingKey = useMemo(() => {
+    return managedAccount?.signing_key || null;
+  }, [managedAccount]);
 
   const sendCoinsInitialRecipient = useMemo<string>(() => {
     let output: string;
@@ -55,17 +57,17 @@ const AccountHeader: FC<AccountHeaderProps> = ({accountNumber, className, nickna
 
   const renderSigningKey = useCallback((): ReactNode => {
     if (type === AccountType.managedAccount && signingKey) {
-      return <AccountHeaderSigningKey accountNumber={accountNumber} signingKey={signingKey} />;
+      return <AccountHeaderSigningKey signingKey={signingKey} />;
     }
 
     return null;
   }, [accountNumber, signingKey, type]);
 
   return (
-    <S.MainContainer className={className}>
+    <S.MainContainer>
       <S.LeftContainer>
         {renderAccountNickname()}
-        <AccountHeaderAccountNumber accountNumber={accountNumber} type={type} />
+        <AccountHeaderAccountNumber />
         {renderSigningKey()}
       </S.LeftContainer>
       <S.RightContainer>

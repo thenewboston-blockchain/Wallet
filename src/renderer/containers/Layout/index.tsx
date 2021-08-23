@@ -6,6 +6,8 @@ import Account from '@renderer/containers/Account';
 import Bank from '@renderer/containers/Bank';
 import PurchaseConfirmationServices from '@renderer/containers/PurchaseConfirmationServices';
 import Validator from '@renderer/containers/Validator';
+
+import {AccountProvider} from '@renderer/context';
 import {getActiveBankConfig} from '@renderer/selectors';
 import {formatPathFromNode} from '@renderer/utils/address';
 
@@ -33,7 +35,9 @@ export const Layout: FC = () => {
             {activeBankConfig ? <Redirect to={`/bank/${formatPathFromNode(activeBankConfig)}/overview`} /> : null}
           </Route>
           <Route path="/account/:accountNumber/:section">
-            <Account />
+            <AccountProvider>
+              <Account />
+            </AccountProvider>
           </Route>
           <Route path="/bank/:protocol/:ipAddress/:port">
             <Bank />

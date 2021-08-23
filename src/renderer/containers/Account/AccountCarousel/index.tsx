@@ -1,6 +1,7 @@
-import React, {FC, ReactNode, useCallback} from 'react';
+import React, {FC, ReactNode, useCallback, useContext} from 'react';
 
 import {Button} from '@renderer/components/FormElements';
+import {AccountContext} from '@renderer/context';
 import {AccountType} from '@renderer/types';
 
 import identificationBadge from './assets/IdentificationBadge.png';
@@ -14,12 +15,12 @@ export enum AccountCarouselTopic {
 }
 
 interface AccountCarouselProps {
-  accountType: AccountType | null;
   carouselTopic: AccountCarouselTopic;
   onClick(): void;
 }
 
-const AccountCarousel: FC<AccountCarouselProps> = ({accountType, carouselTopic, onClick}) => {
+const AccountCarousel: FC<AccountCarouselProps> = ({carouselTopic, onClick}) => {
+  const {type} = useContext(AccountContext);
   const slides = carouselTopic === AccountCarouselTopic.depositCoins ? coinSlides : walletSlides;
 
   const renderManagedNodeContent = () => {
@@ -57,9 +58,7 @@ const AccountCarousel: FC<AccountCarouselProps> = ({accountType, carouselTopic, 
   }, [carouselTopic]);
 
   return (
-    <S.Card>
-      {accountType === AccountType.managedAccount ? renderManagedNodeContent() : renderNonManagedNodeContent()}
-    </S.Card>
+    <S.Card>{type === AccountType.managedAccount ? renderManagedNodeContent() : renderNonManagedNodeContent()}</S.Card>
   );
 };
 

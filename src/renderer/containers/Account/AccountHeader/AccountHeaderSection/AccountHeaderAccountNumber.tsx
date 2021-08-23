@@ -1,5 +1,6 @@
-import React, {FC, useMemo, useRef} from 'react';
+import React, {FC, useContext, useMemo, useRef} from 'react';
 
+import {AccountContext} from '@renderer/context';
 import {useBooleanState} from '@renderer/hooks';
 import {AccountType} from '@renderer/types';
 import {truncateLongText} from '@renderer/utils/accounts';
@@ -8,12 +9,8 @@ import {displayToast, ToastType} from '@renderer/utils/toast';
 import QrcodeModal from '../../QrcodeModal';
 import * as S from './Styles';
 
-interface AccountHeaderAccountNumberProps {
-  accountNumber: string;
-  type: AccountType | null;
-}
-
-const AccountHeaderAccountNumber: FC<AccountHeaderAccountNumberProps> = ({accountNumber, type}) => {
+const AccountHeaderAccountNumber: FC = () => {
+  const {accountNumber, type} = useContext(AccountContext);
   const [qrcodeModalIsOpen, toggleQrcodeModal] = useBooleanState(false);
   const accountNumberCopyRef = useRef<HTMLDivElement>(null);
 

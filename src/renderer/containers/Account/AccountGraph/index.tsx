@@ -1,4 +1,4 @@
-import React, {FC, useContext, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import format from 'date-fns/format';
 import getTime from 'date-fns/getTime';
 import parseISO from 'date-fns/parseISO';
@@ -7,7 +7,7 @@ import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAx
 import Link from '@renderer/components/Link';
 import {AccountContext} from '@renderer/context';
 import colors from '@renderer/styles/colors';
-import {AccountSection} from '@renderer/types';
+import {AccountSection, SFC} from '@renderer/types';
 
 import {mockBalanceData} from './data';
 import * as S from './Styles';
@@ -24,11 +24,7 @@ export enum GraphFilter {
   all = 'ALL',
 }
 
-interface AccountGraphProps {
-  className?: string;
-}
-
-const AccountGraph: FC<AccountGraphProps> = ({className}) => {
+const AccountGraph: SFC = ({className}) => {
   const {accountNumber} = useContext(AccountContext);
   const [filter, setFilter] = useState<GraphFilter>(GraphFilter.month);
 

@@ -1,15 +1,15 @@
-import React, {FC, ReactNode, useCallback, useContext, useEffect, useRef} from 'react';
+import React, {ReactNode, useCallback, useContext, useEffect, useRef} from 'react';
 import {useLocation} from 'react-router-dom';
 
 import {AccountContext} from '@renderer/context';
 import {useBooleanState, useWriteIpc} from '@renderer/hooks';
+import {SFC} from '@renderer/types';
 import {truncateLongText} from '@renderer/utils/accounts';
 import {displayToast, ToastType} from '@renderer/utils/toast';
 import {IpcChannel} from '@shared/ipc';
 import * as S from './Styles';
 
 interface AccountHeaderSigningKeyProps {
-  className?: string;
   signingKey: string;
 }
 
@@ -21,7 +21,7 @@ const downloadFailToast = (e: any, error: string) => {
   displayToast(`Could not save signing key: ${error}`, ToastType.error);
 };
 
-const AccountHeaderSigningKey: FC<AccountHeaderSigningKeyProps> = ({className, signingKey}) => {
+const AccountHeaderSigningKey: SFC<AccountHeaderSigningKeyProps> = ({className, signingKey}) => {
   const [signingKeyIsVisible, toggleSigningKeyIsVisible, , hideSigningKey] = useBooleanState(false);
   const {accountNumber} = useContext(AccountContext);
   const location = useLocation();

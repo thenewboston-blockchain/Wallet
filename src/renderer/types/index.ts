@@ -9,7 +9,7 @@ import {
 } from './app';
 import {AccountBalance} from './balances';
 import {BaseFormComponentProps, BaseFormInlineComponentProps, GenericFormValues, InputOption} from './forms';
-import {GenericFunction, GenericVoidFunction} from './generic';
+import {GenericFunction, GenericVoidFunction, SFC} from './generic';
 import {AppElectronStore, LocalStore, MigrationFunction} from './localStore';
 import {
   AcceptedFees,
@@ -140,6 +140,7 @@ export {
   RawPrimaryValidatorConfig,
   RootState,
   SectionParams,
+  SFC,
   SocketConnectionStatus,
   SocketType,
   Tx,

@@ -1,14 +1,11 @@
-import React, {FC} from 'react';
+import React from 'react';
 import noop from 'lodash/noop';
 
+import {SFC} from '@renderer/types';
 import AccountOverviewCarousel, {AccountCarouselTopic} from '../AccountCarousel';
 import * as S from './Styles';
 
-interface AccountOverviewProps {
-  className?: string;
-}
-
-const AccountOverview: FC<AccountOverviewProps> = ({className}) => {
+const AccountOverview: SFC = ({className}) => {
   return (
     <>
       <S.Graph className={className} />

@@ -1,19 +1,19 @@
-import React, {FC, useContext} from 'react';
+import React, {useContext} from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
 import MainContainer from '@renderer/styles/components/MainContainer';
 import {AccountContext} from '@renderer/context';
-import {AccountSection} from '@renderer/types';
+import {AccountSection, SFC} from '@renderer/types';
 
 import AccountOverview from './AccountOverview';
 import AccountTransactions from './AccountTransactions';
 import * as S from './Styles';
 
-const Account: FC = () => {
+const Account: SFC = ({className}) => {
   const {accountNumber} = useContext(AccountContext);
 
   return (
-    <MainContainer>
+    <MainContainer className={className}>
       <S.Header />
       <Switch>
         <Route path={`/account/:accountNumber/${AccountSection.overview}`} exact>

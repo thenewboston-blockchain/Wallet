@@ -1,19 +1,15 @@
-import React, {FC, ReactNode, useCallback, useContext, useMemo} from 'react';
+import React, {ReactNode, useCallback, useContext, useMemo} from 'react';
 
 import DropdownMenuButton from '@renderer/components/DropdownMenuButton';
 import SendCoinsModal from '@renderer/containers/Account/SendCoinsModal';
 import {AccountContext} from '@renderer/context';
 import {useBooleanState} from '@renderer/hooks';
-import {AccountType} from '@renderer/types';
+import {AccountType, SFC} from '@renderer/types';
 
 import {AccountHeaderAccountNumber, AccountHeaderNickname, AccountHeaderSigningKey} from './AccountHeaderSection';
 import * as S from './Styles';
 
-interface AccountHeaderProps {
-  className?: string;
-}
-
-const AccountHeader: FC<AccountHeaderProps> = ({className}) => {
+const AccountHeader: SFC = ({className}) => {
   const {accountNumber, managedAccount, managedFriend, type} = useContext(AccountContext);
   const [sendCoinsModalIsOpen, toggleSendCoinsModal] = useBooleanState(false);
 

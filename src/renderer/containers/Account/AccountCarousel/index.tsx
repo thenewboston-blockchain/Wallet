@@ -1,8 +1,8 @@
-import React, {FC, ReactNode, useCallback, useContext} from 'react';
+import React, {ReactNode, useCallback, useContext} from 'react';
 
 import {Button} from '@renderer/components/FormElements';
 import {AccountContext} from '@renderer/context';
-import {AccountType} from '@renderer/types';
+import {AccountType, SFC} from '@renderer/types';
 
 import identificationBadge from './assets/IdentificationBadge.png';
 import piggyBank from './assets/PiggyBank.png';
@@ -16,11 +16,10 @@ export enum AccountCarouselTopic {
 
 interface AccountCarouselProps {
   carouselTopic: AccountCarouselTopic;
-  className?: string;
   onClick(): void;
 }
 
-const AccountCarousel: FC<AccountCarouselProps> = ({carouselTopic, className, onClick}) => {
+const AccountCarousel: SFC<AccountCarouselProps> = ({carouselTopic, className, onClick}) => {
   const {type} = useContext(AccountContext);
   const slides = carouselTopic === AccountCarouselTopic.depositCoins ? coinSlides : walletSlides;
 

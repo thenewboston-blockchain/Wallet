@@ -1,17 +1,12 @@
-import React, {FC, useRef} from 'react';
+import React, {useRef} from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
 import {ContentCopyIcon} from '@renderer/components/Icons';
 import Modal from '@renderer/components/Modal';
 import Qr from '@renderer/components/Qr';
+import {SFC} from '@renderer/types';
 import {displayToast, ToastType} from '@renderer/utils/toast';
 import * as S from './Styles';
-
-interface QrcodeModalProps {
-  accountLabel: string;
-  accountNumber: string;
-  close(): void;
-}
 
 const formatAccountNumber = (accountNumber: string): string => {
   const length = accountNumber.length;
@@ -20,7 +15,13 @@ const formatAccountNumber = (accountNumber: string): string => {
   ${accountNumber.slice(length / 2)}`;
 };
 
-const QrcodeModal: FC<QrcodeModalProps> = ({accountLabel, accountNumber, close}) => {
+interface QrcodeModalProps {
+  accountLabel: string;
+  accountNumber: string;
+  close(): void;
+}
+
+const QrcodeModal: SFC<QrcodeModalProps> = ({accountLabel, accountNumber, className, close}) => {
   const copyIconRef = useRef<HTMLDivElement>(null);
 
   const handleCopy = (): void => {
@@ -29,7 +30,7 @@ const QrcodeModal: FC<QrcodeModalProps> = ({accountLabel, accountNumber, close})
   };
 
   return (
-    <Modal close={close} header={accountLabel} hideFooter>
+    <Modal className={className} close={close} header={accountLabel} hideFooter>
       <S.ModalContentContainer>
         <Qr text={accountNumber} width={178} />
         <S.AccountNumber>{formatAccountNumber(accountNumber)}</S.AccountNumber>

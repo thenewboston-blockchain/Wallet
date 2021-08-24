@@ -1,4 +1,4 @@
-import React, {FC, useMemo} from 'react';
+import React, {useMemo} from 'react';
 import {useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
 
@@ -8,7 +8,7 @@ import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/component
 import {BANK_BANK_TRANSACTIONS} from '@renderer/constants/actions';
 import {useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
 import {getActiveBankConfig} from '@renderer/selectors';
-import {AccountNumberParams, BankTransaction} from '@renderer/types';
+import {AccountNumberParams, BankTransaction, SFC} from '@renderer/types';
 import {formatAddressFromNode} from '@renderer/utils/address';
 import {formatDate} from '@renderer/utils/dates';
 
@@ -22,7 +22,7 @@ enum TableKeys {
   dateCreated,
 }
 
-const AccountTransactions: FC = () => {
+const AccountTransactions: SFC = () => {
   const [expanded, toggleExpanded] = useBooleanState(false);
   const {accountNumber} = useParams<AccountNumberParams>();
   const activeBank = useSelector(getActiveBankConfig)!;

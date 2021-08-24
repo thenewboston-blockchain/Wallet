@@ -1,12 +1,12 @@
-import React, {FC} from 'react';
+import React from 'react';
+import {SFC} from '@renderer/types';
 import * as S from './Styles';
 
 interface AccountHeaderNicknameProps {
-  className?: string;
   nickname: string | null;
 }
 
-const AccountHeaderNickname: FC<AccountHeaderNicknameProps> = ({className, nickname}) => {
+const AccountHeaderNickname: SFC<AccountHeaderNicknameProps> = ({className, nickname}) => {
   return (
     <S.AccountHeaderSection className={className}>
       <S.Title>Nickname</S.Title>

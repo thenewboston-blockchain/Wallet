@@ -16,10 +16,11 @@ export enum AccountCarouselTopic {
 
 interface AccountCarouselProps {
   carouselTopic: AccountCarouselTopic;
+  className?: string;
   onClick(): void;
 }
 
-const AccountCarousel: FC<AccountCarouselProps> = ({carouselTopic, onClick}) => {
+const AccountCarousel: FC<AccountCarouselProps> = ({carouselTopic, className, onClick}) => {
   const {type} = useContext(AccountContext);
   const slides = carouselTopic === AccountCarouselTopic.depositCoins ? coinSlides : walletSlides;
 
@@ -58,7 +59,9 @@ const AccountCarousel: FC<AccountCarouselProps> = ({carouselTopic, onClick}) => 
   }, [carouselTopic]);
 
   return (
-    <S.Card>{type === AccountType.managedAccount ? renderManagedNodeContent() : renderNonManagedNodeContent()}</S.Card>
+    <S.Card className={className}>
+      {type === AccountType.managedAccount ? renderManagedNodeContent() : renderNonManagedNodeContent()}
+    </S.Card>
   );
 };
 

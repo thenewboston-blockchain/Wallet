@@ -9,7 +9,11 @@ import {AccountType} from '@renderer/types';
 import {AccountHeaderAccountNumber, AccountHeaderNickname, AccountHeaderSigningKey} from './AccountHeaderSection';
 import * as S from './Styles';
 
-const AccountHeader: FC = () => {
+interface AccountHeaderProps {
+  className?: string;
+}
+
+const AccountHeader: FC<AccountHeaderProps> = ({className}) => {
   const {accountNumber, managedAccount, managedFriend, type} = useContext(AccountContext);
   const [sendCoinsModalIsOpen, toggleSendCoinsModal] = useBooleanState(false);
 
@@ -64,7 +68,7 @@ const AccountHeader: FC = () => {
   }, [accountNumber, signingKey, type]);
 
   return (
-    <S.MainContainer>
+    <S.MainContainer className={className}>
       <S.LeftContainer>
         {renderAccountNickname()}
         <AccountHeaderAccountNumber />

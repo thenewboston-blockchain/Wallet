@@ -9,6 +9,7 @@ import {IpcChannel} from '@shared/ipc';
 import * as S from './Styles';
 
 interface AccountHeaderSigningKeyProps {
+  className?: string;
   signingKey: string;
 }
 
@@ -20,7 +21,7 @@ const downloadFailToast = (e: any, error: string) => {
   displayToast(`Could not save signing key: ${error}`, ToastType.error);
 };
 
-const AccountHeaderSigningKey: FC<AccountHeaderSigningKeyProps> = ({signingKey}) => {
+const AccountHeaderSigningKey: FC<AccountHeaderSigningKeyProps> = ({className, signingKey}) => {
   const [signingKeyIsVisible, toggleSigningKeyIsVisible, , hideSigningKey] = useBooleanState(false);
   const {accountNumber} = useContext(AccountContext);
   const location = useLocation();
@@ -56,7 +57,7 @@ const AccountHeaderSigningKey: FC<AccountHeaderSigningKeyProps> = ({signingKey})
   };
 
   return (
-    <S.AccountHeaderSection>
+    <S.AccountHeaderSection className={className}>
       <S.Title>My Signing Key</S.Title>
       <S.Body>
         <S.MainText isSigningKey>{renderSigningKey()}</S.MainText>

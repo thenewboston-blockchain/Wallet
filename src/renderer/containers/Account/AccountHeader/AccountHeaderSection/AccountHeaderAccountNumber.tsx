@@ -9,7 +9,11 @@ import {displayToast, ToastType} from '@renderer/utils/toast';
 import QrcodeModal from '../../QrcodeModal';
 import * as S from './Styles';
 
-const AccountHeaderAccountNumber: FC = () => {
+interface AccountHeaderAccountNumberProps {
+  className?: string;
+}
+
+const AccountHeaderAccountNumber: FC<AccountHeaderAccountNumberProps> = ({className}) => {
   const {accountNumber, type} = useContext(AccountContext);
   const [qrcodeModalIsOpen, toggleQrcodeModal] = useBooleanState(false);
   const accountNumberCopyRef = useRef<HTMLDivElement>(null);
@@ -30,7 +34,7 @@ const AccountHeaderAccountNumber: FC = () => {
   };
 
   return (
-    <S.AccountHeaderSection>
+    <S.AccountHeaderSection className={className}>
       <S.Title>{accountLabel}</S.Title>
       <S.Body>
         <S.MainText>{truncateLongText(accountNumber)}</S.MainText>

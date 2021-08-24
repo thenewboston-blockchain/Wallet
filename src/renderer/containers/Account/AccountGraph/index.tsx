@@ -1,11 +1,11 @@
-import React, { FC, useContext, useState } from "react";
+import React, {FC, useContext, useState} from 'react';
 import format from 'date-fns/format';
 import getTime from 'date-fns/getTime';
 import parseISO from 'date-fns/parseISO';
 import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts';
 
 import Link from '@renderer/components/Link';
-import { AccountContext } from "@renderer/context";
+import {AccountContext} from '@renderer/context';
 import colors from '@renderer/styles/colors';
 import {AccountSection} from '@renderer/types';
 
@@ -24,7 +24,11 @@ export enum GraphFilter {
   all = 'ALL',
 }
 
-const AccountGraph: FC = () => {
+interface AccountGraphProps {
+  className?: string;
+}
+
+const AccountGraph: FC<AccountGraphProps> = ({className}) => {
   const {accountNumber} = useContext(AccountContext);
   const [filter, setFilter] = useState<GraphFilter>(GraphFilter.month);
 
@@ -42,7 +46,7 @@ const AccountGraph: FC = () => {
   };
 
   return (
-    <S.Container>
+    <S.Container className={className}>
       <S.Top>
         <div>
           <S.TopLabel>Wallet Balance</S.TopLabel>

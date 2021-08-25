@@ -1,7 +1,6 @@
 import styled, {css} from 'styled-components';
 import Card from '@renderer/components/Card';
 import colors from '@renderer/styles/colors';
-import {d2} from '@renderer/styles/fonts';
 
 interface FilterProps {
   $active: boolean;
@@ -22,11 +21,6 @@ export const Top = styled.div`
 export const TopLabel = styled.h3`
   color: ${colors.palette.neutral['600']};
   margin-bottom: 3px;
-`;
-
-export const Balance = styled.h1`
-  ${d2.regular};
-  color: ${colors.palette.neutral['800']};
 `;
 
 export const Filter = styled.h4<FilterProps>`

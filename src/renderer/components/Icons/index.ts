@@ -10,6 +10,7 @@ import EyeOffIcon from './EyeOffIcon';
 import PlayIcon from './PlayIcon';
 import PlusIcon from './PlusIcon';
 import QrcodeIcon from './QrcodeIcon';
+import RefreshIcon from './RefreshIcon';
 
 export {
   AlertCircleOutlineIcon,
@@ -24,4 +25,5 @@ export {
   PlayIcon,
   PlusIcon,
   QrcodeIcon,
+  RefreshIcon,
 };

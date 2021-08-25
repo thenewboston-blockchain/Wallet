@@ -9,6 +9,7 @@ import {AccountContext} from '@renderer/context';
 import colors from '@renderer/styles/colors';
 import {AccountSection, SFC} from '@renderer/types';
 
+import AccountBalance from '../AccountBalance';
 import {mockBalanceData} from './data';
 import * as S from './Styles';
 
@@ -46,7 +47,7 @@ const AccountGraph: SFC = ({className}) => {
       <S.Top>
         <div>
           <S.TopLabel>Wallet Balance</S.TopLabel>
-          <S.Balance>310,720.0000</S.Balance>
+          <AccountBalance />
         </div>
         <S.TopRight>
           {renderFilterButton(GraphFilter.month)}

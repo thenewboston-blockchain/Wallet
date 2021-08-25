@@ -9,7 +9,7 @@ import {
 } from './app';
 import {AccountBalance} from './balances';
 import {BaseFormComponentProps, BaseFormInlineComponentProps, GenericFormValues, InputOption} from './forms';
-import {GenericFunction, GenericVoidFunction, SFC} from './generic';
+import {ClassName, GenericFunction, GenericVoidFunction, SFC} from './generic';
 import {AppElectronStore, LocalStore, MigrationFunction} from './localStore';
 import {
   AcceptedFees,
@@ -96,6 +96,7 @@ export {
   BaseFormInlineComponentProps,
   BaseValidator,
   BlockResponse,
+  ClassName,
   ConfirmationBlockNotificationPayload,
   CrawlCommand,
   CrawlSocketState,

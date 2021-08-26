@@ -6,10 +6,10 @@ import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAx
 
 import Link from '@renderer/components/Link';
 import {AccountContext} from '@renderer/context';
-import colors from '@renderer/styles/colors';
+import {colors} from '@renderer/styles';
 import {AccountSection, SFC} from '@renderer/types';
 
-import AccountBalance from '../AccountBalance';
+import AccountBalance from '../../AccountBalance';
 import {mockBalanceData} from './data';
 import * as S from './Styles';
 
@@ -25,7 +25,7 @@ export enum GraphFilter {
   all = 'ALL',
 }
 
-const AccountGraph: SFC = ({className}) => {
+const AccountOverviewGraph: SFC = ({className}) => {
   const {accountNumber} = useContext(AccountContext);
   const [filter, setFilter] = useState<GraphFilter>(GraphFilter.month);
 
@@ -82,4 +82,4 @@ const AccountGraph: SFC = ({className}) => {
   );
 };
 
-export default AccountGraph;
+export default AccountOverviewGraph;

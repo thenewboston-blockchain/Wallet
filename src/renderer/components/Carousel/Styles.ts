@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {ArrowLeftIcon as UArrowLeftIcon, ArrowRightIcon as UArrowRightIcon} from '@renderer/components/Icons';
-import colors from '@renderer/styles/colors';
+import {colors} from '@renderer/styles';
 
 const TRANSITION_TIME = '0.3s';
 

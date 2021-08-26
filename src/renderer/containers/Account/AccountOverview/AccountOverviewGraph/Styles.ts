@@ -1,6 +1,6 @@
 import styled, {css} from 'styled-components';
 import Card from '@renderer/components/Card';
-import colors from '@renderer/styles/colors';
+import {colors} from '@renderer/styles';
 
 interface FilterProps {
   $active: boolean;

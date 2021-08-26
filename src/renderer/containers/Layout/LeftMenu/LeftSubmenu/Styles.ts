@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import colors from '@renderer/styles/colors';
+import {colors} from '@renderer/styles';
 
 export const Container = styled.div`
   margin-bottom: 42px;

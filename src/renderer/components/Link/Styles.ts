@@ -1,29 +1,35 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {Link as RRLink, LinkProps as RRLinkProps} from 'react-router-dom';
 import {ChevronRightIcon as UChevronRightIcon} from '@renderer/components/Icons';
-import colors from '@renderer/styles/colors';
+import {colors} from '@renderer/styles';
 
 interface LinkProps extends RRLinkProps {
-  disabled: boolean;
+  $disabled: boolean;
+  $textStyled: boolean;
 }
 
 export const Link = styled(RRLink)<LinkProps>`
-  align-items: center;
-  border-radius: 100px;
-  border: 1px solid transparent;
-  cursor: ${({disabled}) => (disabled ? null : 'cursor')};
-  display: inline-flex;
-  justify-content: center;
-  margin: 6px;
-  min-height: 40px;
-  padding: 0 16px;
+  cursor: ${({$disabled}) => ($disabled ? null : 'cursor')};
   text-decoration: none;
   transition: all 0.1s;
 
-  &:focus {
-    box-shadow: 0 0 0 8px ${colors.palette.gray['100']};
-    outline: none;
-  }
+  ${({$textStyled}) =>
+    !$textStyled &&
+    css`
+      align-items: center;
+      border: 1px solid transparent;
+      border-radius: 100px;
+      display: inline-flex;
+      justify-content: center;
+      margin: 6px;
+      min-height: 40px;
+      padding: 0 16px;
+
+      &:focus {
+        box-shadow: 0 0 0 8px ${colors.palette.gray['100']};
+        outline: none;
+      }
+    `};
 
   &:hover {
     text-decoration: underline;

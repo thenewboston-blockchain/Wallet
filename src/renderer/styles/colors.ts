@@ -1,4 +1,4 @@
-const color = {
+const colors = {
   black: '#000',
   primary: '#2c3967',
   progressBar: '#17cead',
@@ -129,4 +129,4 @@ const color = {
   },
 };
 
-export default color;
+export default colors;

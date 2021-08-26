@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import UCard from '@renderer/components/Card';
 import UCarousel from '@renderer/components/Carousel';
-import colors from '@renderer/styles/colors';
-import {b2, h3} from '@renderer/styles/fonts';
+import {b2, colors, h3} from '@renderer/styles';
 
 export const Card = styled(UCard)`
   align-items: center;

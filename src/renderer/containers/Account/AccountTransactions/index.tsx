@@ -11,6 +11,7 @@ import {getActiveBankConfig} from '@renderer/selectors';
 import {AccountNumberParams, BankTransaction, SFC} from '@renderer/types';
 import {formatAddressFromNode} from '@renderer/utils/address';
 import {formatDate} from '@renderer/utils/dates';
+import AccountTransactionsHeader from '@renderer/containers/Account/AccountTransactions/AccountTransactionsHeader';
 
 enum TableKeys {
   senderAccountNumber,
@@ -22,7 +23,7 @@ enum TableKeys {
   dateCreated,
 }
 
-const AccountTransactions: SFC = () => {
+const AccountTransactions: SFC = ({className}) => {
   const [expanded, toggleExpanded] = useBooleanState(false);
   const {accountNumber} = useParams<AccountNumberParams>();
   const activeBank = useSelector(getActiveBankConfig)!;
@@ -83,18 +84,24 @@ const AccountTransactions: SFC = () => {
   );
 
   return (
-    <PaginatedTable
-      className="AccountTransactions"
-      count={count}
-      currentPage={currentPage}
-      expanded={expanded}
-      items={pageTableItems}
-      loading={loading}
-      setPage={setPage}
-      toggleExpanded={toggleExpanded}
-      totalPages={totalPages}
-    />
+    <>
+      <AccountTransactionsHeader />
+    </>
   );
+
+  // return (
+  //   <PaginatedTable
+  //     className="AccountTransactions"
+  //     count={count}
+  //     currentPage={currentPage}
+  //     expanded={expanded}
+  //     items={pageTableItems}
+  //     loading={loading}
+  //     setPage={setPage}
+  //     toggleExpanded={toggleExpanded}
+  //     totalPages={totalPages}
+  //   />
+  // );
 };
 
 export default AccountTransactions;

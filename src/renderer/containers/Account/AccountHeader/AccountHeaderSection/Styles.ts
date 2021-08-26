@@ -6,8 +6,7 @@ import {
   EyeOffIcon as UEyeOffIcon,
   QrcodeIcon as UQrcodeIcon,
 } from '@renderer/components/Icons';
-import colors from '@renderer/styles/colors';
-import {b3} from '@renderer/styles/fonts';
+import {b3, colors} from '@renderer/styles';
 
 const maxWidthText = '175px';
 

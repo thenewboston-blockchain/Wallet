@@ -1,6 +1,6 @@
 import {createGlobalStyle} from 'styled-components';
 
-import color from '../colors';
+import colors from '../colors';
 import {b1, font, h1, h2, h3, h4} from '../fonts';
 
 const GlobalStyle = createGlobalStyle`
@@ -12,13 +12,13 @@ const GlobalStyle = createGlobalStyle`
   
   body {
     ${b1.regular}
-    background: ${color.palette.neutral['075']};
-    color: ${color.primary};
+    background: ${colors.palette.neutral['075']};
+    color: ${colors.primary};
     margin: auto;
   }
   
   a {
-    color: ${color.palette.blue['500']};
+    color: ${colors.palette.blue['500']};
   }
   
   b,

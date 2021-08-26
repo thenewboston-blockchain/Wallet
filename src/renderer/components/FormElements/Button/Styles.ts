@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import colors from '@renderer/styles/colors';
+import {colors} from '@renderer/styles';
 import {ButtonColor, ButtonVariant} from './types';
 
 interface ButtonProps {

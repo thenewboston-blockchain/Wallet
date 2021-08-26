@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import UAccountGraph from '../AccountGraph';
+import UAccountOverviewGraph from './AccountOverviewGraph';
 
 const gap = 16;
 
-export const Graph = styled(UAccountGraph)`
+export const Graph = styled(UAccountOverviewGraph)`
   margin-bottom: ${gap}px;
 `;
 

@@ -5,14 +5,22 @@ import * as S from './Styles';
 interface LinkProps extends RRLinkProps {
   className?: string;
   disabled?: boolean;
+  textStyled?: boolean;
   withChevron?: boolean;
 }
 
-const Link: FC<LinkProps> = ({children, className, disabled = false, withChevron = false, ...rrLinkProps}) => {
+const Link: FC<LinkProps> = ({
+  children,
+  className,
+  disabled = false,
+  textStyled = false,
+  withChevron = false,
+  ...rrLinkProps
+}) => {
   return (
-    <S.Link className={className} disabled={disabled} {...rrLinkProps}>
+    <S.Link className={className} $disabled={disabled} $textStyled={textStyled} {...rrLinkProps}>
       {children}
-      {withChevron && <S.ChevronRightIcon unfocusable />}
+      {withChevron && !textStyled && <S.ChevronRightIcon unfocusable />}
     </S.Link>
   );
 };

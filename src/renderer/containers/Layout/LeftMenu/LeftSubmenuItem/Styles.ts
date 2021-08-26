@@ -1,7 +1,6 @@
 import {NavLink} from 'react-router-dom';
 import styled, {css} from 'styled-components';
-import colors from '@renderer/styles/colors';
-import {b2} from '@renderer/styles/fonts';
+import {b2, colors} from '@renderer/styles';
 
 interface StyledLinkProps {
   $withSubLabel: boolean;

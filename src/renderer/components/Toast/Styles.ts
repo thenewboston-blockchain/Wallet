@@ -3,7 +3,7 @@ import {
   AlertCircleOutlineIcon as UAlertCircleOutlineIcon,
   CheckCircleIcon as UCheckCircleIcon,
 } from '@renderer/components/Icons';
-import colors from '@renderer/styles/colors';
+import {colors} from '@renderer/styles';
 import {ToastType} from '@renderer/types/toast';
 
 export const Container = styled.div<{type: ToastType}>`

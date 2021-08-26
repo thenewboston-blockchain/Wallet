@@ -4,7 +4,7 @@ import {Icon, IconType} from '@thenewboston/ui';
 import AccountLink from '@renderer/components/AccountLink';
 import ExpandableText from '@renderer/components/ExpandableText';
 import NodeLink from '@renderer/components/NodeLink';
-import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
+import PaginatedTable, {PageTableOldData, PageTableOldItems} from '@renderer/components/PaginatedTable';
 import EditTrustModal from '@renderer/containers/EditTrustModal';
 import {BANK_BANKS} from '@renderer/constants/actions';
 import {useAddress, useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
@@ -47,7 +47,7 @@ const BankBanks: FC<ComponentProps> = ({managedBank}) => {
     [setEditTrustBank, toggleEditTrustModal],
   );
 
-  const bankBanksTableData = useMemo<PageTableData[]>(
+  const bankBanksTableData = useMemo<PageTableOldData[]>(
     () =>
       bankBanks.map((bank) => ({
         key: bank.node_identifier,
@@ -76,7 +76,7 @@ const BankBanks: FC<ComponentProps> = ({managedBank}) => {
     [bankBanks, expanded, handleEditTrustButton, hasSigningKey],
   );
 
-  const pageTableItems = useMemo<PageTableItems>(
+  const pageTableItems = useMemo<PageTableOldItems>(
     () => ({
       data: bankBanksTableData,
       headers: {

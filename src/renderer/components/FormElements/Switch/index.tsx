@@ -1,13 +1,13 @@
-import React, {FC, SyntheticEvent} from 'react';
+import React, {SyntheticEvent, useMemo} from 'react';
 import ReactSwitch from 'react-switch';
-import clsx from 'clsx';
-import {bemify} from '@thenewboston/utils';
 
-import './Switch.scss';
+import {colors} from '@renderer/styles';
+import {SFC} from '@renderer/types';
+
+import * as S from './Styles';
 
 export interface BaseSwitchProps {
   checked: boolean;
-  className?: string;
   disabled?: boolean;
   id?: string;
   label?: string;
@@ -15,46 +15,36 @@ export interface BaseSwitchProps {
   onChange(checked: boolean, e: MouseEvent | SyntheticEvent<MouseEvent | KeyboardEvent, Event>): void;
 }
 
-const Switch: FC<BaseSwitchProps> = ({checked, className, disabled, id, label, name, onChange}) => {
-  const switchComponent = (
-    <ReactSwitch
-      activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
-      boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-      checked={checked}
-      checkedIcon={false}
-      className={clsx('Switch', className)}
-      disabled={disabled}
-      handleDiameter={15}
-      height={10}
-      id={id}
-      name={name}
-      onChange={onChange}
-      onColor="#b9daee"
-      onHandleColor="#042235"
-      uncheckedIcon={false}
-      width={24}
-    />
+const Switch: SFC<BaseSwitchProps> = ({checked, className, disabled = false, id, label, name, onChange}) => {
+  const switchComponent = useMemo(
+    () => (
+      <ReactSwitch
+        activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+        boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+        checked={checked}
+        checkedIcon={false}
+        className={label ? undefined : className}
+        disabled={disabled}
+        handleDiameter={15}
+        height={10}
+        id={id}
+        name={name}
+        onChange={onChange}
+        onColor={colors.palette.blue['100']}
+        onHandleColor={colors.primary}
+        uncheckedIcon={false}
+        width={24}
+      />
+    ),
+    [checked, className, disabled, id, name, onChange],
   );
 
   if (label) {
     return (
-      <label
-        className={clsx('Switch__label', {
-          'Switch__label--disabled': disabled,
-          ...bemify(className, '__label'),
-          ...bemify(className, '__label--disabled', disabled),
-        })}
-        htmlFor={id}
-      >
+      <S.Label className={className} $disabled={disabled} htmlFor={id}>
         {switchComponent}
-        <span
-          className={clsx('Switch__span', {
-            ...bemify(className, '__span'),
-          })}
-        >
-          {label}
-        </span>
-      </label>
+        <S.Text>{label}</S.Text>
+      </S.Label>
     );
   }
 

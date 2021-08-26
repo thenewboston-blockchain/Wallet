@@ -1,7 +1,7 @@
 import React, {FC, useMemo} from 'react';
 
 import ExpandableText from '@renderer/components/ExpandableText';
-import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
+import PaginatedTable, {PageTableOldData, PageTableOldItems} from '@renderer/components/PaginatedTable';
 import {BANK_INVALID_BLOCKS} from '@renderer/constants/actions';
 import {useAddress, useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
 import {InvalidBlock} from '@renderer/types';
@@ -25,7 +25,7 @@ const BankInvalidBlocks: FC = () => {
     totalPages,
   } = usePaginatedNetworkDataFetcher<InvalidBlock>(BANK_INVALID_BLOCKS, address);
 
-  const bankInvalidBlockTableData = useMemo<PageTableData[]>(
+  const bankInvalidBlockTableData = useMemo<PageTableOldData[]>(
     () =>
       bankInvalidBlocks.map((invalidBlock) => ({
         key: invalidBlock.id,
@@ -37,7 +37,7 @@ const BankInvalidBlocks: FC = () => {
     [bankInvalidBlocks, expanded],
   );
 
-  const pageTableItems = useMemo<PageTableItems>(
+  const pageTableItems = useMemo<PageTableOldItems>(
     () => ({
       data: bankInvalidBlockTableData,
       headers: {

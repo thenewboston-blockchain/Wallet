@@ -4,7 +4,7 @@ import {Icon, IconType} from '@thenewboston/ui';
 import AccountLink from '@renderer/components/AccountLink';
 import ExpandableText from '@renderer/components/ExpandableText';
 import NodeLink from '@renderer/components/NodeLink';
-import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
+import PaginatedTable, {PageTableOldData, PageTableOldItems} from '@renderer/components/PaginatedTable';
 import EditTrustModal from '@renderer/containers/EditTrustModal';
 import {VALIDATOR_VALIDATORS} from '@renderer/constants/actions';
 import {useAddress, useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
@@ -55,7 +55,7 @@ const ValidatorValidators: FC<ComponentProps> = ({managedValidator}) => {
     [setEditTrustValidator, toggleEditTrustModal],
   );
 
-  const validatorValidatorsTableData = useMemo<PageTableData[]>(
+  const validatorValidatorsTableData = useMemo<PageTableOldData[]>(
     () =>
       validatorValidators.map((validator) => ({
         key: validator.node_identifier,
@@ -88,7 +88,7 @@ const ValidatorValidators: FC<ComponentProps> = ({managedValidator}) => {
     [expanded, handleEditTrustButton, hasSigningKey, validatorValidators],
   );
 
-  const pageTableItems = useMemo<PageTableItems>(
+  const pageTableItems = useMemo<PageTableOldItems>(
     () => ({
       data: validatorValidatorsTableData,
       headers: {

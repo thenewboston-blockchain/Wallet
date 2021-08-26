@@ -1,7 +1,7 @@
 import React, {FC, useMemo} from 'react';
 
 import ExpandableText from '@renderer/components/ExpandableText';
-import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
+import PaginatedTable, {PageTableOldData, PageTableOldItems} from '@renderer/components/PaginatedTable';
 import {BANK_CONFIRMATION_BLOCKS} from '@renderer/constants/actions';
 import {useAddress, useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
 import {BankConfirmationBlock} from '@renderer/types';
@@ -25,7 +25,7 @@ const BankConfirmationBlocks: FC = () => {
     totalPages,
   } = usePaginatedNetworkDataFetcher<BankConfirmationBlock>(BANK_CONFIRMATION_BLOCKS, address);
 
-  const bankConfirmationBlocksTableData = useMemo<PageTableData[]>(
+  const bankConfirmationBlocksTableData = useMemo<PageTableOldData[]>(
     () =>
       bankConfirmationBlocks.map((confirmationBlock) => ({
         key: confirmationBlock.id,
@@ -37,7 +37,7 @@ const BankConfirmationBlocks: FC = () => {
     [bankConfirmationBlocks, expanded],
   );
 
-  const pageTableItems = useMemo<PageTableItems>(
+  const pageTableItems = useMemo<PageTableOldItems>(
     () => ({
       data: bankConfirmationBlocksTableData,
       headers: {

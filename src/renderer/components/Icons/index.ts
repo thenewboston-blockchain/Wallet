@@ -7,10 +7,12 @@ import ContentCopyIcon from './ContentCopyIcon';
 import DownloadIcon from './DownloadIcon';
 import EyeIcon from './EyeIcon';
 import EyeOffIcon from './EyeOffIcon';
+import LoadingIcon from './LoadingIcon';
 import PlayIcon from './PlayIcon';
 import PlusIcon from './PlusIcon';
 import QrcodeIcon from './QrcodeIcon';
 import RefreshIcon from './RefreshIcon';
+import {IconProps} from './types';
 
 export {
   AlertCircleOutlineIcon,
@@ -22,8 +24,11 @@ export {
   DownloadIcon,
   EyeIcon,
   EyeOffIcon,
+  LoadingIcon,
   PlayIcon,
   PlusIcon,
   QrcodeIcon,
   RefreshIcon,
 };
+
+export type {IconProps};

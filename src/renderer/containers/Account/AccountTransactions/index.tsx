@@ -11,7 +11,9 @@ import {getActiveBankConfig} from '@renderer/selectors';
 import {AccountNumberParams, BankTransaction, SFC} from '@renderer/types';
 import {formatAddressFromNode} from '@renderer/utils/address';
 import {formatDate} from '@renderer/utils/dates';
-import AccountTransactionsHeader from '@renderer/containers/Account/AccountTransactions/AccountTransactionsHeader';
+
+import AccountTransactionsHeader from './AccountTransactionsHeader';
+import * as S from './Styles';
 
 enum TableKeys {
   senderAccountNumber,
@@ -25,6 +27,7 @@ enum TableKeys {
 
 const AccountTransactions: SFC = ({className}) => {
   const [expanded, toggleExpanded] = useBooleanState(false);
+  const [showFees, toggleShowFees] = useBooleanState(false);
   const {accountNumber} = useParams<AccountNumberParams>();
   const activeBank = useSelector(getActiveBankConfig)!;
   const activeBankAddress = formatAddressFromNode(activeBank);
@@ -84,24 +87,24 @@ const AccountTransactions: SFC = ({className}) => {
   );
 
   return (
-    <>
+    <div className={className}>
       <AccountTransactionsHeader />
-    </>
+      <S.TableCard>
+        <PaginatedTable
+          count={count}
+          currentPage={currentPage}
+          expanded={expanded}
+          items={pageTableItems}
+          loading={loading}
+          showFees={showFees}
+          setPage={setPage}
+          toggleExpanded={toggleExpanded}
+          toggleShowFees={toggleShowFees}
+          totalPages={totalPages}
+        />
+      </S.TableCard>
+    </div>
   );
-
-  // return (
-  //   <PaginatedTable
-  //     className="AccountTransactions"
-  //     count={count}
-  //     currentPage={currentPage}
-  //     expanded={expanded}
-  //     items={pageTableItems}
-  //     loading={loading}
-  //     setPage={setPage}
-  //     toggleExpanded={toggleExpanded}
-  //     totalPages={totalPages}
-  //   />
-  // );
 };
 
 export default AccountTransactions;

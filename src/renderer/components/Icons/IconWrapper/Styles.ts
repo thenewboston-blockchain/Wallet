@@ -38,7 +38,7 @@ export const Wrapper = styled.div<WrapperProps>`
   justify-content: center;
   transition: background-color 0.3s, color 0.3s;
 
-  :focus {
+  &:focus {
     background: ${({unfocusable}) => (unfocusable ? null : colors.palette.gray['100'])};
   }
 

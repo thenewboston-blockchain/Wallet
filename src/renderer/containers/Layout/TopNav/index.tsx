@@ -1,9 +1,10 @@
-import React, {FC, ReactNode, useCallback, useMemo} from 'react';
+import React, {ReactNode, useCallback, useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {ipcRenderer} from 'electron';
-import {Icon, IconType} from '@thenewboston/ui';
+import {IconType} from '@thenewboston/ui';
 
 import DropdownMenuButton, {DropdownMenuDirection, DropdownMenuOption} from '@renderer/components/DropdownMenuButton';
+import {ArrowLeftIcon, ArrowRightIcon, RefreshIcon} from '@renderer/components/Icons';
 import Modal from '@renderer/components/Modal';
 import ChangeActiveBankModal from '@renderer/containers/Bank/ChangeActiveBankModal';
 import Notifications from '@renderer/containers/Notifications';
@@ -11,11 +12,11 @@ import {clearLocalState} from '@renderer/dispatchers/app';
 import {useBooleanState, useIpcEffect, useNavigationalHistory, useReadIpc, useWriteIpc} from '@renderer/hooks';
 import {getPrimaryValidatorConfig} from '@renderer/selectors';
 import localStore from '@renderer/store/local';
-import {AppDispatch, LocalStore} from '@renderer/types';
+import {AppDispatch, LocalStore, SFC} from '@renderer/types';
 import {displayToast, ToastType} from '@renderer/utils/toast';
 import {getFailChannel, getSuccessChannel, IpcChannel} from '@shared/ipc';
 
-import './TopNav.scss';
+import * as S from './Styles';
 
 const exportSuccessToast = () => {
   displayToast('Store Data has successfully been exported', ToastType.success);
@@ -37,7 +38,7 @@ const restartAppFailToast = (event: any, errorMessage: string) => {
   displayToast(`There was a problem restarting the app: ${errorMessage}`, ToastType.error);
 };
 
-const TopNav: FC = () => {
+const TopNav: SFC = ({className}) => {
   const [changeActiveBankModalIsOpen, toggleActiveBankModal] = useBooleanState(false);
   const [resetAppModalIsOpen, toggleResetAppModal] = useBooleanState(false);
   const [importStoreDataModalIsOpen, toggleImportStoreDataModal, , closeImportStoreDataModal] = useBooleanState(false);
@@ -83,33 +84,32 @@ const TopNav: FC = () => {
   };
 
   const renderLeft = (): ReactNode => (
-    <div className="TopNav__container">
-      <Icon className="TopNav__icon" disabled={!backEnabled} icon={IconType.arrowLeft} onClick={back} />
-      <Icon className="TopNav__icon" disabled={!forwardEnabled} icon={IconType.arrowRight} onClick={forward} />
-      <Icon className="TopNav__icon" icon={IconType.refresh} onClick={reload} />
-    </div>
+    <S.SectionWrapper>
+      <S.Icon as={ArrowLeftIcon} disabled={!backEnabled} onClick={back} />
+      <S.Icon as={ArrowRightIcon} disabled={!forwardEnabled} onClick={forward} />
+      <S.Icon as={RefreshIcon} onClick={reload} />
+    </S.SectionWrapper>
   );
 
   const renderRight = (): ReactNode => {
     if (!primaryValidatorConfig) return null;
     return (
-      <div className="TopNav__container">
-        <span className="TopNav__change-bank" onClick={toggleActiveBankModal}>
-          Change Active Bank
-        </span>
-        <DropdownMenuButton
-          className="TopNav__icon TopNav__icon--dev"
+      <S.SectionWrapper>
+        <S.ChangeBankText onClick={toggleActiveBankModal}>Change Active Bank</S.ChangeBankText>
+        <S.Icon
+          as={DropdownMenuButton}
+          $dev={true}
           direction={DropdownMenuDirection.left}
           icon={IconType.devTo}
           options={devDropdownMenuItems}
         />
         <Notifications />
-      </div>
+      </S.SectionWrapper>
     );
   };
 
   return (
-    <div className="TopNav">
+    <S.Container className={className}>
       {renderLeft()}
       {renderRight()}
       {changeActiveBankModalIsOpen && <ChangeActiveBankModal close={toggleActiveBankModal} />}
@@ -128,7 +128,7 @@ const TopNav: FC = () => {
           Are you sure you want to import store data? This action is irreversible.
         </Modal>
       )}
-    </div>
+    </S.Container>
   );
 };
 

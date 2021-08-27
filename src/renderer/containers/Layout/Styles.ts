@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import {colors, constants} from '@renderer/styles';
+
+import ULeftMenu from './LeftMenu';
 import UTopNav from './TopNav';
 
 export const Container = styled.div`
@@ -15,7 +17,7 @@ export const TopNav = styled(UTopNav)`
   grid-row: 1 / span 1;
 `;
 
-export const Left = styled.div`
+export const LeftMenu = styled(ULeftMenu)`
   background: ${colors.white};
   border-right: 1px solid ${colors.palette.gray['100']};
   grid-column: 1 / span 1;

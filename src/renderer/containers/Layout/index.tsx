@@ -12,7 +12,6 @@ import {getActiveBankConfig} from '@renderer/selectors';
 import {SFC} from '@renderer/types';
 import {formatPathFromNode} from '@renderer/utils/address';
 
-import LeftMenu from './LeftMenu';
 import * as S from './Styles';
 
 export const Layout: SFC = ({className}) => {
@@ -21,9 +20,7 @@ export const Layout: SFC = ({className}) => {
   return (
     <S.Container className={className}>
       <S.TopNav />
-      <S.Left>
-        <LeftMenu />
-      </S.Left>
+      <S.LeftMenu />
       <S.Right>
         <Switch>
           <Route path="/" exact>

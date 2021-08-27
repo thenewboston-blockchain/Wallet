@@ -1,8 +1,9 @@
-import React, {FC, ReactNode} from 'react';
+import React, {ReactNode} from 'react';
 
 import ArrowToggle from '@renderer/components/ArrowToggle';
 import {PlusIcon} from '@renderer/components/Icons';
 import {useBooleanState} from '@renderer/hooks';
+import {SFC} from '@renderer/types';
 
 import * as S from './Styles';
 
@@ -12,7 +13,7 @@ interface ComponentProps {
   title: string;
 }
 
-const LeftSubmenu: FC<ComponentProps> = ({menuItems, rightOnClick, title}) => {
+const LeftSubmenu: SFC<ComponentProps> = ({className, menuItems, rightOnClick, title}) => {
   const [expanded, toggleExpanded] = useBooleanState(true);
 
   const renderHeaderContent = (): ReactNode => {
@@ -34,7 +35,7 @@ const LeftSubmenu: FC<ComponentProps> = ({menuItems, rightOnClick, title}) => {
   };
 
   return (
-    <S.Container>
+    <S.Container className={className}>
       {renderHeaderContent()}
       {expanded && menuItems}
     </S.Container>

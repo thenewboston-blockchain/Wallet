@@ -1,4 +1,4 @@
-import React, {FC, ReactNode, useMemo} from 'react';
+import React, {ReactNode, useMemo} from 'react';
 import {useSelector} from 'react-redux';
 
 import CreateAccountModal from '@renderer/containers/Account/CreateAccountModal';
@@ -13,7 +13,7 @@ import {
   getManagedValidators,
   getValidatorConfigs,
 } from '@renderer/selectors';
-import {ManagedAccount, ManagedFriend, ManagedNode, RootState} from '@renderer/types';
+import {ManagedAccount, ManagedFriend, ManagedNode, RootState, SFC} from '@renderer/types';
 import {truncateLongText} from '@renderer/utils/accounts';
 import {formatAddressFromNode, formatPathFromNode} from '@renderer/utils/address';
 import {sortByBooleanKey, sortDictValuesByPreferredKey} from '@renderer/utils/sort';
@@ -33,7 +33,7 @@ const LeftMenuSelector = (state: RootState) => {
   };
 };
 
-const LeftMenu: FC = () => {
+const LeftMenu: SFC = ({className}) => {
   const {managedAccounts, managedBanks, managedFriends, managedValidators, validatorConfigs} = useSelector(
     LeftMenuSelector,
   );
@@ -95,7 +95,7 @@ const LeftMenu: FC = () => {
   );
 
   return (
-    <S.Container>
+    <S.Container className={className}>
       <LeftSubmenu menuItems={accountItems} rightOnClick={toggleCreateAccountModal} title="My Wallets" />
       <LeftSubmenu menuItems={friendMenuItems} rightOnClick={toggleAddFriendModal} title="My Friends" />
       <LeftSubmenu menuItems={communityItems} title="Community" />

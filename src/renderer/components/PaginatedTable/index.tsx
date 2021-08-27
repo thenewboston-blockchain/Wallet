@@ -1,6 +1,4 @@
 import React from 'react';
-import clsx from 'clsx';
-import {bemify} from '@thenewboston/utils';
 
 import {PageTableItems, PageTableData, PageTableProps} from '@renderer/components/PageTable';
 import {Loader} from '@renderer/components/FormElements';
@@ -53,12 +51,7 @@ const PaginatedTable: SFC<PaginatedTableProps> = ({
           <S.PageTable handleSelectRow={handleSelectRow} items={items} selectedData={selectedData} />
         </>
       )}
-      <Pagination
-        className={clsx('PaginatedTable__Pagination', {...bemify(className, '__Pagination')})}
-        currentPage={currentPage}
-        setPage={setPage}
-        totalPages={totalPages}
-      />
+      <Pagination currentPage={currentPage} setPage={setPage} totalPages={totalPages} />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, {ReactNode} from 'react';
 import boostNode from '../assets/BoostNode.png';
+import pointsIllustration from '../assets/PointsIllustration.png';
 import publicUsername from '../assets/PublicUsername.png';
 import tnbProfile from '../assets/TnbProfile.png';
 import voteForGovernors from '../assets/VoteForGovernors.png';
@@ -19,7 +20,7 @@ const coinSlides: SlideProps[] = [
     description: <>Boost a node into the Top 20 so they get scheduled to be PV. Learn More</>,
   },
   {
-    src: boostNode,
+    src: pointsIllustration,
     title: 'Depositing coins gives you points',
     description: <>Points let you perform a variety of actions within the network. Learn More</>,
   },

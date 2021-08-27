@@ -2,6 +2,7 @@ import AlertCircleOutlineIcon from './AlertCircleOutlineIcon';
 import ArrowLeftIcon from './ArrowLeftIcon';
 import ArrowRightIcon from './ArrowRightIcon';
 import CheckCircleIcon from './CheckCircleIcon';
+import ChevronLeftIcon from './ChevronLeftIcon';
 import ChevronRightIcon from './ChevronRightIcon';
 import ContentCopyIcon from './ContentCopyIcon';
 import DownloadIcon from './DownloadIcon';
@@ -19,6 +20,7 @@ export {
   ArrowLeftIcon,
   ArrowRightIcon,
   CheckCircleIcon,
+  ChevronLeftIcon,
   ChevronRightIcon,
   ContentCopyIcon,
   DownloadIcon,

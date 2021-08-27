@@ -66,7 +66,7 @@ const AccountOverviewGraph: SFC = ({className}) => {
             stroke={colors.palette.neutral['400']}
           />
           <YAxis hide />
-          <Line activeDot={{r: 6}} dataKey="balance" dot={false} stroke={colors.palette.blue['400']} />
+          <Line activeDot={{r: 6}} dataKey="balance" dot={false} stroke={colors.palette.blue['400']} strokeWidth={2} />
           <Tooltip
             labelFormatter={(date) => format(date, 'yyyy MMM dd')}
             formatter={(amount: number) => amount.toLocaleString()}

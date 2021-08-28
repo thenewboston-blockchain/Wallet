@@ -7,11 +7,12 @@ export const Card = styled(UCard)`
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 100%;
   padding: 24px;
 `;
 
 export const Carousel = styled(UCarousel)`
-  height: 268px;
+  height: 246px;
   width: 100%;
 `;
 

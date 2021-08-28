@@ -40,6 +40,15 @@ const outlinedPrimaryMixin = css<ButtonProps>`
   }
 `;
 
+const outlinedSecondaryMixin = css<ButtonProps>`
+  border-color: ${({disabled}) => (disabled ? 'transparent' : colors.palette.blue['400'])};
+  color: ${({disabled}) => (disabled ? colors.palette.gray['200'] : colors.palette.blue['500'])};
+
+  &:hover {
+    background: ${({disabled}) => (disabled ? null : colors.palette.blue['100'])};
+  }
+`;
+
 export const Button = styled.button<ButtonProps>`
   border-radius: 100px;
   border-style: solid;
@@ -76,6 +85,9 @@ export const Button = styled.button<ButtonProps>`
     if (variant === ButtonVariant.outlined) {
       if (color === ButtonColor.primary) {
         return outlinedPrimaryMixin;
+      }
+      if (color === ButtonColor.secondary) {
+        return outlinedSecondaryMixin;
       }
     }
   }};

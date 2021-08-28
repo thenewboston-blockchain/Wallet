@@ -1,5 +1,6 @@
 export enum ButtonColor {
   primary = 'primary',
+  secondary = 'secondary',
 }
 
 export enum ButtonType {

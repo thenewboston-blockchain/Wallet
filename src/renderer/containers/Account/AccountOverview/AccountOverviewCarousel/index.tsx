@@ -9,19 +9,19 @@ import piggyBank from './assets/PiggyBank.png';
 import {coinSlides, walletSlides} from './data';
 import * as S from './Styles';
 
-export enum AccountCarouselTopic {
+export enum AccountOverviewCarouselTopic {
   depositCoins = 'Deposit Coins',
   registerWallet = 'Register Wallet',
 }
 
-interface AccountCarouselProps {
-  carouselTopic: AccountCarouselTopic;
+interface AccountOverviewCarouselProps {
+  carouselTopic: AccountOverviewCarouselTopic;
   onClick(): void;
 }
 
-const AccountCarousel: SFC<AccountCarouselProps> = ({carouselTopic, className, onClick}) => {
+const AccountOverviewCarousel: SFC<AccountOverviewCarouselProps> = ({carouselTopic, className, onClick}) => {
   const {type} = useContext(AccountContext);
-  const slides = carouselTopic === AccountCarouselTopic.depositCoins ? coinSlides : walletSlides;
+  const slides = carouselTopic === AccountOverviewCarouselTopic.depositCoins ? coinSlides : walletSlides;
 
   const renderManagedNodeContent = () => {
     return (
@@ -45,8 +45,8 @@ const AccountCarousel: SFC<AccountCarouselProps> = ({carouselTopic, className, o
   };
 
   const renderNonManagedNodeContent = useCallback((): ReactNode => {
-    const src = carouselTopic === AccountCarouselTopic.depositCoins ? piggyBank : identificationBadge;
-    const text = carouselTopic === AccountCarouselTopic.depositCoins ? 'No coins deposited' : 'Wallet not registered';
+    const src = carouselTopic === AccountOverviewCarouselTopic.depositCoins ? piggyBank : identificationBadge;
+    const text = carouselTopic === AccountOverviewCarouselTopic.depositCoins ? 'No coins deposited' : 'Wallet not registered';
     return (
       <>
         <S.EmptyStateImageContainer>
@@ -64,4 +64,4 @@ const AccountCarousel: SFC<AccountCarouselProps> = ({carouselTopic, className, o
   );
 };
 
-export default AccountCarousel;
+export default AccountOverviewCarousel;

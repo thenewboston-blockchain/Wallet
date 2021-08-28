@@ -13,6 +13,7 @@ import PlayIcon from './PlayIcon';
 import PlusIcon from './PlusIcon';
 import QrcodeIcon from './QrcodeIcon';
 import RefreshIcon from './RefreshIcon';
+import RocketLaunchIcon from './RocketLaunchIcon';
 import {IconProps} from './types';
 
 export {
@@ -31,6 +32,7 @@ export {
   PlusIcon,
   QrcodeIcon,
   RefreshIcon,
+  RocketLaunchIcon,
 };
 
 export type {IconProps};

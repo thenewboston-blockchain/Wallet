@@ -9,6 +9,7 @@ import {useBooleanState} from '@renderer/hooks';
 import {SFC} from '@renderer/types';
 import AccountOverviewCarousel, {AccountOverviewCarouselTopic} from './AccountOverviewCarousel';
 import AccountOverviewVaultCard from './AccountOverviewVaultCard';
+import AccountOverviewVoteCard from "./AccountOverviewVoteCard";
 import * as S from './Styles';
 
 const AccountOverview: SFC = ({className}) => {
@@ -26,7 +27,11 @@ const AccountOverview: SFC = ({className}) => {
         ) : (
           <AccountOverviewCarousel carouselTopic={AccountOverviewCarouselTopic.depositCoins} onClick={noop} />
         )}
-        <AccountOverviewCarousel carouselTopic={AccountOverviewCarouselTopic.registerWallet} onClick={noop} />
+        {accountRegistered ? (
+          <AccountOverviewVoteCard />
+        ) : (
+          <AccountOverviewCarousel carouselTopic={AccountOverviewCarouselTopic.registerWallet} onClick={noop} />
+        )}
       </S.BottomRow>
 
       {/* Temp */}

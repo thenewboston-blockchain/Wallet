@@ -5,7 +5,7 @@ import {Icon, IconType} from '@thenewboston/ui';
 import AccountLink from '@renderer/components/AccountLink';
 import ExpandableText from '@renderer/components/ExpandableText';
 import NodeLink from '@renderer/components/NodeLink';
-import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
+import PaginatedTable, {PageTableOldData, PageTableOldItems} from '@renderer/components/PaginatedTable';
 import EditTrustModal from '@renderer/containers/EditTrustModal';
 import PurchaseConfirmationServicesModal from '@renderer/containers/PurchaseConfirmationServices/PurchaseConfirmationServicesModal';
 import {BANK_VALIDATORS} from '@renderer/constants/actions';
@@ -85,7 +85,7 @@ const BankValidators: FC<ComponentProps> = ({managedBank}) => {
     [handlePurchaseServicesClick, hasSigningKey, primaryValidator],
   );
 
-  const bankValidatorsTableData = useMemo<PageTableData[]>(
+  const bankValidatorsTableData = useMemo<PageTableOldData[]>(
     () =>
       bankValidators.map((validator) => ({
         key: validator.node_identifier,
@@ -118,7 +118,7 @@ const BankValidators: FC<ComponentProps> = ({managedBank}) => {
     [bankValidators, expanded, handleEditTrustButton, hasSigningKey, renderValidatorDailyRate],
   );
 
-  const pageTableItems = useMemo<PageTableItems>(
+  const pageTableItems = useMemo<PageTableOldItems>(
     () => ({
       data: bankValidatorsTableData,
       headers: {

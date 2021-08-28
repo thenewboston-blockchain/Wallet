@@ -2,12 +2,12 @@ import React, {ChangeEvent, Dispatch, FC, useCallback, useEffect, useMemo} from 
 import {useDispatch, useSelector} from 'react-redux';
 import clsx from 'clsx';
 import noop from 'lodash/noop';
-import {Button, Icon, IconType} from '@thenewboston/ui';
+import {Icon, IconType} from '@thenewboston/ui';
 
 import ExpandableText from '@renderer/components/ExpandableText';
-import {Input, Loader} from '@renderer/components/FormElements';
-import PageTable from '@renderer/components/PageTable';
-import {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
+import {Button, Input, Loader} from '@renderer/components/FormElements';
+import PageTableOld from '@renderer/components/PageTableOld';
+import {PageTableOldData, PageTableOldItems} from '@renderer/components/PaginatedTable';
 import RequiredAsterisk from '@renderer/components/RequiredAsterisk';
 import {fetchAccountBalance} from '@renderer/dispatchers/balances';
 import {
@@ -138,7 +138,7 @@ const BulkPurchaseConfirmationServicesModalFields: FC<ComponentProps> = ({
     [dispatchFormValues, submitting],
   );
 
-  const validatorsTableData = useMemo<PageTableData[]>(
+  const validatorsTableData = useMemo<PageTableOldData[]>(
     () =>
       orderedNodeIdentifiers
         .filter((nodeIdentifier) => !!formValues[nodeIdentifier])
@@ -185,7 +185,7 @@ const BulkPurchaseConfirmationServicesModalFields: FC<ComponentProps> = ({
     ],
   );
 
-  const pageTableItems = useMemo<PageTableItems>(
+  const pageTableItems = useMemo<PageTableOldItems>(
     () => ({
       data: validatorsTableData,
       headers: {
@@ -250,7 +250,7 @@ const BulkPurchaseConfirmationServicesModalFields: FC<ComponentProps> = ({
   return (
     <div className="BulkPurchaseConfirmationServicesModalFields">
       <div className="BulkPurchaseConfirmationServicesModalFields__left">
-        <PageTable className="BulkPurchaseConfirmationServicesModalFields__validator-table" items={pageTableItems} />
+        <PageTableOld className="BulkPurchaseConfirmationServicesModalFields__validator-table" items={pageTableItems} />
       </div>
       <div className="BulkPurchaseConfirmationServicesModalFields__right">
         <div className="BulkPurchaseConfirmationServicesModalFields__bank-address">{selectedBankAddress}</div>

@@ -15,7 +15,7 @@ import './TileAccountBalance.scss';
 interface ComponentProps {
   accountNumber: string;
   className?: string;
-  type: AccountType | null;
+  type: AccountType;
 }
 
 const TileAccountBalance: FC<ComponentProps> = ({accountNumber, className, type}) => {

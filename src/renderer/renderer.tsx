@@ -2,18 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 
-import App from '@renderer/containers/App';
-import store from '@renderer/store';
+import {MuiThemeProvider} from '@material-ui/core';
 import 'typeface-roboto';
 import 'normalize.css';
 
-import '@thenewboston/ui/src/styles/colors.css';
-import '@thenewboston/ui/src/styles/font.css';
+import App from '@renderer/containers/App';
+import store from '@renderer/store';
+import GlobalStyle from '@renderer/styles/components/GlobalStyle';
+import muiTheme from '@renderer/themes/mui';
+
+import './fonts.css';
 import './styles/main.scss';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <MuiThemeProvider theme={muiTheme}>
+      <GlobalStyle />
+      <App />
+    </MuiThemeProvider>
   </Provider>,
   document.getElementById('root'),
 );

@@ -1,7 +1,7 @@
 import React, {FC, useMemo} from 'react';
 
 import ExpandableText from '@renderer/components/ExpandableText';
-import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
+import PaginatedTable, {PageTableOldData, PageTableOldItems} from '@renderer/components/PaginatedTable';
 import {BANK_VALIDATOR_CONFIRMATION_SERVICES} from '@renderer/constants/actions';
 import {useAddress, useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
 import {ValidatorConfirmationService} from '@renderer/types';
@@ -28,7 +28,7 @@ const BankValidatorConfirmationServices: FC = () => {
     totalPages,
   } = usePaginatedNetworkDataFetcher<ValidatorConfirmationService>(BANK_VALIDATOR_CONFIRMATION_SERVICES, address);
 
-  const bankValidatorConfirmationServicesTableData = useMemo<PageTableData[]>(
+  const bankValidatorConfirmationServicesTableData = useMemo<PageTableOldData[]>(
     () =>
       bankValidatorConfirmationServices.map((validatorConfirmationService) => ({
         key: validatorConfirmationService.id,
@@ -42,7 +42,7 @@ const BankValidatorConfirmationServices: FC = () => {
     [bankValidatorConfirmationServices, expanded],
   );
 
-  const pageTableItems = useMemo<PageTableItems>(
+  const pageTableItems = useMemo<PageTableOldItems>(
     () => ({
       data: bankValidatorConfirmationServicesTableData,
       headers: {

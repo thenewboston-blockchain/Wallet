@@ -1,12 +1,12 @@
 :root {
-  --left-menu-width: 258px;
+  --left-menu-width: 256px;
   --page-padding: 16px 0 24px;
   --page-table-padding: 50px 0 24px;
 }
 
 @mixin main-container {
   height: 100%;
-  padding: 18px 12px 12px;
+  padding: 16px;
 }
 
 @mixin main-container-header {

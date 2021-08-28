@@ -1,9 +1,9 @@
-import {fetchAndDispatchPrimaryValidator} from '@renderer/dispatchers/app';
-import {setPrimaryValidatorUpdatedNotification} from '@renderer/store/notifications';
-import {AppDispatch} from '@renderer/types';
-import {formatAddressFromNode} from '@renderer/utils/address';
-import {generateUuid} from '@renderer/utils/local';
-import {displayToast} from '@renderer/utils/toast';
+import { fetchAndDispatchPrimaryValidator } from "@renderer/dispatchers/app";
+import { setPrimaryValidatorUpdatedNotification } from "@renderer/store/notifications";
+import { AppDispatch } from "@renderer/types";
+import { formatAddressFromNode } from "@renderer/utils/address";
+import { generateUuid } from "@renderer/utils/local";
+import { displayToast, ToastType } from "@renderer/utils/toast";
 
 const handlePrimaryValidatorUpdatedNotifications = async (
   bankSocketAddress: string,
@@ -24,10 +24,10 @@ const handlePrimaryValidatorUpdatedNotifications = async (
         }),
       );
 
-      displayToast(`The networks Primary Validator has been changed to ${primaryValidatorAddress}`);
+      displayToast(`The networks Primary Validator has been changed to ${primaryValidatorAddress}`, ToastType.error);
     }
   } catch (err) {
-    displayToast('An error occurred');
+    displayToast('An error occurred', ToastType.error);
   }
 };
 

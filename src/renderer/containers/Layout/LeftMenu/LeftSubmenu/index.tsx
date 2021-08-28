@@ -1,54 +1,44 @@
-import React, {FC, ReactNode} from 'react';
-import {Icon, IconType} from '@thenewboston/ui';
+import React, {ReactNode} from 'react';
 
 import ArrowToggle from '@renderer/components/ArrowToggle';
+import {PlusIcon} from '@renderer/components/Icons';
 import {useBooleanState} from '@renderer/hooks';
+import {SFC} from '@renderer/types';
 
-import './LeftSubmenu.scss';
+import * as S from './Styles';
 
 interface ComponentProps {
-  leftIcon?: ReactNode;
   menuItems: ReactNode[];
   rightOnClick?(): void;
-  rightText?: string;
   title: string;
 }
 
-const LeftSubmenu: FC<ComponentProps> = ({leftIcon, menuItems, rightOnClick, rightText, title}) => {
+const LeftSubmenu: SFC<ComponentProps> = ({className, menuItems, rightOnClick, title}) => {
   const [expanded, toggleExpanded] = useBooleanState(true);
 
   const renderHeaderContent = (): ReactNode => {
     return (
-      <>
-        <div className="LeftSubmenu__left-items">
-          {leftIcon || <ArrowToggle expanded={expanded} onClick={toggleExpanded} />}
-          <span className="LeftSubmenu__title">{title}</span>
-        </div>
+      <S.HeaderContainer>
+        <S.LeftIconContainer>
+          <ArrowToggle expanded={expanded} onClick={toggleExpanded} />
+        </S.LeftIconContainer>
+        <S.Title onClick={toggleExpanded}>{title}</S.Title>
         {rightOnClick ? renderRightSection() : null}
-      </>
+      </S.HeaderContainer>
     );
   };
 
   const renderRightSection = (): ReactNode => {
     if (!rightOnClick) return null;
-    if (rightText) {
-      return (
-        <span className="LeftSubmenu__right" onClick={rightOnClick}>
-          {rightText}
-        </span>
-      );
-    }
 
-    return (
-      <Icon className="LeftSubmenu__add-icon" icon={IconType.plus} onClick={rightOnClick} size={20} totalSize={20} />
-    );
+    return <PlusIcon onClick={rightOnClick} size={20} totalSize={20} />;
   };
 
   return (
-    <div className="LeftSubmenu">
-      <div className="LeftSubmenu__header">{renderHeaderContent()}</div>
+    <S.Container className={className}>
+      {renderHeaderContent()}
       {expanded && menuItems}
-    </div>
+    </S.Container>
   );
 };
 

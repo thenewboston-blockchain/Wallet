@@ -1,44 +1,28 @@
-import React, {FC, useMemo} from 'react';
-import clsx from 'clsx';
-import {Icon, IconType} from '@thenewboston/ui';
-import {bemify} from '@thenewboston/utils';
+import React, {FC, ReactNode, useCallback} from 'react';
+import {ToastType} from '@renderer/types/toast';
 
-import './Toast.scss';
-
-export type ToastType = 'success' | 'warning';
+import * as S from './Styles';
 
 interface ComponentProps {
   className?: string;
   type: ToastType;
 }
 
-const Toast: FC<ComponentProps> = ({children, className, type = 'warning'}) => {
-  const iconType = useMemo<IconType>(() => {
+const Toast: FC<ComponentProps> = ({children, className, type = ToastType.error}) => {
+  const renderIcon = useCallback((): ReactNode => {
     switch (type) {
-      case 'success':
-        return IconType.checkCircle;
+      case ToastType.success:
+        return <S.CheckCircleIcon />;
       default:
-        return IconType.alertCircleOutline;
+        return <S.AlertCircleOutlineIcon />;
     }
   }, [type]);
 
   return (
-    <div
-      className={clsx('Toast', className, {
-        [`Toast--${type}`]: true,
-        ...bemify(className, `--${type}`),
-      })}
-    >
-      <Icon
-        className={clsx('Toast__icon', {
-          [`Toast__icon--${type}`]: true,
-          ...bemify(className, '__icon'),
-          ...bemify(className, `__icon--${type}`),
-        })}
-        icon={iconType}
-      />
-      <div className={clsx('Toast__text', {...bemify(className, '__text')})}>{children}</div>
-    </div>
+    <S.Container className={className} type={type}>
+      {renderIcon()}
+      <S.Text>{children}</S.Text>
+    </S.Container>
   );
 };
 

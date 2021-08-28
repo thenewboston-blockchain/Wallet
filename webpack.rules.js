@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const sass = require('sass');
+const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
+
+const styledComponentsTransformer = createStyledComponentsTransformer();
 
 const rules = [
   // Add support for native node modules
@@ -29,6 +32,7 @@ const rules = [
         loader: 'ts-loader',
         options: {
           transpileOnly: true,
+          getCustomTransformers: () => ({before: [styledComponentsTransformer]}),
         },
       },
     ],

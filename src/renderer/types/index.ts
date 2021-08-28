@@ -9,7 +9,7 @@ import {
 } from './app';
 import {AccountBalance} from './balances';
 import {BaseFormComponentProps, BaseFormInlineComponentProps, GenericFormValues, InputOption} from './forms';
-import {GenericFunction, GenericVoidFunction} from './generic';
+import {ClassName, GenericFunction, GenericVoidFunction, SFC} from './generic';
 import {AppElectronStore, LocalStore, MigrationFunction} from './localStore';
 import {
   AcceptedFees,
@@ -50,7 +50,7 @@ import {
   PrimaryValidatorUpdatedNotificationPayload,
   ValidatorConfirmationServiceNotificationPayload,
 } from './notifications';
-import {AccountNumberParams, AddressParams} from './params';
+import {AccountNumberParams, AddressParams, AccountSection, SectionParams} from './params';
 import {
   CrawlCommand,
   CrawlSocketState,
@@ -79,6 +79,7 @@ export {
   AccountBalance,
   AccountNumber,
   AccountNumberParams,
+  AccountSection,
   AccountType,
   AddressData,
   AddressDataWithNickname,
@@ -95,6 +96,7 @@ export {
   BaseFormInlineComponentProps,
   BaseValidator,
   BlockResponse,
+  ClassName,
   ConfirmationBlockNotificationPayload,
   CrawlCommand,
   CrawlSocketState,
@@ -138,6 +140,8 @@ export {
   RawBankConfig,
   RawPrimaryValidatorConfig,
   RootState,
+  SectionParams,
+  SFC,
   SocketConnectionStatus,
   SocketType,
   Tx,

@@ -3,19 +3,18 @@
     background: rgba(0, 0, 0, 0);
   }
   to {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(44, 57, 103, 0.3); // Primary color
   }
 }
 
 .Modal {
   background: var(--color-white);
-  border-radius: 3px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 24px;
   position: fixed;
 
   &__close-icon {
     position: absolute;
-    right: 9px;
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
 
@@ -25,10 +24,8 @@
   }
 
   &__content {
-    background: var(--color-gray-050);
     max-height: calc(85vh - var(--modal-header-height) - var(--modal-footer-height));
     overflow-y: auto;
-    padding: 12px;
 
     &--no-footer {
       border-radius: 0 0 3px 3px;
@@ -39,7 +36,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 324px;
+    width: 414px;
   }
 
   &__default-submit {
@@ -51,14 +48,12 @@
     display: flex;
     height: var(--modal-footer-height);
     justify-content: flex-end;
-    padding: 0 12px;
   }
 
   &__header {
     align-items: center;
     display: flex;
-    height: var(--modal-header-height);
-    padding: 0 12px;
+    margin-bottom: 45px;
     position: relative;
   }
 

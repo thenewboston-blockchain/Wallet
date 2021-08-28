@@ -6,7 +6,7 @@ import {bemify} from '@thenewboston/utils';
 
 import Qr from '@renderer/components/Qr';
 import {AccountType} from '@renderer/types';
-import {displayToast} from '@renderer/utils/toast';
+import {displayToast, ToastType} from '@renderer/utils/toast';
 
 import Tile from '../Tile';
 import './TileAccountNumber.scss';
@@ -14,7 +14,7 @@ import './TileAccountNumber.scss';
 interface ComponentProps {
   accountNumber: string;
   className?: string;
-  type: AccountType | null;
+  type: AccountType;
 }
 
 const TileAccountNumber: FC<ComponentProps> = ({accountNumber, className, type}) => {
@@ -32,7 +32,7 @@ const TileAccountNumber: FC<ComponentProps> = ({accountNumber, className, type})
   }, [type]);
 
   const handleCopy = (): void => {
-    displayToast('Account Number copied to the clipboard', 'success');
+    displayToast('Account Number copied to the clipboard', ToastType.success);
     copyIconRef.current?.blur();
   };
 

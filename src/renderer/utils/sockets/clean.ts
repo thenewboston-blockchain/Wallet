@@ -1,7 +1,7 @@
 import {setCleanStatusNotification} from '@renderer/store/notifications';
 import {AppDispatch, NodeCleanStatusWithAddress, NotificationType} from '@renderer/types';
 import {generateUuid} from '@renderer/utils/local';
-import {displayToast} from '@renderer/utils/toast';
+import {displayToast, ToastType} from '@renderer/utils/toast';
 import {updateCleanProcess} from '@renderer/store/sockets';
 
 const handleCleanSocketEvent = async (cleanSocketId: string, dispatch: AppDispatch, event: any): Promise<void> => {
@@ -26,7 +26,7 @@ const handleCleanSocketEvent = async (cleanSocketId: string, dispatch: AppDispat
       }),
     );
   } catch (err) {
-    displayToast('An error occurred');
+    displayToast('An error occurred', ToastType.error);
   }
 };
 

@@ -1,22 +1,22 @@
-import React, {FC} from 'react';
-import clsx from 'clsx';
-import {bemify} from '@thenewboston/utils';
+import React from 'react';
 
-import PageTable, {PageTableItems, PageTableData, PageTableProps} from '@renderer/components/PageTable';
-import {Loader, Switch} from '@renderer/components/FormElements';
+import {PageTableItems, PageTableData, PageTableProps} from '@renderer/components/PageTable';
+import {Loader} from '@renderer/components/FormElements';
+import {SFC} from '@renderer/types';
 
 import Pagination, {PaginationProps} from './Pagination';
 import PaginationSummary, {PaginationSummaryProps} from './PaginationSummary';
-import './PaginatedTable.scss';
+import * as S from './Styles';
 
-interface ComponentProps extends PageTableProps, PaginationProps, PaginationSummaryProps {
-  className?: string;
+interface PaginatedTableProps extends PageTableProps, PaginationProps, PaginationSummaryProps {
   expanded?: boolean;
   loading: boolean;
+  showFees?: boolean;
   toggleExpanded?(): void;
+  toggleShowFees?(): void;
 }
 
-const PaginatedTable: FC<ComponentProps> = ({
+const PaginatedTable: SFC<PaginatedTableProps> = ({
   className,
   count,
   currentPage,
@@ -26,56 +26,32 @@ const PaginatedTable: FC<ComponentProps> = ({
   loading,
   selectedData,
   setPage,
+  showFees,
   toggleExpanded,
+  toggleShowFees,
   totalPages,
 }) => {
   return (
-    <div className={clsx('PaginatedTable', className)}>
+    <div className={className}>
       {loading ? (
         <Loader />
       ) : (
         <>
-          <div className="header">
-            <div className="header__left">
-              <PaginationSummary
-                className={clsx('PaginatedTable__PaginationSummary', {
-                  ...bemify(className, '__PaginationSummary'),
-                })}
-                count={count}
-                currentPage={currentPage}
-              />
-            </div>
-            <div className="header__right">
-              <div
-                className={clsx('PaginatedTable__expand-toggle-container', {
-                  ...bemify(className, '__expand-toggle-container'),
-                })}
-              >
-                {expanded !== undefined && !!toggleExpanded && (
-                  <Switch
-                    checked={expanded}
-                    className={clsx('PaginatedTable__expand-toggle', {...bemify(className, '__expand-toggle')})}
-                    label="Show full info"
-                    onChange={toggleExpanded}
-                  />
-                )}
-              </div>
-            </div>
-          </div>
-          <PageTable
-            className={clsx('PaginatedTable__PageTable', {...bemify(className, '__PageTable')})}
-            handleSelectRow={handleSelectRow}
-            items={items}
-            selectedData={selectedData}
-          />
+          <S.Header>
+            <PaginationSummary count={count} currentPage={currentPage} />
+            <S.HeaderRight>
+              {expanded !== undefined && !!toggleExpanded && (
+                <S.Switch checked={expanded} label="Show full info" onChange={toggleExpanded} />
+              )}
+              {showFees !== undefined && !!toggleShowFees && (
+                <S.Switch checked={showFees} label="Show fees" onChange={toggleShowFees} />
+              )}
+            </S.HeaderRight>
+          </S.Header>
+          <S.PageTable handleSelectRow={handleSelectRow} items={items} selectedData={selectedData} />
         </>
       )}
-      <Pagination
-        className={clsx('PaginatedTable__Pagination', {...bemify(className, '__Pagination')})}
-        currentPage={currentPage}
-        setPage={setPage}
-        totalPages={totalPages}
-      />
+      <Pagination currentPage={currentPage} setPage={setPage} totalPages={totalPages} />
     </div>
   );
 };

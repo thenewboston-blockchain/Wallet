@@ -1,14 +1,14 @@
-import React, {FC, useMemo, useState} from 'react';
-import axios from 'axios';
+import React, { FC, useMemo, useState } from "react";
+import axios from "axios";
 
-import {FormInput} from '@renderer/components/FormComponents';
-import Modal from '@renderer/components/Modal';
-import {useNavigationalHistory} from '@renderer/hooks';
-import {ManagedNode} from '@renderer/types';
-import {formatAddressFromNode} from '@renderer/utils/address';
-import yup from '@renderer/utils/forms/yup';
-import {generateSignature, getKeyPairFromSigningKeyHex} from '@renderer/utils/signing';
-import {displayToast} from '@renderer/utils/toast';
+import { FormInput } from "@renderer/components/FormComponents";
+import Modal from "@renderer/components/Modal";
+import { useNavigationalHistory } from "@renderer/hooks";
+import { ManagedNode } from "@renderer/types";
+import { formatAddressFromNode } from "@renderer/utils/address";
+import yup from "@renderer/utils/forms/yup";
+import { generateSignature, getKeyPairFromSigningKeyHex } from "@renderer/utils/signing";
+import { displayToast, ToastType } from "@renderer/utils/toast";
 
 interface ComponentProps {
   close(): void;
@@ -45,7 +45,7 @@ const EditTrustModal: FC<ComponentProps> = ({close, requestingNode, targetIdenti
       await axios.patch(address, requestData);
       reload();
     } catch (error) {
-      displayToast('An error occurred');
+      displayToast('An error occurred', ToastType.error);
       setSubmitting(false);
     }
   };

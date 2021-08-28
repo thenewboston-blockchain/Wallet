@@ -2,7 +2,7 @@ import React, {FC, useMemo} from 'react';
 
 import AccountLink from '@renderer/components/AccountLink';
 import ExpandableText from '@renderer/components/ExpandableText';
-import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
+import PaginatedTable, {PageTableOldData, PageTableOldItems} from '@renderer/components/PaginatedTable';
 import {BANK_BANK_TRANSACTIONS} from '@renderer/constants/actions';
 import {useAddress, useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
 import {BankTransaction} from '@renderer/types';
@@ -28,7 +28,7 @@ const BankTransactions: FC = () => {
     totalPages,
   } = usePaginatedNetworkDataFetcher<BankTransaction>(BANK_BANK_TRANSACTIONS, address);
 
-  const bankBankTransactionsTableData = useMemo<PageTableData[]>(
+  const bankBankTransactionsTableData = useMemo<PageTableOldData[]>(
     () =>
       bankBankTransactions.map((bankTransaction) => ({
         key: bankTransaction.id,
@@ -42,7 +42,7 @@ const BankTransactions: FC = () => {
     [bankBankTransactions, expanded],
   );
 
-  const pageTableItems = useMemo<PageTableItems>(
+  const pageTableItems = useMemo<PageTableOldItems>(
     () => ({
       data: bankBankTransactionsTableData,
       headers: {

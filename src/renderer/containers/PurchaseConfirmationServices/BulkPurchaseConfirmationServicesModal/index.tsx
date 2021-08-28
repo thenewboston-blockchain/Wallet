@@ -1,18 +1,18 @@
-import React, {FC, useEffect, useMemo, useReducer, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, { FC, useEffect, useMemo, useReducer, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import Modal from '@renderer/components/Modal';
-import {fetchBankConfig} from '@renderer/dispatchers/banks';
-import {getActiveBankConfig, getPrimaryValidatorConfig} from '@renderer/selectors';
-import {AppDispatch, ManagedNode} from '@renderer/types';
-import {formatAddressFromNode} from '@renderer/utils/address';
-import {sendBlock} from '@renderer/utils/blocks';
-import {getKeyPairFromSigningKeyHex} from '@renderer/utils/signing';
-import {displayErrorToast, displayToast} from '@renderer/utils/toast';
+import Modal from "@renderer/components/Modal";
+import { fetchBankConfig } from "@renderer/dispatchers/banks";
+import { getActiveBankConfig, getPrimaryValidatorConfig } from "@renderer/selectors";
+import { AppDispatch, ManagedNode } from "@renderer/types";
+import { formatAddressFromNode } from "@renderer/utils/address";
+import { sendBlock } from "@renderer/utils/blocks";
+import { getKeyPairFromSigningKeyHex } from "@renderer/utils/signing";
+import { displayErrorToast, displayToast, ToastType } from "@renderer/utils/toast";
 
-import BulkPurchaseConfirmationServicesModalFields from './BulkPurchaseConfirmationServicesModalFields';
-import {SelectedValidatorState, ValidatorConnectionStatus, validatorFormReducer} from '../utils';
-import './BulkPurchaseConfirmationServicesModal.scss';
+import BulkPurchaseConfirmationServicesModalFields from "./BulkPurchaseConfirmationServicesModalFields";
+import { SelectedValidatorState, ValidatorConnectionStatus, validatorFormReducer } from "../utils";
+import "./BulkPurchaseConfirmationServicesModal.scss";
 
 interface ComponentProps {
   bank: ManagedNode;
@@ -57,7 +57,7 @@ const BulkPurchaseConfirmationServicesModal: FC<ComponentProps> = ({bank, close,
         .filter(({amount}) => !!amount);
 
       await sendBlock(activeBankConfig, primaryValidator, bank.account_signing_key, bankAccountNumber, recipients);
-      displayToast(`You have purchased ${recipients.length} services`, 'success');
+      displayToast(`You have purchased ${recipients.length} services`, ToastType.success);
       close();
     } catch (error) {
       displayErrorToast(error);

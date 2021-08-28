@@ -1,13 +1,10 @@
-import React, {FC, ReactNode, useCallback, useMemo} from 'react';
-import clsx from 'clsx';
+import React, {ReactNode, useCallback, useMemo} from 'react';
 import noop from 'lodash/noop';
-import {Icon, IconType} from '@thenewboston/ui';
-import {bemify} from '@thenewboston/utils';
+import {SFC} from '@renderer/types';
 
-import './Pagination.scss';
+import * as S from './Styles';
 
 export interface PaginationProps {
-  className?: string;
   currentPage: number;
   setPage(page: number): () => void;
   totalPages: number;
@@ -15,7 +12,7 @@ export interface PaginationProps {
 
 const TOTAL_VISIBLE_PAGES = 11;
 
-const Pagination: FC<PaginationProps> = ({className, currentPage, setPage, totalPages}) => {
+const Pagination: SFC<PaginationProps> = ({className, currentPage, setPage, totalPages}) => {
   const nextIsDisabled = useMemo(() => currentPage >= totalPages, [currentPage, totalPages]);
   const prevIsDisabled = useMemo(() => currentPage === 1, [currentPage]);
   const leftEllipsesIsVisible = useMemo(() => currentPage > Math.floor(TOTAL_VISIBLE_PAGES / 2) + 1, [currentPage]);
@@ -26,17 +23,7 @@ const Pagination: FC<PaginationProps> = ({className, currentPage, setPage, total
 
   const renderEllipses = useCallback(
     (key: string): ReactNode => {
-      return (
-        <div
-          className={clsx('Pagination__button Pagination__button--ellipses', {
-            ...bemify(className, '__button'),
-            ...bemify(className, '__button--ellipses'),
-          })}
-          key={key}
-        >
-          ...
-        </div>
-      );
+      return <S.Ellipse key={key}>...</S.Ellipse>;
     },
     [className],
   );
@@ -44,17 +31,9 @@ const Pagination: FC<PaginationProps> = ({className, currentPage, setPage, total
   const renderPage = useCallback(
     (page: number): ReactNode => {
       return (
-        <div
-          className={clsx('Pagination__button', {
-            'Pagination__button--active': page === currentPage,
-            ...bemify(className, '__button'),
-            ...bemify(className, '__button--active', page === currentPage),
-          })}
-          key={page}
-          onClick={setPage(page)}
-        >
+        <S.PageButton $active={page === currentPage} key={page} onClick={setPage(page)}>
           {page}
-        </div>
+        </S.PageButton>
       );
     },
     [className, currentPage, setPage],
@@ -86,27 +65,11 @@ const Pagination: FC<PaginationProps> = ({className, currentPage, setPage, total
 
   if (totalPages <= 1) return null;
   return (
-    <div className={clsx('Pagination', className)}>
-      <Icon
-        className={clsx('Pagination__button Pagination__button--prev', {
-          ...bemify(className, '__button'),
-          ...bemify(className, '__button--prev'),
-        })}
-        disabled={prevIsDisabled}
-        icon={IconType.chevronLeft}
-        onClick={prevIsDisabled ? noop : setPage(currentPage - 1)}
-      />
+    <S.Container className={className}>
+      <S.ChevronLeftIcon disabled={prevIsDisabled} onClick={prevIsDisabled ? noop : setPage(currentPage - 1)} />
       {renderMiddle()}
-      <Icon
-        className={clsx('Pagination__button Pagination__button--next', {
-          ...bemify(className, '__button'),
-          ...bemify(className, '__button--next'),
-        })}
-        disabled={nextIsDisabled}
-        icon={IconType.chevronRight}
-        onClick={nextIsDisabled ? noop : setPage(currentPage + 1)}
-      />
-    </div>
+      <S.ChevronRightIcon disabled={nextIsDisabled} onClick={nextIsDisabled ? noop : setPage(currentPage + 1)} />
+    </S.Container>
   );
 };
 

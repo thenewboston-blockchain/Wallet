@@ -1,8 +1,7 @@
 import React, {FC, ReactNode, useMemo, useReducer, useState} from 'react';
 import {useSelector} from 'react-redux';
-import {Button} from '@thenewboston/ui';
 
-import {Select} from '@renderer/components/FormElements';
+import {Button, Select} from '@renderer/components/FormElements';
 import {useAddress, useBooleanState} from '@renderer/hooks';
 import {getAuthenticatedBanks} from '@renderer/selectors';
 import {Dict, InputOption} from '@renderer/types';

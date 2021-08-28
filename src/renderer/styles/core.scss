@@ -1,25 +1,24 @@
+@use "font";
+
 * {
   box-sizing: border-box;
-  line-height: 1.2;
-  outline: none;
+  line-height: var(--line-height-default);
 }
 
 body {
-  background: var(--color-gray-050);
+  @include font.b1;
+  background: var(--color-neutral-075);
   color: var(--color-primary);
-  font-family: var(--font-family-default);
-  font-size: var(--font-size-regular);
   margin: auto;
 }
 
 a {
   color: var(--color-secondary);
-  text-decoration: none;
 }
 
 b,
 strong {
-  font-weight: 800;
+  @include font.font-weight-bold;
 }
 
 h1,
@@ -28,31 +27,27 @@ h3,
 h4,
 h5,
 h6 {
-  line-height: 1;
+  line-height: var(--line-height-default);
   margin: 0;
 }
 
 h1 {
-  font-size: var(--font-size-extra-large);
-  height: 30px;
-  padding-top: 3px;
+  @include font.h1-regular;
 }
 
 h2 {
-  font-size: var(--font-size-large);
-  font-weight: 700;
+  @include font.h2-regular;
 }
 
 h3 {
-  font-size: var(--font-size-medium);
-  font-weight: 700;
+  @include font.h3-regular;
 }
 
 h4 {
-  font-size: var(--font-size-regular);
-  font-weight: 800;
+  @include font.h4-regular;
 }
 
 p {
+  @include font.b1;
   margin: 0 0 20px 0;
 }

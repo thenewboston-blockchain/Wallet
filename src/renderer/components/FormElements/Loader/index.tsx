@@ -1,15 +1,16 @@
-import React, {FC, memo} from 'react';
-import clsx from 'clsx';
-import {Icon, IconType} from '@thenewboston/ui';
+import React from 'react';
+import {IconProps} from '@renderer/components/Icons';
+import {SFC} from '@renderer/types';
+import * as S from './Styles';
 
-import './Loader.scss';
+type LoaderProps = Pick<IconProps, 'size'>;
 
-interface ComponentProps {
-  className?: string;
-}
-
-const Loader: FC<ComponentProps> = ({className}) => {
-  return <Icon className={clsx('Loader', className)} icon={IconType.loading} size={15.35} totalSize="unset" />;
+const Loader: SFC<LoaderProps> = ({className, size}) => {
+  return (
+    <S.Container className={className}>
+      <S.LoadingIcon size={size} totalSize="unset" />
+    </S.Container>
+  );
 };
 
-export default memo(Loader);
+export default Loader;

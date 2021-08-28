@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import UCard from '@renderer/components/Card';
-import {Button} from '@renderer/components/FormElements';
+import Link from '@renderer/components/Link';
 import {b2, colors, h3} from '@renderer/styles';
 import voteBox from './assets/VoteBox.png';
 
@@ -28,4 +28,4 @@ export const Description = styled.div`
   margin-bottom: 24px;
 `;
 
-export const GoVoteButton = styled(Button)``;
+export const GoVoteButton = styled(Link)``;

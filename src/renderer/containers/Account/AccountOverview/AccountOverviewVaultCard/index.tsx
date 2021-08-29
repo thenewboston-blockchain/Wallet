@@ -41,7 +41,7 @@ const AccountOverviewVaultCard: SFC<AccountOverviewVaultCardProps> = ({className
         <S.PointsRatioText>10.05B / 10.05B</S.PointsRatioText>
       </S.PointsSection>
       <S.LinkSection>
-        <Link to={`/account/${accountNumber}/${AccountSection.transaction}`} withChevron>
+        <Link to={`/account/${accountNumber}/${AccountSection.vault}`} withChevron>
           Vault Details
         </Link>
       </S.LinkSection>

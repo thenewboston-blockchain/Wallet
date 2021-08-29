@@ -13,6 +13,18 @@ export interface AddressParams {
 export enum AccountSection {
   overview = 'overview',
   transaction = 'transaction',
+  vault = 'vault',
+}
+
+export enum AccountVaultSection {
+  coins = 'coins',
+  history = 'history',
+  boostHistory = 'boost-history',
+  points = 'points',
+}
+
+export interface AccountVaultParams {
+  vault: AccountVaultSection;
 }
 
 export type SectionParams<T> = {

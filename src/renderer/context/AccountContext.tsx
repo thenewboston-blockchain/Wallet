@@ -1,4 +1,4 @@
-import React, {createContext, FC, Reducer, useEffect, useReducer} from 'react';
+import React, {createContext, FC, Reducer, useEffect, useMemo, useReducer} from 'react';
 import {useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
 import {getManagedAccounts, getManagedFriends} from '@renderer/selectors';
@@ -77,18 +77,17 @@ const AccountProvider: FC = ({children}) => {
     return;
   }, [managedAccount, managedFriend]);
 
-  return (
-    <AccountContext.Provider
-      value={{
-        accountNumber,
-        managedAccount,
-        managedFriend,
-        ...state,
-      }}
-    >
-      {children}
-    </AccountContext.Provider>
+  const valueToBePassed = useMemo<AccountState>(
+    () => ({
+      accountNumber,
+      managedAccount,
+      managedFriend,
+      ...state,
+    }),
+    [accountNumber, managedAccount, managedFriend, state],
   );
+
+  return <AccountContext.Provider value={valueToBePassed}>{children}</AccountContext.Provider>;
 };
 
 export {AccountContext, AccountProvider};

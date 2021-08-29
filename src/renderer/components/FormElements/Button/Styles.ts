@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import {colors} from '@renderer/styles';
+import {colors, mixinButtonFocus} from '@renderer/styles';
 import {ButtonColor, ButtonVariant} from './types';
 
 interface ButtonProps {
@@ -50,20 +50,15 @@ const outlinedSecondaryMixin = css<ButtonProps>`
 `;
 
 export const Button = styled.button<ButtonProps>`
+  ${mixinButtonFocus};
   border-radius: 100px;
   border-style: solid;
   border-width: 1px;
-  cursor: ${({disabled}) => (disabled ? null : 'cursor')};
-  margin: 6px;
+  cursor: ${({disabled}) => (disabled ? null : 'pointer')};
   min-height: 40px;
   padding: 0 16px;
   transition: all 0.1s;
   width: ${({fullWidth}) => (fullWidth ? '100%' : null)};
-
-  &:focus {
-    box-shadow: 0 0 0 8px ${colors.palette.gray['100']};
-    outline: none;
-  }
 
   ${({variant}) => {
     if (variant === ButtonVariant.contained) {

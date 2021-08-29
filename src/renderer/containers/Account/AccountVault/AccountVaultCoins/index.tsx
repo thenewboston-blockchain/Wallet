@@ -37,7 +37,7 @@ const pageTableItems: PageTableItems = {
       [TableKeys.penalty]: 'right',
       [TableKeys.actions]: 'right',
     },
-    gridTemplateColumns: 'max-content 1fr 2fr 2fr 1fr',
+    gridTemplateColumns: 'max-content minmax(max-content, 1fr) minmax(max-content, 2fr) minmax(max-content, 2fr) minmax(max-content, 1fr)',
   },
   orderedKeys: [
     TableKeys.datetime,

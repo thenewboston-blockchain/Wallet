@@ -1,4 +1,4 @@
-import Button, {BaseButtonProps, ButtonColor, ButtonType, ButtonVariant} from './Button';
+import Button, {BaseButtonProps, ButtonColor, ButtonSize, ButtonType, ButtonVariant} from './Button';
 import Checkbox, {BaseCheckboxProps} from './Checkbox';
 import Input, {BaseInputProps} from './Input';
 import Loader from './Loader';
@@ -19,6 +19,7 @@ export {
   BaseTextFieldProps,
   Button,
   ButtonColor,
+  ButtonSize,
   ButtonType,
   ButtonVariant,
   Checkbox,

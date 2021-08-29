@@ -33,9 +33,9 @@ export const Balance = styled.h1`
   color: ${colors.palette.neutral['800']};
 `;
 
-export const TopSectionRight = styled.div``;
-
 export const DepositButton = styled(Button)`
+  align-self: flex-start;
+  flex: 0;
   margin-right: 3px;
 `;
 
@@ -67,15 +67,16 @@ export const BoostValue = styled.div`
   color: ${colors.palette.gray['900']};
 `;
 
-export const BoostRightSection = styled.div``;
-
 export const BoostNodeButton = styled(Button).attrs(() => ({
   color: ButtonColor.secondary,
   variant: ButtonVariant.outlined,
 }))`
   align-items: center;
+  align-self: flex-start;
   display: flex;
+  flex: 0;
   margin-right: 3px;
+  white-space: nowrap;
 `;
 
 export const RocketLaunchIcon = styled(URocketLaunchIcon).attrs(() => ({

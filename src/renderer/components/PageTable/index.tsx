@@ -17,6 +17,10 @@ export interface PageTableItems {
   orderedKeys: number[];
   headers: Header;
   data: PageTableData[];
+  meta?: {
+    align?: {[tableKey: string]: 'left' | 'center' | 'right'};
+    gridTemplateColumns?: string;
+  };
 }
 
 export interface PageTableProps {
@@ -26,14 +30,16 @@ export interface PageTableProps {
 }
 
 const PageTable: SFC<PageTableProps> = ({className, handleSelectRow, items, selectedData}) => {
-  const {headers, data, orderedKeys} = items;
+  const {headers, data, meta, orderedKeys} = items;
+  const align = meta?.align || undefined;
+  const gridTemplateColumns = meta?.gridTemplateColumns || undefined;
   const hasCheckbox = !!handleSelectRow && !!selectedData;
   const numOfColumns = orderedKeys.length + (hasCheckbox ? 1 : 0);
 
   return (
-    <S.Grid className={className} $numOfCols={numOfColumns}>
+    <S.Grid className={className} $gridTemplateColumns={gridTemplateColumns} $numOfCols={numOfColumns}>
       {orderedKeys.map((key) => (
-        <S.Cell key={key} $isHeader={true} $numOfCols={numOfColumns}>
+        <S.Cell key={key} $isHeader={true} $numOfCols={numOfColumns} $align={align?.[key]}>
           {headers[key]}
         </S.Cell>
       ))}
@@ -47,7 +53,9 @@ const PageTable: SFC<PageTableProps> = ({className, handleSelectRow, items, sele
                 value={item.key}
               />
             ) : null}
-            <S.Cell $numOfCols={numOfColumns}>{item[key] || '-'}</S.Cell>
+            <S.Cell $align={align?.[key]} $numOfCols={numOfColumns}>
+              {item[key] || '-'}
+            </S.Cell>
           </Fragment>
         )),
       )}

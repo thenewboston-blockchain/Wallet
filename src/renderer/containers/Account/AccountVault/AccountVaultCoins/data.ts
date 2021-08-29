@@ -1,0 +1,81 @@
+const data: Array<{key: number; date: string; amount: number; period: number; penalty: number}> = [
+  {
+    key: 1,
+    date: '02/07/21 11:26:00 PM',
+    amount: 10000,
+    period: 20000,
+    penalty: 10,
+  },
+  {
+    key: 2,
+    date: '02/05/21 11:26:00 PM',
+    amount: 10000,
+    period: 18000,
+    penalty: 9,
+  },
+  {
+    key: 3,
+    date: '02/07/21 11:26:00 PM',
+    amount: 10000,
+    period: 16000,
+    penalty: 8,
+  },
+  {
+    key: 4,
+    date: '02/07/21 11:26:00 PM',
+    amount: 10000,
+    period: 14000,
+    penalty: 7,
+  },
+  {
+    key: 5,
+    date: '02/07/21 11:26:00 PM',
+    amount: 10000,
+    period: 12000,
+    penalty: 6,
+  },
+  {
+    key: 6,
+    date: '02/07/21 11:26:00 PM',
+    amount: 10000,
+    period: 10000,
+    penalty: 5,
+  },
+  {
+    key: 7,
+    date: '02/07/21 11:26:00 PM',
+    amount: 10000,
+    period: 8000,
+    penalty: 4,
+  },
+  {
+    key: 8,
+    date: '02/07/21 11:26:00 PM',
+    amount: 10000,
+    period: 6000,
+    penalty: 3,
+  },
+  {
+    key: 9,
+    date: '02/07/21 11:26:00 PM',
+    amount: 10000,
+    period: 4000,
+    penalty: 2,
+  },
+  {
+    key: 10,
+    date: '02/07/21 11:26:00 PM',
+    amount: 10000,
+    period: 2000,
+    penalty: 1,
+  },
+  {
+    key: 11,
+    date: '02/07/21 11:26:00 PM',
+    amount: 10000,
+    period: 0,
+    penalty: 0,
+  },
+];
+
+export default data;

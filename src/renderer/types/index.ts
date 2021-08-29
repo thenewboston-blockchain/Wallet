@@ -50,7 +50,14 @@ import {
   PrimaryValidatorUpdatedNotificationPayload,
   ValidatorConfirmationServiceNotificationPayload,
 } from './notifications';
-import {AccountNumberParams, AddressParams, AccountSection, SectionParams} from './params';
+import {
+  AccountNumberParams,
+  AccountVaultParams,
+  AccountVaultSection,
+  AddressParams,
+  AccountSection,
+  SectionParams,
+} from './params';
 import {
   CrawlCommand,
   CrawlSocketState,
@@ -81,6 +88,8 @@ export {
   AccountNumberParams,
   AccountSection,
   AccountType,
+  AccountVaultParams,
+  AccountVaultSection,
   AddressData,
   AddressDataWithNickname,
   AddressParams,

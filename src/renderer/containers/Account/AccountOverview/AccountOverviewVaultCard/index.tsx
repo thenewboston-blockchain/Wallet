@@ -17,9 +17,7 @@ const AccountOverviewVaultCard: SFC<AccountOverviewVaultCardProps> = ({className
           <S.BalanceLabel>Vault Balance</S.BalanceLabel>
           <S.Balance>100,000.0000</S.Balance>
         </S.TopSectionLeft>
-        <S.TopSectionRight>
-          <S.DepositButton>Deposit</S.DepositButton>
-        </S.TopSectionRight>
+        <S.DepositButton>Deposit</S.DepositButton>
       </S.TopSection>
       <S.BoostSection>
         <S.BoostLeftSection>
@@ -32,12 +30,10 @@ const AccountOverviewVaultCard: SFC<AccountOverviewVaultCardProps> = ({className
             <S.BoostValue>-</S.BoostValue>
           </S.BoostLabelValueContainer>
         </S.BoostLeftSection>
-        <S.BoostRightSection>
-          <S.BoostNodeButton>
-            <S.RocketLaunchIcon />
-            Boost Node
-          </S.BoostNodeButton>
-        </S.BoostRightSection>
+        <S.BoostNodeButton>
+          <S.RocketLaunchIcon />
+          Boost Node
+        </S.BoostNodeButton>
       </S.BoostSection>
       <S.PointsSection>
         <S.PointsLabel>Points</S.PointsLabel>
@@ -45,7 +41,7 @@ const AccountOverviewVaultCard: SFC<AccountOverviewVaultCardProps> = ({className
         <S.PointsRatioText>10.05B / 10.05B</S.PointsRatioText>
       </S.PointsSection>
       <S.LinkSection>
-        <Link to={`/account/${accountNumber}/${AccountSection.transaction}`} withChevron>
+        <Link to={`/account/${accountNumber}/${AccountSection.vault}`} withChevron>
           Vault Details
         </Link>
       </S.LinkSection>

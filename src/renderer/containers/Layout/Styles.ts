@@ -6,7 +6,10 @@ import UTopNav from './TopNav';
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: ${constants.leftMenuWidth} auto;
+  grid-template-columns: ${constants.leftMenuWidth} minmax(
+      min(${constants.maxClientWidth} - ${constants.leftMenuWidth}, 100%),
+      1fr
+    );
   grid-template-rows: min-content auto;
   height: 100vh;
 `;

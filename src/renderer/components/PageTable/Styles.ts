@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 import {colors} from '@renderer/styles';
 
-export const Cell = styled.div<{$isHeader?: boolean; $numOfCols: number}>`
+export const Cell = styled.div<{$align?: 'left' | 'center' | 'right'; $isHeader?: boolean; $numOfCols: number}>`
   align-items: center;
   border-bottom: 1px solid ${colors.palette.neutral['075']};
   color: ${({$isHeader}) => ($isHeader ? colors.palette.neutral['500'] : null)};
+  justify-content: ${({$align}) => {
+    if ($align === 'center') return 'center';
+    if ($align === 'right') return 'flex-end';
+    return 'flex-start';
+  }};
   display: flex;
   height: 32px;
   padding-right: 14px;
@@ -23,8 +28,12 @@ export const Cell = styled.div<{$isHeader?: boolean; $numOfCols: number}>`
   }
 `;
 
-export const Grid = styled.div<{$numOfCols: number}>`
+export const Header = styled.div;
+
+export const Grid = styled.div<{$gridTemplateColumns?: string; $numOfCols: number}>`
   display: grid;
-  grid-template-columns: repeat(${({$numOfCols}) => $numOfCols - 1}, max-content) minmax(max-content, 1fr);
+  grid-template-columns: ${({$gridTemplateColumns, $numOfCols}) =>
+    $gridTemplateColumns ? $gridTemplateColumns : `repeat(${$numOfCols - 1}, max-content) minmax(max-content, 1fr)`};
   overflow-x: auto;
+  overflow-y: hidden;
 `;

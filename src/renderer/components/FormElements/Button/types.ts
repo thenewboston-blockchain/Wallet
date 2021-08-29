@@ -3,6 +3,11 @@ export enum ButtonColor {
   secondary = 'secondary',
 }
 
+export enum ButtonSize {
+  regular = 'regular',
+  small = 'small',
+}
+
 export enum ButtonType {
   button = 'button',
   reset = 'reset',

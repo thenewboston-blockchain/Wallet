@@ -1,10 +1,14 @@
 import React, {ReactNode, useContext, useEffect, useMemo} from 'react';
-import {useHistory, useParams} from 'react-router-dom';
+import {Route, Switch, useHistory, useParams} from 'react-router-dom';
 
 import {AccountContext} from '@renderer/context';
 import {AccountVaultParams, AccountVaultSection, SFC} from '@renderer/types';
 
+import AccountVaultBoostHistory from './AccountVaultBoostHistory';
+import AccountVaultCoins from './AccountVaultCoins';
 import AccountVaultHeader from './AccountVaultHeader';
+import AccountVaultHistory from './AccountVaultHistory';
+import AccountVaultPoints from './AccountVaultPoints';
 import * as S from './Styles';
 
 const tabs: Array<{label: string; section: AccountVaultSection}> = [
@@ -47,7 +51,9 @@ const AccountVault: SFC = ({className}) => {
     return (
       <S.Tabs onChange={handleTabChange} value={vault}>
         {tabs.map(({label, section}) => (
-          <S.Tab value={section}>{label.toUpperCase()}</S.Tab>
+          <S.Tab key={section} value={section}>
+            {label.toUpperCase()}
+          </S.Tab>
         ))}
       </S.Tabs>
     );
@@ -57,6 +63,20 @@ const AccountVault: SFC = ({className}) => {
     <S.Container className={className}>
       <AccountVaultHeader />
       {renderTabs()}
+      <Switch>
+        <Route path={`${basePath}/${AccountVaultSection.coins}`} exact>
+          <AccountVaultCoins />
+        </Route>
+        <Route path={`${basePath}/${AccountVaultSection.history}`} exact>
+          <AccountVaultHistory />
+        </Route>
+        <Route path={`${basePath}/${AccountVaultSection.boostHistory}`} exact>
+          <AccountVaultBoostHistory />
+        </Route>
+        <Route path={`${basePath}/${AccountVaultSection.points}`} exact>
+          <AccountVaultPoints />
+        </Route>
+      </Switch>
     </S.Container>
   );
 };

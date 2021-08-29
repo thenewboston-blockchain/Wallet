@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useMemo} from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
 import MainContainer from '@renderer/styles/components/MainContainer';
@@ -12,22 +12,23 @@ import * as S from './Styles';
 
 const Account: SFC = ({className}) => {
   const {accountNumber} = useContext(AccountContext);
+  const basePath = useMemo<string>(() => `/account/${accountNumber}`, [accountNumber]);
 
   return (
     <MainContainer className={className}>
       <S.Header />
       <Switch>
-        <Route path={`/account/:accountNumber/${AccountSection.overview}`} exact>
+        <Route path={`${basePath}/${AccountSection.overview}`} exact>
           <AccountOverview />
         </Route>
-        <Route path={`/account/:accountNumber/${AccountSection.transaction}`} exact>
+        <Route path={`${basePath}/${AccountSection.transaction}`} exact>
           <AccountTransactions />
         </Route>
-        <Route path={`/account/:accountNumber/${AccountSection.vault}/:vault?`}>
+        <Route path={`${basePath}/${AccountSection.vault}/:vault?`}>
           <AccountVault />
         </Route>
-        <Route path="/account/:accountNumber">
-          <Redirect to={`/account/${accountNumber}/${AccountSection.overview}`} />
+        <Route path={`${basePath}`}>
+          <Redirect to={`${basePath}/${AccountSection.overview}`} />
         </Route>
       </Switch>
     </MainContainer>

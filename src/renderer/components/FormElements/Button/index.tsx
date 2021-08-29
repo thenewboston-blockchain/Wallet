@@ -5,9 +5,9 @@ import {useFormContext2} from '@renderer/hooks/useFormContext';
 import {Loader} from '@renderer/components/FormElements';
 
 import * as S from './Styles';
-import {ButtonColor, ButtonType, ButtonVariant} from './types';
+import {ButtonColor, ButtonSize, ButtonType, ButtonVariant} from './types';
 
-export {ButtonColor, ButtonType, ButtonVariant};
+export {ButtonColor, ButtonSize, ButtonType, ButtonVariant};
 
 export interface BaseButtonProps {
   className?: string;
@@ -18,6 +18,7 @@ export interface BaseButtonProps {
   ignoreDirty?: boolean;
   onClick?(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
   submitting?: boolean;
+  size?: ButtonSize;
   type?: ButtonType;
   variant?: ButtonVariant;
 }
@@ -32,6 +33,7 @@ const Button: FC<BaseButtonProps> = ({
   ignoreDirty = false,
   onClick,
   submitting = false,
+  size = ButtonSize.regular,
   type = ButtonType.button,
   variant = ButtonVariant.contained,
 }) => {
@@ -69,13 +71,14 @@ const Button: FC<BaseButtonProps> = ({
   return (
     <S.Button
       className={clsx('Button', className)}
-      color={color}
-      disabled={buttonIsDisabled}
-      fullWidth={fullWidth}
+      $color={color}
+      $disabled={buttonIsDisabled}
+      $fullWidth={fullWidth}
       onClick={handleClick}
       ref={buttonRef}
       type={type}
-      variant={variant}
+      $size={size}
+      $variant={variant}
     >
       {type === ButtonType.submit && submitting ? <Loader /> : children}
     </S.Button>

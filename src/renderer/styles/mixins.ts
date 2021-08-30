@@ -1,7 +1,7 @@
 import {css} from 'styled-components';
 import colors from './colors';
 
-export const mixinButtonFocus = css`
+const buttonFocus = css`
   margin: 6px; // margin needed to account for the focused box shadow
   transition: box-shadow 0.1s;
 
@@ -10,3 +10,9 @@ export const mixinButtonFocus = css`
     outline: none;
   }
 `;
+
+const mixins = {
+  buttonFocus,
+};
+
+export default mixins;

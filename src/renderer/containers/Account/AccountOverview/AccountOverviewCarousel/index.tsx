@@ -46,7 +46,8 @@ const AccountOverviewCarousel: SFC<AccountOverviewCarouselProps> = ({carouselTop
 
   const renderNonManagedNodeContent = useCallback((): ReactNode => {
     const src = carouselTopic === AccountOverviewCarouselTopic.depositCoins ? piggyBank : identificationBadge;
-    const text = carouselTopic === AccountOverviewCarouselTopic.depositCoins ? 'No coins deposited' : 'Wallet not registered';
+    const text =
+      carouselTopic === AccountOverviewCarouselTopic.depositCoins ? 'No coins deposited' : 'Wallet not registered';
     return (
       <>
         <S.EmptyStateImageContainer>

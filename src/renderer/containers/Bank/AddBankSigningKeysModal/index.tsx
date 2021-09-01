@@ -1,21 +1,21 @@
-import React, { FC, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, {FC, useMemo} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
-import { FormTextArea } from "@renderer/components/FormComponents";
-import Modal from "@renderer/components/Modal";
+import {FormTextArea} from '@renderer/components/FormComponents';
+import Modal from '@renderer/components/Modal';
 import {
   SIGNING_KEY_INVALID_ACCOUNT_ERROR,
   SIGNING_KEY_INVALID_NID_ERROR,
   SIGNING_KEY_LENGTH_ERROR,
-  SIGNING_KEY_REQUIRED_ERROR
-} from "@renderer/constants/form-validation";
-import { useAddress } from "@renderer/hooks";
-import { getBankConfigs, getManagedAccounts, getManagedBanks } from "@renderer/selectors";
-import { setManagedBank } from "@renderer/store/app";
-import { AppDispatch } from "@renderer/types";
-import yup from "@renderer/utils/forms/yup";
-import { getKeyPairFromSigningKeyHex } from "@renderer/utils/signing";
-import { displayToast, ToastType } from "@renderer/utils/toast";
+  SIGNING_KEY_REQUIRED_ERROR,
+} from '@renderer/constants/form-validation';
+import {useAddress} from '@renderer/hooks';
+import {getBankConfigs, getManagedAccounts, getManagedBanks} from '@renderer/selectors';
+import {setManagedBank} from '@renderer/store/app';
+import {AppDispatch} from '@renderer/types';
+import yup from '@renderer/utils/forms/yup';
+import {getKeyPairFromSigningKeyHex} from '@renderer/utils/signing';
+import {displayToast, ToastType} from '@renderer/utils/toast';
 
 interface ComponentProps {
   close(): void;

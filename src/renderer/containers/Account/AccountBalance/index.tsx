@@ -21,7 +21,7 @@ const AccountBalance: SFC = ({className}) => {
 
   const balanceStr = useMemo(() => {
     if (balance === null) return '-';
-    return balance.toLocaleString() + '.0000';
+    return `${balance.toLocaleString()}.0000`;
   }, [balance]);
 
   useEffect(() => {
@@ -53,7 +53,9 @@ const AccountBalance: SFC = ({className}) => {
   };
   return (
     <S.Container className={className}>
-      <S.Balance className={className} $updated={balancedUpdated}>{balanceStr}</S.Balance>
+      <S.Balance className={className} $updated={balancedUpdated}>
+        {balanceStr}
+      </S.Balance>
       <S.RefreshIcon disabled={refreshDisabled} onClick={handleRefresh} ref={refreshIconRef} />
     </S.Container>
   );

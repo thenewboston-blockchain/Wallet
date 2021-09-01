@@ -21,12 +21,9 @@ const Pagination: SFC<PaginationProps> = ({className, currentPage, setPage, tota
     totalPages,
   ]);
 
-  const renderEllipses = useCallback(
-    (key: string): ReactNode => {
-      return <S.Ellipse key={key}>...</S.Ellipse>;
-    },
-    [className],
-  );
+  const renderEllipses = useCallback((key: string): ReactNode => {
+    return <S.Ellipse key={key}>...</S.Ellipse>;
+  }, []);
 
   const renderPage = useCallback(
     (page: number): ReactNode => {
@@ -36,7 +33,7 @@ const Pagination: SFC<PaginationProps> = ({className, currentPage, setPage, tota
         </S.PageButton>
       );
     },
-    [className, currentPage, setPage],
+    [currentPage, setPage],
   );
 
   const renderMiddle = useCallback((): ReactNode => {

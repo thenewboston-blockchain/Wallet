@@ -27,6 +27,8 @@ const accountReducer: Reducer<ReducerState, AccountAction> = (state, action) => 
   switch (action.type) {
     case AccountActionType.set:
       return action.payload;
+    default:
+      return state;
   }
 };
 
@@ -56,25 +58,24 @@ const AccountProvider: FC = ({children}) => {
   useEffect(() => {
     if (managedAccount) {
       dispatch({
-        type: AccountActionType.set,
         payload: {type: AccountType.managedAccount},
+        type: AccountActionType.set,
       });
       return;
     }
 
     if (managedFriend) {
       dispatch({
-        type: AccountActionType.set,
         payload: {type: AccountType.managedFriend},
+        type: AccountActionType.set,
       });
       return;
     }
 
     dispatch({
-      type: AccountActionType.set,
       payload: {type: AccountType.other},
+      type: AccountActionType.set,
     });
-    return;
   }, [managedAccount, managedFriend]);
 
   const valueToBePassed = useMemo<AccountState>(

@@ -61,7 +61,7 @@ const AccountHeader: SFC = ({className}) => {
     }
 
     return null;
-  }, [accountNumber, signingKey, type]);
+  }, [signingKey, type]);
 
   return (
     <S.MainContainer className={className}>

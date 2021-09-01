@@ -1,25 +1,25 @@
-import React, { FC, useMemo, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import React, {FC, useMemo, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {useHistory} from 'react-router-dom';
 
-import Modal from "@renderer/components/Modal";
-import { fetchBankConfig } from "@renderer/dispatchers/banks";
-import { getManagedBanks } from "@renderer/selectors";
-import { setManagedBank } from "@renderer/store/app";
-import { AppDispatch, ProtocolType } from "@renderer/types";
-import { formatAddressFromNode, formatPathFromNode } from "@renderer/utils/address";
+import Modal from '@renderer/components/Modal';
+import {fetchBankConfig} from '@renderer/dispatchers/banks';
+import {getManagedBanks} from '@renderer/selectors';
+import {setManagedBank} from '@renderer/store/app';
+import {AppDispatch, ProtocolType} from '@renderer/types';
+import {formatAddressFromNode, formatPathFromNode} from '@renderer/utils/address';
 import {
   getAddressFormField,
   getIpAddressField,
   getNicknameField,
   getPortField,
-  getProtocolField
-} from "@renderer/utils/forms/fields";
-import yup from "@renderer/utils/forms/yup";
-import { displayErrorToast, displayToast, ToastType } from "@renderer/utils/toast";
+  getProtocolField,
+} from '@renderer/utils/forms/fields';
+import yup from '@renderer/utils/forms/yup';
+import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
 
-import AddBankModalFields from "./AddBankModalFields";
-import "./AddBankModal.scss";
+import AddBankModalFields from './AddBankModalFields';
+import './AddBankModal.scss';
 
 const initialValues = {
   form: '',

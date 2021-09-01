@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React, {ChangeEvent, FC, FocusEvent} from 'react';
 import clsx from 'clsx';
 import {ErrorMessage, Field} from 'formik';

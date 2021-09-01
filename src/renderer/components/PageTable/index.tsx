@@ -1,8 +1,8 @@
 import React, {Fragment, ReactNode} from 'react';
 
+import {Checkbox} from '@renderer/components/FormElements';
 import {GenericVoidFunction, SFC} from '@renderer/types';
 import * as S from './Styles';
-import {Checkbox} from '@renderer/components/FormElements';
 
 interface Header {
   [tableKey: string]: ReactNode;
@@ -39,7 +39,7 @@ const PageTable: SFC<PageTableProps> = ({className, handleSelectRow, items, sele
   return (
     <S.Grid className={className} $gridTemplateColumns={gridTemplateColumns} $numOfCols={numOfColumns}>
       {orderedKeys.map((key) => (
-        <S.Cell key={key} $isHeader={true} $numOfCols={numOfColumns} $align={align?.[key]}>
+        <S.Cell key={key} $isHeader $numOfCols={numOfColumns} $align={align?.[key]}>
           {headers[key]}
         </S.Cell>
       ))}

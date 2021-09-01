@@ -41,7 +41,7 @@ const AccountVault: SFC = ({className}) => {
     if (!vault) {
       history.replace(`${basePath}/${AccountVaultSection.coins}`);
     }
-  }, [accountNumber, history, vault]);
+  }, [accountNumber, basePath, history, vault]);
 
   const handleTabChange = (toSection: AccountVaultSection): void => {
     history.push(`${basePath}/${toSection}`);

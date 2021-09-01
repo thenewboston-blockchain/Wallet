@@ -1,20 +1,20 @@
-import React, { FC, ReactNode, RefObject, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import CopyToClipboard from "react-copy-to-clipboard";
-import clsx from "clsx";
-import { Icon, IconType } from "@thenewboston/ui";
+import React, {FC, ReactNode, RefObject, useMemo} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import CopyToClipboard from 'react-copy-to-clipboard';
+import clsx from 'clsx';
+import {Icon, IconType} from '@thenewboston/ui';
 
-import { Button, ButtonColor } from "@renderer/components/FormElements";
-import AddValidatorSigningKeysModal from "@renderer/containers/Validator/AddValidatorSigningKeysModal";
-import { useAddress, useBooleanState } from "@renderer/hooks";
-import { getIsManagedValidator, getManagedValidators } from "@renderer/selectors";
-import { setManagedValidator } from "@renderer/store/app";
-import { AppDispatch, RootState } from "@renderer/types";
-import { parseAddressData } from "@renderer/utils/address";
-import { displayToast, ToastType } from "@renderer/utils/toast";
+import {Button, ButtonColor} from '@renderer/components/FormElements';
+import AddValidatorSigningKeysModal from '@renderer/containers/Validator/AddValidatorSigningKeysModal';
+import {useAddress, useBooleanState} from '@renderer/hooks';
+import {getIsManagedValidator, getManagedValidators} from '@renderer/selectors';
+import {setManagedValidator} from '@renderer/store/app';
+import {AppDispatch, RootState} from '@renderer/types';
+import {parseAddressData} from '@renderer/utils/address';
+import {displayToast, ToastType} from '@renderer/utils/toast';
 
-import Tile from "../Tile";
-import "./TileValidatorSigningDetails.scss";
+import Tile from '../Tile';
+import './TileValidatorSigningDetails.scss';
 
 interface Item {
   key: string;

@@ -33,7 +33,7 @@ export const Header = styled.div;
 export const Grid = styled.div<{$gridTemplateColumns?: string; $numOfCols: number}>`
   display: grid;
   grid-template-columns: ${({$gridTemplateColumns, $numOfCols}) =>
-    $gridTemplateColumns ? $gridTemplateColumns : `repeat(${$numOfCols - 1}, max-content) minmax(max-content, 1fr)`};
+    $gridTemplateColumns || `repeat(${$numOfCols - 1}, max-content) minmax(max-content, 1fr)`};
   overflow-x: auto;
   overflow-y: hidden;
 `;

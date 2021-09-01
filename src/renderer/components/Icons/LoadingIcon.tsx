@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React, {forwardRef} from 'react';
 import MdiReactIcon from 'mdi-react/LoadingIcon';
 import IconWrapper from '@renderer/components/Icons/IconWrapper';

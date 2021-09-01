@@ -9,7 +9,7 @@ import {useBooleanState} from '@renderer/hooks';
 import {SFC} from '@renderer/types';
 import AccountOverviewCarousel, {AccountOverviewCarouselTopic} from './AccountOverviewCarousel';
 import AccountOverviewVaultCard from './AccountOverviewVaultCard';
-import AccountOverviewVoteCard from "./AccountOverviewVoteCard";
+import AccountOverviewVoteCard from './AccountOverviewVoteCard';
 import * as S from './Styles';
 
 const AccountOverview: SFC = ({className}) => {

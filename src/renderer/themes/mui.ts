@@ -1,4 +1,6 @@
-import { createMuiTheme } from "@material-ui/core";
+/* eslint-disable sort-keys */
+
+import {createMuiTheme} from '@material-ui/core';
 
 const muiTheme = createMuiTheme({
   palette: {

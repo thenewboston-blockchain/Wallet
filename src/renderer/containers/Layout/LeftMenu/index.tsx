@@ -34,9 +34,7 @@ const LeftMenuSelector = (state: RootState) => {
 };
 
 const LeftMenu: SFC = ({className}) => {
-  const {managedAccounts, managedBanks, managedFriends, managedValidators, validatorConfigs} = useSelector(
-    LeftMenuSelector,
-  );
+  const {managedAccounts, managedFriends, managedValidators, validatorConfigs} = useSelector(LeftMenuSelector);
   const [addFriendModalIsOpen, toggleAddFriendModal] = useBooleanState(false);
   const [addValidatorModalIsOpen, toggleAddValidatorModal] = useBooleanState(false);
   const [createAccountModalIsOpen, toggleCreateAccountModal] = useBooleanState(false);
@@ -46,14 +44,14 @@ const LeftMenu: SFC = ({className}) => {
       .map(({account_number, nickname}) => ({
         baseUrl: `/account/${account_number}`,
         key: account_number,
-        subLabel: nickname,
         label: truncateLongText(account_number),
+        subLabel: nickname,
         to: `/account/${account_number}/overview`,
       }))
       .map(({baseUrl, key, label, subLabel, to}) => (
         <LeftSubmenuItem baseUrl={baseUrl} key={key} label={label} subLabel={subLabel} to={to} />
       ));
-  }, [managedAccounts, managedBanks, managedValidators]);
+  }, [managedAccounts]);
 
   const communityItems = useMemo<ReactNode[]>(() => {
     return [
@@ -68,8 +66,8 @@ const LeftMenu: SFC = ({className}) => {
         .map(({account_number, nickname}) => ({
           baseUrl: `/account/${account_number}`,
           key: account_number,
-          subLabel: nickname,
           label: truncateLongText(account_number),
+          subLabel: nickname,
           to: `/account/${account_number}/overview`,
         }))
         .map(({baseUrl, key, label, subLabel, to}) => (

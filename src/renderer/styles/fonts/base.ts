@@ -1,3 +1,5 @@
+/* eslint-disable sort-keys */
+
 const fonts = {
   family: {
     default: 'Inter, sans-serif',

@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React, {FC} from 'react';
 import {LinkProps as RRLinkProps} from 'react-router-dom';
 import * as S from './Styles';

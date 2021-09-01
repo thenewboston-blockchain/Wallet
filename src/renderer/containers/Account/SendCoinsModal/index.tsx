@@ -1,26 +1,26 @@
-import React, { FC, ReactNode, useCallback, useMemo, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Icon, IconType } from "@thenewboston/ui";
+import React, {FC, ReactNode, useCallback, useMemo, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {Icon, IconType} from '@thenewboston/ui';
 
-import { FormButton } from "@renderer/components/FormComponents";
-import { ButtonType, ButtonVariant } from "@renderer/components/FormElements";
-import Modal from "@renderer/components/Modal";
-import { INVALID_AMOUNT_ERROR, MATCH_ERROR } from "@renderer/constants/form-validation";
-import { fetchAccountBalance } from "@renderer/dispatchers/balances";
+import {FormButton} from '@renderer/components/FormComponents';
+import {ButtonType, ButtonVariant} from '@renderer/components/FormElements';
+import Modal from '@renderer/components/Modal';
+import {INVALID_AMOUNT_ERROR, MATCH_ERROR} from '@renderer/constants/form-validation';
+import {fetchAccountBalance} from '@renderer/dispatchers/balances';
 import {
   getActiveBankConfig,
   getManagedAccountBalances,
   getManagedAccounts,
-  getPrimaryValidatorConfig
-} from "@renderer/selectors";
-import { AppDispatch } from "@renderer/types";
-import { sendBlock } from "@renderer/utils/blocks";
-import yup from "@renderer/utils/forms/yup";
-import { displayErrorToast, displayToast, ToastType } from "@renderer/utils/toast";
-import { getBankTxFee, getPrimaryValidatorTxFee } from "@renderer/utils/transactions";
+  getPrimaryValidatorConfig,
+} from '@renderer/selectors';
+import {AppDispatch} from '@renderer/types';
+import {sendBlock} from '@renderer/utils/blocks';
+import yup from '@renderer/utils/forms/yup';
+import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
+import {getBankTxFee, getPrimaryValidatorTxFee} from '@renderer/utils/transactions';
 
-import SendCoinsModalFields, { FormValues } from "./SendCoinsModalFields";
-import "./SendCoinsModal.scss";
+import SendCoinsModalFields, {FormValues} from './SendCoinsModalFields';
+import './SendCoinsModal.scss';
 
 const COIN_AMOUNT_CEILING = 100_000_000;
 

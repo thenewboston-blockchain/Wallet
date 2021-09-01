@@ -9,7 +9,7 @@ import {displayToast, ToastType} from '@renderer/utils/toast';
 import * as S from './Styles';
 
 const formatAccountNumber = (accountNumber: string): string => {
-  const length = accountNumber.length;
+  const {length} = accountNumber;
 
   return `${accountNumber.slice(0, length / 2)}
   ${accountNumber.slice(length / 2)}`;

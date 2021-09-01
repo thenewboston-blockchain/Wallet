@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import UAccountOverviewGraph from './AccountOverviewGraph';
 
 // Temp
 import Card from '@renderer/components/Card';
 // Temp end
+import UAccountOverviewGraph from './AccountOverviewGraph';
 
 const gap = 16;
 

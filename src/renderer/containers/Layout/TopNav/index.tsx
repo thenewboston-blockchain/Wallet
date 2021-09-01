@@ -97,8 +97,8 @@ const TopNav: SFC = ({className}) => {
       <S.SectionWrapper>
         <S.ChangeBankText onClick={toggleActiveBankModal}>Change Active Bank</S.ChangeBankText>
         <S.Icon
+          $dev
           as={DropdownMenuButton}
-          $dev={true}
           direction={DropdownMenuDirection.left}
           icon={IconType.devTo}
           options={devDropdownMenuItems}

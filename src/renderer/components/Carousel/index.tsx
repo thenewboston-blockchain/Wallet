@@ -28,9 +28,9 @@ const Carousel: FC<CarouselProps> = ({children, className}) => {
   };
 
   const renderDots = useCallback((): ReactNode => {
-    let dots: ReactNode[] = [];
+    const dots: ReactNode[] = [];
 
-    for (let i = 0; i < numOfSlides; i++) {
+    for (let i = 0; i < numOfSlides; i += 1) {
       dots.push(<S.Dot key={i} isActive={i === currentSlide} onClick={() => setCurrentSlide(i)} />);
     }
 
@@ -50,6 +50,7 @@ const Carousel: FC<CarouselProps> = ({children, className}) => {
         <S.SlideContainerWrapper>
           <S.SlideContainer selectedIndex={currentSlide}>
             {Children.map(children, (slide, i) => {
+              // eslint-disable-next-line react/no-array-index-key
               return <Fragment key={i}>{slide}</Fragment>;
             })}
           </S.SlideContainer>

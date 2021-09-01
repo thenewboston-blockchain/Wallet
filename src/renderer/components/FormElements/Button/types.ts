@@ -16,5 +16,6 @@ export enum ButtonType {
 
 export enum ButtonVariant {
   contained = 'contained',
+  link = 'link',
   outlined = 'outlined',
 }

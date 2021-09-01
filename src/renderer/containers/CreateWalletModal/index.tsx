@@ -10,16 +10,12 @@ const initialValues = {
   nickname: '',
 };
 
-type FormValues = typeof initialValues;
-
 type ComponentProps = ModalProps;
 
 const CreateWalletModal: FC<ComponentProps> = ({close}) => {
-  const [submitting, setSubmitting] = useState<boolean>(false);
+  const [submitting] = useState<boolean>(false);
 
-  const handleSubmit = async ({nickname}: FormValues): Promise<void> => {
-    console.log('hello', nickname);
-  };
+  const handleSubmit = async (): Promise<void> => {};
 
   const validationSchema = useMemo(
     () =>

@@ -36,7 +36,7 @@ const Switch: SFC<BaseSwitchProps> = ({checked, className, disabled = false, id,
         width={24}
       />
     ),
-    [checked, className, disabled, id, name, onChange],
+    [checked, className, disabled, id, label, name, onChange],
   );
 
   if (label) {

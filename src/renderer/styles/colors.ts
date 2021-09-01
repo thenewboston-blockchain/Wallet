@@ -1,3 +1,5 @@
+/* eslint-disable sort-keys */
+
 const colors = {
   background: '#f1f6fa',
   black: '#000',

@@ -2,7 +2,7 @@ import React, {FC, useMemo} from 'react';
 
 import AccountLink from '@renderer/components/AccountLink';
 import ExpandableText from '@renderer/components/ExpandableText';
-import PaginatedTable, {PageTableOldData, PageTableOldItems} from '@renderer/components/PaginatedTable';
+import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
 import {VALIDATOR_ACCOUNTS} from '@renderer/constants/actions';
 import {useAddress, useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
 import {ValidatorAccount} from '@renderer/types';
@@ -25,7 +25,7 @@ const ValidatorAccounts: FC = () => {
     totalPages,
   } = usePaginatedNetworkDataFetcher<ValidatorAccount>(VALIDATOR_ACCOUNTS, address);
 
-  const validatorAccountsTableData = useMemo<PageTableOldData[]>(
+  const validatorAccountsTableData = useMemo<PageTableData[]>(
     () =>
       validatorAccounts.map((account) => ({
         key: account.id,
@@ -36,7 +36,7 @@ const ValidatorAccounts: FC = () => {
     [expanded, validatorAccounts],
   );
 
-  const pageTableItems = useMemo<PageTableOldItems>(
+  const pageTableItems = useMemo<PageTableItems>(
     () => ({
       data: validatorAccountsTableData,
       headers: {

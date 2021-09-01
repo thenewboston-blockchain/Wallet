@@ -1,5 +1,4 @@
-import React from 'react';
-import {HTMLAttributes} from 'react';
+import React, {HTMLAttributes} from 'react';
 
 export interface SvgIconProps {
   size: number;

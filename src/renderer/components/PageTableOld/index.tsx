@@ -11,21 +11,21 @@ interface Header {
   [tableKey: string]: ReactNode;
 }
 
-export interface PageTableOldData {
+export interface PageTableData {
   key: string;
   [tableKey: string]: ReactNode;
 }
 
-export interface PageTableOldItems {
+export interface PageTableItems {
   orderedKeys: number[];
   headers: Header;
-  data: PageTableOldData[];
+  data: PageTableData[];
 }
 
 export interface PageTableOldProps {
   className?: string;
   handleSelectRow?(i: number): GenericVoidFunction;
-  items: PageTableOldItems;
+  items: PageTableItems;
   selectedData?: {[key: string]: any};
 }
 

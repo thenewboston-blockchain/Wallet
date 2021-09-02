@@ -1,3 +1,5 @@
+/* eslint-disable sort-keys */
+
 import {css} from 'styled-components';
 import * as fontFamily from './fontFamilies';
 import * as fontSize from './fontSizes';

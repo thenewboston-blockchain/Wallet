@@ -2,7 +2,7 @@ import React, {FC, useMemo} from 'react';
 
 import AccountLink from '@renderer/components/AccountLink';
 import ExpandableText from '@renderer/components/ExpandableText';
-import PaginatedTable, {PageTableOldData, PageTableOldItems} from '@renderer/components/PaginatedTable';
+import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
 import {BANK_BLOCKS} from '@renderer/constants/actions';
 import {useAddress, useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
 import {BlockResponse} from '@renderer/types';
@@ -29,7 +29,7 @@ const BankBlocks: FC = () => {
     totalPages,
   } = usePaginatedNetworkDataFetcher<BlockResponse>(BANK_BLOCKS, address);
 
-  const bankBlocksTableData = useMemo<PageTableOldData[]>(
+  const bankBlocksTableData = useMemo<PageTableData[]>(
     () =>
       bankBlocks.map((block) => ({
         key: block.id,
@@ -43,7 +43,7 @@ const BankBlocks: FC = () => {
     [bankBlocks, expanded],
   );
 
-  const pageTableItems = useMemo<PageTableOldItems>(
+  const pageTableItems = useMemo<PageTableItems>(
     () => ({
       data: bankBlocksTableData,
       headers: {

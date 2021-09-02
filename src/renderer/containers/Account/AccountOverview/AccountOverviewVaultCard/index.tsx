@@ -5,9 +5,7 @@ import {AccountContext} from '@renderer/context';
 import {AccountSection, SFC} from '@renderer/types';
 import * as S from './Styles';
 
-interface AccountOverviewVaultCardProps {}
-
-const AccountOverviewVaultCard: SFC<AccountOverviewVaultCardProps> = ({className}) => {
+const AccountOverviewVaultCard: SFC = ({className}) => {
   const {accountNumber} = useContext(AccountContext);
 
   return (

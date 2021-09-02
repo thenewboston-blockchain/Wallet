@@ -7,7 +7,7 @@ import {Icon, IconType} from '@thenewboston/ui';
 import ExpandableText from '@renderer/components/ExpandableText';
 import {Button, Input, Loader} from '@renderer/components/FormElements';
 import PageTableOld from '@renderer/components/PageTableOld';
-import {PageTableOldData, PageTableOldItems} from '@renderer/components/PaginatedTable';
+import {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
 import RequiredAsterisk from '@renderer/components/RequiredAsterisk';
 import {fetchAccountBalance} from '@renderer/dispatchers/balances';
 import {
@@ -138,7 +138,7 @@ const BulkPurchaseConfirmationServicesModalFields: FC<ComponentProps> = ({
     [dispatchFormValues, submitting],
   );
 
-  const validatorsTableData = useMemo<PageTableOldData[]>(
+  const validatorsTableData = useMemo<PageTableData[]>(
     () =>
       orderedNodeIdentifiers
         .filter((nodeIdentifier) => !!formValues[nodeIdentifier])
@@ -185,7 +185,7 @@ const BulkPurchaseConfirmationServicesModalFields: FC<ComponentProps> = ({
     ],
   );
 
-  const pageTableItems = useMemo<PageTableOldItems>(
+  const pageTableItems = useMemo<PageTableItems>(
     () => ({
       data: validatorsTableData,
       headers: {

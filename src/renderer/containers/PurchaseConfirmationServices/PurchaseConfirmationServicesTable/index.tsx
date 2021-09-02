@@ -2,7 +2,7 @@ import React, {Dispatch, FC, useCallback, useMemo} from 'react';
 import clsx from 'clsx';
 
 import ExpandableText from '@renderer/components/ExpandableText';
-import PaginatedTable, {PageTableOldData, PageTableOldItems} from '@renderer/components/PaginatedTable';
+import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
 import {PAGINATED_RESULTS_LIMIT} from '@renderer/config';
 import {BANK_VALIDATORS} from '@renderer/constants/actions';
 import {useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
@@ -59,7 +59,7 @@ const PurchaseConfirmationServicesTable: FC<ComponentProps> = ({
     [bankValidators, currentPage, dispatchSelectedValidators],
   );
 
-  const bankValidatorsTableData = useMemo<PageTableOldData[]>(
+  const bankValidatorsTableData = useMemo<PageTableData[]>(
     () =>
       bankValidators.map((validator, index) => ({
         key: validator.node_identifier,
@@ -80,7 +80,7 @@ const PurchaseConfirmationServicesTable: FC<ComponentProps> = ({
     [bankValidators, expanded, handleCheckboxClick],
   );
 
-  const pageTableItems = useMemo<PageTableOldItems>(
+  const pageTableItems = useMemo<PageTableItems>(
     () => ({
       data: bankValidatorsTableData,
       headers: {

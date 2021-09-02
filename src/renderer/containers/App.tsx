@@ -1,19 +1,19 @@
-import React, { FC, ReactNode, useEffect, useState } from "react";
-import { hot } from "react-hot-loader/root";
-import { useDispatch, useSelector } from "react-redux";
-import { MemoryRouter as Router } from "react-router-dom";
-import { Flip, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import electronIsDev from "electron-is-dev";
+import React, {FC, ReactNode, useEffect, useState} from 'react';
+import {hot} from 'react-hot-loader/root';
+import {useDispatch, useSelector} from 'react-redux';
+import {MemoryRouter as Router} from 'react-router-dom';
+import {Flip, ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import electronIsDev from 'electron-is-dev';
 
-import CreateAccountModal from "@renderer/containers/Account/CreateAccountModal";
-import Connect from "@renderer/containers/Connect";
-import Layout from "@renderer/containers/Layout";
-import { connect, connectAndStoreLocalData, fetchNonDefaultNodeConfigs } from "@renderer/dispatchers/app";
-import { useBooleanState, useCleanSockets, useCrawlSockets, useWebSockets } from "@renderer/hooks";
-import { getActiveBank, getActiveBankConfig } from "@renderer/selectors";
-import { AppDispatch, ProtocolType } from "@renderer/types";
-import { displayErrorToast, displayToast, ToastType } from "@renderer/utils/toast";
+import CreateAccountModal from '@renderer/containers/Account/CreateAccountModal';
+import Connect from '@renderer/containers/Connect';
+import Layout from '@renderer/containers/Layout';
+import {connect, connectAndStoreLocalData, fetchNonDefaultNodeConfigs} from '@renderer/dispatchers/app';
+import {useBooleanState, useCleanSockets, useCrawlSockets, useWebSockets} from '@renderer/hooks';
+import {getActiveBank, getActiveBankConfig} from '@renderer/selectors';
+import {AppDispatch, ProtocolType} from '@renderer/types';
+import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
 
 const DEFAULT_BANK = {
   ip_address: '13.57.215.62',

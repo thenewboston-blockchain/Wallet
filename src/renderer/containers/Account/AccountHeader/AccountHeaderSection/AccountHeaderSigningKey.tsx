@@ -30,7 +30,7 @@ const AccountHeaderSigningKey: SFC<AccountHeaderSigningKeyProps> = ({className, 
 
   useEffect(() => {
     hideSigningKey();
-  }, [location.pathname]);
+  }, [hideSigningKey, location.pathname]);
 
   const handleDownloadBlur = useCallback(() => {
     signingKeyDownloadRef.current?.blur();

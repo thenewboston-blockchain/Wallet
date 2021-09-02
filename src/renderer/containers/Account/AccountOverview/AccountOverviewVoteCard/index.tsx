@@ -4,9 +4,7 @@ import {Button} from '@renderer/components/FormElements';
 import {SFC} from '@renderer/types';
 import * as S from './Styles';
 
-interface AccountOverviewVoteCardProps {}
-
-const AccountOverviewVoteCard: SFC<AccountOverviewVoteCardProps> = ({className}) => {
+const AccountOverviewVoteCard: SFC = ({className}) => {
   return (
     <S.Card className={className}>
       <S.VoteImage />

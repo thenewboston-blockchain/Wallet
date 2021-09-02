@@ -1,25 +1,25 @@
-import React, { FC, useMemo, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import React, {FC, useMemo, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {useHistory} from 'react-router-dom';
 
-import Modal from "@renderer/components/Modal";
-import { fetchValidatorConfig } from "@renderer/dispatchers/validators";
-import { getManagedValidators } from "@renderer/selectors";
-import { setManagedValidator } from "@renderer/store/app";
-import { AppDispatch, ProtocolType } from "@renderer/types";
-import { formatAddressFromNode, formatPathFromNode } from "@renderer/utils/address";
+import Modal from '@renderer/components/Modal';
+import {fetchValidatorConfig} from '@renderer/dispatchers/validators';
+import {getManagedValidators} from '@renderer/selectors';
+import {setManagedValidator} from '@renderer/store/app';
+import {AppDispatch, ProtocolType} from '@renderer/types';
+import {formatAddressFromNode, formatPathFromNode} from '@renderer/utils/address';
 import {
   getAddressFormField,
   getIpAddressField,
   getNicknameField,
   getPortField,
-  getProtocolField
-} from "@renderer/utils/forms/fields";
-import yup from "@renderer/utils/forms/yup";
-import { displayErrorToast, displayToast, ToastType } from "@renderer/utils/toast";
+  getProtocolField,
+} from '@renderer/utils/forms/fields';
+import yup from '@renderer/utils/forms/yup';
+import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
 
-import AddValidatorModalFields from "./AddValidatorModalFields";
-import "./AddValidatorModal.scss";
+import AddValidatorModalFields from './AddValidatorModalFields';
+import './AddValidatorModal.scss';
 
 const initialValues = {
   form: '',

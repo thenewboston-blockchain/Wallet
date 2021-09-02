@@ -15,39 +15,39 @@ interface SlideProps {
 
 const coinSlides: SlideProps[] = [
   {
+    description: <>Boost a node into the Top 20 so they get scheduled to be PV. Learn More</>,
     src: boostNode,
     title: 'Deposit coins to boost a node',
-    description: <>Boost a node into the Top 20 so they get scheduled to be PV. Learn More</>,
   },
   {
+    description: <>Points let you perform a variety of actions within the network. Learn More</>,
     src: pointsIllustration,
     title: 'Depositing coins gives you points',
-    description: <>Points let you perform a variety of actions within the network. Learn More</>,
   },
   {
-    src: boostNode,
-    title: 'Benefit the entire network',
     description: (
       <>Depositing coins increases the value of all coins by reducing overall available supply. Learn More</>
     ),
+    src: boostNode,
+    title: 'Benefit the entire network',
   },
 ];
 
 const walletSlides: SlideProps[] = [
   {
+    description: <>Governors dictate the direction of the blockchain. Learn More</>,
     src: voteForGovernors,
     title: 'Vote for governors',
-    description: <>Governors dictate the direction of the blockchain. Learn More</>,
   },
   {
+    description: <>Create a custom name and be identified by it. Learn More</>,
     src: publicUsername,
     title: 'Gain a public username',
-    description: <>Create a custom name and be identified by it. Learn More</>,
   },
   {
+    description: <>You can access your community public social profile. Learn More</>,
     src: tnbProfile,
     title: 'Access your TNB Profile',
-    description: <>You can access your community public social profile. Learn More</>,
   },
 ];
 

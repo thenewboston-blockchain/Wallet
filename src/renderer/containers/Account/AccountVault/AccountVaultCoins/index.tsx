@@ -18,7 +18,7 @@ const pageTableItems: PageTableItems = {
   data: data.map(({key, date, amount, penalty, period}) => ({
     key: key.toString(),
     [TableKeys.datetime]: date,
-    [TableKeys.depositedAmount]: amount.toLocaleString() + '.0000',
+    [TableKeys.depositedAmount]: `${amount.toLocaleString()}.0000`,
     [TableKeys.holdingPeriod]: `${period} blocks left`,
     [TableKeys.penalty]: penalty > 0 ? `${penalty}% (2,000 coins)` : 0,
     [TableKeys.actions]: <S.WithdrawButton>Withdraw</S.WithdrawButton>,
@@ -37,7 +37,8 @@ const pageTableItems: PageTableItems = {
       [TableKeys.penalty]: 'right',
       [TableKeys.actions]: 'right',
     },
-    gridTemplateColumns: 'max-content minmax(max-content, 1fr) minmax(max-content, 2fr) minmax(max-content, 2fr) minmax(max-content, 1fr)',
+    gridTemplateColumns:
+      'max-content minmax(max-content, 1fr) minmax(max-content, 2fr) minmax(max-content, 2fr) minmax(max-content, 1fr)',
   },
   orderedKeys: [
     TableKeys.datetime,

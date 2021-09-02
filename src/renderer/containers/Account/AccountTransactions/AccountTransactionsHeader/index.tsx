@@ -3,7 +3,7 @@ import React from 'react';
 import {SFC} from '@renderer/types';
 
 import AccountBalance from '../../AccountBalance';
-import AccountBreadcrumb from "../../AccountBreadcrumb";
+import AccountBreadcrumb from '../../AccountBreadcrumb';
 import * as S from './Styles';
 
 const AccountTransactionsHeader: SFC = ({className}) => {

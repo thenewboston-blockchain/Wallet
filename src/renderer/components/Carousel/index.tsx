@@ -10,8 +10,8 @@ const Carousel: FC<CarouselProps> = ({children, className}) => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const leftArrowRef = useRef<HTMLDivElement>(null);
   const rightArrowRef = useRef<HTMLDivElement>(null);
-  const leftArrowIsDisabled = currentSlide === 0;
-  const rightArrowIsDisabled = currentSlide === numOfSlides - 1;
+  const inFirstSlide = currentSlide === 0;
+  const inLastSlide = currentSlide === numOfSlides - 1;
 
   const handleChangeSlide = (toSlide: number) => (): void => {
     if (toSlide < 0 || toSlide >= numOfSlides) return;
@@ -43,8 +43,7 @@ const Carousel: FC<CarouselProps> = ({children, className}) => {
       {renderDots()}
       <S.MainContent>
         <S.ArrowLeftIcon
-          disabled={leftArrowIsDisabled}
-          onClick={!leftArrowIsDisabled ? handleChangeSlide(currentSlide - 1) : undefined}
+          onClick={!inFirstSlide ? handleChangeSlide(currentSlide - 1) : handleChangeSlide(numOfSlides - 1)}
           ref={leftArrowRef}
         />
         <S.SlideContainerWrapper>
@@ -56,8 +55,7 @@ const Carousel: FC<CarouselProps> = ({children, className}) => {
           </S.SlideContainer>
         </S.SlideContainerWrapper>
         <S.ArrowRightIcon
-          disabled={rightArrowIsDisabled}
-          onClick={!rightArrowIsDisabled ? handleChangeSlide(currentSlide + 1) : undefined}
+          onClick={!inLastSlide ? handleChangeSlide(currentSlide + 1) : handleChangeSlide(0)}
           ref={rightArrowRef}
         />
       </S.MainContent>

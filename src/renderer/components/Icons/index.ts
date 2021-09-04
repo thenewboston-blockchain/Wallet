@@ -5,6 +5,8 @@ import CheckCircleIcon from './CheckCircleIcon';
 import ChevronLeftIcon from './ChevronLeftIcon';
 import ChevronRightIcon from './ChevronRightIcon';
 import ContentCopyIcon from './ContentCopyIcon';
+import DevToIcon from './DevToIcon';
+import DotsVerticalIcon from './DotsVerticalIcon';
 import DownloadIcon from './DownloadIcon';
 import EyeIcon from './EyeIcon';
 import EyeOffIcon from './EyeOffIcon';
@@ -24,6 +26,8 @@ export {
   ChevronLeftIcon,
   ChevronRightIcon,
   ContentCopyIcon,
+  DevToIcon,
+  DotsVerticalIcon,
   DownloadIcon,
   EyeIcon,
   EyeOffIcon,

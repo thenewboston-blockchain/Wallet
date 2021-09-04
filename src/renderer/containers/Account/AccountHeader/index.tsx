@@ -1,11 +1,11 @@
 import React, {ReactNode, useCallback, useContext, useMemo} from 'react';
 
-import DropdownMenuButton from '@renderer/components/DropdownMenuButton';
 import SendCoinsModal from '@renderer/containers/Account/SendCoinsModal';
 import {AccountContext} from '@renderer/context';
 import {useBooleanState} from '@renderer/hooks';
 import {AccountType, SFC} from '@renderer/types';
 
+import AccountHeaderDropdownContainer from './AccountHeaderDropdownContainer';
 import {AccountHeaderAccountNumber, AccountHeaderNickname, AccountHeaderSigningKey} from './AccountHeaderSection';
 import * as S from './Styles';
 
@@ -72,7 +72,7 @@ const AccountHeader: SFC = ({className}) => {
       </S.LeftContainer>
       <S.RightContainer>
         <S.SendCoinsButton onClick={toggleSendCoinsModal}>Send Coins</S.SendCoinsButton>
-        <DropdownMenuButton options={[]} />
+        <AccountHeaderDropdownContainer />
       </S.RightContainer>
       {sendCoinsModalIsOpen && (
         <SendCoinsModal

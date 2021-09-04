@@ -183,13 +183,5 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "babel": {
-    "presets": [
-      "react-app"
-    ]
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   }
 }

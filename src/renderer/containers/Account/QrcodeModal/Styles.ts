@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ModalContentContainer = styled.div`
+export const Container = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;

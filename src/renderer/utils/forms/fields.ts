@@ -41,3 +41,12 @@ export const getNicknameField = (managedNodes?: Dict<Nickname>, ownNickname?: st
 export const getPortField = () => yup.number().integer().required(REQUIRED_FIELD_ERROR);
 
 export const getProtocolField = () => yup.string().required(REQUIRED_FIELD_ERROR);
+
+const MINMAX = 'Must be 4 - 16 characters';
+export const getUsernameField = () =>
+  yup
+    .string()
+    .required(REQUIRED_FIELD_ERROR)
+    .matches(/^[a-zA-Z0-9]*$/, 'Special characters are not allowed')
+    .min(4, MINMAX)
+    .max(16, MINMAX);

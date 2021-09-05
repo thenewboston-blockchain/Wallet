@@ -1,20 +1,16 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import React, {ChangeEvent, FC, FocusEvent} from 'react';
-import clsx from 'clsx';
 import {ErrorMessage, Field} from 'formik';
-import {TextField as MuiTextField} from '@material-ui/core';
-import {bemify} from '@thenewboston/utils';
 import {useFormContext} from '@renderer/hooks';
 
-import './TextField.scss';
+import * as S from './Styles';
 
 export interface BaseTextFieldProps {
   className?: string;
   disabled?: boolean;
   focused?: boolean;
-  fullWidth?: boolean;
-  label?: string;
+  label: string;
   name?: string;
   onBlur?(e: FocusEvent<HTMLInputElement>): void;
   onChange?(e: ChangeEvent<HTMLInputElement>): void;
@@ -28,7 +24,6 @@ const TextField: FC<BaseTextFieldProps> = ({
   className,
   disabled = false,
   focused = false,
-  fullWidth = true,
   label,
   name,
   onBlur,
@@ -45,26 +40,13 @@ const TextField: FC<BaseTextFieldProps> = ({
 
   const baseProps = {
     autoFocus: focused,
-    className: clsx('TextField', className, {
-      'TextField--error': error,
-      ...bemify(className, '--error', error),
-    }),
+    className,
     disabled,
-    fullWidth,
     helperText,
-    InputLabelProps: {className: clsx('TextField__label', {...bemify(className, '__label')})},
     label,
     placeholder,
     required,
     type,
-  };
-
-  const muiProps: {
-    size: 'small' | 'medium';
-    variant: 'outlined';
-  } = {
-    size: 'small',
-    variant: 'outlined',
   };
 
   const nonFormikProps = {
@@ -74,9 +56,9 @@ const TextField: FC<BaseTextFieldProps> = ({
   };
 
   if (name) {
-    return <Field {...baseProps} {...muiProps} as={MuiTextField} error={error} name={name} />;
+    return <Field {...baseProps} as={S.TextField} error={error} name={name} />;
   }
-  return <MuiTextField {...baseProps} {...muiProps} {...nonFormikProps} />;
+  return <S.TextField {...baseProps} {...nonFormikProps} />;
 };
 
 export default TextField;

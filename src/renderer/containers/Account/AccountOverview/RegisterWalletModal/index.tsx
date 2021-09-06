@@ -48,6 +48,7 @@ const RegisterWalletModal: SFC<RegisterWalletModalProps> = ({className, close}) 
       validationSchema={validationSchema}
     >
       <RegisterWalletModalFields />
+      Username Fee
     </Modal>
   );
 };

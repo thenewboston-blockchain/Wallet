@@ -1,4 +1,5 @@
 import React, {ReactNode} from 'react';
+import benefitGraph from '../assets/BenefitGraph.png';
 import boostNode from '../assets/BoostNode.png';
 import pointsIllustration from '../assets/PointsIllustration.png';
 import publicUsername from '../assets/PublicUsername.png';
@@ -28,7 +29,7 @@ const coinSlides: SlideProps[] = [
     description: (
       <>Depositing coins increases the value of all coins by reducing overall available supply. Learn More</>
     ),
-    src: boostNode,
+    src: benefitGraph,
     title: 'Benefit the entire network',
   },
 ];

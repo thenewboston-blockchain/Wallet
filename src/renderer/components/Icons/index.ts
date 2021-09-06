@@ -11,6 +11,7 @@ import DotsVerticalIcon from './DotsVerticalIcon';
 import DownloadIcon from './DownloadIcon';
 import EyeIcon from './EyeIcon';
 import EyeOffIcon from './EyeOffIcon';
+import InformationOutlineIcon from './InformationOutlineIcon';
 import LoadingIcon from './LoadingIcon';
 import PlayIcon from './PlayIcon';
 import PlusIcon from './PlusIcon';
@@ -33,6 +34,7 @@ export {
   DownloadIcon,
   EyeIcon,
   EyeOffIcon,
+  InformationOutlineIcon,
   LoadingIcon,
   PlayIcon,
   PlusIcon,

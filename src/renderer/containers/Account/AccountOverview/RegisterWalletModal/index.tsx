@@ -1,22 +1,21 @@
 import React, {useState} from 'react';
 
-import {TextField} from '@renderer/components/FormElements';
+import {REQUIRED_FIELD_ERROR} from '@renderer/constants/form-validation';
 import Modal from '@renderer/components/Modal';
 import {SFC} from '@renderer/types';
-import {getUsernameField} from '@renderer/utils/forms/fields';
 import yup from '@renderer/utils/forms/yup';
 import {displayToast, ToastType} from '@renderer/utils/toast';
 
-import * as S from './Styles';
+import RegisterWalletModalFields, {initialValues, FormValues} from './RegisterWalletModalFields';
 
-const initialValues = {
-  username: '',
-};
-
-type FormValues = typeof initialValues;
-
+const MINMAX = 'Must be 4 - 16 characters';
 const validationSchema = yup.object().shape({
-  username: getUsernameField(),
+  username: yup
+    .string()
+    .required(REQUIRED_FIELD_ERROR)
+    .matches(/^[a-zA-Z0-9]*$/, 'Special characters are not allowed')
+    .min(4, MINMAX)
+    .max(16, MINMAX),
 });
 
 interface RegisterWalletModalProps {
@@ -48,9 +47,7 @@ const RegisterWalletModal: SFC<RegisterWalletModalProps> = ({className, close}) 
       submitting={submitting}
       validationSchema={validationSchema}
     >
-      <S.Container>
-        <TextField label="Enter username" name="username" />
-      </S.Container>
+      <RegisterWalletModalFields />
     </Modal>
   );
 };

@@ -1,3 +1,4 @@
+import AlertIcon from './AlertIcon';
 import AlertCircleOutlineIcon from './AlertCircleOutlineIcon';
 import ArrowLeftIcon from './ArrowLeftIcon';
 import ArrowRightIcon from './ArrowRightIcon';
@@ -19,6 +20,7 @@ import RocketLaunchIcon from './RocketLaunchIcon';
 import {IconProps} from './types';
 
 export {
+  AlertIcon,
   AlertCircleOutlineIcon,
   ArrowLeftIcon,
   ArrowRightIcon,

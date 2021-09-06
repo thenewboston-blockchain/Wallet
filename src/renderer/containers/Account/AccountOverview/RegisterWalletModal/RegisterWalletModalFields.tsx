@@ -15,10 +15,10 @@ const RegisterWalletModalFields: SFC = ({className}) => {
   const [inputIsFocused, setInputIsFocused] = useState<boolean>(false);
   const [isValidatingField, setIsValidatingField] = useState<boolean>(false);
   const [usernameIsValid, setUsernameIsValid] = useState<boolean>(false);
-  const {isValid, setFieldError} = useFormContext2();
+  const {dirty, isValid, setFieldError} = useFormContext2();
 
   const handleInputBlur = async (e: FocusEvent<HTMLInputElement>): Promise<void> => {
-    if (!isValid) return;
+    if (!isValid || !dirty) return;
 
     const text = e.currentTarget.value.toLowerCase();
     setIsValidatingField(true);

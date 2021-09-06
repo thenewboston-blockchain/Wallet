@@ -1,23 +1,20 @@
 import React, {useContext, useEffect, useMemo, useRef, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 import {AccountContext} from '@renderer/context';
 import {fetchAccountBalance} from '@renderer/dispatchers/balances';
-import {getAccountBalances} from '@renderer/selectors';
+import {useAccountBalance} from '@renderer/hooks';
 import {AppDispatch, SFC} from '@renderer/types';
 import {displayErrorToast} from '@renderer/utils/toast';
 import * as S from './Styles';
 
 const AccountBalance: SFC = ({className}) => {
+  const balance = useAccountBalance();
   const {accountNumber} = useContext(AccountContext);
   const dispatch = useDispatch<AppDispatch>();
   const refreshIconRef = useRef<HTMLDivElement>(null);
-  const accountBalances = useSelector(getAccountBalances);
   const [balancedUpdated, setBalanceUpdated] = useState<boolean>(false);
   const [refreshDisabled, setRefreshDisabled] = useState<boolean>(false);
-
-  const accountBalanceObject = accountBalances[accountNumber];
-  const balance = accountBalanceObject ? accountBalanceObject.balance : null;
 
   const balanceStr = useMemo(() => {
     if (balance === null) return '-';

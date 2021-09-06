@@ -7,9 +7,11 @@ import yup from '@renderer/utils/forms/yup';
 import {displayToast, ToastType} from '@renderer/utils/toast';
 
 import RegisterWalletModalFields, {initialValues, FormValues} from './RegisterWalletModalFields';
+import RegisterWalletModalTable from './RegisterWalletModalTable';
 
 const MINMAX = 'Must be 4 - 16 characters';
 const validationSchema = yup.object().shape({
+  sufficientFunds: yup.boolean().oneOf([true], 'You have insufficient coins.'),
   username: yup
     .string()
     .required(REQUIRED_FIELD_ERROR)
@@ -48,7 +50,7 @@ const RegisterWalletModal: SFC<RegisterWalletModalProps> = ({className, close}) 
       validationSchema={validationSchema}
     >
       <RegisterWalletModalFields />
-      Username Fee
+      <RegisterWalletModalTable />
     </Modal>
   );
 };

@@ -4,7 +4,7 @@ import yup from './yup';
 
 export const getAddressFormField = (managedNodes: Dict<ManagedNode>, errorMessage: string) =>
   yup.string().when(['ipAddress', 'port'], {
-    is: (ipAddress, port) =>
+    is: (ipAddress: string, port: number) =>
       !!Object.values(managedNodes).find(
         (managedNode) => managedNode.ip_address === ipAddress && managedNode.port === port,
       ),

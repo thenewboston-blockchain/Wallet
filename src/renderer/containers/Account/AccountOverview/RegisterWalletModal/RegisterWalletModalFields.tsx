@@ -1,21 +1,37 @@
-import React, {FocusEvent, ReactNode, useMemo, useState} from 'react';
+import React, {FocusEvent, ReactNode, useEffect, useMemo, useState} from 'react';
 
 import {HelperTextType, TextField} from '@renderer/components/FormElements';
-import {useFormContext2} from '@renderer/hooks/useFormContext';
+import {useAccountBalance, useFormContext2} from '@renderer/hooks';
 import {SFC} from '@renderer/types';
+
+import {NODE_FEE, PV_FEE, USERNAME_FEE} from './constants';
 import * as S from './Styles';
 
+const TOTAL_FEES = NODE_FEE + PV_FEE + USERNAME_FEE;
+
 export const initialValues = {
+  sufficientFunds: false,
   username: '',
 };
 
 export type FormValues = typeof initialValues;
 
 const RegisterWalletModalFields: SFC = ({className}) => {
+  const accountBalance = useAccountBalance();
   const [inputIsFocused, setInputIsFocused] = useState<boolean>(false);
   const [isValidatingField, setIsValidatingField] = useState<boolean>(false);
   const [usernameIsValid, setUsernameIsValid] = useState<boolean>(false);
-  const {dirty, isValid, setFieldError} = useFormContext2();
+  const {dirty, errors, isValid, setFieldError, setFieldValue} = useFormContext2<FormValues>();
+
+  const insufficientFundsError = errors?.sufficientFunds;
+
+  useEffect(() => {
+    if (!accountBalance || accountBalance < TOTAL_FEES) {
+      setFieldValue?.('sufficientFunds', false);
+    } else {
+      setFieldValue?.('sufficientFunds', true);
+    }
+  }, [accountBalance, setFieldValue]);
 
   const handleInputBlur = async (e: FocusEvent<HTMLInputElement>): Promise<void> => {
     if (!isValid || !dirty) return;
@@ -64,6 +80,12 @@ const RegisterWalletModalFields: SFC = ({className}) => {
 
   return (
     <S.Container className={className}>
+      {insufficientFundsError ? (
+        <S.InsufficientFunds>
+          <S.AlertIcon />
+          {insufficientFundsError}
+        </S.InsufficientFunds>
+      ) : null}
       <TextField
         helperText={helperText}
         helperTextType={helperTextType}

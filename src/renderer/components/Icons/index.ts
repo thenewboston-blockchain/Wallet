@@ -5,6 +5,7 @@ import ArrowRightIcon from './ArrowRightIcon';
 import CheckCircleIcon from './CheckCircleIcon';
 import ChevronLeftIcon from './ChevronLeftIcon';
 import ChevronRightIcon from './ChevronRightIcon';
+import CloseIcon from './CloseIcon';
 import ContentCopyIcon from './ContentCopyIcon';
 import DevToIcon from './DevToIcon';
 import DotsVerticalIcon from './DotsVerticalIcon';
@@ -28,6 +29,7 @@ export {
   CheckCircleIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
+  CloseIcon,
   ContentCopyIcon,
   DevToIcon,
   DotsVerticalIcon,

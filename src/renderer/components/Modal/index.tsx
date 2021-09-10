@@ -2,7 +2,6 @@ import React, {CSSProperties, FC, ReactNode, useMemo} from 'react';
 import {createPortal} from 'react-dom';
 import clsx from 'clsx';
 import noop from 'lodash/noop';
-import {Icon, IconType} from '@thenewboston/ui';
 import {bemify} from '@thenewboston/utils';
 
 import {Form, FormButton, FormButtonProps} from '@renderer/components/FormComponents';
@@ -11,6 +10,7 @@ import Loader from '@renderer/components/FormElements/Loader';
 
 import {GenericFormValues, GenericFunction} from '@renderer/types';
 
+import * as S from './Styles';
 import './Modal.scss';
 
 export interface ModalButtonProps extends FormButtonProps {
@@ -53,7 +53,6 @@ const Modal: FC<ComponentProps> = ({
   ignoreDirty: ignoreDirtyProps = false,
   initialValues = {},
   onSubmit,
-  style,
   submitButton,
   submitting = false,
   validateOnMount,
@@ -150,39 +149,13 @@ const Modal: FC<ComponentProps> = ({
 
   return createPortal(
     <>
-      <div
-        className={clsx('Modal__overlay', {
-          'Modal__overlay--submitting': submitting,
-          ...bemify(className, '__overlay'),
-          ...bemify(className, '__overlay--submitting', submitting),
-        })}
-        onClick={submitting || disableOverlayClick ? noop : close}
-      />
-      <div
-        className={clsx(
-          'Modal',
-          {'Modal--default-position': !style, ...bemify(className, '--default-position', !style)},
-          className,
-        )}
-        style={style}
-      >
-        <div className={clsx('Modal__header', {...bemify(className, '__header')})}>
+      <S.Overlay $submitting={submitting} onClick={submitting || disableOverlayClick ? noop : close} />
+      <S.Container className={className}>
+        <S.Header>
           {typeof header === 'string' ? <h2>{header}</h2> : header}
-          {displayCloseButton && (
-            <Icon
-              className={clsx('Modal__close-icon', {
-                'Modal__close-icon--submitting': submitting,
-                ...bemify(className, '__close-icon'),
-                ...bemify(className, '__close-icon--submitting', submitting),
-              })}
-              disabled={submitting}
-              icon={IconType.close}
-              onClick={close}
-            />
-          )}
-        </div>
+          {displayCloseButton && <S.CloseIcon $submitting={submitting} disabled={submitting} onClick={close} />}
+        </S.Header>
         <Form
-          className={clsx('Modal__form', {...bemify(className, '__form')})}
           initialValues={initialValues}
           onSubmit={onSubmit || noop}
           validateOnMount={validateOnMount}
@@ -203,7 +176,7 @@ const Modal: FC<ComponentProps> = ({
             </div>
           )}
         </Form>
-      </div>
+      </S.Container>
     </>,
     document.getElementById('modal-root')!,
   );

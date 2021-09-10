@@ -1,9 +1,12 @@
 import React, {ReactNode, useCallback, useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {ipcRenderer} from 'electron';
-import {IconType} from '@thenewboston/ui';
 
-import DropdownMenuButton, {DropdownMenuDirection, DropdownMenuOption} from '@renderer/components/DropdownMenuButton';
+import DropdownMenuButton, {
+  DropdownMenuDirection,
+  DropdownMenuIcon,
+  DropdownMenuOption,
+} from '@renderer/components/DropdownMenuButton';
 import {ArrowLeftIcon, ArrowRightIcon, RefreshIcon} from '@renderer/components/Icons';
 import Modal from '@renderer/components/Modal';
 import ChangeActiveBankModal from '@renderer/containers/Bank/ChangeActiveBankModal';
@@ -100,7 +103,7 @@ const TopNav: SFC = ({className}) => {
           $dev
           as={DropdownMenuButton}
           direction={DropdownMenuDirection.left}
-          icon={IconType.devTo}
+          icon={DropdownMenuIcon.devTo}
           options={devDropdownMenuItems}
         />
         <Notifications />

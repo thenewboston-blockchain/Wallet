@@ -39,6 +39,8 @@ export const EmptyStateText = styled.h3`
 
 export const Image = styled.img`
   display: block;
+  max-height: 132px;
+  max-width: 372px;
 `;
 
 export const Slide = styled.div`

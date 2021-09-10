@@ -31,13 +31,13 @@ const QrcodeModal: SFC<QrcodeModalProps> = ({accountLabel, accountNumber, classN
 
   return (
     <Modal className={className} close={close} header={accountLabel} hideFooter>
-      <S.ModalContentContainer>
+      <S.Container>
         <Qr text={accountNumber} width={178} />
         <S.AccountNumber>{formatAccountNumber(accountNumber)}</S.AccountNumber>
         <CopyToClipboard text={accountNumber} onCopy={handleCopy}>
           <ContentCopyIcon ref={copyIconRef} />
         </CopyToClipboard>
-      </S.ModalContentContainer>
+      </S.Container>
     </Modal>
   );
 };

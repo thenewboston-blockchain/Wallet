@@ -1,20 +1,19 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React, {ChangeEvent, FC, FocusEvent} from 'react';
-import clsx from 'clsx';
-import {ErrorMessage, Field} from 'formik';
-import {TextField as MuiTextField} from '@material-ui/core';
-import {bemify} from '@thenewboston/utils';
+import React, {ChangeEvent, FocusEvent, ReactNode} from 'react';
+import {Field, FieldInputProps} from 'formik';
 import {useFormContext} from '@renderer/hooks';
+import {SFC} from '@renderer/types';
 
-import './TextField.scss';
+import HelperText, {HelperTextType} from '../HelperText';
+import * as S from './Styles';
 
 export interface BaseTextFieldProps {
-  className?: string;
   disabled?: boolean;
   focused?: boolean;
-  fullWidth?: boolean;
-  label?: string;
+  helperText?: ReactNode;
+  helperTextType?: HelperTextType;
+  label: string;
   name?: string;
   onBlur?(e: FocusEvent<HTMLInputElement>): void;
   onChange?(e: ChangeEvent<HTMLInputElement>): void;
@@ -24,11 +23,12 @@ export interface BaseTextFieldProps {
   value?: string;
 }
 
-const TextField: FC<BaseTextFieldProps> = ({
+const TextField: SFC<BaseTextFieldProps> = ({
   className,
   disabled = false,
   focused = false,
-  fullWidth = true,
+  helperText,
+  helperTextType,
   label,
   name,
   onBlur,
@@ -41,30 +41,14 @@ const TextField: FC<BaseTextFieldProps> = ({
   const {errors, touched} = useFormContext();
   const error = name ? !!errors[name] && !!touched[name] : false;
 
-  const helperText = name ? <ErrorMessage name={name} /> : undefined;
-
   const baseProps = {
     autoFocus: focused,
-    className: clsx('TextField', className, {
-      'TextField--error': error,
-      ...bemify(className, '--error', error),
-    }),
+    className,
     disabled,
-    fullWidth,
-    helperText,
-    InputLabelProps: {className: clsx('TextField__label', {...bemify(className, '__label')})},
     label,
     placeholder,
     required,
     type,
-  };
-
-  const muiProps: {
-    size: 'small' | 'medium';
-    variant: 'outlined';
-  } = {
-    size: 'small',
-    variant: 'outlined',
   };
 
   const nonFormikProps = {
@@ -73,10 +57,34 @@ const TextField: FC<BaseTextFieldProps> = ({
     value,
   };
 
-  if (name) {
-    return <Field {...baseProps} {...muiProps} as={MuiTextField} error={error} name={name} />;
-  }
-  return <MuiTextField {...baseProps} {...muiProps} {...nonFormikProps} />;
+  return (
+    <>
+      {name ? (
+        <Field name={name}>
+          {({field}: {field: FieldInputProps<string>}) => (
+            <S.TextField
+              {...baseProps}
+              {...field}
+              error={error}
+              onBlur={(e: FocusEvent<HTMLInputElement>) => {
+                field.onBlur(e);
+                onBlur?.(e);
+              }}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                field.onChange(e);
+                onChange?.(e);
+              }}
+            />
+          )}
+        </Field>
+      ) : (
+        <S.TextField {...baseProps} {...nonFormikProps} />
+      )}
+      <HelperText name={name} type={helperTextType}>
+        {helperText}
+      </HelperText>
+    </>
+  );
 };
 
 export default TextField;

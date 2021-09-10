@@ -124,7 +124,7 @@
     "typescript-plugin-styled-components": "^2.0.0"
   },
   "dependencies": {
-    "@material-ui/core": "^4.11.4",
+    "@material-ui/core": "^4.12.3",
     "@thenewboston/ui": "^0.1.13",
     "@thenewboston/utils": "^1.0.0",
     "app-root-path": "3.0.0",
@@ -139,7 +139,7 @@
     "electron-store": "^5.2.0",
     "electron-updater": "^4.3.5",
     "electron-window-state-manager": "^0.3.2",
-    "formik": "^2.2.6",
+    "formik": "^2.2.9",
     "fs-extra": "^9.0.1",
     "lodash-es": "^4.17.20",
     "mdi-react": "^7.5.0",
@@ -177,7 +177,7 @@
     "webpack-dev-server": "^3.11.0",
     "webpack-manifest-plugin": "^2.2.0",
     "workbox-webpack-plugin": "^5.1.4",
-    "yup": "^0.29.3"
+    "yup": "^0.32.9"
   },
   "husky": {
     "hooks": {

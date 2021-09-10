@@ -11,6 +11,7 @@ interface UseFormContextOutput<V> {
   handleReset: (e?: React.SyntheticEvent<any>) => void;
   handleSubmit: (e?: React.SyntheticEvent<any>) => void;
   isValid: boolean;
+  setFieldError(field: string, errorMsg: string): void;
   setFieldTouched(field: string, isTouched?: boolean, shouldValidate?: boolean): void;
   setFieldValue(field: string, value: any, shouldValidate?: boolean): void;
   touched: FormikTouched<Values>;
@@ -24,6 +25,7 @@ function useFormContext<V = Values>(): UseFormContextOutput<V> {
     handleReset,
     handleSubmit,
     isValid,
+    setFieldError,
     setFieldTouched,
     setFieldValue,
     touched,
@@ -36,6 +38,7 @@ function useFormContext<V = Values>(): UseFormContextOutput<V> {
     handleReset,
     handleSubmit,
     isValid,
+    setFieldError,
     setFieldTouched,
     setFieldValue,
     touched,
@@ -52,6 +55,7 @@ export function useFormContext2<V = Values>(): Partial<UseFormContextOutput<V>> 
   const handleReset = formikContext?.handleReset || undefined;
   const handleSubmit = formikContext?.handleSubmit || undefined;
   const isValid = formikContext?.isValid || undefined;
+  const setFieldError = formikContext?.setFieldError || undefined;
   const setFieldTouched = formikContext?.setFieldTouched || undefined;
   const setFieldValue = formikContext?.setFieldValue || undefined;
   const touched = formikContext?.touched || undefined;
@@ -63,6 +67,7 @@ export function useFormContext2<V = Values>(): Partial<UseFormContextOutput<V>> 
     handleReset,
     handleSubmit,
     isValid,
+    setFieldError,
     setFieldTouched,
     setFieldValue,
     touched,

@@ -1,5 +1,6 @@
 import Button, {BaseButtonProps, ButtonColor, ButtonSize, ButtonType, ButtonVariant} from './Button';
 import Checkbox, {BaseCheckboxProps} from './Checkbox';
+import HelperText, {HelperTextProps, HelperTextType} from './HelperText';
 import Input, {BaseInputProps} from './Input';
 import Loader from './Loader';
 import Radio, {BaseRadioProps} from './Radio';
@@ -23,6 +24,9 @@ export {
   ButtonType,
   ButtonVariant,
   Checkbox,
+  HelperText,
+  HelperTextProps,
+  HelperTextType,
   Input,
   Loader,
   Radio,

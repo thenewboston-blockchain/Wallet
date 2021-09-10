@@ -1,4 +1,5 @@
 import React, {ReactNode, useCallback, useContext, useEffect, useRef} from 'react';
+import CopyToClipboard from 'react-copy-to-clipboard';
 import {useLocation} from 'react-router-dom';
 
 import {AccountContext} from '@renderer/context';
@@ -67,7 +68,9 @@ const AccountHeaderSigningKey: SFC<AccountHeaderSigningKeyProps> = ({className, 
           <S.EyeIcon onClick={toggleSigningKeyIsVisible} size={16} totalSize={20} />
         )}
         <S.DownloadIcon onClick={handleDownloadClick} size={16} totalSize={20} ref={signingKeyDownloadRef} />
-        <S.ContentCopyIcon onClick={handleSigningKeyCopy} size={16} totalSize={20} ref={signingKeyCopyRef} />
+        <CopyToClipboard text={signingKey} onCopy={handleSigningKeyCopy}>
+          <S.ContentCopyIcon size={16} totalSize={20} ref={signingKeyCopyRef} />
+        </CopyToClipboard>
       </S.Body>
     </S.AccountHeaderSection>
   );

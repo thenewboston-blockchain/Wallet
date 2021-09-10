@@ -16,13 +16,8 @@ const Carousel: FC<CarouselProps> = ({children, className}) => {
   const handleChangeSlide = (toSlide: number) => (): void => {
     if (toSlide < 0 || toSlide >= numOfSlides) return;
 
-    if (toSlide < currentSlide) {
-      leftArrowRef.current?.blur();
-    }
-
-    if (toSlide > currentSlide) {
-      rightArrowRef.current?.blur();
-    }
+    leftArrowRef.current?.blur();
+    rightArrowRef.current?.blur();
 
     setCurrentSlide(toSlide);
   };

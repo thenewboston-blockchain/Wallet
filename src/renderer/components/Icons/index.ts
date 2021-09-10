@@ -1,13 +1,18 @@
+import AlertIcon from './AlertIcon';
 import AlertCircleOutlineIcon from './AlertCircleOutlineIcon';
 import ArrowLeftIcon from './ArrowLeftIcon';
 import ArrowRightIcon from './ArrowRightIcon';
 import CheckCircleIcon from './CheckCircleIcon';
 import ChevronLeftIcon from './ChevronLeftIcon';
 import ChevronRightIcon from './ChevronRightIcon';
+import CloseIcon from './CloseIcon';
 import ContentCopyIcon from './ContentCopyIcon';
+import DevToIcon from './DevToIcon';
+import DotsVerticalIcon from './DotsVerticalIcon';
 import DownloadIcon from './DownloadIcon';
 import EyeIcon from './EyeIcon';
 import EyeOffIcon from './EyeOffIcon';
+import InformationOutlineIcon from './InformationOutlineIcon';
 import LoadingIcon from './LoadingIcon';
 import PlayIcon from './PlayIcon';
 import PlusIcon from './PlusIcon';
@@ -17,16 +22,21 @@ import RocketLaunchIcon from './RocketLaunchIcon';
 import {IconProps} from './types';
 
 export {
+  AlertIcon,
   AlertCircleOutlineIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
   CheckCircleIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
+  CloseIcon,
   ContentCopyIcon,
+  DevToIcon,
+  DotsVerticalIcon,
   DownloadIcon,
   EyeIcon,
   EyeOffIcon,
+  InformationOutlineIcon,
   LoadingIcon,
   PlayIcon,
   PlusIcon,

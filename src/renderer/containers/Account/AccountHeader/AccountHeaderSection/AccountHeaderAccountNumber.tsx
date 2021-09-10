@@ -1,4 +1,5 @@
 import React, {useContext, useMemo, useRef} from 'react';
+import CopyToClipboard from 'react-copy-to-clipboard';
 
 import {AccountContext} from '@renderer/context';
 import {useBooleanState} from '@renderer/hooks';
@@ -35,7 +36,9 @@ const AccountHeaderAccountNumber: SFC = ({className}) => {
       <S.Body>
         <S.MainText>{truncateLongText(accountNumber)}</S.MainText>
         <S.QrcodeIcon onClick={toggleQrcodeModal} size={16} totalSize={20} />
-        <S.ContentCopyIcon onClick={handleAccountNumberCopy} size={16} totalSize={20} ref={accountNumberCopyRef} />
+        <CopyToClipboard text={accountNumber} onCopy={handleAccountNumberCopy}>
+          <S.ContentCopyIcon size={16} totalSize={20} ref={accountNumberCopyRef} />
+        </CopyToClipboard>
       </S.Body>
       {qrcodeModalIsOpen && (
         <QrcodeModal accountLabel={accountLabel} accountNumber={accountNumber} close={toggleQrcodeModal} />

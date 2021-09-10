@@ -1,14 +1,13 @@
-import React, {CSSProperties, FC, KeyboardEvent, ReactNode, useEffect, useRef, useState} from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
+
+import React, {CSSProperties, KeyboardEvent, ReactNode, useCallback, useEffect, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
-import clsx from 'clsx';
 import noop from 'lodash/noop';
-import {Icon, IconType} from '@thenewboston/ui';
-import {bemify} from '@thenewboston/utils';
 
 import {useBooleanState, useEventListener} from '@renderer/hooks';
-import {GenericVoidFunction} from '@renderer/types';
+import {GenericVoidFunction, SFC} from '@renderer/types';
 
-import './DropdownMenuButton.scss';
+import * as S from './Styles';
 
 export enum DropdownMenuDirection {
   left,
@@ -21,19 +20,24 @@ export interface DropdownMenuOption {
   onClick: GenericVoidFunction;
 }
 
+export enum DropdownMenuIcon {
+  dotsVertical = 'dotsVertical',
+  devTo = 'devTo',
+}
+
 interface ComponentProps {
   className?: string;
   direction?: DropdownMenuDirection;
-  icon?: IconType;
+  icon?: DropdownMenuIcon;
   options: DropdownMenuOption[];
 }
 
 const dropdownRoot = document.getElementById('dropdown-root')!;
 
-const DropdownMenuButton: FC<ComponentProps> = ({
+const DropdownMenuButton: SFC<ComponentProps> = ({
   className,
   direction = DropdownMenuDirection.right,
-  icon = IconType.dotsVertical,
+  icon = DropdownMenuIcon.dotsVertical,
   options,
 }) => {
   const iconRef = useRef<HTMLDivElement>(null);
@@ -55,7 +59,7 @@ const DropdownMenuButton: FC<ComponentProps> = ({
 
   useEventListener('mousedown', handleClick, document);
 
-  const handleOpenDropdown = (): void => {
+  const handleOpenDropdown = useCallback((): void => {
     if (iconRef.current) {
       const {bottom, left, width} = iconRef.current.getBoundingClientRect();
 
@@ -67,7 +71,7 @@ const DropdownMenuButton: FC<ComponentProps> = ({
 
       toggleOpen();
     }
-  };
+  }, [direction, toggleOpen]);
 
   const handleOptionClick = (optionOnClick: GenericVoidFunction) => async (): Promise<void> => {
     await optionOnClick();
@@ -93,30 +97,31 @@ const DropdownMenuButton: FC<ComponentProps> = ({
     }
   };
 
+  const renderButtonIcon = useCallback((): ReactNode => {
+    const iconProps = {
+      $isActive: open,
+      className,
+      onClick: handleOpenDropdown,
+      ref: iconRef,
+    };
+    switch (icon) {
+      case DropdownMenuIcon.devTo:
+        return <S.DevToIcon {...iconProps} />;
+      default:
+        return <S.DotsVerticalIcon {...iconProps} />;
+    }
+  }, [className, icon, handleOpenDropdown, open]);
+
   return (
     <>
-      <Icon
-        className={clsx('DropdownMenuButton', className, {
-          'DropdownMenuButton--active': open,
-          ...bemify(className, '--active', open),
-        })}
-        icon={icon}
-        onClick={handleOpenDropdown}
-        ref={iconRef}
-      />
+      {renderButtonIcon()}
       {open &&
         createPortal(
-          <div
-            className={clsx('DropdownMenuButton__menu', {...bemify(className, '__menu')})}
-            style={dropdownPositionStyle}
-          >
+          <S.MenuContainer style={dropdownPositionStyle}>
             {options.map(({disabled = false, label, onClick: optionOnClick}, index) => {
               return (
-                <div
-                  className={clsx('DropdownMenuButton__option', {
-                    'DropdownMenuButton__option--disabled': disabled,
-                    ...bemify(className, '__option--disabled', disabled),
-                  })}
+                <S.Option
+                  $isDisabled={disabled}
                   key={JSON.stringify(label)}
                   onKeyDown={handleOptionKeyDown(optionOnClick, index, disabled)}
                   onClick={disabled ? noop : handleOptionClick(optionOnClick)}
@@ -129,10 +134,10 @@ const DropdownMenuButton: FC<ComponentProps> = ({
                   tabIndex={0}
                 >
                   {label}
-                </div>
+                </S.Option>
               );
             })}
-          </div>,
+          </S.MenuContainer>,
           dropdownRoot,
         )}
     </>

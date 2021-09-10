@@ -10,9 +10,11 @@ import {SFC} from '@renderer/types';
 import AccountOverviewCarousel, {AccountOverviewCarouselTopic} from './AccountOverviewCarousel';
 import AccountOverviewVaultCard from './AccountOverviewVaultCard';
 import AccountOverviewVoteCard from './AccountOverviewVoteCard';
+import RegisterWalletModal from './RegisterWalletModal';
 import * as S from './Styles';
 
 const AccountOverview: SFC = ({className}) => {
+  const [registerWalletModalIsOpen, toggleRegisterWalletModal] = useBooleanState(false);
   // Temp
   const [moneyDeposited, toggleMoneyDeposited] = useBooleanState(false);
   const [accountRegistered, toggleAccountRegistered] = useBooleanState(false);
@@ -30,9 +32,13 @@ const AccountOverview: SFC = ({className}) => {
         {accountRegistered ? (
           <AccountOverviewVoteCard />
         ) : (
-          <AccountOverviewCarousel carouselTopic={AccountOverviewCarouselTopic.registerWallet} onClick={noop} />
+          <AccountOverviewCarousel
+            carouselTopic={AccountOverviewCarouselTopic.registerWallet}
+            onClick={toggleRegisterWalletModal}
+          />
         )}
       </S.BottomRow>
+      {registerWalletModalIsOpen && <RegisterWalletModal close={toggleRegisterWalletModal} />}
 
       {/* Temp */}
       <S.TempCard>

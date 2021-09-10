@@ -11,7 +11,6 @@ import Loader from '@renderer/components/FormElements/Loader';
 import {GenericFormValues, GenericFunction} from '@renderer/types';
 
 import * as S from './Styles';
-import './Modal.scss';
 
 export interface ModalButtonProps extends FormButtonProps {
   content: ReactNode;
@@ -161,20 +160,8 @@ const Modal: FC<ComponentProps> = ({
           validateOnMount={validateOnMount}
           validationSchema={validationSchema}
         >
-          <div
-            className={clsx('Modal__content', {
-              'Modal__content--no-footer': hideFooter,
-              ...bemify(className, '__content'),
-              ...bemify(className, '__content--no-footer', hideFooter),
-            })}
-          >
-            {children}
-          </div>
-          {!hideFooter && (
-            <div className={clsx('Modal__footer', {...bemify(className, '__footer')})}>
-              {footer || renderDefaultFooter()}
-            </div>
-          )}
+          <S.MainContent $noFooter={hideFooter}>{children}</S.MainContent>
+          {!hideFooter && <S.Footer>{footer || renderDefaultFooter()}</S.Footer>}
         </Form>
       </S.Container>
     </>,

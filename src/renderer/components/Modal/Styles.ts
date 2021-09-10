@@ -13,6 +13,16 @@ const addOverlay = keyframes`
   }
 `;
 
+export const Overlay = styled.div<{$submitting: boolean}>`
+  animation: ${addOverlay} 0.3s forwards;
+  cursor: ${({$submitting}) => ($submitting ? 'wait' : null)};
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+`;
+
 export const Container = styled.div`
   background: ${colors.white};
   left: 50%;
@@ -44,12 +54,9 @@ export const MainContent = styled.div<{$noFooter: boolean}>`
   overflow-y: auto;
 `;
 
-export const Overlay = styled.div<{$submitting: boolean}>`
-  animation: ${addOverlay} 0.3s forwards;
-  cursor: ${({$submitting}) => ($submitting ? 'wait' : null)};
-  height: 100vh;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100vw;
+export const Footer = styled.div`
+  align-items: center;
+  display: flex;
+  height: ${FOOTER_HEIGHT};
+  justify-content: flex-end;
 `;

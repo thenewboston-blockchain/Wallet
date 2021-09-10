@@ -10,7 +10,7 @@ import {DropdownMenuOption} from '@renderer/components/DropdownMenuButton';
 import PageHeader from '@renderer/components/PageHeader';
 import PageLayout from '@renderer/components/PageLayout';
 import PageTabs from '@renderer/components/PageTabs';
-import {useAddress, useBooleanState} from '@renderer/hooks';
+import {useAddress, useToggle} from '@renderer/hooks';
 import {
   getIsActivePrimaryValidator,
   getIsManagedValidator,
@@ -35,9 +35,9 @@ const Validator: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const history = useHistory();
   const {path, url} = useRouteMatch();
-  const [addSigningKeyModalIsOpen, toggleSigningKeyModal] = useBooleanState(false);
-  const [editNicknameModalIsOpen, toggleEditNicknameModal] = useBooleanState(false);
-  const [removeValidatorModalIsOpen, toggleRemoveValidatorModal] = useBooleanState(false);
+  const [addSigningKeyModalIsOpen, toggleSigningKeyModal] = useToggle(false);
+  const [editNicknameModalIsOpen, toggleEditNicknameModal] = useToggle(false);
+  const [removeValidatorModalIsOpen, toggleRemoveValidatorModal] = useToggle(false);
   const isActivePrimaryValidator = useSelector((state: RootState) => getIsActivePrimaryValidator(state, address));
   const isManagedValidator = useSelector((state: RootState) => getIsManagedValidator(state, address));
   const managedAccounts = useSelector(getManagedAccounts);

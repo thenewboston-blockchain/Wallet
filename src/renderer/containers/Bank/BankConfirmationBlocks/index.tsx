@@ -3,7 +3,7 @@ import React, {FC, useMemo} from 'react';
 import ExpandableText from '@renderer/components/ExpandableText';
 import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
 import {BANK_CONFIRMATION_BLOCKS} from '@renderer/constants/actions';
-import {useAddress, useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
+import {useAddress, useToggle, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
 import {BankConfirmationBlock} from '@renderer/types';
 
 enum TableKeys {
@@ -15,7 +15,7 @@ enum TableKeys {
 
 const BankConfirmationBlocks: FC = () => {
   const address = useAddress();
-  const [expanded, toggleExpanded] = useBooleanState(false);
+  const [expanded, toggleExpanded] = useToggle(false);
   const {
     count,
     currentPage,

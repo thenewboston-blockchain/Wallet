@@ -4,7 +4,7 @@ import AccountLink from '@renderer/components/AccountLink';
 import ExpandableText from '@renderer/components/ExpandableText';
 import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
 import {BANK_BLOCKS} from '@renderer/constants/actions';
-import {useAddress, useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
+import {useAddress, useToggle, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
 import {BlockResponse} from '@renderer/types';
 import {formatDate} from '@renderer/utils/dates';
 
@@ -19,7 +19,7 @@ enum TableKeys {
 
 const BankBlocks: FC = () => {
   const address = useAddress();
-  const [expanded, toggleExpanded] = useBooleanState(false);
+  const [expanded, toggleExpanded] = useToggle(false);
   const {
     count,
     currentPage,

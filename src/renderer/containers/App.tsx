@@ -10,7 +10,7 @@ import CreateAccountModal from '@renderer/containers/Account/CreateAccountModal'
 import Connect from '@renderer/containers/Connect';
 import Layout from '@renderer/containers/Layout';
 import {connect, connectAndStoreLocalData, fetchNonDefaultNodeConfigs} from '@renderer/dispatchers/app';
-import {useBooleanState, useCleanSockets, useCrawlSockets, useWebSockets} from '@renderer/hooks';
+import {useToggle, useCleanSockets, useCrawlSockets, useWebSockets} from '@renderer/hooks';
 import {getActiveBank, getActiveBankConfig} from '@renderer/selectors';
 import {AppDispatch, ProtocolType} from '@renderer/types';
 import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
@@ -25,7 +25,7 @@ const App: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const activeBank = useSelector(getActiveBank);
   const activeBankConfig = useSelector(getActiveBankConfig);
-  const [getStartedModalIsOpen, toggleGetStartedModal, openGetStartedModal] = useBooleanState(false);
+  const [getStartedModalIsOpen, toggleGetStartedModal] = useToggle(false);
   const [loading, setLoading] = useState<boolean>(true);
   useCrawlSockets();
   useCleanSockets();
@@ -57,7 +57,7 @@ const App: FC = () => {
             displayErrorToast(response.error);
             return;
           }
-          openGetStartedModal();
+          toggleGetStartedModal(true);
         } catch (error) {
           displayToast('An error occurred', ToastType.error);
         } finally {
@@ -68,7 +68,7 @@ const App: FC = () => {
     } else {
       setLoading(false);
     }
-  }, [activeBank, activeBankConfig, dispatch, openGetStartedModal]);
+  }, [activeBank, activeBankConfig, dispatch, toggleGetStartedModal]);
 
   const renderComponent = (): ReactNode => {
     if (loading) return null;

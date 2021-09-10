@@ -2,7 +2,7 @@ import React, {ReactNode, useCallback, useContext, useMemo} from 'react';
 
 import SendCoinsModal from '@renderer/containers/Account/SendCoinsModal';
 import {AccountContext} from '@renderer/context';
-import {useBooleanState} from '@renderer/hooks';
+import {useToggle} from '@renderer/hooks';
 import {AccountType, SFC} from '@renderer/types';
 
 import AccountHeaderDropdownContainer from './AccountHeaderDropdownContainer';
@@ -11,7 +11,7 @@ import * as S from './Styles';
 
 const AccountHeader: SFC = ({className}) => {
   const {accountNumber, managedAccount, managedFriend, type} = useContext(AccountContext);
-  const [sendCoinsModalIsOpen, toggleSendCoinsModal] = useBooleanState(false);
+  const [sendCoinsModalIsOpen, toggleSendCoinsModal] = useToggle(false);
 
   const nickname = useMemo(() => {
     return managedAccount?.nickname || managedFriend?.nickname || null;

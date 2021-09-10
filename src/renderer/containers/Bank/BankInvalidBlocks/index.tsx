@@ -3,7 +3,7 @@ import React, {FC, useMemo} from 'react';
 import ExpandableText from '@renderer/components/ExpandableText';
 import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
 import {BANK_INVALID_BLOCKS} from '@renderer/constants/actions';
-import {useAddress, useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
+import {useAddress, useToggle, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
 import {InvalidBlock} from '@renderer/types';
 
 enum TableKeys {
@@ -15,7 +15,7 @@ enum TableKeys {
 
 const BankInvalidBlocks: FC = () => {
   const address = useAddress();
-  const [expanded, toggleExpanded] = useBooleanState(false);
+  const [expanded, toggleExpanded] = useToggle(false);
   const {
     count,
     currentPage,

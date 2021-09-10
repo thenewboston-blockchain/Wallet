@@ -50,6 +50,7 @@ export const CloseIcon = styled(UCloseIcon)<{$submitting: boolean}>`
 
 export const MainContent = styled.div<{$noFooter: boolean}>`
   max-height: calc(85vh - ${({$noFooter}) => ($noFooter ? '0' : FOOTER_HEIGHT)});
+  min-height: 100px;
   overflow-y: auto;
 `;
 

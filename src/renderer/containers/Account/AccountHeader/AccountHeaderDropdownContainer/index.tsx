@@ -1,13 +1,15 @@
 import React, {useContext, useMemo} from 'react';
 import {AccountContext} from '@renderer/context';
 import DropdownMenuButton, {DropdownMenuDirection, DropdownMenuOption} from '@renderer/components/DropdownMenuButton';
-import {useBooleanState} from '@renderer/hooks';
+import {useToggle} from '@renderer/hooks';
 import {AccountType, SFC} from '@renderer/types';
 
+import EditAccountNicknameModal from './EditAccountNicknameModal';
+
 const AccountHeaderDropdownContainer: SFC = ({className}) => {
-  const [deleteAccountModalIsOpen, toggleDeleteAccountModal] = useBooleanState(false);
-  const [deleteFriendModalIsOpen, toggleDeleteFriendModal] = useBooleanState(false);
-  const [editModalIsOpen, toggleEditModal] = useBooleanState(false);
+  const [deleteAccountModalIsOpen, toggleDeleteAccountModal] = useToggle(false);
+  const [deleteFriendModalIsOpen, toggleDeleteFriendModal] = useToggle(false);
+  const [editModalIsOpen, toggleEditModal] = useToggle(false);
   const {type} = useContext(AccountContext);
 
   const options = useMemo<DropdownMenuOption[]>(() => {
@@ -46,7 +48,7 @@ const AccountHeaderDropdownContainer: SFC = ({className}) => {
       ) : null}
       {deleteAccountModalIsOpen ? 'delete' : null}
       {deleteFriendModalIsOpen ? 'delete' : null}
-      {editModalIsOpen ? 'edit' : null}
+      {editModalIsOpen ? <EditAccountNicknameModal close={toggleEditModal} /> : null}
     </>
   );
 };

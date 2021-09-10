@@ -2,7 +2,7 @@ import React, {ReactNode} from 'react';
 
 import ArrowToggle from '@renderer/components/ArrowToggle';
 import {PlusIcon} from '@renderer/components/Icons';
-import {useBooleanState} from '@renderer/hooks';
+import {useToggle} from '@renderer/hooks';
 import {SFC} from '@renderer/types';
 
 import * as S from './Styles';
@@ -14,7 +14,7 @@ interface ComponentProps {
 }
 
 const LeftSubmenu: SFC<ComponentProps> = ({className, menuItems, rightOnClick, title}) => {
-  const [expanded, toggleExpanded] = useBooleanState(true);
+  const [expanded, toggleExpanded] = useToggle(true);
 
   const renderHeaderContent = (): ReactNode => {
     return (

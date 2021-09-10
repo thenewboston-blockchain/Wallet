@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux';
 import CreateAccountModal from '@renderer/containers/Account/CreateAccountModal';
 import AddFriendModal from '@renderer/containers/Account/AddFriendModal';
 import AddValidatorModal from '@renderer/containers/Validator/AddValidatorModal';
-import {useBooleanState} from '@renderer/hooks';
+import {useToggle} from '@renderer/hooks';
 import {
   getBankConfigs,
   getManagedAccounts,
@@ -35,9 +35,9 @@ const LeftMenuSelector = (state: RootState) => {
 
 const LeftMenu: SFC = ({className}) => {
   const {managedAccounts, managedFriends, managedValidators, validatorConfigs} = useSelector(LeftMenuSelector);
-  const [addFriendModalIsOpen, toggleAddFriendModal] = useBooleanState(false);
-  const [addValidatorModalIsOpen, toggleAddValidatorModal] = useBooleanState(false);
-  const [createAccountModalIsOpen, toggleCreateAccountModal] = useBooleanState(false);
+  const [addFriendModalIsOpen, toggleAddFriendModal] = useToggle(false);
+  const [addValidatorModalIsOpen, toggleAddValidatorModal] = useToggle(false);
+  const [createAccountModalIsOpen, toggleCreateAccountModal] = useToggle(false);
 
   const accountItems = useMemo<ReactNode[]>(() => {
     return sortDictValuesByPreferredKey<ManagedAccount>(managedAccounts, 'nickname', 'account_number')

@@ -6,7 +6,7 @@ import {Icon, IconType} from '@thenewboston/ui';
 
 import {Button, ButtonColor} from '@renderer/components/FormElements';
 import AddValidatorSigningKeysModal from '@renderer/containers/Validator/AddValidatorSigningKeysModal';
-import {useAddress, useBooleanState} from '@renderer/hooks';
+import {useAddress, useToggle} from '@renderer/hooks';
 import {getIsManagedValidator, getManagedValidators} from '@renderer/selectors';
 import {setManagedValidator} from '@renderer/store/app';
 import {AppDispatch, RootState} from '@renderer/types';
@@ -29,7 +29,7 @@ interface ComponentProps {
 }
 
 const TileValidatorSigningDetails: FC<ComponentProps> = ({className, items}) => {
-  const [addSigningKeyModalIsOpen, toggleSigningKeyModal] = useBooleanState(false);
+  const [addSigningKeyModalIsOpen, toggleSigningKeyModal] = useToggle(false);
   const address = useAddress();
   const dispatch = useDispatch<AppDispatch>();
   const isManagedValidator = useSelector((state: RootState) => getIsManagedValidator(state, address));

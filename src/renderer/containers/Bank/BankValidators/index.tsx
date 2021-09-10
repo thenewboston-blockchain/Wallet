@@ -9,7 +9,7 @@ import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/component
 import EditTrustModal from '@renderer/containers/EditTrustModal';
 import PurchaseConfirmationServicesModal from '@renderer/containers/PurchaseConfirmationServices/PurchaseConfirmationServicesModal';
 import {BANK_VALIDATORS} from '@renderer/constants/actions';
-import {useAddress, useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
+import {useAddress, useToggle, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
 import {getPrimaryValidatorConfig} from '@renderer/selectors';
 import {BaseValidator, ManagedNode} from '@renderer/types';
 
@@ -36,7 +36,7 @@ interface ComponentProps {
 
 const BankValidators: FC<ComponentProps> = ({managedBank}) => {
   const address = useAddress();
-  const [expanded, toggleExpanded] = useBooleanState(false);
+  const [expanded, toggleExpanded] = useToggle(false);
   const {
     count,
     currentPage,
@@ -45,9 +45,9 @@ const BankValidators: FC<ComponentProps> = ({managedBank}) => {
     setPage,
     totalPages,
   } = usePaginatedNetworkDataFetcher<BaseValidator>(BANK_VALIDATORS, address);
-  const [editTrustModalIsOpen, toggleEditTrustModal] = useBooleanState(false);
+  const [editTrustModalIsOpen, toggleEditTrustModal] = useToggle(false);
   const [editTrustValidator, setEditTrustValidator] = useState<BaseValidator | null>(null);
-  const [purchaseServicesModalIsOpen, togglePurchaseServicesModal] = useBooleanState(false);
+  const [purchaseServicesModalIsOpen, togglePurchaseServicesModal] = useToggle(false);
   const [purchaseServicesValidator, setPurchaseServicesValidator] = useState<BaseValidator | null>(null);
   const primaryValidator = useSelector(getPrimaryValidatorConfig);
 

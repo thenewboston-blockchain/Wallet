@@ -12,7 +12,7 @@ import Modal from '@renderer/components/Modal';
 import ChangeActiveBankModal from '@renderer/containers/Bank/ChangeActiveBankModal';
 import Notifications from '@renderer/containers/Notifications';
 import {clearLocalState} from '@renderer/dispatchers/app';
-import {useBooleanState, useIpcEffect, useNavigationalHistory, useReadIpc, useWriteIpc} from '@renderer/hooks';
+import {useToggle, useIpcEffect, useNavigationalHistory, useReadIpc, useWriteIpc} from '@renderer/hooks';
 import {getPrimaryValidatorConfig} from '@renderer/selectors';
 import localStore from '@renderer/store/local';
 import {AppDispatch, LocalStore, SFC} from '@renderer/types';
@@ -42,9 +42,9 @@ const restartAppFailToast = (event: any, errorMessage: string) => {
 };
 
 const TopNav: SFC = ({className}) => {
-  const [changeActiveBankModalIsOpen, toggleActiveBankModal] = useBooleanState(false);
-  const [resetAppModalIsOpen, toggleResetAppModal] = useBooleanState(false);
-  const [importStoreDataModalIsOpen, toggleImportStoreDataModal, , closeImportStoreDataModal] = useBooleanState(false);
+  const [changeActiveBankModalIsOpen, toggleActiveBankModal] = useToggle(false);
+  const [resetAppModalIsOpen, toggleResetAppModal] = useToggle(false);
+  const [importStoreDataModalIsOpen, toggleImportStoreDataModal] = useToggle(false);
   const dispatch = useDispatch<AppDispatch>();
   useIpcEffect(getSuccessChannel(IpcChannel.restartApp), restartAppSuccessToast);
   useIpcEffect(getFailChannel(IpcChannel.restartApp), restartAppFailToast);
@@ -70,7 +70,7 @@ const TopNav: SFC = ({className}) => {
     channel: IpcChannel.importStoreData,
     downloadOptions: {buttonLabel: 'Import', title: 'Import Store Data'},
     failCallback: importFailToast,
-    postSendCallback: closeImportStoreDataModal,
+    postSendCallback: () => toggleImportStoreDataModal(false),
     successCallback: handleImportSuccessCallback,
   });
 

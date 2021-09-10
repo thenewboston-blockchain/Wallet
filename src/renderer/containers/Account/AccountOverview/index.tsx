@@ -3,7 +3,7 @@ import noop from 'lodash/noop';
 
 // Temp
 import {Switch} from '@renderer/components/FormElements';
-import {useBooleanState} from '@renderer/hooks';
+import {useToggle} from '@renderer/hooks';
 // Temp End
 
 import {SFC} from '@renderer/types';
@@ -14,10 +14,10 @@ import RegisterWalletModal from './RegisterWalletModal';
 import * as S from './Styles';
 
 const AccountOverview: SFC = ({className}) => {
-  const [registerWalletModalIsOpen, toggleRegisterWalletModal] = useBooleanState(false);
+  const [registerWalletModalIsOpen, toggleRegisterWalletModal] = useToggle(false);
   // Temp
-  const [moneyDeposited, toggleMoneyDeposited] = useBooleanState(false);
-  const [accountRegistered, toggleAccountRegistered] = useBooleanState(false);
+  const [moneyDeposited, toggleMoneyDeposited] = useToggle(false);
+  const [accountRegistered, toggleAccountRegistered] = useToggle(false);
   // Temp End
 
   return (

@@ -3,7 +3,7 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 import {useLocation} from 'react-router-dom';
 
 import {AccountContext} from '@renderer/context';
-import {useBooleanState, useWriteIpc} from '@renderer/hooks';
+import {useToggle, useWriteIpc} from '@renderer/hooks';
 import {SFC} from '@renderer/types';
 import {truncateLongText} from '@renderer/utils/accounts';
 import {displayToast, ToastType} from '@renderer/utils/toast';
@@ -23,15 +23,15 @@ const downloadFailToast = (e: any, error: string) => {
 };
 
 const AccountHeaderSigningKey: SFC<AccountHeaderSigningKeyProps> = ({className, signingKey}) => {
-  const [signingKeyIsVisible, toggleSigningKeyIsVisible, , hideSigningKey] = useBooleanState(false);
+  const [signingKeyIsVisible, toggleSigningKeyIsVisible] = useToggle(false);
   const {accountNumber} = useContext(AccountContext);
   const location = useLocation();
   const signingKeyCopyRef = useRef<HTMLDivElement>(null);
   const signingKeyDownloadRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    hideSigningKey();
-  }, [hideSigningKey, location.pathname]);
+    toggleSigningKeyIsVisible(false);
+  }, [toggleSigningKeyIsVisible, location.pathname]);
 
   const handleDownloadBlur = useCallback(() => {
     signingKeyDownloadRef.current?.blur();

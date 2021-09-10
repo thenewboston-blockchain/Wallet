@@ -5,7 +5,7 @@ import ExpandableText from '@renderer/components/ExpandableText';
 import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
 import {PAGINATED_RESULTS_LIMIT} from '@renderer/config';
 import {BANK_VALIDATORS} from '@renderer/constants/actions';
-import {useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
+import {useToggle, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
 import {BaseValidator} from '@renderer/types';
 
 import {SelectedValidatorAction, SelectedValidatorState, toggleSelectedValidator} from '../utils';
@@ -36,7 +36,7 @@ const PurchaseConfirmationServicesTable: FC<ComponentProps> = ({
   dispatchSelectedValidators,
   selectedValidators,
 }) => {
-  const [expanded, toggleExpanded] = useBooleanState(false);
+  const [expanded, toggleExpanded] = useToggle(false);
   const {
     count,
     currentPage,

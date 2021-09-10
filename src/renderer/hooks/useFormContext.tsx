@@ -15,6 +15,7 @@ interface UseFormContextOutput<V> {
   setFieldTouched(field: string, isTouched?: boolean, shouldValidate?: boolean): void;
   setFieldValue(field: string, value: any, shouldValidate?: boolean): void;
   touched: FormikTouched<Values>;
+  validateForm(values?: any): Promise<FormikErrors<Values>>;
   values: V;
 }
 
@@ -29,6 +30,7 @@ function useFormContext<V = Values>(): UseFormContextOutput<V> {
     setFieldTouched,
     setFieldValue,
     touched,
+    validateForm,
     values,
   } = useFormikContext<V>();
 
@@ -42,6 +44,7 @@ function useFormContext<V = Values>(): UseFormContextOutput<V> {
     setFieldTouched,
     setFieldValue,
     touched,
+    validateForm,
     values,
   };
 }
@@ -59,6 +62,7 @@ export function useFormContext2<V = Values>(): Partial<UseFormContextOutput<V>> 
   const setFieldTouched = formikContext?.setFieldTouched || undefined;
   const setFieldValue = formikContext?.setFieldValue || undefined;
   const touched = formikContext?.touched || undefined;
+  const validateForm = formikContext?.validateForm || undefined;
   const values = formikContext?.values || undefined;
 
   return {
@@ -71,6 +75,7 @@ export function useFormContext2<V = Values>(): Partial<UseFormContextOutput<V>> 
     setFieldTouched,
     setFieldValue,
     touched,
+    validateForm,
     values,
   };
 }

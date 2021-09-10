@@ -121,7 +121,6 @@ const CreateAccountModal: FC<ComponentProps> = ({close, isGetStartedModal = fals
       className="CreateAccountModal"
       close={close}
       disableOverlayClick={isGetStartedModal}
-      displayCancelButton={!isGetStartedModal}
       displayCloseButton={!isGetStartedModal}
       header={isGetStartedModal ? 'Get Started' : 'Create/Add Account'}
       ignoreDirty

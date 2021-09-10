@@ -72,8 +72,8 @@ const Button: FC<BaseButtonProps> = ({
     <S.Button
       className={clsx('Button', className)}
       $color={color}
-      $disabled={buttonIsDisabled}
       $fullWidth={fullWidth}
+      disabled={buttonIsDisabled}
       onClick={handleClick}
       ref={buttonRef}
       type={type}

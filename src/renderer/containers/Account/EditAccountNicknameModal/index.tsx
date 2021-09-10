@@ -56,7 +56,6 @@ const EditAccountNicknameModal: FC<ComponentProps> = ({close, managedAccountOrFr
 
   return (
     <Modal
-      cancelButton="Cancel"
       close={close}
       header={`Edit ${type === AccountType.managedAccount ? 'Account' : 'Friend'} Nickname`}
       ignoreDirty

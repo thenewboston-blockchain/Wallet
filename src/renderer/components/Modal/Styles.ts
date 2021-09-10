@@ -26,7 +26,7 @@ export const Overlay = styled.div<{$submitting: boolean}>`
 export const Container = styled.div`
   background: ${colors.white};
   left: 50%;
-  padding: 24px;
+  padding: 24px 24px 20px;
   position: fixed;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -49,7 +49,6 @@ export const CloseIcon = styled(UCloseIcon)<{$submitting: boolean}>`
 `;
 
 export const MainContent = styled.div<{$noFooter: boolean}>`
-  border-radius: ${({$noFooter}) => ($noFooter ? '0 0 3px 3px' : null)};
   max-height: calc(85vh - ${({$noFooter}) => ($noFooter ? '0' : FOOTER_HEIGHT)});
   overflow-y: auto;
 `;

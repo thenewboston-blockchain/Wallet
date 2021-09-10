@@ -21,7 +21,7 @@ const RegisterWalletModalFields: SFC = ({className}) => {
   const [inputIsFocused, setInputIsFocused] = useState<boolean>(false);
   const [isValidatingField, setIsValidatingField] = useState<boolean>(false);
   const [usernameIsValid, setUsernameIsValid] = useState<boolean>(false);
-  const {dirty, errors, isValid, setFieldError, setFieldValue} = useFormContext2<FormValues>();
+  const {dirty, errors, isValid, setFieldError, setFieldValue, validateForm} = useFormContext2<FormValues>();
 
   const insufficientFundsError = errors?.sufficientFunds;
 
@@ -45,7 +45,7 @@ const RegisterWalletModalFields: SFC = ({className}) => {
         setFieldError?.('username', 'Not available');
       } else {
         setUsernameIsValid(true);
-        setFieldError?.('username', '');
+        validateForm?.();
       }
 
       setIsValidatingField(false);

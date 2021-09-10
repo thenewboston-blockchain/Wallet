@@ -18,7 +18,7 @@ const DeleteFriendModal: FC<ComponentProps> = ({close, managedFriend}) => {
   };
 
   return (
-    <Modal cancelButton="Cancel" close={close} header="Remove Friend" onSubmit={handleSubmit} submitButton="Yes">
+    <Modal close={close} header="Remove Friend" onSubmit={handleSubmit} submitButton="Yes">
       Are you sure you want to remove your friend?
     </Modal>
   );

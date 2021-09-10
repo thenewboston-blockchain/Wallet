@@ -25,7 +25,6 @@ const DeleteAccountModal: FC<ComponentProps> = ({close, managedAccount}) => {
 
   return (
     <Modal
-      cancelButton="Cancel"
       className="DeleteAccountModal"
       close={close}
       header={

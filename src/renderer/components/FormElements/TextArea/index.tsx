@@ -2,8 +2,6 @@ import React, {ChangeEvent, FC, FocusEvent, useEffect, useRef} from 'react';
 import clsx from 'clsx';
 import {bemify} from '@thenewboston/utils';
 
-import './TextArea.scss';
-
 export interface BaseInputProps {
   className?: string;
   disabled?: boolean;

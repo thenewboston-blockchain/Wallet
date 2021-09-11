@@ -1,8 +1,8 @@
-import React, {FC, useMemo} from 'react';
+import React, {useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
-import {FormInput, FormTextArea} from '@renderer/components/FormComponents';
+import {TextField} from '@renderer/components/FormElements';
 import Modal from '@renderer/components/Modal';
 import {
   ACCOUNT_NUMBER_LENGTH,
@@ -13,28 +13,30 @@ import {
 } from '@renderer/constants/form-validation';
 import {getManagedAccounts, getManagedFriends} from '@renderer/selectors';
 import {setManagedFriend} from '@renderer/store/app';
-import {AppDispatch} from '@renderer/types';
+import {AppDispatch, SFC} from '@renderer/types';
 import {getNicknameField} from '@renderer/utils/forms/fields';
 import yup from '@renderer/utils/forms/yup';
 
-import './AddFriendModal.scss';
-
-const initialValues = {
-  accountNumber: '',
-  nickname: '',
-};
-
-type FormValues = typeof initialValues;
-
 interface ComponentProps {
+  accountNumberToAdd?: string;
   close(): void;
 }
 
-const AddFriendModal: FC<ComponentProps> = ({close}) => {
+const AddFriendModal: SFC<ComponentProps> = ({accountNumberToAdd, className, close}) => {
   const dispatch = useDispatch<AppDispatch>();
   const history = useHistory();
   const managedAccounts = useSelector(getManagedAccounts);
   const managedFriends = useSelector(getManagedFriends);
+
+  const initialValues = useMemo(
+    () => ({
+      accountNumber: accountNumberToAdd || '',
+      nickname: '',
+    }),
+    [accountNumberToAdd],
+  );
+
+  type FormValues = typeof initialValues;
 
   const managedAccountNumbers = useMemo(
     () =>
@@ -81,7 +83,7 @@ const AddFriendModal: FC<ComponentProps> = ({close}) => {
 
   return (
     <Modal
-      className="AddFriendModal"
+      className={className}
       close={close}
       header="Add Friend"
       ignoreDirty={false}
@@ -90,8 +92,8 @@ const AddFriendModal: FC<ComponentProps> = ({close}) => {
       submitButton="Add"
       validationSchema={validationSchema}
     >
-      <FormInput focused label="Nickname" name="nickname" />
-      <FormTextArea label="Account Number" name="accountNumber" required />
+      <TextField focused label="Nickname" name="nickname" />
+      <TextField label="Account Number" multiline name="accountNumber" required />
     </Modal>
   );
 };

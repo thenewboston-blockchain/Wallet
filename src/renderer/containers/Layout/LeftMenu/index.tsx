@@ -2,7 +2,7 @@ import React, {ReactNode, useMemo} from 'react';
 import {useSelector} from 'react-redux';
 
 import CreateAccountModal from '@renderer/containers/Account/CreateAccountModal';
-import AddFriendModal from '@renderer/containers/Account/AddFriendModal';
+import AddFriendModal from '@renderer/containers/AddFriendModal';
 import AddValidatorModal from '@renderer/containers/Validator/AddValidatorModal';
 import {useToggle} from '@renderer/hooks';
 import {

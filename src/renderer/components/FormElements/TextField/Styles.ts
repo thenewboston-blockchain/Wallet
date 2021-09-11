@@ -4,10 +4,12 @@ import {colors} from '@renderer/styles';
 
 const label = 'TextField__label';
 
-export const TextField = styled(MuiTextField).attrs(() => ({
+export const TextField = styled(MuiTextField).attrs(({multiline}) => ({
   InputLabelProps: {
     className: label,
   },
+  multiline,
+  rows: multiline ? 2 : undefined,
   size: 'small',
   variant: 'outlined',
 }))`

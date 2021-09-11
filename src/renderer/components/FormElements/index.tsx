@@ -8,7 +8,7 @@ import Select, {BaseSelectProps} from './Select';
 import SelectDetailed from './SelectDetailed';
 import Switch, {BaseSwitchProps} from './Switch';
 import TextArea from './TextArea';
-import TextField, {BaseTextFieldProps} from './TextField';
+import TextField, {TextFieldProps} from './TextField';
 
 export {
   BaseButtonProps,
@@ -17,7 +17,7 @@ export {
   BaseRadioProps,
   BaseSelectProps,
   BaseSwitchProps,
-  BaseTextFieldProps,
+  TextFieldProps,
   Button,
   ButtonColor,
   ButtonSize,

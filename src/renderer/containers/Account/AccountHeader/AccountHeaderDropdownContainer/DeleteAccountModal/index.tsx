@@ -39,13 +39,14 @@ const DeleteAccountModal: SFC<ComponentProps> = ({className, close}) => {
         </>
       }
       hideFooter
+      onSubmit={handleSubmit}
     >
       <>
         <S.Text>
           <S.Warning>Warning: </S.Warning> If you delete your account, you will lose all the coins in your account as
           well as your signing key. Are you sure you want to delete your account?
         </S.Text>
-        <S.SubmitButton onClick={handleSubmit}>Delete</S.SubmitButton>
+        <S.SubmitButton>Delete</S.SubmitButton>
       </>
     </Modal>
   );

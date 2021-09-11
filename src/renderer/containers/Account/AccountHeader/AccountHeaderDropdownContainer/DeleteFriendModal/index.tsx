@@ -1,16 +1,22 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {useDispatch} from 'react-redux';
 import Modal from '@renderer/components/Modal';
+import {useManagedFriend} from '@renderer/hooks';
 import {unsetManagedFriend} from '@renderer/store/app';
-import {AppDispatch, ManagedFriend} from '@renderer/types';
+import {AppDispatch, SFC} from '@renderer/types';
 
 interface ComponentProps {
   close(): void;
-  managedFriend: ManagedFriend;
 }
 
-const DeleteFriendModal: FC<ComponentProps> = ({close, managedFriend}) => {
+const DeleteFriendModal: SFC<ComponentProps> = ({className, close}) => {
   const dispatch = useDispatch<AppDispatch>();
+  const managedFriend = useManagedFriend();
+
+  if (!managedFriend) {
+    close();
+    return null;
+  }
 
   const handleSubmit = async (): Promise<void> => {
     dispatch(unsetManagedFriend(managedFriend));
@@ -18,7 +24,7 @@ const DeleteFriendModal: FC<ComponentProps> = ({close, managedFriend}) => {
   };
 
   return (
-    <Modal close={close} header="Remove Friend" onSubmit={handleSubmit} submitButton="Yes">
+    <Modal className={className} close={close} header="Remove Friend" onSubmit={handleSubmit} submitButton="Remove">
       Are you sure you want to remove your friend?
     </Modal>
   );

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {FormButton} from '@renderer/components/FormComponents';
 import {AlertIcon as UAlertIcon} from '@renderer/components/Icons';
 import {colors, h2, h4} from '@renderer/styles';
-import {ButtonColor} from '@renderer/components/FormElements';
+import {ButtonColor, ButtonType} from '@renderer/components/FormElements';
 
 export const Header = styled.h2`
   ${h2.medium};
@@ -26,4 +26,6 @@ export const Warning = styled.span`
 
 export const SubmitButton = styled(FormButton).attrs(() => ({
   color: ButtonColor.danger,
+  ignoreDirty: true,
+  type: ButtonType.submit,
 }))``;

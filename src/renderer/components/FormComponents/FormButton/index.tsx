@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import React, {FC, useMemo} from 'react';
-import {useFormikContext} from 'formik';
 import {Button, BaseButtonProps, ButtonType, Loader} from '@renderer/components/FormElements';
+import {useFormContext2} from '@renderer/hooks';
 
 export interface FormButtonProps extends BaseButtonProps {
   ignoreDirty?: boolean;
@@ -11,7 +11,7 @@ export interface FormButtonProps extends BaseButtonProps {
 
 const FormButton: FC<FormButtonProps> = ({children, ignoreDirty = false, submitting = false, ...baseButtonProps}) => {
   const {disabled = false, onClick, type = ButtonType.button} = baseButtonProps;
-  const {dirty, handleReset, handleSubmit, isValid} = useFormikContext();
+  const {dirty, handleReset, handleSubmit, isValid} = useFormContext2();
 
   const buttonIsDisabled = useMemo(() => {
     switch (type) {
@@ -28,9 +28,9 @@ const FormButton: FC<FormButtonProps> = ({children, ignoreDirty = false, submitt
     e?.preventDefault();
     if (buttonIsDisabled) return;
 
-    if (type === ButtonType.submit) handleSubmit();
+    if (type === ButtonType.submit) handleSubmit?.();
 
-    if (type === ButtonType.reset) handleReset();
+    if (type === ButtonType.reset) handleReset?.();
 
     if (type === ButtonType.button) onClick?.(e);
   };

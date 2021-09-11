@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import {colors, mixinButtonFocus} from '@renderer/styles';
+import {colors} from '@renderer/styles';
 import {ButtonColor, ButtonSize, ButtonVariant} from './types';
 
 interface ButtonProps {
@@ -27,6 +27,18 @@ const containedPrimaryMixin = css<ButtonProps>`
   }
 `;
 
+const containedDangerMixin = css<ButtonProps>`
+  background: ${({disabled}) => (disabled ? colors.palette.neutral['200'] : colors.palette.red['400'])};
+  border-color: ${({disabled}) => (disabled ? colors.palette.neutral['200'] : colors.palette.red['400'])};
+  color: ${({disabled}) => (disabled ? colors.white : colors.white)};
+
+  &:hover {
+    background: ${({disabled}) => (disabled ? colors.palette.neutral['200'] : colors.white)};
+    border-color: ${({disabled}) => (disabled ? colors.palette.neutral['200'] : colors.palette.red['500'])};
+    color: ${({disabled}) => (disabled ? colors.white : colors.palette.red['500'])};
+  }
+`;
+
 const outlinedMixin = css`
   background: transparent;
 `;
@@ -50,6 +62,16 @@ const outlinedSecondaryMixin = css<ButtonProps>`
   }
 `;
 
+const mixinButtonFocus = css`
+  margin: 6px; // margin needed to account for the focused box shadow
+  transition: box-shadow 0.1s;
+
+  &:focus {
+    box-shadow: 0 0 0 8px ${colors.palette.gray['100']};
+    outline: none;
+  }
+`;
+
 export const Button = styled.button<ButtonProps>`
   ${mixinButtonFocus};
   border-radius: 100px;
@@ -59,7 +81,7 @@ export const Button = styled.button<ButtonProps>`
   min-height: ${({$size}) => ($size === ButtonSize.regular ? '40px' : '24px')};
   padding: 0 ${({$size}) => ($size === ButtonSize.regular ? '16px' : '12px')};
   transition: all 0.1s;
-  width: ${({$fullWidth}) => ($fullWidth ? '100%' : null)};
+  width: ${({$fullWidth}) => ($fullWidth ? `calc(100% - 2 * 6px)` : null)};
 
   ${({$variant}) => {
     if ($variant === ButtonVariant.contained) {
@@ -75,6 +97,10 @@ export const Button = styled.button<ButtonProps>`
     if ($variant === ButtonVariant.contained) {
       if ($color === ButtonColor.primary) {
         return containedPrimaryMixin;
+      }
+
+      if ($color === ButtonColor.danger) {
+        return containedDangerMixin;
       }
     }
 

@@ -1,11 +1,11 @@
-import React, {FC, useContext, useMemo} from 'react';
+import React, {useContext, useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {TextField} from '@renderer/components/FormElements';
 import Modal from '@renderer/components/Modal';
 import {AccountContext} from '@renderer/context';
 import {getManagedAccounts, getManagedFriends} from '@renderer/selectors';
 import {setManagedAccount, setManagedFriend} from '@renderer/store/app';
-import {AccountType, AppDispatch, ManagedAccount, ManagedFriend} from '@renderer/types';
+import {AccountType, AppDispatch, ManagedAccount, ManagedFriend, SFC} from '@renderer/types';
 import {getNicknameField} from '@renderer/utils/forms/fields';
 import yup from '@renderer/utils/forms/yup';
 
@@ -13,7 +13,7 @@ interface ComponentProps {
   close(): void;
 }
 
-const EditAccountNicknameModal: FC<ComponentProps> = ({close}) => {
+const EditAccountNicknameModal: SFC<ComponentProps> = ({className, close}) => {
   const {accountNumber, type} = useContext(AccountContext);
   const dispatch = useDispatch<AppDispatch>();
   const managedAccounts = useSelector(getManagedAccounts);
@@ -57,6 +57,7 @@ const EditAccountNicknameModal: FC<ComponentProps> = ({close}) => {
 
   return (
     <Modal
+      className={className}
       close={close}
       header={`Edit ${type === AccountType.managedAccount ? 'Account' : 'Friend'} Nickname`}
       ignoreDirty

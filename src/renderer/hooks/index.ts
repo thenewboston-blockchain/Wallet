@@ -9,6 +9,8 @@ import {useIpcEffect} from './ipc/utils';
 import useEventListener from './useEventListener';
 import useFormContext, {useFormContext2} from './useFormContext';
 import useFormSelect from './useFormSelect';
+import useManagedAccount from './useManagedAccount';
+import useManagedFriend from './useManagedFriend';
 import useNavigationalHistory from './useNavigationalHistory';
 import useNetworkConfigFetcher from './useNetworkConfigFetcher';
 import useNetworkCrawlFetcher from './useNetworkCrawlFetcher';
@@ -27,6 +29,8 @@ export {
   useFormContext2,
   useFormSelect,
   useIpcEffect,
+  useManagedAccount,
+  useManagedFriend,
   useNavigationalHistory,
   useNetworkCleanFetcher,
   useNetworkConfigFetcher,

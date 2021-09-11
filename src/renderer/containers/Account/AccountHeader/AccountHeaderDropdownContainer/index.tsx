@@ -4,6 +4,7 @@ import DropdownMenuButton, {DropdownMenuDirection, DropdownMenuOption} from '@re
 import {useToggle} from '@renderer/hooks';
 import {AccountType, SFC} from '@renderer/types';
 
+import DeleteAccountModal from './DeleteAccountModal';
 import EditAccountNicknameModal from './EditAccountNicknameModal';
 
 const AccountHeaderDropdownContainer: SFC = ({className}) => {
@@ -46,7 +47,7 @@ const AccountHeaderDropdownContainer: SFC = ({className}) => {
       {options.length ? (
         <DropdownMenuButton className={className} direction={DropdownMenuDirection.left} options={options} />
       ) : null}
-      {deleteAccountModalIsOpen ? 'delete' : null}
+      {deleteAccountModalIsOpen ? <DeleteAccountModal close={toggleDeleteAccountModal} /> : null}
       {deleteFriendModalIsOpen ? 'delete' : null}
       {editModalIsOpen ? <EditAccountNicknameModal close={toggleEditModal} /> : null}
     </>

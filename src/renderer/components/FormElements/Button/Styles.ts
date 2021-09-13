@@ -1,10 +1,10 @@
 import styled, {css} from 'styled-components';
-import {colors, mixinButtonFocus} from '@renderer/styles';
+import {colors} from '@renderer/styles';
 import {ButtonColor, ButtonSize, ButtonVariant} from './types';
 
 interface ButtonProps {
   $color: ButtonColor;
-  $disabled: boolean;
+  disabled: boolean;
   $fullWidth: boolean;
   $size: ButtonSize;
   $variant: ButtonVariant;
@@ -16,14 +16,26 @@ const containedMixin = css`
 `;
 
 const containedPrimaryMixin = css<ButtonProps>`
-  background: ${({$disabled}) => ($disabled ? colors.palette.gray['400'] : colors.primary)};
-  border-color: ${({$disabled}) => ($disabled ? colors.palette.gray['400'] : colors.primary)};
-  color: ${({$disabled}) => ($disabled ? colors.palette.gray['900'] : null)};
+  background: ${({disabled}) => (disabled ? colors.palette.gray['200'] : colors.primary)};
+  border-color: ${({disabled}) => (disabled ? colors.palette.gray['200'] : colors.primary)};
+  color: ${({disabled}) => (disabled ? colors.white : null)};
 
   &:hover {
-    background: ${({$disabled}) => ($disabled ? colors.palette.gray['400'] : colors.white)};
-    border-color: ${({$disabled}) => ($disabled ? colors.palette.gray['400'] : colors.palette.gray['900'])};
-    color: ${({$disabled}) => ($disabled ? colors.white : colors.palette.gray['900'])};
+    background: ${({disabled}) => (disabled ? colors.palette.gray['200'] : colors.white)};
+    border-color: ${({disabled}) => (disabled ? colors.palette.gray['200'] : colors.palette.gray['900'])};
+    color: ${({disabled}) => (disabled ? colors.white : colors.palette.gray['900'])};
+  }
+`;
+
+const containedDangerMixin = css<ButtonProps>`
+  background: ${({disabled}) => (disabled ? colors.palette.neutral['200'] : colors.palette.red['400'])};
+  border-color: ${({disabled}) => (disabled ? colors.palette.neutral['200'] : colors.palette.red['400'])};
+  color: ${({disabled}) => (disabled ? colors.white : colors.white)};
+
+  &:hover {
+    background: ${({disabled}) => (disabled ? colors.palette.neutral['200'] : colors.white)};
+    border-color: ${({disabled}) => (disabled ? colors.palette.neutral['200'] : colors.palette.red['500'])};
+    color: ${({disabled}) => (disabled ? colors.white : colors.palette.red['500'])};
   }
 `;
 
@@ -32,21 +44,31 @@ const outlinedMixin = css`
 `;
 
 const outlinedPrimaryMixin = css<ButtonProps>`
-  background: ${({$disabled}) => ($disabled ? colors.white : null)};
-  border-color: ${({$disabled}) => ($disabled ? colors.white : colors.palette.gray['200'])};
-  color: ${({$disabled}) => ($disabled ? colors.palette.gray['200'] : colors.primary)};
+  background: ${({disabled}) => (disabled ? colors.white : null)};
+  border-color: ${({disabled}) => (disabled ? colors.white : colors.palette.gray['200'])};
+  color: ${({disabled}) => (disabled ? colors.palette.gray['200'] : colors.primary)};
 
   &:hover {
-    background: ${({$disabled}) => ($disabled ? colors.palette.gray['050'] : null)};
+    background: ${({disabled}) => (disabled ? colors.palette.gray['050'] : null)};
   }
 `;
 
 const outlinedSecondaryMixin = css<ButtonProps>`
-  border-color: ${({$disabled}) => ($disabled ? 'transparent' : colors.palette.blue['400'])};
-  color: ${({$disabled}) => ($disabled ? colors.palette.gray['200'] : colors.palette.blue['500'])};
+  border-color: ${({disabled}) => (disabled ? 'transparent' : colors.palette.blue['400'])};
+  color: ${({disabled}) => (disabled ? colors.palette.gray['200'] : colors.palette.blue['500'])};
 
   &:hover {
-    background: ${({$disabled}) => ($disabled ? null : colors.palette.blue['100'])};
+    background: ${({disabled}) => (disabled ? null : colors.palette.blue['100'])};
+  }
+`;
+
+const mixinButtonFocus = css`
+  margin: 6px; // margin needed to account for the focused box shadow
+  transition: box-shadow 0.1s;
+
+  &:focus {
+    box-shadow: 0 0 0 8px ${colors.palette.gray['100']};
+    outline: none;
   }
 `;
 
@@ -55,11 +77,11 @@ export const Button = styled.button<ButtonProps>`
   border-radius: 100px;
   border-style: solid;
   border-width: 1px;
-  cursor: ${({$disabled}) => ($disabled ? null : 'pointer')};
+  cursor: ${({disabled}) => (disabled ? null : 'pointer')};
   min-height: ${({$size}) => ($size === ButtonSize.regular ? '40px' : '24px')};
   padding: 0 ${({$size}) => ($size === ButtonSize.regular ? '16px' : '12px')};
   transition: all 0.1s;
-  width: ${({$fullWidth}) => ($fullWidth ? '100%' : null)};
+  width: ${({$fullWidth}) => ($fullWidth ? `calc(100% - 2 * 6px)` : null)};
 
   ${({$variant}) => {
     if ($variant === ButtonVariant.contained) {
@@ -75,6 +97,10 @@ export const Button = styled.button<ButtonProps>`
     if ($variant === ButtonVariant.contained) {
       if ($color === ButtonColor.primary) {
         return containedPrimaryMixin;
+      }
+
+      if ($color === ButtonColor.danger) {
+        return containedDangerMixin;
       }
     }
 

@@ -3,7 +3,7 @@ import React, {FC, useMemo} from 'react';
 import ExpandableText from '@renderer/components/ExpandableText';
 import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
 import {BANK_VALIDATOR_CONFIRMATION_SERVICES} from '@renderer/constants/actions';
-import {useAddress, useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
+import {useAddress, useToggle, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
 import {ValidatorConfirmationService} from '@renderer/types';
 import {formatDate} from '@renderer/utils/dates';
 
@@ -18,7 +18,7 @@ enum TableKeys {
 
 const BankValidatorConfirmationServices: FC = () => {
   const address = useAddress();
-  const [expanded, toggleExpanded] = useBooleanState(false);
+  const [expanded, toggleExpanded] = useToggle(false);
   const {
     count,
     currentPage,

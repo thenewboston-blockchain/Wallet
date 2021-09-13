@@ -7,7 +7,7 @@ import NodeLink from '@renderer/components/NodeLink';
 import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
 import EditTrustModal from '@renderer/containers/EditTrustModal';
 import {VALIDATOR_BANKS} from '@renderer/constants/actions';
-import {useAddress, useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
+import {useAddress, useToggle, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
 import {ManagedNode, Node, ValidatorBank} from '@renderer/types';
 
 import './ValidatorBanks.scss';
@@ -30,7 +30,7 @@ interface ComponentProps {
 
 const ValidatorBanks: FC<ComponentProps> = ({managedValidator}) => {
   const address = useAddress();
-  const [expanded, toggleExpanded] = useBooleanState(false);
+  const [expanded, toggleExpanded] = useToggle(false);
   const {
     count,
     currentPage,
@@ -39,7 +39,7 @@ const ValidatorBanks: FC<ComponentProps> = ({managedValidator}) => {
     setPage,
     totalPages,
   } = usePaginatedNetworkDataFetcher<ValidatorBank>(VALIDATOR_BANKS, address);
-  const [editTrustModalIsOpen, toggleEditTrustModal] = useBooleanState(false);
+  const [editTrustModalIsOpen, toggleEditTrustModal] = useToggle(false);
   const [editTrustBank, setEditTrustBank] = useState<Node | null>(null);
 
   const hasSigningKey = useMemo(() => !!managedValidator?.nid_signing_key.length, [managedValidator]);

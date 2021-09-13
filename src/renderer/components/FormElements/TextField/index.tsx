@@ -8,12 +8,13 @@ import {SFC} from '@renderer/types';
 import HelperText, {HelperTextType} from '../HelperText';
 import * as S from './Styles';
 
-export interface BaseTextFieldProps {
+export interface TextFieldProps {
   disabled?: boolean;
   focused?: boolean;
   helperText?: ReactNode;
   helperTextType?: HelperTextType;
   label: string;
+  multiline?: boolean;
   name?: string;
   onBlur?(e: FocusEvent<HTMLInputElement>): void;
   onChange?(e: ChangeEvent<HTMLInputElement>): void;
@@ -23,13 +24,14 @@ export interface BaseTextFieldProps {
   value?: string;
 }
 
-const TextField: SFC<BaseTextFieldProps> = ({
+const TextField: SFC<TextFieldProps> = ({
   className,
   disabled = false,
   focused = false,
   helperText,
   helperTextType,
   label,
+  multiline = false,
   name,
   onBlur,
   onChange,
@@ -43,9 +45,9 @@ const TextField: SFC<BaseTextFieldProps> = ({
 
   const baseProps = {
     autoFocus: focused,
-    className,
     disabled,
     label,
+    multiline,
     placeholder,
     required,
     type,
@@ -58,7 +60,7 @@ const TextField: SFC<BaseTextFieldProps> = ({
   };
 
   return (
-    <>
+    <S.Container className={className}>
       {name ? (
         <Field name={name}>
           {({field}: {field: FieldInputProps<string>}) => (
@@ -83,7 +85,7 @@ const TextField: SFC<BaseTextFieldProps> = ({
       <HelperText name={name} type={helperTextType}>
         {helperText}
       </HelperText>
-    </>
+    </S.Container>
   );
 };
 

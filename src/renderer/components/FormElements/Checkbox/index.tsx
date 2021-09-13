@@ -1,22 +1,30 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React, {FC} from 'react';
-import clsx from 'clsx';
+import React, {ReactNode} from 'react';
+import {SFC} from '@renderer/types';
+import * as S from './Styles';
 
-import CheckableInput, {BaseCheckableInputProps} from '../CheckableInput';
+export interface CheckboxProps {
+  checked: boolean;
+  disabled?: boolean;
+  id?: string;
+  error?: boolean;
+  label?: ReactNode;
+  name?: string;
+  onClick?(e?: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
+  onKeyDown?(e?: React.KeyboardEvent<HTMLButtonElement>): void;
+  required?: boolean;
+  value: string;
+}
 
-export type BaseCheckboxProps = BaseCheckableInputProps;
+const Checkbox: SFC<CheckboxProps> = ({className, error = false, label, ...props}) => {
+  const component = <S.Checkbox $error={error} className={label ? undefined : className} {...props} />;
 
-const Checkbox: FC<BaseCheckboxProps> = ({className, size = 22, ...props}) => {
-  return (
-    <CheckableInput
-      {...props}
-      className={clsx('Checkbox', className)}
-      size={size}
-      totalSize={size + 2}
-      type="checkbox"
-    />
-  );
+  if (label) {
+    return <S.FormControlLabel className={className} control={component} label={label} />;
+  }
+
+  return component;
 };
 
 export default Checkbox;

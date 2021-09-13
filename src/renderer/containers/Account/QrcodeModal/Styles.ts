@@ -9,5 +9,6 @@ export const Container = styled.div`
 
 export const AccountNumber = styled.span`
   margin: 32px 0;
+  user-select: text;
   white-space: pre-line;
 `;

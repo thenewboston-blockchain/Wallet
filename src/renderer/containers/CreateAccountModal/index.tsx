@@ -1,4 +1,4 @@
-import React, {FC, useMemo, useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
@@ -14,7 +14,7 @@ import {getManagedAccounts, getManagedFriends} from '@renderer/selectors';
 import {setManagedAccount} from '@renderer/store/app';
 import {setAccountBalance} from '@renderer/store/accountBalances';
 import {setManagedAccountBalance} from '@renderer/store/managedAccountBalances';
-import {AppDispatch} from '@renderer/types';
+import {AppDispatch, SFC} from '@renderer/types';
 import {generateAccount} from '@renderer/utils/accounts';
 import {getNicknameField} from '@renderer/utils/forms/fields';
 import yup from '@renderer/utils/forms/yup';
@@ -22,14 +22,13 @@ import {getKeyPairFromSigningKeyHex} from '@renderer/utils/signing';
 import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
 
 import CreateAccountModalFields, {FormValues, initialValues} from './CreateAccountModalFields';
-import './CreateAccountModal.scss';
 
 interface ComponentProps {
   close(): void;
   isGetStartedModal?: boolean;
 }
 
-const CreateAccountModal: FC<ComponentProps> = ({close, isGetStartedModal = false}) => {
+const CreateAccountModal: SFC<ComponentProps> = ({className, close, isGetStartedModal = false}) => {
   const [isCreatingNewAccount, setIsCreatingNewAccount] = useState<boolean>(true);
   const dispatch = useDispatch<AppDispatch>();
   const history = useHistory();
@@ -118,10 +117,9 @@ const CreateAccountModal: FC<ComponentProps> = ({close, isGetStartedModal = fals
 
   return (
     <Modal
-      className="CreateAccountModal"
+      className={className}
       close={close}
       disableOverlayClick={isGetStartedModal}
-      displayCancelButton={!isGetStartedModal}
       displayCloseButton={!isGetStartedModal}
       header={isGetStartedModal ? 'Get Started' : 'Create/Add Account'}
       ignoreDirty

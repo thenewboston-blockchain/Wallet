@@ -9,7 +9,7 @@ import intervalToDuration from 'date-fns/intervalToDuration';
 import {Icon, IconType} from '@thenewboston/ui';
 
 import StatusBadge from '@renderer/components/StatusBadge';
-import {useBooleanState} from '@renderer/hooks';
+import {useToggle} from '@renderer/hooks';
 import {getManagedAccounts, getManagedFriends, getNotifications} from '@renderer/selectors';
 import {
   ConfirmationBlockNotificationPayload,
@@ -31,7 +31,7 @@ const dropdownRoot = document.getElementById('dropdown-root')!;
 const Notifications: FC = () => {
   const {pathname} = useLocation();
   const [lastReadTime, setLastReadTime] = useState<number>(new Date().getTime());
-  const [open, toggleOpen, , closeMenu] = useBooleanState(false);
+  const [isOpen, toggleIsOpen] = useToggle(false);
   const iconRef = useRef<HTMLDivElement>(null);
   const managedAccounts = useSelector(getManagedAccounts);
   const managedFriends = useSelector(getManagedFriends);
@@ -53,8 +53,8 @@ const Notifications: FC = () => {
   );
 
   useEffect(() => {
-    closeMenu();
-  }, [pathname, closeMenu]);
+    toggleIsOpen(false);
+  }, [pathname, toggleIsOpen]);
 
   const getAccountNickname = (accountNumber: string): string => {
     const managedAccount = managedAccounts[accountNumber];
@@ -75,17 +75,17 @@ const Notifications: FC = () => {
   };
 
   const handleBellClick = (): void => {
-    if (open) {
+    if (isOpen) {
       updateLastReadTime();
-      closeMenu();
+      toggleIsOpen(false);
     } else {
-      toggleOpen();
+      toggleIsOpen();
     }
   };
 
   const handleMenuClose = (): void => {
     updateLastReadTime();
-    closeMenu();
+    toggleIsOpen(false);
   };
 
   const renderConfirmationBlockNotification = ({data, timestamp}: ConfirmationBlockNotificationPayload): ReactNode => {
@@ -241,19 +241,19 @@ const Notifications: FC = () => {
     <>
       <div className="Notifications__icon-container">
         <Icon
-          className={clsx('Notifications', {'Notifications--active': open})}
+          className={clsx('Notifications', {'Notifications--active': isOpen})}
           icon={IconType.bell}
           onClick={handleBellClick}
           ref={iconRef}
         />
         {unreadNotificationsLength ? <StatusBadge className="Notifications__bell-alert-badge" status="alert" /> : null}
       </div>
-      {open &&
+      {isOpen &&
         createPortal(
           <NotificationsMenu
             handleMenuClose={handleMenuClose}
             iconRef={iconRef}
-            menuOpen={open}
+            menuOpen={isOpen}
             notifications={renderNotifications()}
             unreadNotificationsLength={unreadNotificationsLength}
             updateLastReadTime={updateLastReadTime}

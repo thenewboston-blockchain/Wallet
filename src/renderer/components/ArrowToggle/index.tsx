@@ -4,7 +4,7 @@ import * as S from './Styles';
 interface ComponentProps {
   className?: string;
   expanded: boolean;
-  onClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>): void;
+  onClick(e?: React.MouseEvent<HTMLDivElement, MouseEvent>): void;
 }
 
 const ArrowToggle: FC<ComponentProps> = ({className, expanded, onClick}) => {

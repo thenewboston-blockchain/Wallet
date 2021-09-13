@@ -7,7 +7,7 @@ import NodeLink from '@renderer/components/NodeLink';
 import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
 import EditTrustModal from '@renderer/containers/EditTrustModal';
 import {BANK_BANKS} from '@renderer/constants/actions';
-import {useAddress, useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
+import {useAddress, useToggle, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
 import {ManagedNode, Node} from '@renderer/types';
 
 import './BankBanks.scss';
@@ -29,12 +29,12 @@ interface ComponentProps {
 
 const BankBanks: FC<ComponentProps> = ({managedBank}) => {
   const address = useAddress();
-  const [expanded, toggleExpanded] = useBooleanState(false);
+  const [expanded, toggleExpanded] = useToggle(false);
   const {count, currentPage, loading, results: bankBanks, setPage, totalPages} = usePaginatedNetworkDataFetcher<Node>(
     BANK_BANKS,
     address,
   );
-  const [editTrustModalIsOpen, toggleEditTrustModal] = useBooleanState(false);
+  const [editTrustModalIsOpen, toggleEditTrustModal] = useToggle(false);
   const [editTrustBank, setEditTrustBank] = useState<Node | null>(null);
 
   const hasSigningKey = useMemo(() => !!managedBank?.nid_signing_key.length, [managedBank]);

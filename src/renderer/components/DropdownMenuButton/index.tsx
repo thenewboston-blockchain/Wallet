@@ -4,7 +4,7 @@ import React, {CSSProperties, KeyboardEvent, ReactNode, useCallback, useEffect, 
 import {createPortal} from 'react-dom';
 import noop from 'lodash/noop';
 
-import {useBooleanState, useEventListener} from '@renderer/hooks';
+import {useToggle, useEventListener} from '@renderer/hooks';
 import {GenericVoidFunction, SFC} from '@renderer/types';
 
 import * as S from './Styles';
@@ -42,18 +42,18 @@ const DropdownMenuButton: SFC<ComponentProps> = ({
 }) => {
   const iconRef = useRef<HTMLDivElement>(null);
   const optionsRef = useRef<HTMLDivElement[]>([]);
-  const [open, toggleOpen, , closeMenu] = useBooleanState(false);
+  const [isOpen, toggleIsOpen] = useToggle(false);
   const [dropdownPositionStyle, setDropdownPositionStyle] = useState<CSSProperties | undefined>(undefined);
 
   useEffect(() => {
-    if (open) {
+    if (isOpen) {
       optionsRef.current[0]?.focus();
     }
-  }, [open, optionsRef]);
+  }, [isOpen, optionsRef]);
 
   const handleClick = (e: any): void => {
     if (!dropdownRoot.contains(e.target) && !iconRef.current?.contains(e.target)) {
-      closeMenu();
+      toggleIsOpen(false);
     }
   };
 
@@ -69,13 +69,13 @@ const DropdownMenuButton: SFC<ComponentProps> = ({
         setDropdownPositionStyle({left: left + width / 2, top: bottom + 3});
       }
 
-      toggleOpen();
+      toggleIsOpen();
     }
-  }, [direction, toggleOpen]);
+  }, [direction, toggleIsOpen]);
 
   const handleOptionClick = (optionOnClick: GenericVoidFunction) => async (): Promise<void> => {
     await optionOnClick();
-    closeMenu();
+    toggleIsOpen(false);
   };
 
   const handleOptionKeyDown = (optionOnClick: GenericVoidFunction, index: number, disabled: boolean) => async (
@@ -92,14 +92,14 @@ const DropdownMenuButton: SFC<ComponentProps> = ({
     }
 
     if (e.key === 'Enter' && !disabled) {
-      closeMenu();
+      toggleIsOpen(false);
       await optionOnClick();
     }
   };
 
   const renderButtonIcon = useCallback((): ReactNode => {
     const iconProps = {
-      $isActive: open,
+      $isActive: isOpen,
       className,
       onClick: handleOpenDropdown,
       ref: iconRef,
@@ -110,12 +110,12 @@ const DropdownMenuButton: SFC<ComponentProps> = ({
       default:
         return <S.DotsVerticalIcon {...iconProps} />;
     }
-  }, [className, icon, handleOpenDropdown, open]);
+  }, [className, icon, handleOpenDropdown, isOpen]);
 
   return (
     <>
       {renderButtonIcon()}
-      {open &&
+      {isOpen &&
         createPortal(
           <S.MenuContainer style={dropdownPositionStyle}>
             {options.map(({disabled = false, label, onClick: optionOnClick}, index) => {

@@ -1,11 +1,9 @@
 import React, {CSSProperties, FC, ReactNode, useMemo} from 'react';
 import {createPortal} from 'react-dom';
-import clsx from 'clsx';
 import noop from 'lodash/noop';
-import {bemify} from '@thenewboston/utils';
 
 import {Form, FormButton, FormButtonProps} from '@renderer/components/FormComponents';
-import {ButtonType, ButtonVariant} from '@renderer/components/FormElements';
+import {ButtonType} from '@renderer/components/FormElements';
 import Loader from '@renderer/components/FormElements/Loader';
 
 import {GenericFormValues, GenericFunction} from '@renderer/types';
@@ -17,11 +15,9 @@ export interface ModalButtonProps extends FormButtonProps {
 }
 
 interface ComponentProps {
-  cancelButton?: ModalButtonProps | string;
   className?: string;
   close(): void;
   disableOverlayClick?: boolean;
-  displayCancelButton?: boolean;
   displayCloseButton?: boolean;
   displaySubmitButton?: boolean;
   footer?: ReactNode;
@@ -38,12 +34,10 @@ interface ComponentProps {
 }
 
 const Modal: FC<ComponentProps> = ({
-  cancelButton,
   children,
   className,
   close,
   disableOverlayClick = false,
-  displayCancelButton = true,
   displaySubmitButton = true,
   footer,
   header,
@@ -62,29 +56,6 @@ const Modal: FC<ComponentProps> = ({
     initialValues,
   ]);
 
-  const cancelProps = useMemo<Omit<ModalButtonProps, 'children'>>(() => {
-    if (typeof cancelButton === 'string') {
-      return {
-        content: cancelButton,
-        ignoreDirty,
-        onClick: close,
-        submitting,
-        variant: ButtonVariant.link,
-      };
-    }
-    return {
-      className: cancelButton?.className ?? undefined,
-      color: cancelButton?.color ?? undefined,
-      content: cancelButton?.content ?? 'Cancel',
-      disabled: cancelButton?.disabled ?? undefined,
-      ignoreDirty: cancelButton?.ignoreDirty ?? ignoreDirty,
-      onClick: cancelButton?.onClick ?? close,
-      submitting: cancelButton?.submitting ?? submitting,
-      type: cancelButton?.type ?? undefined,
-      variant: cancelButton?.variant ?? ButtonVariant.link,
-    };
-  }, [cancelButton, close, ignoreDirty, submitting]);
-
   const submitProps = useMemo<Omit<ModalButtonProps, 'children'>>(() => {
     if (typeof submitButton === 'string') {
       return {
@@ -95,7 +66,6 @@ const Modal: FC<ComponentProps> = ({
       };
     }
     return {
-      className: submitButton?.className ?? undefined,
       color: submitButton?.color ?? undefined,
       content: submitButton?.content ?? 'Submit',
       disabled: submitButton?.disabled ?? undefined,
@@ -110,27 +80,8 @@ const Modal: FC<ComponentProps> = ({
   const renderDefaultFooter = (): ReactNode => {
     return (
       <>
-        {displayCancelButton && (
-          <FormButton
-            className={clsx('Modal__default-cancel', cancelProps.className, {
-              ...bemify(className, '__default-cancel'),
-            })}
-            color={cancelProps.color}
-            disabled={cancelProps.disabled}
-            ignoreDirty={cancelProps.ignoreDirty}
-            onClick={cancelProps.onClick}
-            submitting={cancelProps.submitting}
-            type={cancelProps.type}
-            variant={cancelProps.variant}
-          >
-            {cancelProps.content}
-          </FormButton>
-        )}
         {displaySubmitButton && (
           <FormButton
-            className={clsx('Modal__default-submit', submitProps.className, {
-              ...bemify(className, '__default-submit'),
-            })}
             color={submitProps.color}
             disabled={submitProps.disabled}
             ignoreDirty={submitProps.ignoreDirty}

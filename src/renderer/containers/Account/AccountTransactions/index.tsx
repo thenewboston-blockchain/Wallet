@@ -6,7 +6,7 @@ import AccountLink from '@renderer/components/AccountLink';
 import ExpandableText from '@renderer/components/ExpandableText';
 import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
 import {BANK_BANK_TRANSACTIONS} from '@renderer/constants/actions';
-import {useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
+import {useToggle, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
 import {getActiveBankConfig} from '@renderer/selectors';
 import {AccountNumberParams, BankTransaction, SFC} from '@renderer/types';
 import {formatAddressFromNode} from '@renderer/utils/address';
@@ -26,8 +26,8 @@ enum TableKeys {
 }
 
 const AccountTransactions: SFC = ({className}) => {
-  const [expanded, toggleExpanded] = useBooleanState(false);
-  const [showFees, toggleShowFees] = useBooleanState(false);
+  const [expanded, toggleExpanded] = useToggle(false);
+  const [showFees, toggleShowFees] = useToggle(false);
   const {accountNumber} = useParams<AccountNumberParams>();
   const activeBank = useSelector(getActiveBankConfig)!;
   const activeBankAddress = formatAddressFromNode(activeBank);

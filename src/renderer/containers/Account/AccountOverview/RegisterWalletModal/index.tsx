@@ -43,9 +43,9 @@ const RegisterWalletModal: SFC<RegisterWalletModalProps> = ({className, close}) 
       className={className}
       close={close}
       header="Register Wallet"
-      hideFooter
       initialValues={initialValues}
       onSubmit={handleSubmit}
+      submitButton="Register"
       submitting={submitting}
       validationSchema={validationSchema}
     >

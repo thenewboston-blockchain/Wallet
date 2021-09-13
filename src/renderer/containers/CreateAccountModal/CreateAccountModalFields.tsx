@@ -1,6 +1,6 @@
 import React, {FC, useEffect} from 'react';
-import {FormInput, FormRadioGroup, FormTextArea} from '@renderer/components/FormComponents';
 import {useFormContext} from '@renderer/hooks';
+import * as S from './Styles';
 
 export const initialValues = {
   nickname: '',
@@ -29,18 +29,18 @@ const CreateAccountModalFields: FC<ComponentProps> = ({setIsCreatingNewAccount})
   }, [setIsCreatingNewAccount, type]);
 
   return (
-    <>
-      <FormRadioGroup
-        focused
+    <S.Container>
+      <S.RadioGroup
         options={[
           {label: 'Create New Account', value: 'create'},
           {label: 'Add Existing Account', value: 'add'},
         ]}
         name="type"
+        required
       />
-      <FormInput label="Nickname" name="nickname" />
-      {renderSigningKey && <FormTextArea label="Signing Key" name="signingKey" required />}
-    </>
+      <S.TextField label="Nickname" name="nickname" />
+      {renderSigningKey && <S.TextField label="Signing Key" multiline name="signingKey" required />}
+    </S.Container>
   );
 };
 

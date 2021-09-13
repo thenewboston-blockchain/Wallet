@@ -6,7 +6,7 @@ import {SFC} from '@renderer/types';
 
 import * as S from './Styles';
 
-export interface BaseSwitchProps {
+export interface SwitchProps {
   checked: boolean;
   disabled?: boolean;
   id?: string;
@@ -15,7 +15,7 @@ export interface BaseSwitchProps {
   onChange(checked: boolean, e: MouseEvent | SyntheticEvent<MouseEvent | KeyboardEvent, Event>): void;
 }
 
-const Switch: SFC<BaseSwitchProps> = ({checked, className, disabled = false, id, label, name, onChange}) => {
+const Switch: SFC<SwitchProps> = ({checked, className, disabled = false, id, label, name, onChange}) => {
   const switchComponent = useMemo(
     () => (
       <ReactSwitch

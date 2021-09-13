@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import {Icon, IconType} from '@thenewboston/ui';
 import {bemify} from '@thenewboston/utils';
 
-import {useBooleanState, useWriteIpc} from '@renderer/hooks';
+import {useToggle, useWriteIpc} from '@renderer/hooks';
 import {displayToast, ToastType} from '@renderer/utils/toast';
 import {IpcChannel} from '@shared/ipc';
 
@@ -29,7 +29,7 @@ const TileSigningKey: FC<ComponentProps> = ({accountNumber, className, signingKe
   const copyRef = useRef<HTMLDivElement>(null);
   const downloadRef = useRef<HTMLDivElement>(null);
   const eyeRef = useRef<HTMLDivElement>(null);
-  const [showSigningKey, toggleSigningKey, , hideSigningKey] = useBooleanState(false);
+  const [showSigningKey, toggleSigningKey] = useToggle(false);
 
   const handleDownloadBlur = useCallback(() => {
     downloadRef.current?.blur();
@@ -46,8 +46,8 @@ const TileSigningKey: FC<ComponentProps> = ({accountNumber, className, signingKe
   });
 
   useEffect(() => {
-    hideSigningKey();
-  }, [accountNumber, hideSigningKey]);
+    toggleSigningKey(false);
+  }, [accountNumber, toggleSigningKey]);
 
   const handleCopy = (): void => {
     displayToast('Signing Key copied to the clipboard', ToastType.success);

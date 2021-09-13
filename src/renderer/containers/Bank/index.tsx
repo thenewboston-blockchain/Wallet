@@ -10,7 +10,7 @@ import PageHeader from '@renderer/components/PageHeader';
 import PageLayout from '@renderer/components/PageLayout';
 import PageTabs from '@renderer/components/PageTabs';
 import {DropdownMenuOption} from '@renderer/components/DropdownMenuButton';
-import {useAddress, useBooleanState} from '@renderer/hooks';
+import {useAddress, useToggle} from '@renderer/hooks';
 import {getIsActiveBank, getIsManagedBank, getManagedAccounts, getManagedBanks} from '@renderer/selectors';
 import {setManagedBank} from '@renderer/store/app';
 import {AppDispatch, RootState} from '@renderer/types';
@@ -33,10 +33,10 @@ import './Bank.scss';
 
 const Bank: FC = () => {
   const {path, url} = useRouteMatch();
-  const [addSigningKeyModalIsOpen, toggleSigningKeyModal] = useBooleanState(false);
-  const [editNicknameModalIsOpen, toggleEditNicknameModal] = useBooleanState(false);
-  const [removeBankModalIsOpen, toggleRemoveBankModal] = useBooleanState(false);
-  const [setAsActiveBankModalIsOpen, toggleSetAsActiveBankModal] = useBooleanState(false);
+  const [addSigningKeyModalIsOpen, toggleSigningKeyModal] = useToggle(false);
+  const [editNicknameModalIsOpen, toggleEditNicknameModal] = useToggle(false);
+  const [removeBankModalIsOpen, toggleRemoveBankModal] = useToggle(false);
+  const [setAsActiveBankModalIsOpen, toggleSetAsActiveBankModal] = useToggle(false);
   const address = useAddress();
   const dispatch = useDispatch<AppDispatch>();
   const history = useHistory();

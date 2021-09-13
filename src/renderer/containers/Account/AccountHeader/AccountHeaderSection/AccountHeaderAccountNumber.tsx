@@ -2,7 +2,7 @@ import React, {useContext, useMemo, useRef} from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
 import {AccountContext} from '@renderer/context';
-import {useBooleanState} from '@renderer/hooks';
+import {useToggle} from '@renderer/hooks';
 import {AccountType, SFC} from '@renderer/types';
 import {truncateLongText} from '@renderer/utils/accounts';
 import {displayToast, ToastType} from '@renderer/utils/toast';
@@ -12,7 +12,7 @@ import * as S from './Styles';
 
 const AccountHeaderAccountNumber: SFC = ({className}) => {
   const {accountNumber, type} = useContext(AccountContext);
-  const [qrcodeModalIsOpen, toggleQrcodeModal] = useBooleanState(false);
+  const [qrcodeModalIsOpen, toggleQrcodeModal] = useToggle(false);
   const accountNumberCopyRef = useRef<HTMLDivElement>(null);
 
   const accountLabel = useMemo<string>(() => {

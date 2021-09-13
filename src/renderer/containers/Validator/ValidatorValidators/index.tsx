@@ -7,7 +7,7 @@ import NodeLink from '@renderer/components/NodeLink';
 import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
 import EditTrustModal from '@renderer/containers/EditTrustModal';
 import {VALIDATOR_VALIDATORS} from '@renderer/constants/actions';
-import {useAddress, useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
+import {useAddress, useToggle, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
 import {BaseValidator, ManagedNode} from '@renderer/types';
 
 import './ValidatorValidators.scss';
@@ -33,7 +33,7 @@ interface ComponentProps {
 
 const ValidatorValidators: FC<ComponentProps> = ({managedValidator}) => {
   const address = useAddress();
-  const [expanded, toggleExpanded] = useBooleanState(false);
+  const [expanded, toggleExpanded] = useToggle(false);
   const {
     count,
     currentPage,
@@ -42,7 +42,7 @@ const ValidatorValidators: FC<ComponentProps> = ({managedValidator}) => {
     setPage,
     totalPages,
   } = usePaginatedNetworkDataFetcher<BaseValidator>(VALIDATOR_VALIDATORS, address);
-  const [editTrustModalIsOpen, toggleEditTrustModal] = useBooleanState(false);
+  const [editTrustModalIsOpen, toggleEditTrustModal] = useToggle(false);
   const [editTrustValidator, setEditTrustValidator] = useState<BaseValidator | null>(null);
 
   const hasSigningKey = useMemo(() => !!managedValidator?.nid_signing_key.length, [managedValidator]);

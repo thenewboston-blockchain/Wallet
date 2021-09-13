@@ -6,7 +6,7 @@ import {Icon, IconType} from '@thenewboston/ui';
 
 import {Button, ButtonColor} from '@renderer/components/FormElements';
 import AddBankSigningKeysModal from '@renderer/containers/Bank/AddBankSigningKeysModal';
-import {useAddress, useBooleanState} from '@renderer/hooks';
+import {useAddress, useToggle} from '@renderer/hooks';
 import {getIsManagedBank, getManagedBanks} from '@renderer/selectors';
 import {setManagedBank} from '@renderer/store/app';
 import {AppDispatch, RootState} from '@renderer/types';
@@ -29,7 +29,7 @@ interface ComponentProps {
 }
 
 const TileBankSigningDetails: FC<ComponentProps> = ({className, items}) => {
-  const [addSigningKeyModalIsOpen, toggleSigningKeyModal] = useBooleanState(false);
+  const [addSigningKeyModalIsOpen, toggleSigningKeyModal] = useToggle(false);
   const address = useAddress();
   const dispatch = useDispatch<AppDispatch>();
   const isManagedBank = useSelector((state: RootState) => getIsManagedBank(state, address));

@@ -6,7 +6,7 @@ import ExpandableText from '@renderer/components/ExpandableText';
 import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
 import EditTrustModal from '@renderer/containers/EditTrustModal';
 import {BANK_ACCOUNTS} from '@renderer/constants/actions';
-import {useAddress, useBooleanState, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
+import {useAddress, useToggle, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
 import {BankAccount, ManagedNode} from '@renderer/types';
 import {formatDate} from '@renderer/utils/dates';
 
@@ -26,7 +26,7 @@ interface ComponentProps {
 
 const BankAccounts: FC<ComponentProps> = ({managedBank}) => {
   const address = useAddress();
-  const [expanded, toggleExpanded] = useBooleanState(false);
+  const [expanded, toggleExpanded] = useToggle(false);
   const {
     count,
     currentPage,
@@ -35,7 +35,7 @@ const BankAccounts: FC<ComponentProps> = ({managedBank}) => {
     setPage,
     totalPages,
   } = usePaginatedNetworkDataFetcher<BankAccount>(BANK_ACCOUNTS, address);
-  const [editTrustModalIsOpen, toggleEditTrustModal] = useBooleanState(false);
+  const [editTrustModalIsOpen, toggleEditTrustModal] = useToggle(false);
   const [editTrustAccount, setEditTrustAccount] = useState<BankAccount | null>(null);
 
   const hasSigningKey = useMemo(() => !!managedBank?.nid_signing_key.length, [managedBank]);

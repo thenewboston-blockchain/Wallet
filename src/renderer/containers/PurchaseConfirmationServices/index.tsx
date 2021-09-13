@@ -2,7 +2,7 @@ import React, {FC, ReactNode, useMemo, useReducer, useState} from 'react';
 import {useSelector} from 'react-redux';
 
 import {Button, Select} from '@renderer/components/FormElements';
-import {useAddress, useBooleanState} from '@renderer/hooks';
+import {useAddress, useToggle} from '@renderer/hooks';
 import {getAuthenticatedBanks} from '@renderer/selectors';
 import {Dict, InputOption} from '@renderer/types';
 
@@ -34,7 +34,7 @@ const PurchaseConfirmationServices: FC = () => {
     return Object.values(bankOptionsObject);
   }, [bankOptionsObject]);
 
-  const [purchaseModalIsOpen, togglePurchaseModal] = useBooleanState(false);
+  const [purchaseModalIsOpen, togglePurchaseModal] = useToggle(false);
   const [selectedBankOption, setSelectedBankOption] = useState<InputOption | null>(
     initialBankIsAuthenticated ? bankOptionsObject[initialAddress] : bankOptionsList[0] || null,
   );

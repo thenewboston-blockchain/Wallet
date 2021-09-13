@@ -1,8 +1,8 @@
 /* eslint-disable sort-keys */
 
-import {createMuiTheme} from '@material-ui/core';
+import {createTheme} from '@material-ui/core';
 
-const muiTheme = createMuiTheme({
+const muiTheme = createTheme({
   palette: {
     primary: {
       main: '#7dabf8', // --color-blue-300

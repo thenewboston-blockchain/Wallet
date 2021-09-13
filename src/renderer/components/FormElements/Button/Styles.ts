@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import {colors} from '@renderer/styles';
+import {colors, mixinButtonFocus} from '@renderer/styles';
 import {ButtonColor, ButtonSize, ButtonVariant} from './types';
 
 interface ButtonProps {
@@ -59,16 +59,6 @@ const outlinedSecondaryMixin = css<ButtonProps>`
 
   &:hover {
     background: ${({disabled}) => (disabled ? null : colors.palette.blue['100'])};
-  }
-`;
-
-const mixinButtonFocus = css`
-  margin: 6px; // margin needed to account for the focused box shadow
-  transition: box-shadow 0.1s;
-
-  &:focus {
-    box-shadow: 0 0 0 8px ${colors.palette.gray['100']};
-    outline: none;
   }
 `;
 

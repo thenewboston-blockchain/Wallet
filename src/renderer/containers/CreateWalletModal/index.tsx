@@ -1,6 +1,6 @@
 import React, {FC, useMemo, useState} from 'react';
 
-import {Button, ButtonType, TextField} from '@renderer/components/FormElements';
+import {ButtonType, FormButton, TextField} from '@renderer/components/FormElements';
 import Modal from '@renderer/components/Modal';
 import {ModalProps} from '@renderer/types/modals';
 import yup from '@renderer/utils/forms/yup';
@@ -33,16 +33,16 @@ const CreateWalletModal: FC<ComponentProps> = ({close}) => {
       className="CreateWalletModal"
       close={close}
       header="Create a wallet"
-      hideFooter // TODO: Remove This once you update Modal
+      hideFooter
       initialValues={initialValues}
       onSubmit={handleSubmit}
       submitting={submitting}
       validationSchema={validationSchema}
     >
       <TextField focused label="What is it for?" name="nickname" />
-      <Button className="CreateWalletModal__submit-button" ignoreDirty type={ButtonType.submit}>
+      <FormButton className="CreateWalletModal__submit-button" ignoreDirty type={ButtonType.submit}>
         Create
-      </Button>
+      </FormButton>
       {/* TODO: Make 'add' a link */}
       <div className="CreateWalletModal__footer-text">Have an existing wallet? Add</div>
     </Modal>

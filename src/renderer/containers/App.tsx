@@ -6,7 +6,7 @@ import {Flip, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import electronIsDev from 'electron-is-dev';
 
-import CreateAccountModal from '@renderer/containers/Account/CreateAccountModal';
+import CreateAccountModal from '@renderer/containers/CreateAccountModal';
 import Connect from '@renderer/containers/Connect';
 import Layout from '@renderer/containers/Layout';
 import {connect, connectAndStoreLocalData, fetchNonDefaultNodeConfigs} from '@renderer/dispatchers/app';

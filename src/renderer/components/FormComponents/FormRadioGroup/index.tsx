@@ -1,30 +1,30 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React, {FC, useMemo, useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import clsx from 'clsx';
 import noop from 'lodash/noop';
 import {bemify} from '@thenewboston/utils';
 
-import {BaseRadioProps, Radio} from '@renderer/components/FormElements';
+import {RadioProps, Radio} from '@renderer/components/FormElements';
 import {useFormContext} from '@renderer/hooks';
-import {BaseFormComponentProps, InputOption} from '@renderer/types';
+import {BaseFormComponentProps, InputOption, SFC} from '@renderer/types';
 import {renderFormError, renderFormLabel} from '@renderer/utils/forms/formComponents';
 
-interface BaseRadioGroupProps extends Omit<BaseRadioProps, 'checked'> {
+interface BaseRadioGroupProps extends Omit<RadioProps, 'checked'> {
   options: InputOption[];
 }
 
 type ComponentProps = BaseFormComponentProps<BaseRadioGroupProps>;
 
-const FormRadioGroup: FC<ComponentProps> = ({
-  focused = false,
+const FormRadioGroup: SFC<ComponentProps> = ({
+  className,
   hideErrorText = false,
   label,
   options,
   required,
   ...baseRadioProps
 }) => {
-  const {className, name} = baseRadioProps;
+  const {name} = baseRadioProps;
   const {errors, setFieldTouched, setFieldValue, touched, values} = useFormContext();
   const [focusedIndex, setFocusedIndex] = useState<number>(0);
 
@@ -40,7 +40,7 @@ const FormRadioGroup: FC<ComponentProps> = ({
     setFieldValue(name, value);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
     const firstClassName = className?.split(' ')[0] || 'FormRadioGroup';
     if (focusedIndex !== options.length - 1 && (e.key === 'ArrowRight' || e.key === 'ArrowDown')) {
       const nextOptionClassName = `${firstClassName}__option-${focusedIndex + 1}`;
@@ -61,7 +61,6 @@ const FormRadioGroup: FC<ComponentProps> = ({
     <div className={clsx('FormRadioGroup FormFieldComponent', className)}>
       {renderFormLabel({className, label, name, required})}
       {options.map((option, index) => {
-        const optionIsFocused = focused && index === focusedIndex;
         const selected = selectedOption?.value === option.value;
         return (
           <div className="FormField__option" key={option.value}>
@@ -73,10 +72,8 @@ const FormRadioGroup: FC<ComponentProps> = ({
               })}
               disabled={option.disabled}
               error={error && selected}
-              focused={optionIsFocused}
               onClick={handleClick(option.value)}
               onKeyDown={handleKeyDown}
-              unfocusable={index !== 0 && !optionIsFocused}
               value={option.value}
             />
             <span

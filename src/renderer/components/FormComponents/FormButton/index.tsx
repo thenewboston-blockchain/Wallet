@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import React, {FC, useMemo} from 'react';
-import {Button, BaseButtonProps, ButtonType, Loader} from '@renderer/components/FormElements';
+import {Button, ButtonProps, ButtonType, Loader} from '@renderer/components/FormElements';
 import {useFormContext2} from '@renderer/hooks';
 
-export interface FormButtonProps extends BaseButtonProps {
+export interface FormButtonProps extends ButtonProps {
   ignoreDirty?: boolean;
   submitting?: boolean;
 }

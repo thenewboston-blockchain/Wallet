@@ -6,7 +6,7 @@ import {ButtonColor, ButtonSize, ButtonType, ButtonVariant} from './types';
 
 export {ButtonColor, ButtonSize, ButtonType, ButtonVariant};
 
-export interface BaseButtonProps {
+export interface ButtonProps {
   className?: string;
   color?: ButtonColor;
   disabled?: boolean;
@@ -18,7 +18,7 @@ export interface BaseButtonProps {
   variant?: ButtonVariant;
 }
 
-const Button: FC<BaseButtonProps> = ({
+const Button: FC<ButtonProps> = ({
   children,
   className,
   color = ButtonColor.primary,

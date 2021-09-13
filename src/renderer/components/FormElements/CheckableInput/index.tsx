@@ -1,11 +1,16 @@
-import React, {FC, useEffect, useMemo, useRef} from 'react';
-import clsx from 'clsx';
-import {Icon, IconType} from '@thenewboston/ui';
-import {bemify} from '@thenewboston/utils';
+/* eslint-disable react/jsx-props-no-spreading */
 
-import './CheckableInput.scss';
+import React, {useEffect, useRef} from 'react';
+import {SFC} from '@renderer/types';
 
-export interface BaseCheckableInputProps {
+import * as S from './Styles';
+
+export enum CheckableInputType {
+  checkbox = 'checkbox',
+  radio = 'radio',
+}
+
+export interface CheckableInputProps {
   checked: boolean;
   className?: string;
   disabled?: boolean;
@@ -20,11 +25,7 @@ export interface BaseCheckableInputProps {
   value: string;
 }
 
-export interface CheckableInputType {
-  type: 'checkbox' | 'radio';
-}
-
-const CheckableInput: FC<BaseCheckableInputProps & CheckableInputType> = ({
+const CheckableInput: SFC<CheckableInputProps & {type: CheckableInputType}> = ({
   checked,
   className,
   disabled = false,
@@ -47,16 +48,6 @@ const CheckableInput: FC<BaseCheckableInputProps & CheckableInputType> = ({
     }
   }, [focused, iconRef]);
 
-  const checkedIcon = useMemo(() => {
-    if (type === 'radio') return IconType.radioboxMarked;
-    return IconType.checkboxMarked;
-  }, [type]);
-
-  const uncheckedIcon = useMemo(() => {
-    if (type === 'radio') return IconType.radioboxBlank;
-    return IconType.checkboxBlankOutline;
-  }, [type]);
-
   const handleClick = onClick
     ? (e?: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
         // blur if clicked. Don't blur if you pressed Enter on it.
@@ -67,26 +58,27 @@ const CheckableInput: FC<BaseCheckableInputProps & CheckableInputType> = ({
       }
     : undefined;
 
+  const iconProps = {
+    $error: error,
+    className,
+    disabled,
+    onClick: handleClick,
+    onKeyDown,
+    ref: iconRef,
+    size,
+    totalSize,
+    unfocusable,
+  };
+
+  const checkedIcon =
+    type === CheckableInputType.radio ? <S.CheckedRadio {...iconProps} /> : <S.CheckedCheckbox {...iconProps} />;
+  const uncheckedIcon =
+    type === CheckableInputType.radio ? <S.BlankRadio {...iconProps} /> : <S.BlankCheckbox {...iconProps} />;
+
   return (
     <>
-      <Icon
-        className={clsx('CheckableInput', className, {
-          'CheckableInput--checked': checked,
-          'CheckableInput--error': error,
-          ...bemify(className, '--checked', checked),
-          ...bemify(className, '--error', error),
-        })}
-        disabled={disabled}
-        icon={checked ? checkedIcon : uncheckedIcon}
-        onClick={handleClick}
-        onKeyDown={onKeyDown}
-        ref={iconRef}
-        size={size}
-        totalSize={totalSize}
-        unfocusable={unfocusable}
-      />
-      <input
-        className="CheckableInput__input"
+      {checked ? checkedIcon : uncheckedIcon}
+      <S.HiddenInput
         checked={checked}
         disabled={disabled}
         id={name || value}

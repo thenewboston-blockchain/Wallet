@@ -2,6 +2,8 @@ import AlertIcon from './AlertIcon';
 import AlertCircleOutlineIcon from './AlertCircleOutlineIcon';
 import ArrowLeftIcon from './ArrowLeftIcon';
 import ArrowRightIcon from './ArrowRightIcon';
+import CheckboxBlankOutlineIcon from './CheckboxBlankOutlineIcon';
+import CheckboxMarkedIcon from './CheckboxMarkedIcon';
 import CheckCircleIcon from './CheckCircleIcon';
 import ChevronLeftIcon from './ChevronLeftIcon';
 import ChevronRightIcon from './ChevronRightIcon';
@@ -17,6 +19,8 @@ import LoadingIcon from './LoadingIcon';
 import PlayIcon from './PlayIcon';
 import PlusIcon from './PlusIcon';
 import QrcodeIcon from './QrcodeIcon';
+import RadioboxBlankIcon from './RadioboxBlankIcon';
+import RadioboxMarkedIcon from './RadioboxMarkedIcon';
 import RefreshIcon from './RefreshIcon';
 import RocketLaunchIcon from './RocketLaunchIcon';
 import {IconProps} from './types';
@@ -26,6 +30,8 @@ export {
   AlertCircleOutlineIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
+  CheckboxBlankOutlineIcon,
+  CheckboxMarkedIcon,
   CheckCircleIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -41,6 +47,8 @@ export {
   PlayIcon,
   PlusIcon,
   QrcodeIcon,
+  RadioboxBlankIcon,
+  RadioboxMarkedIcon,
   RefreshIcon,
   RocketLaunchIcon,
 };

@@ -2,7 +2,6 @@ import React, {useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
-import {TextField} from '@renderer/components/FormElements';
 import Modal from '@renderer/components/Modal';
 import {
   ACCOUNT_NUMBER_LENGTH,
@@ -16,6 +15,8 @@ import {setManagedFriend} from '@renderer/store/app';
 import {AppDispatch, SFC} from '@renderer/types';
 import {getNicknameField} from '@renderer/utils/forms/fields';
 import yup from '@renderer/utils/forms/yup';
+
+import * as S from './Styles';
 
 interface ComponentProps {
   accountNumberToAdd?: string;
@@ -92,8 +93,8 @@ const AddFriendModal: SFC<ComponentProps> = ({accountNumberToAdd, className, clo
       submitButton="Add"
       validationSchema={validationSchema}
     >
-      <TextField focused label="Nickname" name="nickname" />
-      <TextField label="Account Number" multiline name="accountNumber" required />
+      <S.TextField focused label="Nickname" name="nickname" />
+      <S.TextField label="Account Number" multiline name="accountNumber" required />
     </Modal>
   );
 };

@@ -45,7 +45,6 @@ const TextField: SFC<TextFieldProps> = ({
 
   const baseProps = {
     autoFocus: focused,
-    className,
     disabled,
     label,
     multiline,
@@ -61,7 +60,7 @@ const TextField: SFC<TextFieldProps> = ({
   };
 
   return (
-    <>
+    <S.Container className={className}>
       {name ? (
         <Field name={name}>
           {({field}: {field: FieldInputProps<string>}) => (
@@ -86,7 +85,7 @@ const TextField: SFC<TextFieldProps> = ({
       <HelperText name={name} type={helperTextType}>
         {helperText}
       </HelperText>
-    </>
+    </S.Container>
   );
 };
 

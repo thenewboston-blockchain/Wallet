@@ -4,6 +4,8 @@ import {colors} from '@renderer/styles';
 
 const label = 'TextField__label';
 
+export const Container = styled.div``;
+
 export const TextField = styled(MuiTextField).attrs(({multiline}) => ({
   InputLabelProps: {
     className: label,

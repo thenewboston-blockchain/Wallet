@@ -2,8 +2,7 @@ import React, {CSSProperties, FC, ReactNode, useMemo} from 'react';
 import {createPortal} from 'react-dom';
 import noop from 'lodash/noop';
 
-import {Form, FormButton, FormButtonProps} from '@renderer/components/FormComponents';
-import {ButtonType} from '@renderer/components/FormElements';
+import {ButtonType, Form, FormButton, FormButtonProps} from '@renderer/components/FormElements';
 import Loader from '@renderer/components/FormElements/Loader';
 
 import {GenericFormValues, GenericFunction} from '@renderer/types';

@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import {FormButton} from '@renderer/components/FormComponents';
+import {ButtonColor, ButtonType, FormButton} from '@renderer/components/FormElements';
 import {AlertIcon as UAlertIcon} from '@renderer/components/Icons';
 import {colors, h2, h4} from '@renderer/styles';
-import {ButtonColor, ButtonType} from '@renderer/components/FormElements';
 
 export const Header = styled.h2`
   ${h2.medium};

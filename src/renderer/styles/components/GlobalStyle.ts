@@ -1,29 +1,34 @@
-import {createGlobalStyle} from 'styled-components';
+import {createGlobalStyle, css} from 'styled-components';
 
-import colors from '../colors';
-import {b1, font, h1, h2, h3, h4} from '../fonts';
-
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle(({theme}) => css`
   * {
     box-sizing: border-box;
-    line-height: ${font.lineHeight.default};
+    line-height: ${theme.fonts.lineHeight.default};
+  }
+`);
+
+
+  `
+  * {
+    box-sizing: border-box;
+    line-height: ${({theme}) => theme.fonts.lineHeight.default};
     user-select: none;
   }
   
   body {
-    ${b1.regular}
-    background: ${colors.palette.neutral['075']};
-    color: ${colors.primary};
+    ${({theme}) => theme.fonts.mixins.b1.regular}
+    background: ${({theme}) => theme.colors.palette.neutral['075']};
+    color: ${({theme}) => theme.colors.primary};
     margin: auto;
   }
   
   a {
-    color: ${colors.palette.blue['500']};
+    color: ${({theme}) => theme.colors.palette.blue['500']};
   }
   
   b,
   strong {
-    font-weight: ${font.weight.bold};
+    font-weight: ${({theme}) => theme.fonts.weight.bold};
   }
   
   h1,
@@ -32,28 +37,28 @@ const GlobalStyle = createGlobalStyle`
   h4,
   h5,
   h6 {
-      line-height: ${font.lineHeight.default};
+      line-height: ${({theme}) => theme.fonts.lineHeight.default};
       margin: 0;
   }
   
   h1 {
-      ${h1.regular}
+      ${({theme}) => theme.fonts.mixins.h1.regular}
   }
 
   h2 {
-      ${h2.regular}
+      ${({theme}) => theme.fonts.mixins.h2.regular}
   }
 
   h3 {
-      ${h3.regular}
+      ${({theme}) => theme.fonts.mixins.h3.regular}
   }
 
   h4 {
-      ${h4.regular}
+      ${({theme}) => theme.fonts.mixins.h4.regular}
   }
   
   p {
-      ${b1.regular}
+      ${({theme}) => theme.fonts.mixins.b1.regular}
       margin: 0 0 20px 0;
   }
 `;

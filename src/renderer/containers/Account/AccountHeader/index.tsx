@@ -1,12 +1,12 @@
 import React, {ReactNode, useCallback, useContext, useMemo} from 'react';
 
-import SendCoinsModal from '@renderer/containers/Account/SendCoinsModal';
 import {AccountContext} from '@renderer/context';
 import {useToggle} from '@renderer/hooks';
 import {AccountType, SFC} from '@renderer/types';
 
 import AccountHeaderDropdownContainer from './AccountHeaderDropdownContainer';
 import {AccountHeaderAccountNumber, AccountHeaderNickname, AccountHeaderSigningKey} from './AccountHeaderSection';
+import SendCoinsModal from './SendCoinsModal';
 import * as S from './Styles';
 
 const AccountHeader: SFC = ({className}) => {

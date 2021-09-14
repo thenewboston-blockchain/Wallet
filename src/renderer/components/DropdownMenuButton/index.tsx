@@ -42,7 +42,7 @@ const DropdownMenuButton: SFC<ComponentProps> = ({
 }) => {
   const iconRef = useRef<HTMLDivElement>(null);
   const optionsRef = useRef<HTMLDivElement[]>([]);
-  const [isOpen, toggleIsOpen] = useToggle(false);
+  const [isOpen, , setIsOpen] = useToggle(false);
   const [dropdownPositionStyle, setDropdownPositionStyle] = useState<CSSProperties | undefined>(undefined);
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const DropdownMenuButton: SFC<ComponentProps> = ({
 
   const handleClick = (e: any): void => {
     if (!dropdownRoot.contains(e.target) && !iconRef.current?.contains(e.target)) {
-      toggleIsOpen(false);
+      setIsOpen(false);
     }
   };
 
@@ -69,13 +69,13 @@ const DropdownMenuButton: SFC<ComponentProps> = ({
         setDropdownPositionStyle({left: left + width / 2, top: bottom + 3});
       }
 
-      toggleIsOpen();
+      setIsOpen(true);
     }
-  }, [direction, toggleIsOpen]);
+  }, [direction, setIsOpen]);
 
   const handleOptionClick = (optionOnClick: GenericVoidFunction) => async (): Promise<void> => {
     await optionOnClick();
-    toggleIsOpen(false);
+    setIsOpen(false);
   };
 
   const handleOptionKeyDown = (optionOnClick: GenericVoidFunction, index: number, disabled: boolean) => async (
@@ -92,7 +92,7 @@ const DropdownMenuButton: SFC<ComponentProps> = ({
     }
 
     if (e.key === 'Enter' && !disabled) {
-      toggleIsOpen(false);
+      setIsOpen(false);
       await optionOnClick();
     }
   };

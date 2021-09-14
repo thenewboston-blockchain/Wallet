@@ -7,7 +7,7 @@ import {Icon, IconType} from '@thenewboston/ui';
 import Badge from '@renderer/components/Badge';
 import {Button} from '@renderer/components/FormElements';
 import {DropdownMenuOption} from '@renderer/components/DropdownMenuButton';
-import PageHeader from '@renderer/components/PageHeader';
+import PageHeader from '@renderer/components/PageHeaderOld';
 import PageLayout from '@renderer/components/PageLayout';
 import PageTabs from '@renderer/components/PageTabs';
 import {useAddress, useToggle} from '@renderer/hooks';

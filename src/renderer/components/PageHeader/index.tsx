@@ -1,37 +1,43 @@
-import React, {FC, ReactNode} from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
 
-import DropdownMenuButton, {DropdownMenuDirection, DropdownMenuOption} from '@renderer/components/DropdownMenuButton';
+import React, {ReactNode} from 'react';
+import {SFC} from '@renderer/types';
+import {ButtonProps} from '@renderer/components/FormElements';
 
-import './PageHeader.scss';
+import PageHeaderSection from './PageHeaderSection';
+import * as S from './Styles';
 
-interface ComponentProps {
-  dropdownMenuOptions?: DropdownMenuOption[];
-  leftContent?: ReactNode;
-  rightContent?: ReactNode;
-  title: string;
+interface PageHeaderProps {
+  dropdown: ReactNode;
+  rightButton: ReactNode;
 }
 
-const PageHeader: FC<ComponentProps> = ({dropdownMenuOptions, leftContent, rightContent, title}) => {
+const PageHeader: SFC<PageHeaderProps> = ({children, className, dropdown, rightButton}) => {
+  const renderRightSection = (): ReactNode => {
+    return (
+      <S.Right>
+        {rightButton || null}
+        {dropdown || null}
+      </S.Right>
+    );
+  };
+
   return (
-    <div className="PageHeader">
-      <div className="PageHeader__left-section">
-        <h1 className="PageHeader__title">{title}</h1>
-        {leftContent}
-      </div>
-      {(dropdownMenuOptions?.length || rightContent) && (
-        <div className="PageHeader__right-section">
-          {rightContent}
-          {dropdownMenuOptions?.length ? (
-            <DropdownMenuButton
-              className="PageHeader__DropdownMenuButton"
-              direction={DropdownMenuDirection.left}
-              options={dropdownMenuOptions}
-            />
-          ) : null}
-        </div>
-      )}
-    </div>
+    <S.Container className={className}>
+      <S.Left>{children}</S.Left>
+      {dropdown || rightButton ? renderRightSection() : null}
+    </S.Container>
   );
 };
+
+const PageHeaderButton: SFC<ButtonProps> = ({children, className, ...props}) => {
+  return (
+    <S.RightButton className={className} {...props}>
+      {children}
+    </S.RightButton>
+  );
+};
+
+export {PageHeaderButton, PageHeaderSection};
 
 export default PageHeader;

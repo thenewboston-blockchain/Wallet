@@ -1,6 +1,7 @@
 import React, {useContext, useMemo, useRef} from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
+import {PageHeaderSection} from '@renderer/components/PageHeader';
 import {AccountContext} from '@renderer/context';
 import {useToggle} from '@renderer/hooks';
 import {AccountType, SFC} from '@renderer/types';
@@ -31,19 +32,15 @@ const AccountHeaderAccountNumber: SFC = ({className}) => {
   };
 
   return (
-    <S.AccountHeaderSection className={className}>
-      <S.Title>{accountLabel}</S.Title>
-      <S.Body>
-        <S.MainText>{truncateLongText(accountNumber)}</S.MainText>
-        <S.QrcodeIcon onClick={toggleQrcodeModal} size={16} totalSize={20} />
-        <CopyToClipboard text={accountNumber} onCopy={handleAccountNumberCopy}>
-          <S.ContentCopyIcon size={16} totalSize={20} ref={accountNumberCopyRef} />
-        </CopyToClipboard>
-      </S.Body>
+    <PageHeaderSection className={className} mainText={truncateLongText(accountNumber)} title={accountLabel}>
+      <S.QrcodeIcon onClick={toggleQrcodeModal} size={16} totalSize={20} />
+      <CopyToClipboard text={accountNumber} onCopy={handleAccountNumberCopy}>
+        <S.ContentCopyIcon size={16} totalSize={20} ref={accountNumberCopyRef} />
+      </CopyToClipboard>
       {qrcodeModalIsOpen && (
         <QrcodeModal accountLabel={accountLabel} accountNumber={accountNumber} close={toggleQrcodeModal} />
       )}
-    </S.AccountHeaderSection>
+    </PageHeaderSection>
   );
 };
 

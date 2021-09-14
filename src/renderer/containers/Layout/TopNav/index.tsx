@@ -44,7 +44,7 @@ const restartAppFailToast = (event: any, errorMessage: string) => {
 const TopNav: SFC = ({className}) => {
   const [changeActiveBankModalIsOpen, toggleActiveBankModal] = useToggle(false);
   const [resetAppModalIsOpen, toggleResetAppModal] = useToggle(false);
-  const [importStoreDataModalIsOpen, toggleImportStoreDataModal] = useToggle(false);
+  const [importStoreDataModalIsOpen, toggleImportStoreDataModal, setImportStoreDataModalIsOpen] = useToggle(false);
   const dispatch = useDispatch<AppDispatch>();
   useIpcEffect(getSuccessChannel(IpcChannel.restartApp), restartAppSuccessToast);
   useIpcEffect(getFailChannel(IpcChannel.restartApp), restartAppFailToast);
@@ -70,7 +70,7 @@ const TopNav: SFC = ({className}) => {
     channel: IpcChannel.importStoreData,
     downloadOptions: {buttonLabel: 'Import', title: 'Import Store Data'},
     failCallback: importFailToast,
-    postSendCallback: () => toggleImportStoreDataModal(false),
+    postSendCallback: () => setImportStoreDataModalIsOpen(false),
     successCallback: handleImportSuccessCallback,
   });
 

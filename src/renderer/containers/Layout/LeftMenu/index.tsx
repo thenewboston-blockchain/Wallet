@@ -18,7 +18,6 @@ import {truncateLongText} from '@renderer/utils/accounts';
 import {formatAddressFromNode, formatPathFromNode} from '@renderer/utils/address';
 import {sortByBooleanKey, sortDictValuesByPreferredKey} from '@renderer/utils/sort';
 
-import LeftSubmenu from './LeftSubmenu';
 import LeftSubmenuItem from './LeftSubmenuItem';
 import * as S from './Styles';
 
@@ -49,7 +48,14 @@ const LeftMenu: SFC = ({className}) => {
         to: `/account/${account_number}/overview`,
       }))
       .map(({baseUrl, key, label, subLabel, to}) => (
-        <LeftSubmenuItem baseUrl={baseUrl} key={key} label={label} subLabel={subLabel} to={to} />
+        <LeftSubmenuItem
+          baseUrl={baseUrl}
+          key={key}
+          label={label}
+          subLabel={subLabel}
+          subLabelFallback="Account"
+          to={to}
+        />
       ));
   }, [managedAccounts]);
 
@@ -71,7 +77,14 @@ const LeftMenu: SFC = ({className}) => {
           to: `/account/${account_number}/overview`,
         }))
         .map(({baseUrl, key, label, subLabel, to}) => (
-          <LeftSubmenuItem baseUrl={baseUrl} key={key} label={label} subLabel={subLabel} to={to} />
+          <LeftSubmenuItem
+            baseUrl={baseUrl}
+            key={key}
+            label={label}
+            subLabel={subLabel}
+            subLabelFallback="Friend"
+            to={to}
+          />
         )),
     [managedFriends],
   );
@@ -88,16 +101,19 @@ const LeftMenu: SFC = ({className}) => {
           label: managedValidator.nickname || formatAddressFromNode(managedValidator),
           to: `/validator/${formatPathFromNode(managedValidator)}/overview`,
         }))
-        .map(({baseUrl, key, label, to}) => <LeftSubmenuItem baseUrl={baseUrl} key={key} label={label} to={to} />),
+        .map(({baseUrl, key, label, to}) => (
+          <LeftSubmenuItem baseUrl={baseUrl} key={key} label={label} subLabelFallback="Node" to={to} />
+        )),
     [managedValidators, validatorConfigs],
   );
 
   return (
     <S.Container className={className}>
-      <LeftSubmenu menuItems={accountItems} rightOnClick={toggleCreateAccountModal} title="My Wallets" />
-      <LeftSubmenu menuItems={friendMenuItems} rightOnClick={toggleAddFriendModal} title="My Friends" />
-      <LeftSubmenu menuItems={communityItems} title="Community" />
-      <LeftSubmenu menuItems={validatorMenuItems} rightOnClick={toggleAddValidatorModal} title="Nodes" />
+      <S.LeftSubmenu menuItems={accountItems} rightOnClick={toggleCreateAccountModal} title="My Wallets" />
+      <S.LeftSubmenu menuItems={friendMenuItems} rightOnClick={toggleAddFriendModal} title="My Friends" />
+      <S.LeftSubmenu menuItems={communityItems} title="Community" />
+      <S.LeftSubmenu menuItems={validatorMenuItems} rightOnClick={toggleAddValidatorModal} title="Nodes" />
+      <S.Link to="/node-center">Node Center</S.Link>
       {addFriendModalIsOpen && <AddFriendModal close={toggleAddFriendModal} />}
       {addValidatorModalIsOpen && <AddValidatorModal close={toggleAddValidatorModal} />}
       {createAccountModalIsOpen && <CreateAccountModal close={toggleCreateAccountModal} />}

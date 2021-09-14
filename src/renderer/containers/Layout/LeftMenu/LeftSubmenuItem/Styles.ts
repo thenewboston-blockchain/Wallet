@@ -32,10 +32,11 @@ export const StyledLink = styled(NavLink)<StyledLinkProps>`
   ${({$withSubLabel}) => ($withSubLabel ? withSubLabelStyle : null)}
 `;
 
-export const SubLabel = styled.div`
+export const SubLabel = styled.div<{$none: boolean}>`
   ${b2.regular};
   color: ${colors.palette.neutral['500']};
   margin-bottom: 3px;
+  font-style: ${({$none}) => $none && 'italic'};
 `;
 
 export const Label = styled.div`

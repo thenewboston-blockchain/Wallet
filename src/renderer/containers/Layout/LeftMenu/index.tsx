@@ -47,9 +47,10 @@ const LeftMenu: SFC = ({className}) => {
         subLabel: nickname,
         to: `/account/${account_number}/overview`,
       }))
-      .map(({baseUrl, key, label, subLabel, to}) => (
+      .map(({baseUrl, key, label, subLabel, to}, i) => (
         <LeftSubmenuItem
           baseUrl={baseUrl}
+          index={i}
           key={key}
           label={label}
           subLabel={subLabel}
@@ -61,8 +62,8 @@ const LeftMenu: SFC = ({className}) => {
 
   const communityItems = useMemo<ReactNode[]>(() => {
     return [
-      <LeftSubmenuItem baseUrl="/governance" label="Governance" key="governance" to="/governance" />,
-      <LeftSubmenuItem baseUrl="/treasury" label="Treasury" key="treasury" to="/treasury" />,
+      <LeftSubmenuItem baseUrl="/governance" index={0} label="Governance" key="governance" to="/governance" />,
+      <LeftSubmenuItem baseUrl="/treasury" index={1} label="Treasury" key="treasury" to="/treasury" />,
     ];
   }, []);
 
@@ -76,9 +77,10 @@ const LeftMenu: SFC = ({className}) => {
           subLabel: nickname,
           to: `/account/${account_number}/overview`,
         }))
-        .map(({baseUrl, key, label, subLabel, to}) => (
+        .map(({baseUrl, key, label, subLabel, to}, i) => (
           <LeftSubmenuItem
             baseUrl={baseUrl}
+            index={i}
             key={key}
             label={label}
             subLabel={subLabel}
@@ -101,8 +103,8 @@ const LeftMenu: SFC = ({className}) => {
           label: managedValidator.nickname || formatAddressFromNode(managedValidator),
           to: `/validator/${formatPathFromNode(managedValidator)}/overview`,
         }))
-        .map(({baseUrl, key, label, to}) => (
-          <LeftSubmenuItem baseUrl={baseUrl} key={key} label={label} subLabelFallback="Node" to={to} />
+        .map(({baseUrl, key, label, to}, i) => (
+          <LeftSubmenuItem baseUrl={baseUrl} index={i} key={key} label={label} subLabelFallback="Node" to={to} />
         )),
     [managedValidators, validatorConfigs],
   );

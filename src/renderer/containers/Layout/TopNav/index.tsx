@@ -9,7 +9,7 @@ import DropdownMenuButton, {
 } from '@renderer/components/DropdownMenuButton';
 import {ArrowLeftIcon, ArrowRightIcon, RefreshIcon} from '@renderer/components/Icons';
 import Modal from '@renderer/components/Modal';
-import ChangeActiveBankModal from '@renderer/containers/Bank/ChangeActiveBankModal';
+import ChangeActiveBankModal from '@renderer/containers/ChangeActiveBankModal';
 import Notifications from '@renderer/containers/Notifications';
 import {clearLocalState} from '@renderer/dispatchers/app';
 import {useToggle, useIpcEffect, useNavigationalHistory, useReadIpc, useWriteIpc} from '@renderer/hooks';

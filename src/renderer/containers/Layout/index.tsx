@@ -3,8 +3,6 @@ import {useSelector} from 'react-redux';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
 import Account from '@renderer/containers/Account';
-import Bank from '@renderer/containers/Bank';
-import PurchaseConfirmationServices from '@renderer/containers/PurchaseConfirmationServices';
 import Validator from '@renderer/containers/Validator';
 
 import {AccountProvider} from '@renderer/context';
@@ -33,12 +31,6 @@ export const Layout: SFC = ({className}) => {
             <AccountProvider>
               <Account />
             </AccountProvider>
-          </Route>
-          <Route path="/bank/:protocol/:ipAddress/:port">
-            <Bank />
-          </Route>
-          <Route path="/purchase-confirmation-services/:protocol?/:ipAddress?/:port?">
-            <PurchaseConfirmationServices />
           </Route>
           <Route path="/validator/:protocol/:ipAddress/:port">
             <Validator />

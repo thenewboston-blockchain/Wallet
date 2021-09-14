@@ -1,8 +1,6 @@
 import React, {FC, useMemo} from 'react';
 import {useSelector} from 'react-redux';
 
-import {FormInput, FormSelectDetailed} from '@renderer/components/FormComponents';
-import RequiredAsterisk from '@renderer/components/RequiredAsterisk';
 import {MATCH_ERROR} from '@renderer/constants/form-validation';
 import {useFormContext} from '@renderer/hooks';
 import {
@@ -15,7 +13,7 @@ import {
 import {InputOption} from '@renderer/types';
 import {getBankTxFee, getPrimaryValidatorTxFee} from '@renderer/utils/transactions';
 
-import './SendCoinsModalFields.scss';
+import * as S from './Styles';
 
 export interface FormValues {
   coins: string;
@@ -29,14 +27,13 @@ interface ComponentProps {
 }
 
 const SendCoinsModalFields: FC<ComponentProps> = ({submitting}) => {
-  const {errors, touched, values} = useFormContext<FormValues>();
+  const {errors, values} = useFormContext<FormValues>();
   const activeBankConfig = useSelector(getActiveBankConfig)!;
   const managedAccountBalances = useSelector(getManagedAccountBalances);
   const managedAccounts = useSelector(getManagedAccounts);
   const managedFriends = useSelector(getManagedFriends);
   const primaryValidatorConfig = useSelector(getPrimaryValidatorConfig);
 
-  const coinsError = touched.coins ? errors.coins : '';
   const matchError = errors.recipientAccountNumber === MATCH_ERROR;
 
   const getFromOptions = useMemo<InputOption[]>(
@@ -56,11 +53,17 @@ const SendCoinsModalFields: FC<ComponentProps> = ({submitting}) => {
     }));
   }, [managedAccounts, managedFriends]);
 
+  const renderCoinsAmount = (): string => {
+    const value = values.coins;
+
+    return `${(value || 0).toLocaleString()}.0000`;
+  };
+
   const renderSenderAccountBalance = (): string => {
     const {senderAccountNumber} = values;
     if (!senderAccountNumber) return '-';
     const {balance} = managedAccountBalances[senderAccountNumber];
-    return balance?.toLocaleString() || '0';
+    return `${(balance || 0).toLocaleString()}.0000`;
   };
 
   const renderTotal = (): string => {
@@ -68,7 +71,7 @@ const SendCoinsModalFields: FC<ComponentProps> = ({submitting}) => {
     if (!primaryValidatorConfig || !coins) return '-';
     const bankTxFee = getBankTxFee(activeBankConfig, senderAccountNumber);
     const validatorTxFee = getPrimaryValidatorTxFee(primaryValidatorConfig, senderAccountNumber);
-    return (parseInt(coins, 10) + bankTxFee + validatorTxFee).toLocaleString();
+    return `${(parseInt(coins, 10) + bankTxFee + validatorTxFee).toLocaleString()}.0000`;
   };
 
   const renderValidatorFee = (): number | string => {
@@ -78,10 +81,8 @@ const SendCoinsModalFields: FC<ComponentProps> = ({submitting}) => {
 
   return (
     <>
-      {matchError ? <span className="SendCoinsModalFields__error">{MATCH_ERROR}</span> : null}
-      {coinsError ? <span className="SendCoinsModalFields__error">{coinsError}</span> : null}
-      <FormSelectDetailed
-        className="SendCoinsModalFields__select"
+      {matchError ? <S.ErrorSpan>{MATCH_ERROR}</S.ErrorSpan> : null}
+      <S.FormSelectDetailed
         disabled={submitting}
         focused
         label="From"
@@ -89,8 +90,7 @@ const SendCoinsModalFields: FC<ComponentProps> = ({submitting}) => {
         options={getFromOptions}
         required
       />
-      <FormSelectDetailed
-        className="SendCoinsModalFields__select"
+      <S.FormSelectDetailed
         creatable
         disabled={submitting}
         hideErrorText={matchError}
@@ -99,40 +99,15 @@ const SendCoinsModalFields: FC<ComponentProps> = ({submitting}) => {
         options={getToOptions}
         required
       />
-      <FormInput disabled={submitting} label="Memo" name="memo" placeholder="What is it for?" />
-      <table className="SendCoinsModalFields__table">
-        <tbody>
-          <tr>
-            <td>Account Balance</td>
-            <td>
-              <span className="SendCoinsModalFields__account-balance">{renderSenderAccountBalance()}</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Coins
-              <RequiredAsterisk />
-            </td>
-            <td>
-              <FormInput disabled={submitting} hideErrorBlock name="coins" placeholder="0" type="number" />
-            </td>
-          </tr>
-          <tr>
-            <td>Bank Fee</td>
-            <td>{getBankTxFee(activeBankConfig, values?.senderAccountNumber) || '-'}</td>
-          </tr>
-          <tr>
-            <td>Validator Fee</td>
-            <td>{renderValidatorFee()}</td>
-          </tr>
-          <tr className="SendCoinsModalFields__total-tr">
-            <td>Total</td>
-            <td>
-              <b>{renderTotal()}</b>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <S.TextField disabled={submitting} label="Memo" name="memo" placeholder="What is it for?" />
+      <S.TextField disabled={submitting} label="Coins" name="coins" type="number" />
+      <S.CalculationTable>
+        <S.Row label="Account Balance" value={renderSenderAccountBalance()} />
+        <S.Row label="Coins" value={renderCoinsAmount()} />
+        <S.Row label="Bank Fee" value={getBankTxFee(activeBankConfig, values?.senderAccountNumber) || '-'} />
+        <S.Row label="Validator Fee" value={renderValidatorFee()} />
+        <S.Row isSummary label="Total" value={renderTotal()} />
+      </S.CalculationTable>
     </>
   );
 };

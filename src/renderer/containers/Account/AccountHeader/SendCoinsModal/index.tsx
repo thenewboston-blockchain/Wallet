@@ -1,8 +1,6 @@
-import React, {FC, ReactNode, useCallback, useMemo, useState} from 'react';
+import React, {FC, useCallback, useMemo, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {Icon, IconType} from '@thenewboston/ui';
 
-import {ButtonType, ButtonVariant, FormButton} from '@renderer/components/FormElements';
 import Modal from '@renderer/components/Modal';
 import {INVALID_AMOUNT_ERROR, MATCH_ERROR} from '@renderer/constants/form-validation';
 import {fetchAccountBalance} from '@renderer/dispatchers/balances';
@@ -19,7 +17,6 @@ import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast'
 import {getBankTxFee, getPrimaryValidatorTxFee} from '@renderer/utils/transactions';
 
 import SendCoinsModalFields, {FormValues} from './SendCoinsModalFields';
-import './SendCoinsModal.scss';
 
 const COIN_AMOUNT_CEILING = 100_000_000;
 
@@ -87,28 +84,6 @@ const SendCoinsModal: FC<ComponentProps> = ({close, initialRecipient, initialSen
     }
   };
 
-  const renderFooter = (): ReactNode => {
-    return (
-      <>
-        <FormButton
-          className="Modal__default-cancel SendCoinsModal__default-cancel"
-          onClick={close}
-          submitting={submitting}
-          variant={ButtonVariant.link}
-        >
-          Cancel
-        </FormButton>
-        <FormButton
-          className="Modal__default-submit SendCoinsModal__default-submit"
-          submitting={submitting}
-          type={ButtonType.submit}
-        >
-          Send <Icon className="SendCoinsModal__submit-icon" icon={IconType.tnb} size={16} totalSize={16} />
-        </FormButton>
-      </>
-    );
-  };
-
   const validationSchema = useMemo(() => {
     const senderAccountNumberRef = yup.ref('senderAccountNumber');
     return yup.object().shape({
@@ -136,10 +111,10 @@ const SendCoinsModal: FC<ComponentProps> = ({close, initialRecipient, initialSen
     <Modal
       className="SendCoinsModal"
       close={close}
-      footer={renderFooter()}
       header="Send Coins"
       initialValues={initialValues}
       onSubmit={handleSubmit}
+      submitButton="Send"
       submitting={submitting}
       validationSchema={validationSchema}
     >

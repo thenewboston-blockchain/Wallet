@@ -1,7 +1,7 @@
 import React, {useContext, useMemo} from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
-import MainContainer from '@renderer/styles/components/MainContainer';
+import MainContainer from '@renderer/components/MainContainer';
 import {AccountContext} from '@renderer/context';
 import {AccountSection, SFC} from '@renderer/types';
 
@@ -21,7 +21,7 @@ const Account: SFC = ({className}) => {
         <Route path={`${basePath}/${AccountSection.overview}`} exact>
           <AccountOverview />
         </Route>
-        <Route path={`${basePath}/${AccountSection.transaction}`} exact>
+        <Route path={`${basePath}/${AccountSection.transactions}`} exact>
           <AccountTransactions />
         </Route>
         <Route path={`${basePath}/${AccountSection.vault}/:vault?`}>

@@ -74,7 +74,7 @@ const AccountOverviewGraph: SFC = ({className}) => {
         </LineChart>
       </ResponsiveContainer>
       <S.BottomContainer>
-        <Link to={`/account/${accountNumber}/${AccountSection.transaction}`} withChevron>
+        <Link to={`/account/${accountNumber}/${AccountSection.transactions}`} withChevron>
           View Details
         </Link>
       </S.BottomContainer>

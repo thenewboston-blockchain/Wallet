@@ -3,9 +3,10 @@ import {useSelector} from 'react-redux';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
 import Account from '@renderer/containers/Account';
+import Node from '@renderer/containers/Node';
 import Validator from '@renderer/containers/Validator';
 
-import {AccountProvider} from '@renderer/context';
+import {AccountProvider, NodeProvider} from '@renderer/context';
 import {getActiveBankConfig} from '@renderer/selectors';
 import {SFC} from '@renderer/types';
 import {formatPathFromNode} from '@renderer/utils/address';
@@ -31,6 +32,11 @@ export const Layout: SFC = ({className}) => {
             <AccountProvider>
               <Account />
             </AccountProvider>
+          </Route>
+          <Route path="/node/:protocol/:ipAddress/:port">
+            <NodeProvider>
+              <Node />
+            </NodeProvider>
           </Route>
           <Route path="/validator/:protocol/:ipAddress/:port">
             <Validator />

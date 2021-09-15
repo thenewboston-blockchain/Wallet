@@ -56,6 +56,7 @@ import {
   AccountVaultSection,
   AddressParams,
   AccountSection,
+  NodeSection,
   SectionParams,
 } from './params';
 import {
@@ -137,6 +138,7 @@ export {
   NodeCleanStatus,
   NodeCleanStatusWithAddress,
   NodeIdentifier,
+  NodeSection,
   NodeType,
   NotificationPayload,
   NotificationType,

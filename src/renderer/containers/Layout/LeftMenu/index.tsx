@@ -91,17 +91,17 @@ const LeftMenu: SFC = ({className}) => {
     [managedFriends],
   );
 
-  const validatorMenuItems = useMemo<ReactNode[]>(
+  const nodeMenuItems = useMemo<ReactNode[]>(
     () =>
       sortDictValuesByPreferredKey<ManagedNode>(managedValidators, 'nickname', 'ip_address')
         .sort(sortByBooleanKey<ManagedNode>('is_default'))
         .map((managedValidator) => ({
-          baseUrl: `/validator/${formatPathFromNode(managedValidator)}`,
+          baseUrl: `/node/${formatPathFromNode(managedValidator)}`,
           isDefault: managedValidator.is_default || false,
           isOnline: validatorConfigs[formatAddressFromNode(managedValidator)]?.error === null || false,
           key: formatAddressFromNode(managedValidator),
           label: managedValidator.nickname || formatAddressFromNode(managedValidator),
-          to: `/validator/${formatPathFromNode(managedValidator)}/overview`,
+          to: `/node/${formatPathFromNode(managedValidator)}/overview`,
         }))
         .map(({baseUrl, key, label, to}, i) => (
           <LeftSubmenuItem baseUrl={baseUrl} index={i} key={key} label={label} subLabelFallback="Node" to={to} />
@@ -114,7 +114,7 @@ const LeftMenu: SFC = ({className}) => {
       <S.LeftSubmenu menuItems={accountItems} rightOnClick={toggleCreateAccountModal} title="My Wallets" />
       <S.LeftSubmenu menuItems={friendMenuItems} rightOnClick={toggleAddFriendModal} title="My Friends" />
       <S.LeftSubmenu menuItems={communityItems} title="Community" />
-      <S.LeftSubmenu menuItems={validatorMenuItems} rightOnClick={toggleAddValidatorModal} title="Nodes" />
+      <S.LeftSubmenu menuItems={nodeMenuItems} rightOnClick={toggleAddValidatorModal} title="Nodes" />
       <S.Link to="/node-center">Node Center</S.Link>
       {addFriendModalIsOpen && <AddFriendModal close={toggleAddFriendModal} />}
       {addValidatorModalIsOpen && <AddValidatorModal close={toggleAddValidatorModal} />}

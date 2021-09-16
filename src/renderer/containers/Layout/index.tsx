@@ -33,7 +33,7 @@ export const Layout: SFC = ({className}) => {
               <Account />
             </AccountProvider>
           </Route>
-          <Route path="/node/:protocol/:ipAddress/:port">
+          <Route path="/node/:protocol/:ipAddress/:port/:section">
             <NodeProvider>
               <Node />
             </NodeProvider>

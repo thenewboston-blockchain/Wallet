@@ -13,7 +13,7 @@ import {
   getManagedValidators,
   getValidatorConfigs,
 } from '@renderer/selectors';
-import {ManagedAccount, ManagedFriend, ManagedNode, RootState, SFC} from '@renderer/types';
+import {ManagedAccount, ManagedFriend, ManagedNode, NodeSection, RootState, SFC} from '@renderer/types';
 import {truncateLongText} from '@renderer/utils/accounts';
 import {formatAddressFromNode, formatPathFromNode} from '@renderer/utils/address';
 import {sortByBooleanKey, sortDictValuesByPreferredKey} from '@renderer/utils/sort';
@@ -101,7 +101,7 @@ const LeftMenu: SFC = ({className}) => {
           isOnline: validatorConfigs[formatAddressFromNode(managedValidator)]?.error === null || false,
           key: formatAddressFromNode(managedValidator),
           label: managedValidator.nickname || formatAddressFromNode(managedValidator),
-          to: `/node/${formatPathFromNode(managedValidator)}/overview`,
+          to: `/node/${formatPathFromNode(managedValidator)}/${NodeSection.overview}`,
         }))
         .map(({baseUrl, key, label, to}, i) => (
           <LeftSubmenuItem baseUrl={baseUrl} index={i} key={key} label={label} subLabelFallback="Node" to={to} />

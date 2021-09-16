@@ -27,6 +27,10 @@ export interface AccountVaultParams {
   vault: AccountVaultSection;
 }
 
+export interface NodeParams {
+  section: NodeSection;
+}
+
 export enum NodeSection {
   overview = 'overview',
   accounts = 'accounts',

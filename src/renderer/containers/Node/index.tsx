@@ -1,4 +1,4 @@
-import React, {ReactNode, useContext, useMemo} from 'react';
+import React, {ReactNode, useContext} from 'react';
 import {Redirect, Route, Switch, useHistory, useParams} from 'react-router-dom';
 
 import MainContainer from '@renderer/components/MainContainer';
@@ -6,6 +6,13 @@ import {NodeContext} from '@renderer/context';
 import {NodeParams, NodeSection, SFC} from '@renderer/types';
 import {formatPath} from '@renderer/utils/address';
 
+import NodeAccounts from './NodeAccounts';
+import NodeBlocks from './NodeBlocks';
+import NodeConfirmations from './NodeConfirmations';
+import NodeInvalidBlocks from './NodeInvalidBlocks';
+import NodeNodes from './NodeNodes';
+import NodeOverview from './NodeOverview';
+import NodeTransactions from './NodeTransactions';
 import * as S from './Styles';
 
 const tabs: Array<{label: string; location: NodeSection}> = [
@@ -44,10 +51,10 @@ const Node: SFC = ({className}) => {
   const history = useHistory();
   const {section} = useParams<NodeParams>();
 
-  const basePath = useMemo<string>(() => `/node/${formatPath(ipAddress, port, protocol)}`, [ipAddress, port, protocol]);
+  const basePath = '/node/:protocol/:ipAddress/:port';
 
   const handleTabChange = (toSection: NodeSection): void => {
-    history.push(`${basePath}/${toSection}`);
+    history.push(`/node/${formatPath(ipAddress, port, protocol)}/${toSection}`);
   };
 
   const renderTabs = (): ReactNode => {
@@ -69,25 +76,25 @@ const Node: SFC = ({className}) => {
       {renderTabs()}
       <Switch>
         <Route path={`${basePath}/${NodeSection.overview}`} exact>
-          overview
+          <NodeOverview />
         </Route>
         <Route path={`${basePath}/${NodeSection.accounts}`} exact>
-          accounts
+          <NodeAccounts />
         </Route>
         <Route path={`${basePath}/${NodeSection.transactions}`} exact>
-          transactions
+          <NodeTransactions />
         </Route>
         <Route path={`${basePath}/${NodeSection.blocks}`} exact>
-          blocks
+          <NodeBlocks />
         </Route>
         <Route path={`${basePath}/${NodeSection.confirmations}`} exact>
-          confirmations
+          <NodeConfirmations />
         </Route>
         <Route path={`${basePath}/${NodeSection.invalidBlocks}`} exact>
-          invalidBlocks
+          <NodeInvalidBlocks />
         </Route>
         <Route path={`${basePath}/${NodeSection.nodes}`} exact>
-          nodes
+          <NodeNodes />
         </Route>
         <Route path={`${basePath}`}>
           <Redirect to={`${basePath}/${NodeSection.overview}`} />

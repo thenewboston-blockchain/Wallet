@@ -1,8 +1,7 @@
-import React, {useContext, useMemo} from 'react';
+import React from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
 import MainContainer from '@renderer/components/MainContainer';
-import {AccountContext} from '@renderer/context';
 import {AccountSection, SFC} from '@renderer/types';
 
 import AccountOverview from './AccountOverview';
@@ -11,8 +10,7 @@ import AccountVault from './AccountVault';
 import * as S from './Styles';
 
 const Account: SFC = ({className}) => {
-  const {accountNumber} = useContext(AccountContext);
-  const basePath = useMemo<string>(() => `/account/${accountNumber}`, [accountNumber]);
+  const basePath = `/account/:accountNumber`;
 
   return (
     <MainContainer className={className}>

@@ -21,8 +21,8 @@ const AccountOverview: SFC = ({className}) => {
   // Temp End
 
   return (
-    <>
-      <S.Graph className={className} />
+    <S.Container className={className}>
+      <S.Graph />
       <S.BottomRow>
         {moneyDeposited ? (
           <AccountOverviewVaultCard />
@@ -46,7 +46,7 @@ const AccountOverview: SFC = ({className}) => {
         <Switch checked={accountRegistered} onChange={toggleAccountRegistered} label="Account has been registered" />
       </S.TempCard>
       {/* Temp End */}
-    </>
+    </S.Container>
   );
 };
 

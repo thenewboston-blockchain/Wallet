@@ -13,4 +13,5 @@ const Loader: SFC<LoaderProps> = ({className, size}) => {
   );
 };
 
+export {S as LoaderStyles};
 export default Loader;

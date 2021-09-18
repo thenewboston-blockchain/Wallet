@@ -4,8 +4,6 @@ import clsx from 'clsx';
 import * as S from './Styles';
 import {ButtonColor, ButtonSize, ButtonType, ButtonVariant} from './types';
 
-export {ButtonColor, ButtonSize, ButtonType, ButtonVariant};
-
 export interface ButtonProps {
   className?: string;
   color?: ButtonColor;
@@ -55,4 +53,5 @@ const Button: FC<ButtonProps> = ({
   );
 };
 
+export {ButtonColor, ButtonSize, ButtonType, ButtonVariant, S as ButtonStyles};
 export default Button;

@@ -27,4 +27,5 @@ const Radio: SFC<RadioProps> = ({className, error = false, label, ...props}) => 
   return component;
 };
 
+export {S as RadioStyles};
 export default Radio;

@@ -58,4 +58,5 @@ const Carousel: FC<CarouselProps> = ({children, className}) => {
   );
 };
 
+export {S as CarouselStyles};
 export default Carousel;

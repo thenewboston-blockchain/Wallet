@@ -26,4 +26,5 @@ const PageHeaderSection: SFC<PageHeaderSectionProps> = ({
   );
 };
 
+export {S as PageHeaderSectionStyles};
 export default PageHeaderSection;

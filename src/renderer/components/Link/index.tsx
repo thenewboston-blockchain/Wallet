@@ -27,4 +27,5 @@ const Link: FC<LinkProps> = ({
   );
 };
 
+export {S as LinkStyles};
 export default Link;

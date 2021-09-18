@@ -63,4 +63,5 @@ const PageTable: SFC<PageTableProps> = ({className, handleSelectRow, items, sele
   );
 };
 
+export {S as PageTableStyles};
 export default PageTable;

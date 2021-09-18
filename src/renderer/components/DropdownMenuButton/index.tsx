@@ -144,4 +144,5 @@ const DropdownMenuButton: SFC<ComponentProps> = ({
   );
 };
 
+export {S as DropdownMenuButtonStyles};
 export default DropdownMenuButton;

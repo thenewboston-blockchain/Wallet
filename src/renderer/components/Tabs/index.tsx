@@ -18,5 +18,5 @@ const Tabs: SFC<TabsProps> = ({children, className, onChange, value}) => {
   );
 };
 
-export {Tab};
+export {Tab, S as TabsStyles};
 export default Tabs;

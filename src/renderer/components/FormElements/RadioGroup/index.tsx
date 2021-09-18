@@ -55,4 +55,5 @@ const RadioGroup: SFC<RadioGroupProps> = ({
   );
 };
 
+export {S as RadioGroupStyles};
 export default RadioGroup;

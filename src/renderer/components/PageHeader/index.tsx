@@ -4,7 +4,7 @@ import React, {ReactNode} from 'react';
 import {SFC} from '@renderer/types';
 import {ButtonProps} from '@renderer/components/FormElements';
 
-import PageHeaderSection from './PageHeaderSection';
+import PageHeaderSection, {PageHeaderSectionStyles} from './PageHeaderSection';
 import * as S from './Styles';
 
 interface PageHeaderProps {
@@ -38,6 +38,5 @@ const PageHeaderButton: SFC<ButtonProps> = ({children, className, ...props}) => 
   );
 };
 
-export {PageHeaderButton, PageHeaderSection};
-
+export {PageHeaderButton, PageHeaderSection, PageHeaderSectionStyles, S as PageHeaderStyles};
 export default PageHeader;

@@ -101,13 +101,13 @@ const SendCoinsModalFields: FC<ComponentProps> = ({submitting}) => {
       />
       <S.TextField disabled={submitting} label="Memo" name="memo" placeholder="What is it for?" />
       <S.TextField disabled={submitting} label="Coins" name="coins" type="number" />
-      <S.CalculationTable>
+      <S.Table>
         <S.Row label="Account Balance" value={renderSenderAccountBalance()} />
         <S.Row label="Coins" value={renderCoinsAmount()} />
         <S.Row label="Bank Fee" value={getBankTxFee(activeBankConfig, values?.senderAccountNumber) || '-'} />
         <S.Row label="Validator Fee" value={renderValidatorFee()} />
         <S.Row isSummary label="Total" value={renderTotal()} />
-      </S.CalculationTable>
+      </S.Table>
     </>
   );
 };

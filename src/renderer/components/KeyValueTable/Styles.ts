@@ -4,11 +4,11 @@ import {colors} from '@renderer/styles';
 export const Container = styled.div``;
 
 export const Row = styled.div<{$isSummary: boolean}>`
-  align-items: center;
   border-bottom: 1px solid ${colors.palette.neutral['100']};
   display: flex;
-  height: 32px;
   justify-content: space-between;
+  padding-bottom: 6px;
+  padding-top: 6px;
 
   ${({$isSummary}) =>
     $isSummary &&
@@ -19,7 +19,6 @@ export const Row = styled.div<{$isSummary: boolean}>`
 `;
 
 export const Label = styled.div`
-  align-items: center;
   color: ${colors.palette.neutral['500']};
   display: flex;
   flex: 1;
@@ -27,4 +26,5 @@ export const Label = styled.div`
 
 export const Value = styled.div`
   color: ${colors.palette.neutral['900']};
+  text-align: right;
 `;

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import UCalculationTable, {Row as URow} from '@renderer/components/CalculationTable';
+import UKeyValueTable, {Row as URow} from '@renderer/components/KeyValueTable';
 import {InformationOutlineIcon} from '@renderer/components/Icons';
 import {colors} from '@renderer/styles';
 
-export const CalculationTable = styled(UCalculationTable)`
+export const Table = styled(UKeyValueTable)`
   margin-bottom: 50px;
   padding-left: 3px;
   padding-right: 3px;

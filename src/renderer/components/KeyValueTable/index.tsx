@@ -2,7 +2,7 @@ import React, {ReactNode} from 'react';
 import {SFC} from '@renderer/types';
 import * as S from './Styles';
 
-const CalculationTable: SFC = ({className, children}) => {
+const KeyValueTable: SFC = ({className, children}) => {
   return <S.Container className={className}>{children}</S.Container>;
 };
 
@@ -21,5 +21,5 @@ const Row: SFC<RowProps> = ({className, isSummary = false, label, value}) => {
   );
 };
 
-export {Row, RowProps};
-export default CalculationTable;
+export {Row, RowProps, S as KeyValueTableStyles};
+export default KeyValueTable;

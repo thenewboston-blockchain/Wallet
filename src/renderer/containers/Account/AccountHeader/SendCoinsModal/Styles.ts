@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import UCalculationTable, {Row as URow} from '@renderer/components/CalculationTable';
+import UKeyValueTable, {Row as URow} from '@renderer/components/KeyValueTable';
 import {FormSelectDetailed as UFormSelectDetailed} from '@renderer/components/FormComponents';
 import {TextField as UTextField} from '@renderer/components/FormElements';
 import {colors} from '@renderer/styles';
@@ -21,7 +21,7 @@ export const TextField = styled(UTextField)`
   margin-bottom: 12px;
 `;
 
-export const CalculationTable = styled(UCalculationTable)`
+export const Table = styled(UKeyValueTable)`
   margin-top: 24px;
 `;
 

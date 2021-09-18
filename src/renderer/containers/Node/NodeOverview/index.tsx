@@ -13,10 +13,16 @@ const NodeOverview: SFC = ({className}) => {
     <Loader />
   ) : (
     <S.Container className={className}>
-      <S.TxCard>
-        <S.TxLabel>Tx Fee/Per Tx</S.TxLabel>
-        <S.Tx>{nodeConfig.default_transaction_fee.toLocaleString()}.0000</S.Tx>
-      </S.TxCard>
+      <S.Left>
+        <S.TxCard>
+          <S.TxLabel>Tx Fee/Per Tx</S.TxLabel>
+          <S.Tx>{nodeConfig.default_transaction_fee.toLocaleString()}.0000</S.Tx>
+        </S.TxCard>
+        <S.NodeOverviewDetails nodeConfig={nodeConfig} />
+      </S.Left>
+      <S.Right>
+        <S.NodeOverviewGraph />
+      </S.Right>
     </S.Container>
   );
 };

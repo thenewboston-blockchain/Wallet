@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux';
 
 import CreateAccountModal from '@renderer/containers/CreateAccountModal';
 import AddFriendModal from '@renderer/containers/AddFriendModal';
-import AddValidatorModal from '@renderer/containers/Validator/AddValidatorModal';
+import AddNodeModal from '@renderer/containers/AddNodeModal';
 import {useToggle} from '@renderer/hooks';
 import {
   getBankConfigs,
@@ -35,7 +35,7 @@ const LeftMenuSelector = (state: RootState) => {
 const LeftMenu: SFC = ({className}) => {
   const {managedAccounts, managedFriends, managedValidators, validatorConfigs} = useSelector(LeftMenuSelector);
   const [addFriendModalIsOpen, toggleAddFriendModal] = useToggle(false);
-  const [addValidatorModalIsOpen, toggleAddValidatorModal] = useToggle(false);
+  const [addNodeModalIsOpen, toggleAddNodeModal] = useToggle(false);
   const [createAccountModalIsOpen, toggleCreateAccountModal] = useToggle(false);
 
   const accountItems = useMemo<ReactNode[]>(() => {
@@ -115,10 +115,10 @@ const LeftMenu: SFC = ({className}) => {
       <S.LeftSubmenu menuItems={accountItems} rightOnClick={toggleCreateAccountModal} title="My Wallets" />
       <S.LeftSubmenu menuItems={friendMenuItems} rightOnClick={toggleAddFriendModal} title="My Friends" />
       <S.LeftSubmenu menuItems={communityItems} title="Community" />
-      <S.LeftSubmenu menuItems={nodeMenuItems} rightOnClick={toggleAddValidatorModal} title="Nodes" />
+      <S.LeftSubmenu menuItems={nodeMenuItems} rightOnClick={toggleAddNodeModal} title="Nodes" />
       <S.Link to="/node-center">Node Center</S.Link>
       {addFriendModalIsOpen && <AddFriendModal close={toggleAddFriendModal} />}
-      {addValidatorModalIsOpen && <AddValidatorModal close={toggleAddValidatorModal} />}
+      {addNodeModalIsOpen && <AddNodeModal close={toggleAddNodeModal} />}
       {createAccountModalIsOpen && <CreateAccountModal close={toggleCreateAccountModal} />}
     </S.Container>
   );

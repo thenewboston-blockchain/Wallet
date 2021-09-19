@@ -1,3 +1,6 @@
 import styled from 'styled-components';
+import UCard from '@renderer/components/Card';
 
-export const Container = styled.div``;
+export const Card = styled(UCard)`
+  padding: 24px 0;
+`;

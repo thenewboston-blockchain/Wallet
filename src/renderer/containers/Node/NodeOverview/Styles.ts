@@ -13,7 +13,11 @@ export const Container = styled.div`
   grid-gap: ${GAP};
 `;
 
-export const Left = styled.div``;
+export const Left = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${GAP};
+`;
 
 export const Right = styled.div``;
 
@@ -35,8 +39,6 @@ export const Tx = styled.h1`
   color: ${colors.palette.gray['800']};
 `;
 
-export const NodeOverviewDetails = styled(UNodeOverviewDetails)`
-  margin-top: ${GAP};
-`;
+export const NodeOverviewDetails = styled(UNodeOverviewDetails)``;
 
 export const NodeOverviewGraph = styled(UNodeOverviewGraph)``;

@@ -2,10 +2,6 @@ import styled, {css} from 'styled-components';
 import Card from '@renderer/components/Card';
 import {colors} from '@renderer/styles';
 
-interface FilterProps {
-  $active: boolean;
-}
-
 export const Container = styled(Card)`
   padding-top: 24px;
 `;
@@ -23,7 +19,7 @@ export const TopLabel = styled.h3`
   margin-bottom: 3px;
 `;
 
-export const Filter = styled.h4<FilterProps>`
+export const Filter = styled.h4<{$active: boolean}>`
   color: ${colors.palette.neutral['300']};
   cursor: pointer;
 

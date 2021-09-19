@@ -103,12 +103,12 @@ const Validator: FC = () => {
 
   const renderAuthenticatedBadge = (): ReactNode => {
     if (!isAuthenticated) return null;
-    return <Badge className="Validator__Badge" color="tertiary-light" text="Authenticated" />;
+    return <Badge className="Validator__Badge">Authenticated</Badge>;
   };
 
   const renderPrimaryBadge = (): ReactNode => {
     if (!managedValidator?.is_default) return null;
-    return <Badge className="Validator__Badge" color="tertiary" text="Primary" />;
+    return <Badge className="Validator__Badge">Primary</Badge>;
   };
 
   const renderRightPageHeaderButtons = (): ReactNode => {

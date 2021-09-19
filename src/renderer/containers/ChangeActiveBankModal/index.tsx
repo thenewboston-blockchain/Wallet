@@ -6,13 +6,7 @@ import {connectAndStoreLocalData} from '@renderer/dispatchers/app';
 import Modal from '@renderer/components/Modal';
 import {AppDispatch, ProtocolType} from '@renderer/types';
 import {formatPathFromNode} from '@renderer/utils/address';
-import {
-  getAddressFormField,
-  getIpAddressField,
-  getNicknameField,
-  getPortField,
-  getProtocolField,
-} from '@renderer/utils/forms/fields';
+import {getIpAddressField, getNicknameField, getPortField, getProtocolField} from '@renderer/utils/forms/fields';
 import yup from '@renderer/utils/forms/yup';
 import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
 import {getManagedBanks} from '@renderer/selectors';
@@ -67,7 +61,7 @@ const ChangeActiveBankModal: FC<ComponentProps> = ({close}) => {
   const validationSchema = useMemo(
     () =>
       yup.object().shape({
-        form: getAddressFormField(managedBanks, 'This address is already a managed bank'),
+        // form: getAddressFormField(managedBanks, 'This address is already a managed bank'),
         ipAddress: getIpAddressField(),
         nickname: getNicknameField(managedBanks),
         port: getPortField(),

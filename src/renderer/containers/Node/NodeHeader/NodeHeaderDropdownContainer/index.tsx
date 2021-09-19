@@ -4,6 +4,9 @@ import {SFC} from '@renderer/types';
 import {useToggle} from '@renderer/hooks';
 import DropdownMenuButton, {DropdownMenuDirection, DropdownMenuOption} from '@renderer/components/DropdownMenuButton';
 
+import EditNodeNicknameModal from './EditNodeNicknameModal';
+import RemoveNodeModal from './RemoveNodeModal';
+
 const NodeHeaderDropdownContainer: SFC = ({className}) => {
   const [editModalIsOpen, toggleEditModal] = useToggle(false);
   const [removeModalIsOpen, toggleRemoveModal] = useToggle(false);
@@ -18,8 +21,8 @@ const NodeHeaderDropdownContainer: SFC = ({className}) => {
   return (
     <>
       <DropdownMenuButton className={className} direction={DropdownMenuDirection.left} options={options} />
-      {editModalIsOpen ? 'edit' : null}
-      {removeModalIsOpen ? 'remove' : null}
+      {editModalIsOpen ? <EditNodeNicknameModal close={toggleEditModal} /> : null}
+      {removeModalIsOpen ? <RemoveNodeModal close={toggleRemoveModal} /> : null}
     </>
   );
 };

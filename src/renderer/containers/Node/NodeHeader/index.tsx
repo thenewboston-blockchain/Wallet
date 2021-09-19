@@ -10,7 +10,7 @@ import NodeHeaderDropdownContainer from './NodeHeaderDropdownContainer';
 
 const NodeHeader: SFC = ({className}) => {
   const [isBoosted, toggleIsBoosted] = useToggle(false);
-  const {ipAddress} = useContext(NodeContext);
+  const {ipAddress, managedNode} = useContext(NodeContext);
 
   return (
     <PageHeader
@@ -25,7 +25,8 @@ const NodeHeader: SFC = ({className}) => {
         </PageHeaderButton>
       }
     >
-      <PageHeaderSection mainText={ipAddress} title="Node" />
+      <PageHeaderSection mainText={managedNode?.nickname || '-'} title="Nickname" />
+      <PageHeaderSection mainText={ipAddress} title="IP Address" />
     </PageHeader>
   );
 };

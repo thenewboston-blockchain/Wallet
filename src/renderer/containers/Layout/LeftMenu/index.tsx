@@ -100,7 +100,8 @@ const LeftMenu: SFC = ({className}) => {
           isDefault: managedValidator.is_default || false,
           isOnline: validatorConfigs[formatAddressFromNode(managedValidator)]?.error === null || false,
           key: formatAddressFromNode(managedValidator),
-          label: managedValidator.nickname || formatAddressFromNode(managedValidator),
+          label: formatAddressFromNode(managedValidator),
+          subLabel: managedValidator.nickname,
           to: `/node/${formatPathFromNode(managedValidator)}/${NodeSection.overview}`,
         }))
         .map(({baseUrl, key, label, to}, i) => (

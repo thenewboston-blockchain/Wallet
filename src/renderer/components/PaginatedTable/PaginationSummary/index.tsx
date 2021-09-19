@@ -2,6 +2,7 @@ import React, {memo} from 'react';
 
 import {PAGINATED_RESULTS_LIMIT} from '@renderer/config';
 import {SFC} from '@renderer/types';
+import * as S from './Styles';
 
 export interface PaginationSummaryProps {
   count: number;
@@ -13,7 +14,8 @@ const PaginationSummary: SFC<PaginationSummaryProps> = ({className, count, curre
   const lastRow = Math.min(currentPage * PAGINATED_RESULTS_LIMIT, count);
   const summary = `${firstRow}-${lastRow} of ${count}`;
 
-  return <div className={className}>{summary}</div>;
+  return <S.Container className={className}>{summary}</S.Container>;
 };
 
+export {S as PaginationSummaryStyles};
 export default memo(PaginationSummary);

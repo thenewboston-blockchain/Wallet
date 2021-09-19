@@ -7,7 +7,7 @@ const TOTAL_FEES = NODE_FEE + PV_FEE + USERNAME_FEE;
 
 const RegisterWalletModalTable: SFC = ({className}) => {
   return (
-    <S.CalculationTable className={className}>
+    <S.Table className={className}>
       <S.Row
         label={
           <>
@@ -36,7 +36,7 @@ const RegisterWalletModalTable: SFC = ({className}) => {
         value={`${PV_FEE.toLocaleString()}.0000`}
       />
       <S.Row isSummary label="TOTAL" value={`${TOTAL_FEES.toLocaleString()}.0000`} />
-    </S.CalculationTable>
+    </S.Table>
   );
 };
 

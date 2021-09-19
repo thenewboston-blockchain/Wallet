@@ -7,7 +7,7 @@ import {Icon, IconType} from '@thenewboston/ui';
 import Badge from '@renderer/components/Badge';
 import {Button} from '@renderer/components/FormElements';
 import {DropdownMenuOption} from '@renderer/components/DropdownMenuButton';
-import PageHeader from '@renderer/components/PageHeader';
+import PageHeader from '@renderer/components/PageHeaderOld';
 import PageLayout from '@renderer/components/PageLayout';
 import PageTabs from '@renderer/components/PageTabs';
 import {useAddress, useToggle} from '@renderer/hooks';
@@ -103,12 +103,12 @@ const Validator: FC = () => {
 
   const renderAuthenticatedBadge = (): ReactNode => {
     if (!isAuthenticated) return null;
-    return <Badge className="Validator__Badge" color="tertiary-light" text="Authenticated" />;
+    return <Badge className="Validator__Badge">Authenticated</Badge>;
   };
 
   const renderPrimaryBadge = (): ReactNode => {
     if (!managedValidator?.is_default) return null;
-    return <Badge className="Validator__Badge" color="tertiary" text="Primary" />;
+    return <Badge className="Validator__Badge">Primary</Badge>;
   };
 
   const renderRightPageHeaderButtons = (): ReactNode => {

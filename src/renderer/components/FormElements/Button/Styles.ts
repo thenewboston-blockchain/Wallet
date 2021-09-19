@@ -44,7 +44,7 @@ const outlinedMixin = css`
 `;
 
 const outlinedPrimaryMixin = css<ButtonProps>`
-  background: ${({disabled}) => (disabled ? colors.white : null)};
+  background: ${colors.white};
   border-color: ${({disabled}) => (disabled ? colors.white : colors.palette.gray['200'])};
   color: ${({disabled}) => (disabled ? colors.palette.gray['200'] : colors.primary)};
 

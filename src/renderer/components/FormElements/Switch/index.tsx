@@ -51,4 +51,5 @@ const Switch: SFC<SwitchProps> = ({checked, className, disabled = false, id, lab
   return switchComponent;
 };
 
+export {S as SwitchStyles};
 export default Switch;

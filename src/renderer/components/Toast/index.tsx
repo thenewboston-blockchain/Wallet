@@ -26,4 +26,5 @@ const Toast: FC<ComponentProps> = ({children, className, type = ToastType.error}
   );
 };
 
+export {S as ToastStyles};
 export default Toast;

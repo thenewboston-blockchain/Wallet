@@ -12,7 +12,7 @@ export interface AddressParams {
 
 export enum AccountSection {
   overview = 'overview',
-  transaction = 'transaction',
+  transactions = 'transactions',
   vault = 'vault',
 }
 
@@ -25,6 +25,20 @@ export enum AccountVaultSection {
 
 export interface AccountVaultParams {
   vault: AccountVaultSection;
+}
+
+export interface NodeParams {
+  section: NodeSection;
+}
+
+export enum NodeSection {
+  overview = 'overview',
+  accounts = 'accounts',
+  transactions = 'transactions',
+  blocks = 'blocks',
+  confirmations = 'confirmations',
+  invalidBlocks = 'invalid-blocks',
+  nodes = 'nodes',
 }
 
 export type SectionParams<T> = {

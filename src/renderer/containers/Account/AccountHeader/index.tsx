@@ -1,13 +1,13 @@
 import React, {ReactNode, useCallback, useContext, useMemo} from 'react';
 
+import PageHeader, {PageHeaderSection, PageHeaderButton} from '@renderer/components/PageHeader';
 import {AccountContext} from '@renderer/context';
 import {useToggle} from '@renderer/hooks';
 import {AccountType, SFC} from '@renderer/types';
 
 import AccountHeaderDropdownContainer from './AccountHeaderDropdownContainer';
-import {AccountHeaderAccountNumber, AccountHeaderNickname, AccountHeaderSigningKey} from './AccountHeaderSection';
+import {AccountHeaderAccountNumber, AccountHeaderSigningKey} from './AccountHeaderSection';
 import SendCoinsModal from './SendCoinsModal';
-import * as S from './Styles';
 
 const AccountHeader: SFC = ({className}) => {
   const {accountNumber, managedAccount, managedFriend, type} = useContext(AccountContext);
@@ -52,7 +52,7 @@ const AccountHeader: SFC = ({className}) => {
   const renderAccountNickname = useCallback((): ReactNode => {
     if (!type) return null;
 
-    return <AccountHeaderNickname nickname={nickname} />;
+    return <PageHeaderSection mainText={nickname || '-'} title="Nickname" />;
   }, [nickname, type]);
 
   const renderSigningKey = useCallback((): ReactNode => {
@@ -64,16 +64,14 @@ const AccountHeader: SFC = ({className}) => {
   }, [signingKey, type]);
 
   return (
-    <S.MainContainer className={className}>
-      <S.LeftContainer>
-        {renderAccountNickname()}
-        <AccountHeaderAccountNumber />
-        {renderSigningKey()}
-      </S.LeftContainer>
-      <S.RightContainer>
-        <S.SendCoinsButton onClick={toggleSendCoinsModal}>Send Coins</S.SendCoinsButton>
-        <AccountHeaderDropdownContainer />
-      </S.RightContainer>
+    <PageHeader
+      className={className}
+      dropdown={<AccountHeaderDropdownContainer />}
+      rightButton={<PageHeaderButton onClick={toggleSendCoinsModal}>Send Coins</PageHeaderButton>}
+    >
+      {renderAccountNickname()}
+      <AccountHeaderAccountNumber />
+      {renderSigningKey()}
       {sendCoinsModalIsOpen && (
         <SendCoinsModal
           close={toggleSendCoinsModal}
@@ -81,7 +79,7 @@ const AccountHeader: SFC = ({className}) => {
           initialSender={sendCoinsInitialSender}
         />
       )}
-    </S.MainContainer>
+    </PageHeader>
   );
 };
 

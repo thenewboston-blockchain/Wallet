@@ -38,6 +38,5 @@ const HelperText: SFC<HelperTextProps> = ({children, className, name, type}) => 
   );
 };
 
-export {HelperTextType};
-
+export {HelperTextType, S as HelperTextStyles};
 export default HelperText;

@@ -27,4 +27,5 @@ const Checkbox: SFC<CheckboxProps> = ({className, error = false, label, ...props
   return component;
 };
 
+export {S as CheckboxStyles};
 export default Checkbox;

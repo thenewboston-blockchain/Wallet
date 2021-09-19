@@ -89,4 +89,5 @@ const TextField: SFC<TextFieldProps> = ({
   );
 };
 
+export {S as TextFieldStyles};
 export default TextField;

@@ -2,6 +2,7 @@ import React, {ReactNode, useCallback, useContext, useEffect, useRef} from 'reac
 import CopyToClipboard from 'react-copy-to-clipboard';
 import {useLocation} from 'react-router-dom';
 
+import {PageHeaderSection} from '@renderer/components/PageHeader';
 import {AccountContext} from '@renderer/context';
 import {useToggle, useWriteIpc} from '@renderer/hooks';
 import {SFC} from '@renderer/types';
@@ -23,15 +24,15 @@ const downloadFailToast = (e: any, error: string) => {
 };
 
 const AccountHeaderSigningKey: SFC<AccountHeaderSigningKeyProps> = ({className, signingKey}) => {
-  const [signingKeyIsVisible, toggleSigningKeyIsVisible] = useToggle(false);
+  const [signingKeyIsVisible, toggleSigningKeyIsVisible, setSigningKeyIsVisible] = useToggle(false);
   const {accountNumber} = useContext(AccountContext);
   const location = useLocation();
   const signingKeyCopyRef = useRef<HTMLDivElement>(null);
   const signingKeyDownloadRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    toggleSigningKeyIsVisible(false);
-  }, [toggleSigningKeyIsVisible, location.pathname]);
+    setSigningKeyIsVisible(false);
+  }, [setSigningKeyIsVisible, location.pathname]);
 
   const handleDownloadBlur = useCallback(() => {
     signingKeyDownloadRef.current?.blur();
@@ -58,21 +59,17 @@ const AccountHeaderSigningKey: SFC<AccountHeaderSigningKeyProps> = ({className, 
   };
 
   return (
-    <S.AccountHeaderSection className={className}>
-      <S.Title>My Signing Key</S.Title>
-      <S.Body>
-        <S.MainText isSigningKey>{renderSigningKey()}</S.MainText>
-        {signingKeyIsVisible ? (
-          <S.EyeOffIcon onClick={toggleSigningKeyIsVisible} size={16} totalSize={20} />
-        ) : (
-          <S.EyeIcon onClick={toggleSigningKeyIsVisible} size={16} totalSize={20} />
-        )}
-        <S.DownloadIcon onClick={handleDownloadClick} size={16} totalSize={20} ref={signingKeyDownloadRef} />
-        <CopyToClipboard text={signingKey} onCopy={handleSigningKeyCopy}>
-          <S.ContentCopyIcon size={16} totalSize={20} ref={signingKeyCopyRef} />
-        </CopyToClipboard>
-      </S.Body>
-    </S.AccountHeaderSection>
+    <PageHeaderSection className={className} hasVisibilityToggle mainText={renderSigningKey()} title="My Signing Key">
+      {signingKeyIsVisible ? (
+        <S.EyeOffIcon onClick={toggleSigningKeyIsVisible} size={16} totalSize={20} />
+      ) : (
+        <S.EyeIcon onClick={toggleSigningKeyIsVisible} size={16} totalSize={20} />
+      )}
+      <S.DownloadIcon onClick={handleDownloadClick} size={16} totalSize={20} ref={signingKeyDownloadRef} />
+      <CopyToClipboard text={signingKey} onCopy={handleSigningKeyCopy}>
+        <S.ContentCopyIcon size={16} totalSize={20} ref={signingKeyCopyRef} />
+      </CopyToClipboard>
+    </PageHeaderSection>
   );
 };
 

@@ -56,7 +56,7 @@ const AccountOverviewGraph: SFC = ({className}) => {
           {renderFilterButton(GraphFilter.all)}
         </S.TopRight>
       </S.Top>
-      <ResponsiveContainer width="100%" height={368}>
+      <ResponsiveContainer width="99%" height={368}>
         <LineChart data={transformedData}>
           <CartesianGrid stroke={colors.palette.neutral['075']} />
           <XAxis
@@ -74,7 +74,7 @@ const AccountOverviewGraph: SFC = ({className}) => {
         </LineChart>
       </ResponsiveContainer>
       <S.BottomContainer>
-        <Link to={`/account/${accountNumber}/${AccountSection.transaction}`} withChevron>
+        <Link to={`/account/${accountNumber}/${AccountSection.transactions}`} withChevron>
           View Details
         </Link>
       </S.BottomContainer>

@@ -13,12 +13,11 @@ import {
   getManagedValidators,
   getValidatorConfigs,
 } from '@renderer/selectors';
-import {ManagedAccount, ManagedFriend, ManagedNode, RootState, SFC} from '@renderer/types';
+import {ManagedAccount, ManagedFriend, ManagedNode, NodeSection, RootState, SFC} from '@renderer/types';
 import {truncateLongText} from '@renderer/utils/accounts';
 import {formatAddressFromNode, formatPathFromNode} from '@renderer/utils/address';
 import {sortByBooleanKey, sortDictValuesByPreferredKey} from '@renderer/utils/sort';
 
-import LeftSubmenu from './LeftSubmenu';
 import LeftSubmenuItem from './LeftSubmenuItem';
 import * as S from './Styles';
 
@@ -48,15 +47,23 @@ const LeftMenu: SFC = ({className}) => {
         subLabel: nickname,
         to: `/account/${account_number}/overview`,
       }))
-      .map(({baseUrl, key, label, subLabel, to}) => (
-        <LeftSubmenuItem baseUrl={baseUrl} key={key} label={label} subLabel={subLabel} to={to} />
+      .map(({baseUrl, key, label, subLabel, to}, i) => (
+        <LeftSubmenuItem
+          baseUrl={baseUrl}
+          index={i}
+          key={key}
+          label={label}
+          subLabel={subLabel}
+          subLabelFallback="Account"
+          to={to}
+        />
       ));
   }, [managedAccounts]);
 
   const communityItems = useMemo<ReactNode[]>(() => {
     return [
-      <LeftSubmenuItem baseUrl="/governance" label="Governance" key="governance" to="/governance" />,
-      <LeftSubmenuItem baseUrl="/treasury" label="Treasury" key="treasury" to="/treasury" />,
+      <LeftSubmenuItem baseUrl="/governance" index={0} label="Governance" key="governance" to="/governance" />,
+      <LeftSubmenuItem baseUrl="/treasury" index={1} label="Treasury" key="treasury" to="/treasury" />,
     ];
   }, []);
 
@@ -70,34 +77,45 @@ const LeftMenu: SFC = ({className}) => {
           subLabel: nickname,
           to: `/account/${account_number}/overview`,
         }))
-        .map(({baseUrl, key, label, subLabel, to}) => (
-          <LeftSubmenuItem baseUrl={baseUrl} key={key} label={label} subLabel={subLabel} to={to} />
+        .map(({baseUrl, key, label, subLabel, to}, i) => (
+          <LeftSubmenuItem
+            baseUrl={baseUrl}
+            index={i}
+            key={key}
+            label={label}
+            subLabel={subLabel}
+            subLabelFallback="Friend"
+            to={to}
+          />
         )),
     [managedFriends],
   );
 
-  const validatorMenuItems = useMemo<ReactNode[]>(
+  const nodeMenuItems = useMemo<ReactNode[]>(
     () =>
       sortDictValuesByPreferredKey<ManagedNode>(managedValidators, 'nickname', 'ip_address')
         .sort(sortByBooleanKey<ManagedNode>('is_default'))
         .map((managedValidator) => ({
-          baseUrl: `/validator/${formatPathFromNode(managedValidator)}`,
+          baseUrl: `/node/${formatPathFromNode(managedValidator)}`,
           isDefault: managedValidator.is_default || false,
           isOnline: validatorConfigs[formatAddressFromNode(managedValidator)]?.error === null || false,
           key: formatAddressFromNode(managedValidator),
           label: managedValidator.nickname || formatAddressFromNode(managedValidator),
-          to: `/validator/${formatPathFromNode(managedValidator)}/overview`,
+          to: `/node/${formatPathFromNode(managedValidator)}/${NodeSection.overview}`,
         }))
-        .map(({baseUrl, key, label, to}) => <LeftSubmenuItem baseUrl={baseUrl} key={key} label={label} to={to} />),
+        .map(({baseUrl, key, label, to}, i) => (
+          <LeftSubmenuItem baseUrl={baseUrl} index={i} key={key} label={label} subLabelFallback="Node" to={to} />
+        )),
     [managedValidators, validatorConfigs],
   );
 
   return (
     <S.Container className={className}>
-      <LeftSubmenu menuItems={accountItems} rightOnClick={toggleCreateAccountModal} title="My Wallets" />
-      <LeftSubmenu menuItems={friendMenuItems} rightOnClick={toggleAddFriendModal} title="My Friends" />
-      <LeftSubmenu menuItems={communityItems} title="Community" />
-      <LeftSubmenu menuItems={validatorMenuItems} rightOnClick={toggleAddValidatorModal} title="Nodes" />
+      <S.LeftSubmenu menuItems={accountItems} rightOnClick={toggleCreateAccountModal} title="My Wallets" />
+      <S.LeftSubmenu menuItems={friendMenuItems} rightOnClick={toggleAddFriendModal} title="My Friends" />
+      <S.LeftSubmenu menuItems={communityItems} title="Community" />
+      <S.LeftSubmenu menuItems={nodeMenuItems} rightOnClick={toggleAddValidatorModal} title="Nodes" />
+      <S.Link to="/node-center">Node Center</S.Link>
       {addFriendModalIsOpen && <AddFriendModal close={toggleAddFriendModal} />}
       {addValidatorModalIsOpen && <AddValidatorModal close={toggleAddValidatorModal} />}
       {createAccountModalIsOpen && <CreateAccountModal close={toggleCreateAccountModal} />}

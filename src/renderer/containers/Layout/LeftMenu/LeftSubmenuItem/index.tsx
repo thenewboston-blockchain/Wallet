@@ -6,12 +6,22 @@ import * as S from './Styles';
 
 export interface LeftSubmenuItemProps {
   baseUrl: string;
+  index: number;
   label: ReactNode;
   subLabel?: string;
+  subLabelFallback?: string;
   to: string;
 }
 
-const LeftSubmenuItem: SFC<LeftSubmenuItemProps> = ({baseUrl, className, label, subLabel, to}) => {
+const LeftSubmenuItem: SFC<LeftSubmenuItemProps> = ({
+  baseUrl,
+  className,
+  index,
+  label,
+  subLabel,
+  subLabelFallback,
+  to,
+}) => {
   const location = useLocation();
 
   const getIsActive = (): boolean => location.pathname.includes(baseUrl);
@@ -24,7 +34,9 @@ const LeftSubmenuItem: SFC<LeftSubmenuItemProps> = ({baseUrl, className, label, 
       isActive={getIsActive}
       to={to}
     >
-      {subLabel ? <S.SubLabel>{subLabel}</S.SubLabel> : null}
+      {subLabel || subLabelFallback ? (
+        <S.SubLabel $none={!subLabel}>{subLabel || `${subLabelFallback} ${index + 1}`}</S.SubLabel>
+      ) : null}
       <S.Label>{label}</S.Label>
     </S.StyledLink>
   );

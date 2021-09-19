@@ -16,7 +16,7 @@ import {AppDispatch, ProtocolType} from '@renderer/types';
 import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
 
 const DEFAULT_BANK = {
-  ip_address: '13.57.215.62',
+  ip_address: '54.183.16.194',
   port: 80,
   protocol: 'http' as ProtocolType,
 };
@@ -25,7 +25,7 @@ const App: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const activeBank = useSelector(getActiveBank);
   const activeBankConfig = useSelector(getActiveBankConfig);
-  const [getStartedModalIsOpen, toggleGetStartedModal] = useToggle(false);
+  const [getStartedModalIsOpen, toggleGetStartedModal, setGetStartedModal] = useToggle(false);
   const [loading, setLoading] = useState<boolean>(true);
   useCrawlSockets();
   useCleanSockets();
@@ -57,7 +57,7 @@ const App: FC = () => {
             displayErrorToast(response.error);
             return;
           }
-          toggleGetStartedModal(true);
+          setGetStartedModal(true);
         } catch (error) {
           displayToast('An error occurred', ToastType.error);
         } finally {
@@ -68,7 +68,7 @@ const App: FC = () => {
     } else {
       setLoading(false);
     }
-  }, [activeBank, activeBankConfig, dispatch, toggleGetStartedModal]);
+  }, [activeBank, activeBankConfig, dispatch, setGetStartedModal]);
 
   const renderComponent = (): ReactNode => {
     if (loading) return null;

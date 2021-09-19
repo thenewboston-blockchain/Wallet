@@ -4,8 +4,8 @@ import {PageTableItems, PageTableData, PageTableProps} from '@renderer/component
 import {Loader} from '@renderer/components/FormElements';
 import {SFC} from '@renderer/types';
 
-import Pagination, {PaginationProps} from './Pagination';
-import PaginationSummary, {PaginationSummaryProps} from './PaginationSummary';
+import Pagination, {PaginationProps, PaginationStyles} from './Pagination';
+import PaginationSummary, {PaginationSummaryProps, PaginationSummaryStyles} from './PaginationSummary';
 import * as S from './Styles';
 
 interface PaginatedTableProps extends PageTableProps, PaginationProps, PaginationSummaryProps {
@@ -56,6 +56,5 @@ const PaginatedTable: SFC<PaginatedTableProps> = ({
   );
 };
 
-export {PageTableData, PageTableItems};
-
+export {PageTableData, PageTableItems, PaginationStyles, PaginationSummaryStyles, S as PaginatedTableStyles};
 export default PaginatedTable;

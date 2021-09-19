@@ -10,3 +10,8 @@ export const mixinButtonFocus = css`
     outline: none;
   }
 `;
+
+export const mixinPageHeaderMargin = css`
+  margin-bottom: 30px;
+  margin-top: 16px;
+`;

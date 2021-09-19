@@ -119,4 +119,5 @@ const Modal: FC<ComponentProps> = ({
   );
 };
 
+export {S as ModalStyles};
 export default Modal;

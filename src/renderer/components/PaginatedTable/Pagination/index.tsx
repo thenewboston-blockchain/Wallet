@@ -70,4 +70,5 @@ const Pagination: SFC<PaginationProps> = ({className, currentPage, setPage, tota
   );
 };
 
+export {S as PaginationStyles};
 export default Pagination;

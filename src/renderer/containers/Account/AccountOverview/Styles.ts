@@ -7,6 +7,8 @@ import UAccountOverviewGraph from './AccountOverviewGraph';
 
 const gap = 16;
 
+export const Container = styled.div``;
+
 export const Graph = styled(UAccountOverviewGraph)`
   margin-bottom: ${gap}px;
 `;

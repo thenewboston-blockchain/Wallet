@@ -1,25 +1,9 @@
-import React, {FC} from 'react';
-import clsx from 'clsx';
-import {bemify} from '@thenewboston/utils';
+import React from 'react';
+import {SFC} from '@renderer/types';
+import * as S from './Styles';
 
-import './Badge.scss';
-
-interface ComponentProps {
-  className?: string;
-  color?: 'primary' | 'secondary' | 'tertiary' | 'tertiary-light';
-  text: string;
-}
-
-const Badge: FC<ComponentProps> = ({className, color = 'primary', text}) => {
-  return (
-    <span
-      className={clsx('Badge', `Badge--${color}`, className, {
-        ...bemify(className, `--${color}`),
-      })}
-    >
-      {text}
-    </span>
-  );
+const Badge: SFC = ({children, className}) => {
+  return <S.Badge className={className}>{children}</S.Badge>;
 };
 
 export default Badge;

@@ -23,20 +23,25 @@ const rules = [
     },
   },
   {
+    include: /node_modules/,
+    test: /\.(js|jsx|tsx|ts)?$/,
+    use: ['react-hot-loader/webpack'],
+  },
+  {
     exclude: /(bundle|node_modules)/,
-    loaders: [
+    test: /\.tsx?$/,
+    use: [
       {
         loader: 'babel-loader',
       },
       {
         loader: 'ts-loader',
         options: {
-          transpileOnly: true,
           getCustomTransformers: () => ({before: [styledComponentsTransformer]}),
+          transpileOnly: true,
         },
       },
     ],
-    test: /\.tsx?$/,
   },
   {
     test: /\.(scss|css)$/,

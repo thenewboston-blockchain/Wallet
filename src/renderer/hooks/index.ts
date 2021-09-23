@@ -1,4 +1,5 @@
 import useAccountBalance from './useAccountBalance';
+import useAccountContext from './useAccountContext';
 import useAddress from './useAddress';
 import useCrawlSockets from './useCrawlSockets';
 import useCleanSockets from './useCleanSockets';
@@ -15,12 +16,15 @@ import useNavigationalHistory from './useNavigationalHistory';
 import useNetworkConfigFetcher from './useNetworkConfigFetcher';
 import useNetworkCrawlFetcher from './useNetworkCrawlFetcher';
 import useNetworkCleanFetcher from './useNetworkCleanFetcher';
+import useNodeContext from './useNodeContext';
 import usePaginatedNetworkDataFetcher from './usePaginatedNetworkDataFetcher';
 import useSocketAddress from './useSocketAddress';
+import useTabsContext from './useTabsContext';
 import useWebSockets from './useWebSockets';
 
 export {
   useAccountBalance,
+  useAccountContext,
   useAddress,
   useCleanSockets,
   useCrawlSockets,
@@ -35,9 +39,11 @@ export {
   useNetworkCleanFetcher,
   useNetworkConfigFetcher,
   useNetworkCrawlFetcher,
+  useNodeContext,
   usePaginatedNetworkDataFetcher,
   useReadIpc,
   useSocketAddress,
+  useTabsContext,
   useToggle,
   useWebSockets,
   useWriteIpc,

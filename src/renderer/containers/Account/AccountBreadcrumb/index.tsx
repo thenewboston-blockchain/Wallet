@@ -1,6 +1,6 @@
-import React, {useContext} from 'react';
+import React from 'react';
 
-import {AccountContext} from '@renderer/context';
+import {useAccountContext} from '@renderer/hooks';
 import {AccountSection, SFC} from '@renderer/types';
 import Link from '@renderer/components/Link';
 
@@ -9,7 +9,7 @@ interface AccountBreadcrumbProps {
 }
 
 const AccountBreadcrumb: SFC<AccountBreadcrumbProps> = ({className, currentSection}) => {
-  const {accountNumber} = useContext(AccountContext);
+  const {accountNumber} = useAccountContext();
 
   const label = ` > ${currentSection} Details`;
 

@@ -4,7 +4,6 @@ import {Redirect, Route, Switch} from 'react-router-dom';
 
 import Account from '@renderer/containers/Account';
 import Node from '@renderer/containers/Node';
-import Validator from '@renderer/containers/Validator';
 
 import {AccountProvider, NodeProvider} from '@renderer/context';
 import {getActiveBankConfig} from '@renderer/selectors';
@@ -37,9 +36,6 @@ export const Layout: SFC = ({className}) => {
             <NodeProvider>
               <Node />
             </NodeProvider>
-          </Route>
-          <Route path="/validator/:protocol/:ipAddress/:port">
-            <Validator />
           </Route>
           <Route path="/reload" />
         </Switch>

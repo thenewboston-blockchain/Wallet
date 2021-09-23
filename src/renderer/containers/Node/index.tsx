@@ -1,8 +1,8 @@
-import React, {ReactNode, useContext} from 'react';
+import React, {ReactNode} from 'react';
 import {Redirect, Route, Switch, useHistory, useParams} from 'react-router-dom';
 
 import MainContainer from '@renderer/components/MainContainer';
-import {NodeContext} from '@renderer/context';
+import {useNodeContext} from '@renderer/hooks';
 import {NodeParams, NodeSection, SFC} from '@renderer/types';
 import {formatPath} from '@renderer/utils/address';
 
@@ -47,7 +47,7 @@ const tabs: Array<{label: string; location: NodeSection}> = [
 ];
 
 const Node: SFC = ({className}) => {
-  const {ipAddress, port, protocol} = useContext(NodeContext);
+  const {ipAddress, port, protocol} = useNodeContext();
   const history = useHistory();
   const {section} = useParams<NodeParams>();
 

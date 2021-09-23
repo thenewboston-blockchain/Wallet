@@ -1,5 +1,5 @@
-import React, {useContext, useRef} from 'react';
-import {TabsContext} from '@renderer/context';
+import React, {useRef} from 'react';
+import {useTabsContext} from '@renderer/hooks';
 import {SFC} from '@renderer/types';
 import * as S from './Styles';
 
@@ -8,7 +8,7 @@ interface TabProps {
 }
 
 const Tab: SFC<TabProps> = ({children, className, value}) => {
-  const {activeValue, onChange} = useContext(TabsContext);
+  const {activeValue, onChange} = useTabsContext();
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const isActive = activeValue === value;

@@ -1,7 +1,7 @@
-import React, {ReactNode, useContext, useEffect, useMemo} from 'react';
+import React, {ReactNode, useEffect, useMemo} from 'react';
 import {Route, Switch, useHistory, useParams} from 'react-router-dom';
 
-import {AccountContext} from '@renderer/context';
+import {useAccountContext} from '@renderer/hooks';
 import {AccountVaultParams, AccountVaultSection, SFC} from '@renderer/types';
 
 import AccountVaultBoostHistory from './AccountVaultBoostHistory';
@@ -32,7 +32,7 @@ const tabs: Array<{label: string; section: AccountVaultSection}> = [
 
 const AccountVault: SFC = ({className}) => {
   const {vault} = useParams<AccountVaultParams>();
-  const {accountNumber} = useContext(AccountContext);
+  const {accountNumber} = useAccountContext();
   const history = useHistory();
 
   const basePath = useMemo<string>(() => `/account/${accountNumber}/vault`, [accountNumber]);

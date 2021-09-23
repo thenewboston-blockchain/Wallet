@@ -1,9 +1,8 @@
-import React, {useContext, useMemo, useRef} from 'react';
+import React, {useMemo, useRef} from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
 import {PageHeaderSection} from '@renderer/components/PageHeader';
-import {AccountContext} from '@renderer/context';
-import {useToggle} from '@renderer/hooks';
+import {useAccountContext, useToggle} from '@renderer/hooks';
 import {AccountType, SFC} from '@renderer/types';
 import {truncateLongText} from '@renderer/utils/accounts';
 import {displayToast, ToastType} from '@renderer/utils/toast';
@@ -12,7 +11,7 @@ import QrcodeModal from '../../QrcodeModal';
 import * as S from './Styles';
 
 const AccountHeaderAccountNumber: SFC = ({className}) => {
-  const {accountNumber, type} = useContext(AccountContext);
+  const {accountNumber, type} = useAccountContext();
   const [qrcodeModalIsOpen, toggleQrcodeModal] = useToggle(false);
   const accountNumberCopyRef = useRef<HTMLDivElement>(null);
 

@@ -31,7 +31,7 @@ const dropdownRoot = document.getElementById('dropdown-root')!;
 const Notifications: FC = () => {
   const {pathname} = useLocation();
   const [lastReadTime, setLastReadTime] = useState<number>(new Date().getTime());
-  const [isOpen, , setIsOpen] = useToggle(false);
+  const [isOpen, toggleIsOpen] = useToggle(false);
   const iconRef = useRef<HTMLDivElement>(null);
   const managedAccounts = useSelector(getManagedAccounts);
   const managedFriends = useSelector(getManagedFriends);
@@ -53,8 +53,8 @@ const Notifications: FC = () => {
   );
 
   useEffect(() => {
-    setIsOpen(false);
-  }, [pathname, setIsOpen]);
+    toggleIsOpen(false);
+  }, [pathname, toggleIsOpen]);
 
   const getAccountNickname = (accountNumber: string): string => {
     const managedAccount = managedAccounts[accountNumber];
@@ -77,15 +77,15 @@ const Notifications: FC = () => {
   const handleBellClick = (): void => {
     if (isOpen) {
       updateLastReadTime();
-      setIsOpen(false);
+      toggleIsOpen(false);
     } else {
-      setIsOpen(true);
+      toggleIsOpen(true);
     }
   };
 
   const handleMenuClose = (): void => {
     updateLastReadTime();
-    setIsOpen(false);
+    toggleIsOpen(false);
   };
 
   const renderConfirmationBlockNotification = ({data, timestamp}: ConfirmationBlockNotificationPayload): ReactNode => {

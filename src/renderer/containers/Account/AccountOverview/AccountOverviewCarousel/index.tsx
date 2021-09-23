@@ -1,7 +1,7 @@
-import React, {ReactNode, useCallback, useContext} from 'react';
+import React, {ReactNode, useCallback} from 'react';
 
 import {Button} from '@renderer/components/FormElements';
-import {AccountContext} from '@renderer/context';
+import {useAccountContext} from '@renderer/hooks';
 import {AccountType, SFC} from '@renderer/types';
 
 import identificationBadge from './assets/IdentificationBadge.png';
@@ -20,7 +20,7 @@ interface AccountOverviewCarouselProps {
 }
 
 const AccountOverviewCarousel: SFC<AccountOverviewCarouselProps> = ({carouselTopic, className, onClick}) => {
-  const {type} = useContext(AccountContext);
+  const {type} = useAccountContext();
   const slides = carouselTopic === AccountOverviewCarouselTopic.depositCoins ? coinSlides : walletSlides;
 
   const renderManagedNodeContent = () => {

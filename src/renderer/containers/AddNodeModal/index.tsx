@@ -1,4 +1,4 @@
-import React, {FC, useMemo, useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
@@ -6,7 +6,7 @@ import Modal from '@renderer/components/Modal';
 import {fetchValidatorConfig} from '@renderer/dispatchers/validators';
 import {getManagedValidators} from '@renderer/selectors';
 import {setManagedValidator} from '@renderer/store/app';
-import {AppDispatch, ProtocolType} from '@renderer/types';
+import {AppDispatch, ProtocolType, SFC} from '@renderer/types';
 import {formatAddressFromNode, formatPathFromNode} from '@renderer/utils/address';
 import {
   getAddressFormField,
@@ -18,8 +18,7 @@ import {
 import yup from '@renderer/utils/forms/yup';
 import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
 
-import AddValidatorModalFields from './AddValidatorModalFields';
-import './AddValidatorModal.scss';
+import AddNodeModalFields from './AddNodeModalFields';
 
 const initialValues = {
   form: '',
@@ -35,44 +34,44 @@ interface ComponentProps {
   close(): void;
 }
 
-const AddValidatorModal: FC<ComponentProps> = ({close}) => {
+const AddNodeModal: SFC<ComponentProps> = ({className, close}) => {
   const dispatch = useDispatch<AppDispatch>();
   const history = useHistory();
-  const managedValidators = useSelector(getManagedValidators);
+  const managedNodes = useSelector(getManagedValidators);
   const [submitting, setSubmitting] = useState<boolean>(false);
 
   const handleSubmit = async ({ipAddress, nickname, port, protocol}: FormValues): Promise<void> => {
     try {
       setSubmitting(true);
 
-      const validatorAddressData = {
+      const nodeAddressData = {
         ip_address: ipAddress,
         port: parseInt(port, 10),
         protocol,
       };
 
-      const address = formatAddressFromNode(validatorAddressData);
-      const validatorConfig = await dispatch(fetchValidatorConfig(address));
+      const address = formatAddressFromNode(nodeAddressData);
+      const nodeConfig = await dispatch(fetchValidatorConfig(address));
 
-      if (validatorConfig.error) {
-        if (validatorConfig.error.includes('timeout') || validatorConfig.error.includes('Network Error')) {
-          displayErrorToast('Could Not Connect to Validator');
+      if (nodeConfig.error) {
+        if (nodeConfig.error.includes('timeout') || nodeConfig.error.includes('Network Error')) {
+          displayErrorToast('Could Not Connect to Node');
         } else {
-          displayErrorToast('Invalid Validator Address');
+          displayErrorToast('Invalid Node Address');
         }
         setSubmitting(false);
         return;
       }
 
       const formattedData = {
-        ...validatorAddressData,
+        ...nodeAddressData,
         account_signing_key: '',
         nickname,
         nid_signing_key: '',
       };
 
       dispatch(setManagedValidator(formattedData));
-      history.push(`/validator/${formatPathFromNode(formattedData)}/overview`);
+      history.push(`/node/${formatPathFromNode(formattedData)}/overview`);
       close();
     } catch (error) {
       displayToast('An error occurred', ToastType.error);
@@ -83,28 +82,28 @@ const AddValidatorModal: FC<ComponentProps> = ({close}) => {
 
   const validationSchema = useMemo(() => {
     return yup.object().shape({
-      form: getAddressFormField(managedValidators, 'This address is already a managed validator'),
+      form: getAddressFormField(managedNodes, 'This address is already a managed validator'),
       ipAddress: getIpAddressField(),
-      nickname: getNicknameField(managedValidators),
+      nickname: getNicknameField(managedNodes),
       port: getPortField(),
       protocol: getProtocolField(),
     });
-  }, [managedValidators]);
+  }, [managedNodes]);
 
   return (
     <Modal
-      className="AddValidatorModal"
+      className={className}
       close={close}
-      header="Add Validator"
+      header="Add Node"
       initialValues={initialValues}
       onSubmit={handleSubmit}
       submitButton="Add"
       submitting={submitting}
       validationSchema={validationSchema}
     >
-      <AddValidatorModalFields />
+      <AddNodeModalFields />
     </Modal>
   );
 };
 
-export default AddValidatorModal;
+export default AddNodeModal;

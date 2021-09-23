@@ -1,12 +1,12 @@
-import React, {useContext} from 'react';
+import React from 'react';
 
 import Link from '@renderer/components/Link';
-import {AccountContext} from '@renderer/context';
+import {useAccountContext} from '@renderer/hooks';
 import {AccountSection, SFC} from '@renderer/types';
 import * as S from './Styles';
 
 const AccountOverviewVaultCard: SFC = ({className}) => {
-  const {accountNumber} = useContext(AccountContext);
+  const {accountNumber} = useAccountContext();
 
   return (
     <S.Card className={className}>

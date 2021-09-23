@@ -1,11 +1,10 @@
-import {useContext} from 'react';
 import {useSelector} from 'react-redux';
-import {AccountContext} from '@renderer/context';
 import {getManagedFriends} from '@renderer/selectors';
 import {AccountType, ManagedFriend} from '@renderer/types';
+import useAccountContext from './useAccountContext';
 
 const useManagedFriend = (): ManagedFriend | null => {
-  const {accountNumber, type} = useContext(AccountContext);
+  const {accountNumber, type} = useAccountContext();
 
   const managedFriends = useSelector(getManagedFriends);
   const managedFriend = managedFriends[accountNumber] || null;

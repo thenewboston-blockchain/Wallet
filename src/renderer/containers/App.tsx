@@ -25,7 +25,7 @@ const App: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const activeBank = useSelector(getActiveBank);
   const activeBankConfig = useSelector(getActiveBankConfig);
-  const [getStartedModalIsOpen, toggleGetStartedModal, setGetStartedModal] = useToggle(false);
+  const [getStartedModalIsOpen, toggleGetStartedModal] = useToggle(false);
   const [loading, setLoading] = useState<boolean>(true);
   useCrawlSockets();
   useCleanSockets();
@@ -57,7 +57,7 @@ const App: FC = () => {
             displayErrorToast(response.error);
             return;
           }
-          setGetStartedModal(true);
+          toggleGetStartedModal(true);
         } catch (error) {
           displayToast('An error occurred', ToastType.error);
         } finally {
@@ -68,7 +68,7 @@ const App: FC = () => {
     } else {
       setLoading(false);
     }
-  }, [activeBank, activeBankConfig, dispatch, setGetStartedModal]);
+  }, [activeBank, activeBankConfig, dispatch, toggleGetStartedModal]);
 
   const renderComponent = (): ReactNode => {
     if (loading) return null;

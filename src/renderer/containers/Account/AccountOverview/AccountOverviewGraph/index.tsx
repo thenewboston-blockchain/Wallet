@@ -1,11 +1,11 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import format from 'date-fns/format';
 import getTime from 'date-fns/getTime';
 import parseISO from 'date-fns/parseISO';
 import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts';
 
 import Link from '@renderer/components/Link';
-import {AccountContext} from '@renderer/context';
+import {useAccountContext} from '@renderer/hooks';
 import {colors} from '@renderer/styles';
 import {AccountSection, SFC} from '@renderer/types';
 
@@ -26,7 +26,7 @@ export enum GraphFilter {
 }
 
 const AccountOverviewGraph: SFC = ({className}) => {
-  const {accountNumber} = useContext(AccountContext);
+  const {accountNumber} = useAccountContext();
   const [filter, setFilter] = useState<GraphFilter>(GraphFilter.month);
 
   const handleFilterOnClick = (filterParam: GraphFilter) => () => {

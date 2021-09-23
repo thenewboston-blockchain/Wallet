@@ -1,16 +1,15 @@
-import React, {useContext, useEffect, useMemo, useRef, useState} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {useDispatch} from 'react-redux';
 
-import {AccountContext} from '@renderer/context';
 import {fetchAccountBalance} from '@renderer/dispatchers/balances';
-import {useAccountBalance} from '@renderer/hooks';
+import {useAccountBalance, useAccountContext} from '@renderer/hooks';
 import {AppDispatch, SFC} from '@renderer/types';
 import {displayErrorToast} from '@renderer/utils/toast';
 import * as S from './Styles';
 
 const AccountBalance: SFC = ({className}) => {
   const balance = useAccountBalance();
-  const {accountNumber} = useContext(AccountContext);
+  const {accountNumber} = useAccountContext();
   const dispatch = useDispatch<AppDispatch>();
   const refreshIconRef = useRef<HTMLDivElement>(null);
   const [balancedUpdated, setBalanceUpdated] = useState<boolean>(false);

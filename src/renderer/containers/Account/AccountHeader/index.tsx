@@ -1,8 +1,7 @@
-import React, {ReactNode, useCallback, useContext, useMemo} from 'react';
+import React, {ReactNode, useCallback, useMemo} from 'react';
 
 import PageHeader, {PageHeaderSection, PageHeaderButton} from '@renderer/components/PageHeader';
-import {AccountContext} from '@renderer/context';
-import {useToggle} from '@renderer/hooks';
+import {useAccountContext, useToggle} from '@renderer/hooks';
 import {AccountType, SFC} from '@renderer/types';
 
 import AccountHeaderDropdownContainer from './AccountHeaderDropdownContainer';
@@ -10,7 +9,7 @@ import {AccountHeaderAccountNumber, AccountHeaderSigningKey} from './AccountHead
 import SendCoinsModal from './SendCoinsModal';
 
 const AccountHeader: SFC = ({className}) => {
-  const {accountNumber, managedAccount, managedFriend, type} = useContext(AccountContext);
+  const {accountNumber, managedAccount, managedFriend, type} = useAccountContext();
   const [sendCoinsModalIsOpen, toggleSendCoinsModal] = useToggle(false);
 
   const nickname = useMemo(() => {

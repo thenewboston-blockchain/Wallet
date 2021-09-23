@@ -1,16 +1,15 @@
-import React, {useContext} from 'react';
+import React from 'react';
 
 import {ButtonVariant} from '@renderer/components/FormElements';
 import PageHeader, {PageHeaderButton, PageHeaderSection} from '@renderer/components/PageHeader';
-import {NodeContext} from '@renderer/context';
-import {useToggle} from '@renderer/hooks';
+import {useNodeContext, useToggle} from '@renderer/hooks';
 import {SFC} from '@renderer/types';
 
 import NodeHeaderDropdownContainer from './NodeHeaderDropdownContainer';
 
 const NodeHeader: SFC = ({className}) => {
   const [isBoosted, toggleIsBoosted] = useToggle(false);
-  const {ipAddress, managedNode} = useContext(NodeContext);
+  const {ipAddress, managedNode} = useNodeContext();
 
   return (
     <PageHeader

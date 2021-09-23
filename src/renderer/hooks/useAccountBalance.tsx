@@ -1,10 +1,9 @@
-import {useContext} from 'react';
-import {AccountContext} from '@renderer/context';
 import {useSelector} from 'react-redux';
 import {getAccountBalances} from '@renderer/selectors';
+import useAccountContext from './useAccountContext';
 
 const useAccountBalance = (): number | null => {
-  const {accountNumber} = useContext(AccountContext);
+  const {accountNumber} = useAccountContext();
   const accountBalances = useSelector(getAccountBalances);
 
   const accountBalanceObject = accountBalances[accountNumber];

@@ -1,10 +1,9 @@
-import React, {ReactNode, useCallback, useContext, useEffect, useRef} from 'react';
+import React, {ReactNode, useCallback, useEffect, useRef} from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import {useLocation} from 'react-router-dom';
 
 import {PageHeaderSection} from '@renderer/components/PageHeader';
-import {AccountContext} from '@renderer/context';
-import {useToggle, useWriteIpc} from '@renderer/hooks';
+import {useAccountContext, useToggle, useWriteIpc} from '@renderer/hooks';
 import {SFC} from '@renderer/types';
 import {truncateLongText} from '@renderer/utils/accounts';
 import {displayToast, ToastType} from '@renderer/utils/toast';
@@ -25,7 +24,7 @@ const downloadFailToast = (e: any, error: string) => {
 
 const AccountHeaderSigningKey: SFC<AccountHeaderSigningKeyProps> = ({className, signingKey}) => {
   const [signingKeyIsVisible, toggleSigningKeyIsVisible] = useToggle(false);
-  const {accountNumber} = useContext(AccountContext);
+  const {accountNumber} = useAccountContext();
   const location = useLocation();
   const signingKeyCopyRef = useRef<HTMLDivElement>(null);
   const signingKeyDownloadRef = useRef<HTMLDivElement>(null);

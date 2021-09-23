@@ -1,11 +1,10 @@
-import React, {useContext, useMemo} from 'react';
+import React, {useMemo} from 'react';
 
 import AccountLink from '@renderer/components/AccountLink';
 import ExpandableText from '@renderer/components/ExpandableText';
 import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
 import {VALIDATOR_ACCOUNTS} from '@renderer/constants/actions';
-import {NodeContext} from '@renderer/context';
-import {usePaginatedNetworkDataFetcher, useToggle} from '@renderer/hooks';
+import {useNodeContext, usePaginatedNetworkDataFetcher, useToggle} from '@renderer/hooks';
 import {SFC, ValidatorAccount} from '@renderer/types';
 import * as S from './Styles';
 
@@ -16,7 +15,7 @@ enum TableKeys {
 }
 
 const NodeAccounts: SFC = ({className}) => {
-  const {address} = useContext(NodeContext);
+  const {address} = useNodeContext();
   const [expanded, toggleExpanded] = useToggle(false);
   const {
     count,

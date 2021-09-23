@@ -1,8 +1,8 @@
-import React, {useContext, useMemo} from 'react';
+import React, {useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {useNodeContext} from '@renderer/hooks';
 import {TextField} from '@renderer/components/FormElements';
 import Modal from '@renderer/components/Modal';
-import {NodeContext} from '@renderer/context';
 import {getManagedValidators} from '@renderer/selectors';
 import {setManagedValidator} from '@renderer/store/app';
 import {AppDispatch, SFC} from '@renderer/types';
@@ -14,7 +14,7 @@ interface ComponentProps {
 }
 
 const EditNodeNicknameModal: SFC<ComponentProps> = ({className, close}) => {
-  const {managedNode} = useContext(NodeContext);
+  const {managedNode} = useNodeContext();
   const dispatch = useDispatch<AppDispatch>();
   const managedNodes = useSelector(getManagedValidators);
 

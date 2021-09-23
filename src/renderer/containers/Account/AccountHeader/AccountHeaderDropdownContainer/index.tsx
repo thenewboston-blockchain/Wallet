@@ -1,8 +1,7 @@
-import React, {useContext, useMemo} from 'react';
-import {AccountContext} from '@renderer/context';
+import React, {useMemo} from 'react';
 import DropdownMenuButton, {DropdownMenuDirection, DropdownMenuOption} from '@renderer/components/DropdownMenuButton';
 import AddFriendModal from '@renderer/containers/AddFriendModal';
-import {useToggle} from '@renderer/hooks';
+import {useAccountContext, useToggle} from '@renderer/hooks';
 import {AccountType, SFC} from '@renderer/types';
 
 import DeleteAccountModal from './DeleteAccountModal';
@@ -10,7 +9,7 @@ import DeleteFriendModal from './DeleteFriendModal';
 import EditAccountNicknameModal from './EditAccountNicknameModal';
 
 const AccountHeaderDropdownContainer: SFC = ({className}) => {
-  const {accountNumber, type} = useContext(AccountContext);
+  const {accountNumber, type} = useAccountContext();
   const [addFriendModalIsOpen, toggleAddFriendModal] = useToggle(false);
   const [deleteAccountModalIsOpen, toggleDeleteAccountModal] = useToggle(false);
   const [deleteFriendModalIsOpen, toggleDeleteFriendModal] = useToggle(false);

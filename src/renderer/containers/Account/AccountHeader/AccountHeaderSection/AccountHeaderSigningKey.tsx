@@ -24,15 +24,15 @@ const downloadFailToast = (e: any, error: string) => {
 };
 
 const AccountHeaderSigningKey: SFC<AccountHeaderSigningKeyProps> = ({className, signingKey}) => {
-  const [signingKeyIsVisible, toggleSigningKeyIsVisible, setSigningKeyIsVisible] = useToggle(false);
+  const [signingKeyIsVisible, toggleSigningKeyIsVisible] = useToggle(false);
   const {accountNumber} = useContext(AccountContext);
   const location = useLocation();
   const signingKeyCopyRef = useRef<HTMLDivElement>(null);
   const signingKeyDownloadRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setSigningKeyIsVisible(false);
-  }, [setSigningKeyIsVisible, location.pathname]);
+    toggleSigningKeyIsVisible(false);
+  }, [toggleSigningKeyIsVisible, location.pathname]);
 
   const handleDownloadBlur = useCallback(() => {
     signingKeyDownloadRef.current?.blur();

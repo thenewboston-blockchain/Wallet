@@ -16,6 +16,7 @@ import EyeIcon from './EyeIcon';
 import EyeOffIcon from './EyeOffIcon';
 import InformationOutlineIcon from './InformationOutlineIcon';
 import LoadingIcon from './LoadingIcon';
+import OpenInNewIcon from './OpenInNewIcon';
 import PlayIcon from './PlayIcon';
 import PlusIcon from './PlusIcon';
 import QrcodeIcon from './QrcodeIcon';
@@ -44,6 +45,7 @@ export {
   EyeOffIcon,
   InformationOutlineIcon,
   LoadingIcon,
+  OpenInNewIcon,
   PlayIcon,
   PlusIcon,
   QrcodeIcon,

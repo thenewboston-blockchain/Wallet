@@ -40,11 +40,10 @@ const containedDangerMixin = css<ButtonProps>`
 `;
 
 const outlinedMixin = css`
-  background: transparent;
+  background: ${colors.white};
 `;
 
 const outlinedPrimaryMixin = css<ButtonProps>`
-  background: ${colors.white};
   border-color: ${({disabled}) => (disabled ? colors.white : colors.palette.gray['200'])};
   color: ${({disabled}) => (disabled ? colors.palette.gray['200'] : colors.primary)};
 

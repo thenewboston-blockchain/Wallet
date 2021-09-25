@@ -8,8 +8,8 @@ import PageHeaderSection, {PageHeaderSectionStyles} from './PageHeaderSection';
 import * as S from './Styles';
 
 interface PageHeaderProps {
-  dropdown: ReactNode;
-  rightButton: ReactNode;
+  dropdown?: ReactNode;
+  rightButton?: ReactNode;
 }
 
 const PageHeader: SFC<PageHeaderProps> = ({children, className, dropdown, rightButton}) => {

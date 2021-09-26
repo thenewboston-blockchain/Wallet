@@ -3,6 +3,7 @@ import styled, {css} from 'styled-components';
 import UCard from '@renderer/components/Card';
 import {Button, ButtonColor, ButtonVariant} from '@renderer/components/FormElements';
 import {RocketLaunchIcon as URocketLaunchIcon} from '@renderer/components/Icons';
+import UProgressBar from '@renderer/components/ProgressBar';
 import {b1, b2, colors, d2, h3} from '@renderer/styles';
 
 export const Card = styled(UCard)`
@@ -96,10 +97,7 @@ export const PointsLabel = styled.div`
   margin-bottom: 3px;
 `;
 
-export const PointsProgressBar = styled.div`
-  background: ${colors.progressBar};
-  border-radius: 8px;
-  height: 12px;
+export const PointsProgressBar = styled(UProgressBar)`
   margin-bottom: 9px;
 `;
 

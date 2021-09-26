@@ -8,13 +8,13 @@ import formatDuration from 'date-fns/formatDuration';
 import intervalToDuration from 'date-fns/intervalToDuration';
 import {Icon, IconType} from '@thenewboston/ui';
 
-import StatusBadge from '@renderer/components/StatusBadge';
+import StatusBadge, {StatusBadgeType} from '@renderer/components/StatusBadge';
 import {useToggle} from '@renderer/hooks';
 import {getManagedAccounts, getManagedFriends, getNotifications} from '@renderer/selectors';
 import {
+  CleanStatusNotificationPayload,
   ConfirmationBlockNotificationPayload,
   CrawlStatusNotificationPayload,
-  CleanStatusNotificationPayload,
   NotificationPayload,
   NotificationType,
   PrimaryValidatorUpdatedNotificationPayload,
@@ -142,7 +142,7 @@ const Notifications: FC = () => {
 
     return (
       <div className="Notifications__notification" key={id}>
-        {!read && <StatusBadge className="Notifications__row-alert-badge" status="alert" />}
+        {!read && <StatusBadge className="Notifications__row-alert-badge" status={StatusBadgeType.alert} />}
         <div className="Notifications__description">
           <div>{description}</div>
           {renderTimeAgo(timestamp, read)}
@@ -246,7 +246,9 @@ const Notifications: FC = () => {
           onClick={handleBellClick}
           ref={iconRef}
         />
-        {unreadNotificationsLength ? <StatusBadge className="Notifications__bell-alert-badge" status="alert" /> : null}
+        {unreadNotificationsLength ? (
+          <StatusBadge className="Notifications__bell-alert-badge" status={StatusBadgeType.alert} />
+        ) : null}
       </div>
       {isOpen &&
         createPortal(

@@ -29,8 +29,9 @@ const Switch: SFC<SwitchProps> = ({checked, className, disabled = false, id, lab
         height={10}
         id={id}
         name={name}
+        offColor={colors.palette.gray['300']}
         onChange={onChange}
-        onColor={colors.palette.blue['100']}
+        onColor={colors.palette.gray['300']}
         onHandleColor={colors.primary}
         uncheckedIcon={false}
         width={24}

@@ -25,7 +25,7 @@ const AccountVaultHeader: SFC = ({className}) => {
         </S.MiddleContainer>
         <S.PointsContainer>
           <S.Label>Points</S.Label>
-          <S.ProgressBar />
+          <S.ProgressBar progress={100} total={100} />
           <S.PointsRatio>10.05B / 10.05B</S.PointsRatio>
         </S.PointsContainer>
       </S.Flex>

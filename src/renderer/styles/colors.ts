@@ -5,7 +5,6 @@ const colors = {
   badgeGold: '#ffc700',
   black: '#000',
   primary: '#2c3967',
-  progressBar: '#17cead',
   white: '#fff',
   palette: {
     neutral: {

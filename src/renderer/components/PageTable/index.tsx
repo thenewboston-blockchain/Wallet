@@ -54,7 +54,7 @@ const PageTable: SFC<PageTableProps> = ({className, handleSelectRow, items, sele
               />
             ) : null}
             <S.Cell $align={align?.[key]} $numOfCols={numOfColumns}>
-              {item[key] || '-'}
+              {item[key]}
             </S.Cell>
           </Fragment>
         )),

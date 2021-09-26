@@ -1,28 +1,16 @@
-import React, {FC, memo} from 'react';
-import clsx from 'clsx';
-import {Icon, IconType} from '@thenewboston/ui';
-import {bemify} from '@thenewboston/utils';
+import React from 'react';
+import {SFC} from '@renderer/types';
 
-import './StatusBadge.scss';
+import * as S from './Styles';
+import {StatusBadgeType} from './Styles';
 
-interface ComponentProps {
-  className?: string;
-  status: 'active' | 'alert' | 'inactive';
+interface StatusBadgeProps {
+  status: StatusBadgeType;
 }
 
-const StatusBadge: FC<ComponentProps> = ({className, status}) => {
-  const icon = status === 'inactive' ? IconType.checkboxBlankCircleOutline : IconType.checkboxBlankCircle;
-
-  return (
-    <Icon
-      className={clsx('StatusBadge', `StatusBadge--${status}`, className, {
-        ...bemify(className, `--${status}`),
-      })}
-      icon={icon}
-      size={8}
-      totalSize={8}
-    />
-  );
+const StatusBadge: SFC<StatusBadgeProps> = ({className, status}) => {
+  return <S.Icon $type={status} className={className} />;
 };
 
-export default memo(StatusBadge);
+export {StatusBadgeType, S as StatusBadgeStyles};
+export default StatusBadge;

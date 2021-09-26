@@ -1,6 +1,7 @@
 import styled, {css} from 'styled-components';
 
 import UCard from '@renderer/components/Card';
+import UProgressBar from '@renderer/components/ProgressBar';
 import {b1, b2, colors, d2, h3} from '@renderer/styles';
 
 export const Card = styled(UCard)`
@@ -48,10 +49,7 @@ export const PointsContainer = styled.div`
   margin-left: 24px;
 `;
 
-export const ProgressBar = styled.div`
-  background: ${colors.progressBar};
-  border-radius: 8px;
-  height: 12px;
+export const ProgressBar = styled(UProgressBar)`
   margin-bottom: 8px;
   width: 483px;
 `;

@@ -35,7 +35,7 @@ const AccountOverviewVaultCard: SFC = ({className}) => {
       </S.BoostSection>
       <S.PointsSection>
         <S.PointsLabel>Points</S.PointsLabel>
-        <S.PointsProgressBar />
+        <S.PointsProgressBar progress={100} total={100} />
         <S.PointsRatioText>10.05B / 10.05B</S.PointsRatioText>
       </S.PointsSection>
       <S.LinkSection>

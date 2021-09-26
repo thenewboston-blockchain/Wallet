@@ -29,7 +29,12 @@ const transformNodeData = (nodeData: NodeData[]) => {
         {totalBoosts.toLocaleString()}
       </S.TotalBoostsContainer>
     ),
-    [NodeCenterTableKeys.boostAction]: 'Boost',
+    [NodeCenterTableKeys.boostAction]: (
+      <S.BoostButton>
+        <S.RocketLaunchIcon />
+        Boost
+      </S.BoostButton>
+    ),
   }));
 };
 

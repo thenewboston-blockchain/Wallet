@@ -1,4 +1,4 @@
-import React, {FC, useMemo} from 'react';
+import React, {useMemo} from 'react';
 import {useSelector} from 'react-redux';
 
 import {MATCH_ERROR} from '@renderer/constants/form-validation';
@@ -10,7 +10,7 @@ import {
   getManagedAccounts,
   getManagedFriends,
 } from '@renderer/selectors';
-import {InputOption} from '@renderer/types';
+import {InputOption, SFC} from '@renderer/types';
 import {getBankTxFee, getPrimaryValidatorTxFee} from '@renderer/utils/transactions';
 
 import * as S from './Styles';
@@ -26,7 +26,7 @@ interface ComponentProps {
   submitting: boolean;
 }
 
-const SendCoinsModalFields: FC<ComponentProps> = ({submitting}) => {
+const SendCoinsModalFields: SFC<ComponentProps> = ({className, submitting}) => {
   const {errors, values} = useFormContext<FormValues>();
   const activeBankConfig = useSelector(getActiveBankConfig)!;
   const managedAccountBalances = useSelector(getManagedAccountBalances);
@@ -80,7 +80,7 @@ const SendCoinsModalFields: FC<ComponentProps> = ({submitting}) => {
   };
 
   return (
-    <>
+    <div className={className}>
       {matchError ? <S.ErrorSpan>{MATCH_ERROR}</S.ErrorSpan> : null}
       <S.FormSelectDetailed
         disabled={submitting}
@@ -108,7 +108,7 @@ const SendCoinsModalFields: FC<ComponentProps> = ({submitting}) => {
         <S.Row label="Validator Fee" value={renderValidatorFee()} />
         <S.Row isSummary label="Total" value={renderTotal()} />
       </S.Table>
-    </>
+    </div>
   );
 };
 

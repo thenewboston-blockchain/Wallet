@@ -21,6 +21,7 @@ import usePaginatedNetworkDataFetcher from './usePaginatedNetworkDataFetcher';
 import useSocketAddress from './useSocketAddress';
 import useTabsContext from './useTabsContext';
 import useWebSockets from './useWebSockets';
+import useWindowDimensions from './useWindowDimensions';
 
 export {
   useAccountBalance,
@@ -46,5 +47,6 @@ export {
   useTabsContext,
   useToggle,
   useWebSockets,
+  useWindowDimensions,
   useWriteIpc,
 };

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 
 import {StatusBadgeType} from '@renderer/components/StatusBadge';
 import {useToggle} from '@renderer/hooks';
@@ -7,19 +7,27 @@ import {truncateLongText} from '@renderer/utils/accounts';
 
 import {NodeData, otherNodes, top20Nodes} from './data';
 import NodeCenterBoostNodeModal from './NodeCenterBoostNodeModal';
-import {NodeCenterTableKeys} from './NodeCenterTable';
+import NodeCenterPopover from './NodeCenterPopover';
 import NodeCenterHeader from './NodeCenterHeader';
+import {NodeCenterTableKeys} from './NodeCenterTable';
 import * as S from './Styles';
 
 const NodeCenter: SFC = ({className}) => {
+  const [popoverAnchorEl, setPopoverAnchorEl] = useState<HTMLButtonElement | null>(null);
+  const [popoverWasOpened, togglePopoverWasOpened] = useToggle(false);
   const [boostModalIsOpen, toggleBoostModal] = useToggle(false);
   const [selectedNode, setSelectedNode] = useState<NodeData | null>(null);
+  const popoverIsOpen = !!popoverAnchorEl;
 
   useEffect(() => {
     if (selectedNode) {
       toggleBoostModal(true);
     }
   }, [selectedNode, toggleBoostModal]);
+
+  const unsetAnchorEl = useCallback((): void => {
+    setPopoverAnchorEl(null);
+  }, [setPopoverAnchorEl]);
 
   const handleBoostClick = (nodeData: NodeData) => () => {
     setSelectedNode(nodeData);
@@ -30,8 +38,8 @@ const NodeCenter: SFC = ({className}) => {
     toggleBoostModal(false);
   };
 
-  const transformNodeData = (nodeDataArray: NodeData[]) => {
-    return nodeDataArray.map((node) => ({
+  const transformNodeData = (nodeDataArray: NodeData[], isTopTwenty = false) => {
+    return nodeDataArray.map((node, index) => ({
       key: node.networkId,
       [NodeCenterTableKeys.rank]: node.rank,
       [NodeCenterTableKeys.isPv]: node.isPv ? <S.PvBadge>PV</S.PvBadge> : '',
@@ -51,7 +59,15 @@ const NodeCenter: SFC = ({className}) => {
         </S.TotalBoostsContainer>
       ),
       [NodeCenterTableKeys.boostAction]: (
-        <S.BoostButton onClick={handleBoostClick(node)}>
+        <S.BoostButton
+          onClick={handleBoostClick(node)}
+          ref={(ref) => {
+            if (!popoverWasOpened && isTopTwenty && index === 5 && ref) {
+              setPopoverAnchorEl(ref);
+              togglePopoverWasOpened(true);
+            }
+          }}
+        >
           <S.RocketLaunchIcon />
           Boost
         </S.BoostButton>
@@ -59,7 +75,7 @@ const NodeCenter: SFC = ({className}) => {
     }));
   };
 
-  const top20TableData = transformNodeData(top20Nodes);
+  const top20TableData = transformNodeData(top20Nodes, true);
   const otherTableData = transformNodeData(otherNodes);
 
   return (
@@ -74,6 +90,7 @@ const NodeCenter: SFC = ({className}) => {
       {boostModalIsOpen && selectedNode ? (
         <NodeCenterBoostNodeModal close={handleModalClose} nodeData={selectedNode} />
       ) : null}
+      <NodeCenterPopover anchorEl={popoverAnchorEl} closePopover={unsetAnchorEl} open={popoverIsOpen} />
     </S.Container>
   );
 };

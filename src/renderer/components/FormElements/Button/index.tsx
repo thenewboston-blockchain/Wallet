@@ -1,10 +1,11 @@
-import React, {FC, useEffect, useRef} from 'react';
+import React, {forwardRef, ReactNode} from 'react';
 import clsx from 'clsx';
 
 import * as S from './Styles';
 import {ButtonColor, ButtonSize, ButtonType, ButtonVariant} from './types';
 
 export interface ButtonProps {
+  children: ReactNode;
   className?: string;
   color?: ButtonColor;
   disabled?: boolean;
@@ -16,42 +17,40 @@ export interface ButtonProps {
   variant?: ButtonVariant;
 }
 
-const Button: FC<ButtonProps> = ({
-  children,
-  className,
-  color = ButtonColor.primary,
-  disabled = false,
-  focused = false,
-  fullWidth = true,
-  onClick,
-  size = ButtonSize.regular,
-  type = ButtonType.button,
-  variant = ButtonVariant.contained,
-}) => {
-  const buttonRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    if (focused) {
-      buttonRef.current?.focus();
-    }
-  }, [focused, buttonRef]);
-
-  return (
-    <S.Button
-      className={clsx('Button', className)}
-      $color={color}
-      $fullWidth={fullWidth}
-      disabled={disabled}
-      onClick={onClick}
-      ref={buttonRef}
-      type={type}
-      $size={size}
-      $variant={variant}
-    >
-      {children}
-    </S.Button>
-  );
-};
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      children,
+      className,
+      color = ButtonColor.primary,
+      disabled = false,
+      focused = false,
+      fullWidth = true,
+      onClick,
+      size = ButtonSize.regular,
+      type = ButtonType.button,
+      variant = ButtonVariant.contained,
+    },
+    ref,
+  ) => {
+    return (
+      <S.Button
+        className={clsx('Button', className)}
+        $color={color}
+        $fullWidth={fullWidth}
+        disabled={disabled}
+        autoFocus={focused}
+        onClick={onClick}
+        ref={ref}
+        type={type}
+        $size={size}
+        $variant={variant}
+      >
+        {children}
+      </S.Button>
+    );
+  },
+);
 
 export {ButtonColor, ButtonSize, ButtonType, ButtonVariant, S as ButtonStyles};
 export default Button;

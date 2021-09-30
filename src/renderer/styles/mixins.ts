@@ -11,6 +11,16 @@ export const mixinButtonFocus = css`
   }
 `;
 
+export const mixinButtonFocusDarkmode = css`
+  margin: 6px; // margin needed to account for the focused box shadow
+  transition: box-shadow 0.1s;
+
+  &:focus {
+    box-shadow: 0 0 0 8px ${colors.palette.blue['300']};
+    outline: none;
+  }
+`;
+
 export const mixinPageHeaderMargin = css`
   margin-bottom: 30px;
   margin-top: 16px;

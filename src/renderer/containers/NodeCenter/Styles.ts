@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import Badge from '@renderer/components/Badge';
+import {Button, ButtonColor, ButtonSize, ButtonVariant} from '@renderer/components/FormElements';
+import {RocketLaunchIcon as URocketLaunchIcon} from '@renderer/components/Icons';
 import UProgressBar from '@renderer/components/ProgressBar';
 import UStatusBadge from '@renderer/components/StatusBadge';
 import {b1, colors, h1} from '@renderer/styles';
@@ -45,4 +47,24 @@ export const TotalBoostsContainer = styled.div`
 export const ProgressBar = styled(UProgressBar)`
   margin-right: 16px;
   width: 160px;
+`;
+
+export const BoostButton = styled(Button).attrs(() => ({
+  color: ButtonColor.secondary,
+  size: ButtonSize.small,
+  variant: ButtonVariant.outlined,
+}))`
+  align-items: center;
+  align-self: flex-start;
+  display: flex;
+  flex: 0;
+  white-space: nowrap;
+`;
+
+export const RocketLaunchIcon = styled(URocketLaunchIcon).attrs(() => ({
+  color: colors.palette.blue['500'],
+  size: 16,
+  totalSize: 'unset',
+}))`
+  margin-right: 6px;
 `;

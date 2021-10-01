@@ -1,6 +1,7 @@
 import React, {ReactNode, useCallback, useMemo} from 'react';
 
-import PageHeader, {PageHeaderSection, PageHeaderButton} from '@renderer/components/PageHeader';
+import {Button} from '@renderer/components/FormElements';
+import PageHeader, {PageHeaderSection} from '@renderer/components/PageHeader';
 import {useAccountContext, useToggle} from '@renderer/hooks';
 import {AccountType, SFC} from '@renderer/types';
 
@@ -66,7 +67,7 @@ const AccountHeader: SFC = ({className}) => {
     <PageHeader
       className={className}
       dropdown={<AccountHeaderDropdownContainer />}
-      rightButton={<PageHeaderButton onClick={toggleSendCoinsModal}>Send Coins</PageHeaderButton>}
+      rightButtons={<Button onClick={toggleSendCoinsModal}>Send Coins</Button>}
     >
       {renderAccountNickname()}
       <AccountHeaderAccountNumber />

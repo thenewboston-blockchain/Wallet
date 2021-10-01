@@ -1,22 +1,32 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React, {ReactNode} from 'react';
+import React, {Fragment, ReactNode} from 'react';
 import {SFC} from '@renderer/types';
-import {ButtonProps} from '@renderer/components/FormElements';
 
 import PageHeaderSection, {PageHeaderSectionStyles} from './PageHeaderSection';
 import * as S from './Styles';
 
 interface PageHeaderProps {
   dropdown?: ReactNode;
-  rightButton?: ReactNode;
+  rightButtons?: ReactNode | ReactNode[];
 }
 
-const PageHeader: SFC<PageHeaderProps> = ({children, className, dropdown, rightButton}) => {
+const PageHeader: SFC<PageHeaderProps> = ({children, className, dropdown, rightButtons}) => {
+  const renderRightButtons = (): ReactNode => {
+    if (!rightButtons) return null;
+
+    if (Array.isArray(rightButtons)) {
+      // eslint-disable-next-line react/no-array-index-key
+      return rightButtons.map((rightButton, i) => <Fragment key={i}>{rightButton}</Fragment>);
+    }
+
+    return rightButtons;
+  };
+
   const renderRightSection = (): ReactNode => {
     return (
-      <S.Right>
-        {rightButton || null}
+      <S.Right $hasDropdown={!!dropdown}>
+        {renderRightButtons()}
         {dropdown || null}
       </S.Right>
     );
@@ -25,18 +35,10 @@ const PageHeader: SFC<PageHeaderProps> = ({children, className, dropdown, rightB
   return (
     <S.Container className={className}>
       <S.Left>{children}</S.Left>
-      {dropdown || rightButton ? renderRightSection() : null}
+      {dropdown || rightButtons ? renderRightSection() : null}
     </S.Container>
   );
 };
 
-const PageHeaderButton: SFC<ButtonProps> = ({children, className, ...props}) => {
-  return (
-    <S.RightButton className={className} {...props}>
-      {children}
-    </S.RightButton>
-  );
-};
-
-export {PageHeaderButton, PageHeaderSection, PageHeaderSectionStyles, S as PageHeaderStyles};
+export {PageHeaderSection, PageHeaderSectionStyles, S as PageHeaderStyles};
 export default PageHeader;

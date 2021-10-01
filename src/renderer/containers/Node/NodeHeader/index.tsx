@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {ButtonVariant} from '@renderer/components/FormElements';
-import PageHeader, {PageHeaderButton, PageHeaderSection} from '@renderer/components/PageHeader';
+import {Button, ButtonVariant} from '@renderer/components/FormElements';
+import PageHeader, {PageHeaderSection} from '@renderer/components/PageHeader';
 import {useNodeContext, useToggle} from '@renderer/hooks';
 import {SFC} from '@renderer/types';
 
@@ -15,13 +15,10 @@ const NodeHeader: SFC = ({className}) => {
     <PageHeader
       className={className}
       dropdown={<NodeHeaderDropdownContainer />}
-      rightButton={
-        <PageHeaderButton
-          onClick={toggleIsBoosted}
-          variant={isBoosted ? ButtonVariant.outlined : ButtonVariant.contained}
-        >
+      rightButtons={
+        <Button onClick={toggleIsBoosted} variant={isBoosted ? ButtonVariant.outlined : ButtonVariant.contained}>
           {isBoosted ? 'Boost' : 'Unboost'}
-        </PageHeaderButton>
+        </Button>
       }
     >
       <PageHeaderSection mainText={managedNode?.nickname || '-'} title="Nickname" />

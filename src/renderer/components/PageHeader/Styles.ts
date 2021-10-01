@@ -1,28 +1,34 @@
-import styled from 'styled-components';
-import {Button} from '@renderer/components/FormElements';
-import * as PageHeaderSectionStyles from './PageHeaderSection/Styles';
+import styled, {css} from 'styled-components';
+import {DropdownMenuButtonStyles} from '@renderer/components/DropdownMenuButton';
 
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
-  margin-top: 16px;
+  margin-top: 32px;
 `;
 
 export const Left = styled.div`
-  display: flex;
-  margin-left: 24px;
-
-  & > ${PageHeaderSectionStyles.Container} + ${PageHeaderSectionStyles.Container} {
-    margin-left: 56px;
-  }
-`;
-
-export const Right = styled.div`
   align-items: center;
   display: flex;
+  margin-left: 24px;
+  gap: 56px;
 `;
 
-export const RightButton = styled(Button)`
-  margin-right: 30px;
+export const Right = styled.div<{$hasDropdown: boolean}>`
+  align-items: center;
+  display: flex;
+  gap: 16px;
+
+  // add extra gap for dropdown
+  ${({$hasDropdown}) =>
+    $hasDropdown
+      ? css`
+          ${DropdownMenuButtonStyles.DotsVerticalIcon} {
+            margin-left: 12px;
+          }
+        `
+      : css`
+          padding-right: 16px;
+        `}
 `;

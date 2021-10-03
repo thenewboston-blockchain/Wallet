@@ -16,6 +16,7 @@ export const TextField = styled(MuiTextField).attrs(({multiline}) => ({
   variant: 'outlined',
 }))`
   && {
+    background: ${colors.white};
     margin-top: 6px;
     width: 100%;
 

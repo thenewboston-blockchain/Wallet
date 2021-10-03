@@ -1,20 +1,20 @@
-import React, {FC, memo} from 'react';
-import {NavLink} from 'react-router-dom';
-
+import React from 'react';
 import ExpandableText from '@renderer/components/ExpandableText';
-import './AccountLink.scss';
+import {SFC} from '@renderer/types';
+import * as S from './Styles';
 
 interface ComponentProps {
   accountNumber: string;
   expanded: boolean;
 }
 
-const AccountLink: FC<ComponentProps> = ({accountNumber, expanded}) => {
+const AccountLink: SFC<ComponentProps> = ({accountNumber, className, expanded}) => {
   return (
-    <NavLink className="AccountLink" to={`/account/${accountNumber}/overview`}>
+    <S.NavLink className={className} to={`/account/${accountNumber}/overview`}>
       <ExpandableText expanded={expanded} text={accountNumber} />
-    </NavLink>
+    </S.NavLink>
   );
 };
 
-export default memo(AccountLink);
+export {S as AccountLinkStyles};
+export default AccountLink;

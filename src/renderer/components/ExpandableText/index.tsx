@@ -1,27 +1,22 @@
-import React, {FC, useMemo} from 'react';
-import clsx from 'clsx';
-import {bemify} from '@thenewboston/utils';
+import React, {useMemo} from 'react';
+import {SFC} from '@renderer/types';
 import {truncateLongText} from '@renderer/utils/accounts';
+import * as S from './Styles';
 
 interface ComponentProps {
-  className?: string;
   expanded: boolean;
   text: string;
 }
 
-const ExpandableText: FC<ComponentProps> = ({className, expanded, text}) => {
+const ExpandableText: SFC<ComponentProps> = ({className, expanded, text}) => {
   const renderedText = useMemo<string>(() => (expanded ? text : truncateLongText(text)), [expanded, text]);
 
   return (
-    <span
-      className={clsx('ExpandableText', className, {
-        'ExpandableText--expanded': expanded,
-        ...bemify(className, '--expanded', expanded),
-      })}
-    >
+    <S.Span className={className} $expanded={expanded}>
       {renderedText}
-    </span>
+    </S.Span>
   );
 };
 
+export {S as ExpandableTextStyles};
 export default ExpandableText;

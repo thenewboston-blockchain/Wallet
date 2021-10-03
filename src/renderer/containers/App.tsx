@@ -10,10 +10,10 @@ import CreateAccountModal from '@renderer/containers/CreateAccountModal';
 import Connect from '@renderer/containers/Connect';
 import Layout from '@renderer/containers/Layout';
 import {connect, connectAndStoreLocalData, fetchNonDefaultNodeConfigs} from '@renderer/dispatchers/app';
-import {useToggle, useCleanSockets, useCrawlSockets, useWebSockets} from '@renderer/hooks';
+import {useCleanSockets, useCrawlSockets, useToggle, useWebSockets} from '@renderer/hooks';
 import {getActiveBank, getActiveBankConfig} from '@renderer/selectors';
-import {AppDispatch, ProtocolType} from '@renderer/types';
-import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
+import {AppDispatch, ProtocolType, ToastType} from '@renderer/types';
+import {displayErrorToast, displayToast} from '@renderer/utils/toast';
 
 const DEFAULT_BANK = {
   ip_address: '54.183.16.194',

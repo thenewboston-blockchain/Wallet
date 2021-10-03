@@ -1,14 +1,11 @@
-import React, {FC, Fragment, ReactNode, useEffect, useMemo, useRef, useState} from 'react';
+import React, {Fragment, ReactNode, useEffect, useMemo, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 import {useSelector} from 'react-redux';
-import {NavLink, useLocation} from 'react-router-dom';
-import clsx from 'clsx';
+import {useLocation} from 'react-router-dom';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import formatDuration from 'date-fns/formatDuration';
 import intervalToDuration from 'date-fns/intervalToDuration';
-import {Icon, IconType} from '@thenewboston/ui';
 
-import StatusBadge, {StatusBadgeType} from '@renderer/components/StatusBadge';
 import {useToggle} from '@renderer/hooks';
 import {getManagedAccounts, getManagedFriends, getNotifications} from '@renderer/selectors';
 import {
@@ -18,17 +15,18 @@ import {
   NotificationPayload,
   NotificationType,
   PrimaryValidatorUpdatedNotificationPayload,
+  SFC,
   ValidatorConfirmationServiceNotificationPayload,
 } from '@renderer/types';
 import {formatAddressFromNode} from '@renderer/utils/address';
 import {sortByNumberKey} from '@renderer/utils/sort';
 
 import NotificationsMenu from './NotificationsMenu';
-import './Notifications.scss';
+import * as S from './Styles';
 
 const dropdownRoot = document.getElementById('dropdown-root')!;
 
-const Notifications: FC = () => {
+const Notifications: SFC = ({className}) => {
   const {pathname} = useLocation();
   const [lastReadTime, setLastReadTime] = useState<number>(new Date().getTime());
   const [isOpen, toggleIsOpen] = useToggle(false);
@@ -103,13 +101,10 @@ const Notifications: FC = () => {
       .map(({amount, recipient}) => {
         const description = (
           <>
-            <NavLink className="Notifications__NavLink" to={`/account/${senderAccountNumber}/overview`}>
+            <S.NavLink to={`/account/${senderAccountNumber}/overview`}>
               {getAccountNickname(senderAccountNumber)}
-            </NavLink>{' '}
-            paid you{' '}
-            <NavLink className="Notifications__NavLink" to={`/account/${recipient}/overview`}>
-              ({getAccountNickname(recipient)})
-            </NavLink>
+            </S.NavLink>{' '}
+            paid you <S.NavLink to={`/account/${recipient}/overview`}>({getAccountNickname(recipient)})</S.NavLink>
           </>
         );
 
@@ -141,14 +136,14 @@ const Notifications: FC = () => {
     const read = lastReadTime > timestamp;
 
     return (
-      <div className="Notifications__notification" key={id}>
-        {!read && <StatusBadge className="Notifications__row-alert-badge" status={StatusBadgeType.alert} />}
-        <div className="Notifications__description">
+      <S.Notification key={id}>
+        {!read && <S.NotificationStatusBadge />}
+        <S.DescriptionContainer>
           <div>{description}</div>
           {renderTimeAgo(timestamp, read)}
-        </div>
-        {amount !== undefined && <div className="Notifications__amount">+ {amount}</div>}
-      </div>
+        </S.DescriptionContainer>
+        {amount !== undefined && <S.Amount>+ {amount}</S.Amount>}
+      </S.Notification>
     );
   };
 
@@ -195,15 +190,7 @@ const Notifications: FC = () => {
   };
 
   const renderTimeAgo = (timestamp: number, read: boolean): ReactNode => {
-    return (
-      <div
-        className={clsx('Notifications__time-ago', {
-          'Notifications__time-ago--read': read,
-        })}
-      >
-        {formatDistanceToNow(timestamp, {includeSeconds: true})} ago
-      </div>
-    );
+    return <S.TimeAgo $isRead={read}>{formatDistanceToNow(timestamp, {includeSeconds: true})} ago</S.TimeAgo>;
   };
 
   const renderValidatorConfirmationServiceNotification = ({
@@ -238,18 +225,9 @@ const Notifications: FC = () => {
   };
 
   return (
-    <>
-      <div className="Notifications__icon-container">
-        <Icon
-          className={clsx('Notifications', {'Notifications--active': isOpen})}
-          icon={IconType.bell}
-          onClick={handleBellClick}
-          ref={iconRef}
-        />
-        {unreadNotificationsLength ? (
-          <StatusBadge className="Notifications__bell-alert-badge" status={StatusBadgeType.alert} />
-        ) : null}
-      </div>
+    <S.Container className={className}>
+      <S.BellIcon $isActive={isOpen} onClick={handleBellClick} ref={iconRef} />
+      {unreadNotificationsLength ? <S.MainStatusBadge /> : null}
       {isOpen &&
         createPortal(
           <NotificationsMenu
@@ -262,7 +240,7 @@ const Notifications: FC = () => {
           />,
           dropdownRoot,
         )}
-    </>
+    </S.Container>
   );
 };
 

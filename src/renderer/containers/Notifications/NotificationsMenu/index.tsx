@@ -1,10 +1,10 @@
-import React, {FC, ReactNode, RefObject, useRef} from 'react';
+import React, {ReactNode, RefObject, useRef} from 'react';
 import noop from 'lodash/noop';
-import clsx from 'clsx';
 
 import {useEventListener} from '@renderer/hooks';
+import {SFC} from '@renderer/types';
 
-import './NotificationsMenu.scss';
+import * as S from './Styles';
 
 interface ComponentProps {
   handleMenuClose(): void;
@@ -15,7 +15,8 @@ interface ComponentProps {
   updateLastReadTime(): void;
 }
 
-const NotificationsMenu: FC<ComponentProps> = ({
+const NotificationsMenu: SFC<ComponentProps> = ({
+  className,
   handleMenuClose,
   iconRef,
   menuOpen,
@@ -35,36 +36,34 @@ const NotificationsMenu: FC<ComponentProps> = ({
 
   const renderHeader = (): ReactNode => {
     return (
-      <div className="NotificationsMenu__header">
-        <div className="NotificationsMenu__header-left">
+      <S.Header>
+        <S.HeaderLeft>
           <h2>Notifications</h2>
-          <span className="NotificationsMenu__count">{unreadNotificationsLength} unread</span>
-        </div>
-        <span
-          className={clsx('NotificationsMenu__mark-as-read', {
-            'NotificationsMenu__mark-as-read--disabled': !unreadNotificationsLength,
-          })}
+          <S.CountSpan>{unreadNotificationsLength} unread</S.CountSpan>
+        </S.HeaderLeft>
+        <S.MarkAsReadLink
+          $isDisabled={!unreadNotificationsLength}
           onClick={unreadNotificationsLength ? updateLastReadTime : noop}
         >
           Mark all as read
-        </span>
-      </div>
+        </S.MarkAsReadLink>
+      </S.Header>
     );
   };
 
   const renderEmptyState = (): ReactNode => {
     return (
-      <div className="NotificationsMenu__empty">
+      <S.EmptyContainer>
         <h1>No notifications</h1>
-      </div>
+      </S.EmptyContainer>
     );
   };
 
   return (
-    <div className="NotificationsMenu" ref={menuRef}>
+    <S.Container className={className} ref={menuRef}>
       {renderHeader()}
       {notifications.length ? notifications : renderEmptyState()}
-    </div>
+    </S.Container>
   );
 };
 

@@ -1,13 +1,13 @@
-import React, {FC, useRef} from 'react';
+import React, {useRef} from 'react';
+import {SFC} from '@renderer/types';
 import * as S from './Styles';
 
 interface ComponentProps {
-  className?: string;
   expanded: boolean;
   onClick(e?: React.MouseEvent<HTMLDivElement, MouseEvent>): void;
 }
 
-const ArrowToggle: FC<ComponentProps> = ({className, expanded, onClick}) => {
+const ArrowToggle: SFC<ComponentProps> = ({className, expanded, onClick}) => {
   const iconRef = useRef<HTMLDivElement>(null);
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -27,4 +27,5 @@ const ArrowToggle: FC<ComponentProps> = ({className, expanded, onClick}) => {
   );
 };
 
+export {S as ArrowToggleStyles};
 export default ArrowToggle;

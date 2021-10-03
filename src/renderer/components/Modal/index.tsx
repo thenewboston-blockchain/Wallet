@@ -1,11 +1,11 @@
-import React, {CSSProperties, FC, ReactNode, useMemo} from 'react';
+import React, {CSSProperties, ReactNode, useMemo} from 'react';
 import {createPortal} from 'react-dom';
 import noop from 'lodash/noop';
 
 import {ButtonType, Form, FormButton, FormButtonProps} from '@renderer/components/FormElements';
 import Loader from '@renderer/components/FormElements/Loader';
 
-import {GenericFormValues, GenericFunction} from '@renderer/types';
+import {GenericFormValues, GenericFunction, SFC} from '@renderer/types';
 
 import * as S from './Styles';
 
@@ -14,7 +14,6 @@ export interface ModalButtonProps extends FormButtonProps {
 }
 
 interface ComponentProps {
-  className?: string;
   close(): void;
   disableOverlayClick?: boolean;
   displayCloseButton?: boolean;
@@ -32,7 +31,7 @@ interface ComponentProps {
   validationSchema?: any;
 }
 
-const Modal: FC<ComponentProps> = ({
+const Modal: SFC<ComponentProps> = ({
   children,
   className,
   close,

@@ -1,14 +1,13 @@
-import React, {FC, ReactNode, useCallback} from 'react';
-import {ToastType} from '@renderer/types/toast';
+import React, {ReactNode, useCallback} from 'react';
+import {SFC, ToastType} from '@renderer/types';
 
 import * as S from './Styles';
 
 interface ComponentProps {
-  className?: string;
   type: ToastType;
 }
 
-const Toast: FC<ComponentProps> = ({children, className, type = ToastType.error}) => {
+const Toast: SFC<ComponentProps> = ({children, className, type = ToastType.error}) => {
   const renderIcon = useCallback((): ReactNode => {
     switch (type) {
       case ToastType.success:

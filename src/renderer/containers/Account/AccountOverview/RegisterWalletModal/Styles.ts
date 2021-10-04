@@ -37,6 +37,7 @@ export const Loader = styled(ULoader).attrs(() => ({size: 14}))`
 
 export const Popover = styled(UPopover).attrs(() => ({
   anchorOrigin: {horizontal: HorizontalPosition.left, vertical: VerticalPosition.bottom},
+  transformOffset: {horizontal: 0, vertical: 4},
   transformOrigin: {horizontal: HorizontalPosition.left, vertical: VerticalPosition.top},
 }))`
   padding: 18px;

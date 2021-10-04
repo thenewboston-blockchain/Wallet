@@ -36,7 +36,7 @@ const initialDomRect: DomRect = {height: 0, left: 0, top: 0, width: 0};
 export interface PopoverProps {
   anchorOrigin?: OriginType;
   anchorEl: HTMLElement | null;
-  closePopover(): void;
+  closePopover(e?: any): void;
   id?: string;
   manualClose?: boolean;
   open: boolean;
@@ -58,7 +58,7 @@ const Popover: SFC<PopoverProps> = ({
 }) => {
   const {pathname} = useLocation();
   const portalRef = useRef<HTMLDivElement>(null);
-  const [anchorDomRef, setAnchorDomRect] = useState<DomRect>(initialDomRect);
+  const [anchorDomRect, setAnchorDomRect] = useState<DomRect>(initialDomRect);
   const [portalDomRect, setPortalDomRect] = useState<DomRect>(initialDomRect);
   const windowDimensions = useWindowDimensions();
 
@@ -110,8 +110,7 @@ const Popover: SFC<PopoverProps> = ({
 
   useEffect(() => {
     if (anchorEl) {
-      const {height, top, width} = anchorEl.getBoundingClientRect();
-      const left = anchorEl.offsetLeft;
+      const {height, top, left, width} = anchorEl.getBoundingClientRect();
       setAnchorDomRect({height, left, top, width});
     }
   }, [anchorEl, windowDimensions]);
@@ -128,11 +127,11 @@ const Popover: SFC<PopoverProps> = ({
     let top: number;
 
     if (anchorOrigin.horizontal === 'left') {
-      left = anchorDomRef.left;
+      left = anchorDomRect.left;
     } else if (anchorOrigin.horizontal === 'right') {
-      left = anchorDomRef.left + anchorDomRef.width;
+      left = anchorDomRect.left + anchorDomRect.width;
     } else if (anchorOrigin.horizontal === 'center') {
-      left = anchorDomRef.left + anchorDomRef.width / 2;
+      left = anchorDomRect.left + anchorDomRect.width / 2;
     } else {
       left = anchorOrigin.horizontal;
     }
@@ -150,11 +149,11 @@ const Popover: SFC<PopoverProps> = ({
     }
 
     if (anchorOrigin.vertical === 'bottom') {
-      top = anchorDomRef.top + anchorDomRef.height;
+      top = anchorDomRect.top + anchorDomRect.height;
     } else if (anchorOrigin.vertical === 'top') {
-      top = anchorDomRef.top;
+      top = anchorDomRect.top;
     } else if (anchorOrigin.vertical === 'center') {
-      top = anchorDomRef.top + anchorDomRef.height / 2;
+      top = anchorDomRect.top + anchorDomRect.height / 2;
     } else {
       top = anchorOrigin.vertical;
     }
@@ -175,7 +174,7 @@ const Popover: SFC<PopoverProps> = ({
   }, [
     anchorOrigin.horizontal,
     anchorOrigin.vertical,
-    anchorDomRef,
+    anchorDomRect,
     portalDomRect,
     transformOrigin.horizontal,
     transformOrigin.vertical,

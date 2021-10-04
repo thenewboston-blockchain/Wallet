@@ -10,6 +10,7 @@ export const Popover = styled(UPopover).attrs(() => ({
   transformOrigin: {horizontal: HorizontalPosition.right, vertical: VerticalPosition.center},
 }))`
   background: ${colors.palette.blue['700']};
+  padding: 24px;
   width: 414px;
 
   ${PopoverStyles.CloseIcon} {

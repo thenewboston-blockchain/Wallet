@@ -17,7 +17,6 @@ export const Container = styled.div<{$isOpen: boolean}>`
   box-shadow: 0 0 20px rgba(85, 108, 214, 0.18);
   opacity: 0;
   outline: none;
-  padding: 24px;
   position: absolute;
   visibility: hidden;
 

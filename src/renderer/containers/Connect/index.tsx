@@ -1,19 +1,16 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
-import {FormInput, FormSelect} from '@renderer/components/FormComponents';
-import {ButtonType, Form, FormButton} from '@renderer/components/FormElements';
-import Logo from '@renderer/components/Logo';
 import {connectAndStoreLocalData} from '@renderer/dispatchers/app';
 import {getActiveBankConfig} from '@renderer/selectors';
-import {AppDispatch, InputOption, ProtocolType} from '@renderer/types';
+import {AppDispatch, InputOption, ProtocolType, SFC} from '@renderer/types';
 import {formatPathFromNode} from '@renderer/utils/address';
 import {getIpAddressField, getNicknameField, getPortField, getProtocolField} from '@renderer/utils/forms/fields';
 import yup from '@renderer/utils/forms/yup';
 import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
 
-import './Connect.scss';
+import * as S from './Styles';
 
 const initialValues = {
   ipAddress: '54.219.234.129',
@@ -33,7 +30,7 @@ const validationSchema = yup.object().shape({
   protocol: getProtocolField(),
 });
 
-const Connect: FC = () => {
+const Connect: SFC = ({className}) => {
   const [submitting, setSubmitting] = useState<boolean>(false);
   const activeBankConfig = useSelector(getActiveBankConfig);
   const dispatch = useDispatch<AppDispatch>();
@@ -63,36 +60,22 @@ const Connect: FC = () => {
   };
 
   return (
-    <div className="Connect">
-      <div className="Connect__header">
-        <Logo className="Connect__logo" size={30} />
+    <S.Container className={className}>
+      <S.Header>
+        <S.Logo size={30} />
         <h2>thenewboston</h2>
-      </div>
-      <div className="Connect__subheader">Enter the address of a bank.</div>
-      <Form
-        className="Connect__form"
-        initialValues={initialValues}
-        onSubmit={handleSubmit}
-        validationSchema={validationSchema}
-      >
-        <FormSelect
-          className="Connect__field"
-          focused
-          label="Protocol"
-          name="protocol"
-          options={protocolOptions}
-          required
-          searchable={false}
-        />
-        <FormInput className="Connect__field" label="IP Address" name="ipAddress" required />
-        <FormInput className="Connect__field" label="Port" name="port" type="number" required />
-        <FormInput className="Connect__field" label="Nickname" name="nickname" />
-
-        <FormButton ignoreDirty submitting={submitting} type={ButtonType.submit}>
+      </S.Header>
+      <S.Subheader>Enter the address of a bank.</S.Subheader>
+      <S.Form initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
+        <S.FormSelect focused label="Protocol" name="protocol" options={protocolOptions} required searchable={false} />
+        <S.TextField label="IP Address" name="ipAddress" required />
+        <S.TextField label="Port" name="port" type="number" required />
+        <S.TextField label="Nickname" name="nickname" />
+        <S.FormButton ignoreDirty submitting={submitting}>
           Connect
-        </FormButton>
-      </Form>
-    </div>
+        </S.FormButton>
+      </S.Form>
+    </S.Container>
   );
 };
 

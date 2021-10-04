@@ -1,14 +1,10 @@
-import React, {FC, memo} from 'react';
-import clsx from 'clsx';
+import React from 'react';
+import {SFC} from '@renderer/types';
+import * as S from './Styles';
 
-import './RequiredAsterisk.scss';
-
-interface ComponentProps {
-  className?: string;
-}
-
-const RequiredAsterisk: FC<ComponentProps> = ({className}) => {
-  return <span className={clsx('RequiredAsterisk', className)}>*</span>;
+const RequiredAsterisk: SFC = ({className}) => {
+  return <S.RequiredAsterisk className={className}>*</S.RequiredAsterisk>;
 };
 
-export default memo(RequiredAsterisk);
+export {S as RequiredAsteriskStyles};
+export default RequiredAsterisk;

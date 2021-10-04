@@ -2,6 +2,7 @@ import AlertIcon from './AlertIcon';
 import AlertCircleOutlineIcon from './AlertCircleOutlineIcon';
 import ArrowLeftIcon from './ArrowLeftIcon';
 import ArrowRightIcon from './ArrowRightIcon';
+import BellIcon from './BellIcon';
 import CheckboxBlankOutlineIcon from './CheckboxBlankOutlineIcon';
 import CheckboxMarkedIcon from './CheckboxMarkedIcon';
 import CheckCircleIcon from './CheckCircleIcon';
@@ -31,6 +32,7 @@ export {
   AlertCircleOutlineIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
+  BellIcon,
   CheckboxBlankOutlineIcon,
   CheckboxMarkedIcon,
   CheckCircleIcon,

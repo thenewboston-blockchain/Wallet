@@ -1,17 +1,17 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React, {FC} from 'react';
+import React from 'react';
 import {LinkProps as RRLinkProps} from 'react-router-dom';
+import {SFC} from '@renderer/types';
 import * as S from './Styles';
 
 interface LinkProps extends RRLinkProps {
-  className?: string;
   disabled?: boolean;
   textStyled?: boolean;
   withChevron?: boolean;
 }
 
-const Link: FC<LinkProps> = ({
+const Link: SFC<LinkProps> = ({
   children,
   className,
   disabled = false,

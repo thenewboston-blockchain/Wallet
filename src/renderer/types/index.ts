@@ -82,6 +82,7 @@ import {
   DictWithPaginatedResultsAndError,
   RootState,
 } from './store';
+import {ToastType} from './toast';
 
 export {
   AcceptedFees,
@@ -157,6 +158,7 @@ export {
   SFC,
   SocketConnectionStatus,
   SocketType,
+  ToastType,
   Tx,
   ValidatorAccount,
   ValidatorBank,

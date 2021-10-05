@@ -14,7 +14,7 @@ const fadeIn = keyframes`
 export const Container = styled.div<{$isOpen: boolean}>`
   background: ${colors.white};
   border-radius: 8px;
-  box-shadow: 0 0 20px rgba(85, 108, 214, 0.18);
+  box-shadow: 0 0 20px rgba(85, 108, 214, 0.24);
   opacity: 0;
   outline: none;
   position: absolute;

@@ -143,7 +143,6 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
-    "@thenewboston/ui": "^0.1.13",
     "@thenewboston/utils": "^1.0.0",
     "app-root-path": "^3.0.0",
     "axios": "^0.21.1",

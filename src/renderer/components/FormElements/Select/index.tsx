@@ -5,7 +5,6 @@ import ReactSelect, {ActionMeta, FocusEventHandler, FormatOptionLabelMeta} from 
 import ReactSelectCreatable from 'react-select/creatable';
 import {ValueType} from 'react-select/src/types';
 import clsx from 'clsx';
-import {bemify} from '@thenewboston/utils';
 
 import {InputOption} from '@renderer/types';
 
@@ -66,7 +65,6 @@ const Select: FC<ComponentProps> = ({
       autoFocus: focused,
       className: clsx('Select', className, {
         'Select--error': error,
-        ...bemify(className, '--error', error),
       }),
       classNamePrefix: 'Select',
       filterOption,

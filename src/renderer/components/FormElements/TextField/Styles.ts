@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {TextField as MuiTextField} from '@material-ui/core';
+import {TextField as MuiTextField} from '@mui/material';
 import {colors} from '@renderer/styles';
 
 const label = 'TextField__label';

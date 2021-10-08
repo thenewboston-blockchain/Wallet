@@ -5,12 +5,12 @@
   "description": "thenewboston Wallet Electron Application",
   "main": "./bundle/main/index.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=production npm run package && electron-builder",
+    "build": "cross-env NODE_ENV=production yarn run package && electron-builder",
     "lint": "tsc --noEmit && eslint \"./src/**/*.{js,ts,tsx}\"",
     "package": "electron-forge package",
     "postinstall": "electron-builder install-app-deps",
     "prettier": "prettier --write \"{,!(.webpack|bundle|node_modules|out|release)/**/}*.{ts,tsx,js,json,css,less,scss}\"",
-    "release": "cross-env NODE_ENV=production npm run package && electron-builder --publish always",
+    "release": "cross-env NODE_ENV=production yarn run package && electron-builder --publish always",
     "start": "cross-env NODE_ENV=development electron-forge start",
     "test": "jest"
   },
@@ -40,6 +40,8 @@
     "@electron-forge/publisher-github": "^6.0.0-beta.54",
     "@hot-loader/react-dom": "^16.14.0",
     "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@5.0.0",
+    "@mui/styled-engine-sc": "^5.0.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.2",
     "@reduxjs/toolkit": "^1.5.0",
     "@svgr/webpack": "^5.5.0",
@@ -74,7 +76,7 @@
     "dotenv": "^8.2.0",
     "dotenv-expand": "5.1.0",
     "electron": "^11.0.0",
-    "electron-builder": "^22.9.1",
+    "electron-builder": "^22.11.7",
     "electron-devtools-installer": "^3.2.0",
     "electron-notarize": "^1.0.0",
     "eslint": "^7.17.0",
@@ -142,7 +144,9 @@
     "workbox-webpack-plugin": "^5.1.4"
   },
   "dependencies": {
-    "@material-ui/core": "^4.12.3",
+    "@babel/eslint-parser": "^7.15.8",
+    "@mui/material": "^5.0.2",
+    "@mui/styles": "^5.0.1",
     "@thenewboston/utils": "^1.0.0",
     "app-root-path": "^3.0.0",
     "axios": "^0.21.1",
@@ -179,5 +183,8 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "resolutions": {
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@5.0.0"
   }
 }

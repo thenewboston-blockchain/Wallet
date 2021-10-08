@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 
-import {MuiThemeProvider} from '@material-ui/core';
+import {ThemeProvider, StyledEngineProvider} from '@mui/material';
 import 'typeface-roboto';
 import 'normalize.css';
 
@@ -17,11 +17,13 @@ import './styles/main.scss';
 
 ReactDOM.render(
   <Provider store={store}>
-    <MuiThemeProvider theme={muiTheme}>
-      <GlobalStyle />
-      <ToastifyStyle />
-      <App />
-    </MuiThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={muiTheme}>
+        <GlobalStyle />
+        <ToastifyStyle />
+        <App />
+      </ThemeProvider>
+    </StyledEngineProvider>
   </Provider>,
   document.getElementById('root'),
 );

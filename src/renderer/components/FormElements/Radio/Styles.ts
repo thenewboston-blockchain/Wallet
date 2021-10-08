@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import MuiRadio from '@material-ui/core/Radio';
-import MuiFormControlLabel from '@material-ui/core/FormControlLabel';
+import MuiRadio from '@mui/material/Radio';
+import MuiFormControlLabel from '@mui/material/FormControlLabel';
 
 export const Radio = styled(MuiRadio).attrs<{$error: boolean}>(({$error}) => ({
   color: $error ? 'secondary' : 'primary',

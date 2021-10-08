@@ -1,14 +1,15 @@
 /* eslint-disable sort-keys */
 
-import {createTheme} from '@material-ui/core';
+import {createTheme} from '@mui/material';
+import {colors} from '@renderer/styles';
 
 const muiTheme = createTheme({
   palette: {
     primary: {
-      main: '#7dabf8', // --color-blue-300
+      main: colors.palette.blue['300'],
     },
     error: {
-      main: '#ed5f74', // --color-red-400
+      main: colors.palette.red['400'], // --color-red-400
     },
   },
 });

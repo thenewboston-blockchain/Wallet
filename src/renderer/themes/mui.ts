@@ -9,7 +9,7 @@ const muiTheme = createTheme({
       main: colors.palette.blue['300'],
     },
     error: {
-      main: colors.palette.red['400'], // --color-red-400
+      main: colors.palette.red['400'],
     },
   },
 });

@@ -49,10 +49,10 @@ const Modal: SFC<ComponentProps> = ({
   validateOnMount,
   validationSchema,
 }) => {
-  const ignoreDirty = useMemo<boolean>(() => ignoreDirtyProps || Object.keys(initialValues).length === 0, [
-    ignoreDirtyProps,
-    initialValues,
-  ]);
+  const ignoreDirty = useMemo<boolean>(
+    () => ignoreDirtyProps || Object.keys(initialValues).length === 0,
+    [ignoreDirtyProps, initialValues],
+  );
 
   const submitProps = useMemo<Omit<ModalButtonProps, 'children'>>(() => {
     if (typeof submitButton === 'string') {

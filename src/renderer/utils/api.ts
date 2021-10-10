@@ -41,7 +41,7 @@ export async function fetchPaginatedResults<T>(
 
     dispatch(setResults({address, ...data}));
     return data.results;
-  } catch (error) {
+  } catch (error: any) {
     if (!error.response) {
       throw error;
     }

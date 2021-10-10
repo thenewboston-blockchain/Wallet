@@ -92,7 +92,7 @@ ipcMain.on(IpcChannel.downloadSigningKey, (event, {filePath, payload: signingKey
   try {
     fs.writeFileSync(filePath, signingKey);
     event.reply(getSuccessChannel(IpcChannel.downloadSigningKey));
-  } catch (error) {
+  } catch (error: any) {
     console.log(`Failed to save file: ${IpcChannel.downloadSigningKey}`, error);
     event.reply(getFailChannel(IpcChannel.downloadSigningKey), error.toString());
   }
@@ -102,7 +102,7 @@ ipcMain.on(IpcChannel.exportStoreData, (event, {filePath, payload: storeData}) =
   try {
     fs.writeFileSync(filePath, storeData);
     event.reply(getSuccessChannel(IpcChannel.exportStoreData));
-  } catch (error) {
+  } catch (error: any) {
     console.log(`Failed to save file: ${IpcChannel.exportStoreData}`, error);
     event.reply(getFailChannel(IpcChannel.exportStoreData), error.toString());
   }
@@ -128,7 +128,7 @@ ipcMain.on(IpcChannel.importStoreData, (event, {filePath}) => {
 
       event.reply(getSuccessChannel(IpcChannel.importStoreData), data);
     });
-  } catch (error) {
+  } catch (error: any) {
     console.log(`Failed to read file: ${IpcChannel.importStoreData}`, error);
     event.reply(getFailChannel(IpcChannel.importStoreData), error.toString());
   }
@@ -141,7 +141,7 @@ ipcMain.on(IpcChannel.restartApp, (event) => {
     setTimeout(() => {
       event.reply(getSuccessChannel(IpcChannel.restartApp));
     }, 1000);
-  } catch (error) {
+  } catch (error: any) {
     console.log('Failed to restart app', error);
     setTimeout(() => {
       event.reply(getFailChannel(IpcChannel.restartApp), error.toString());

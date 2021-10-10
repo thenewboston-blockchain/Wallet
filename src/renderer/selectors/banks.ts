@@ -9,12 +9,9 @@ import {formatAddressFromNode} from '@renderer/utils/address';
 import {getActiveBank} from './app';
 import {getManagedBanks} from './state';
 
-export const getAuthenticatedBanks = createSelector(
-  [getManagedBanks],
-  (managedBanks): Dict<ManagedNode> => {
-    return pickBy(managedBanks, (managedBank) => !!managedBank.account_signing_key && !!managedBank.nid_signing_key);
-  },
-);
+export const getAuthenticatedBanks = createSelector([getManagedBanks], (managedBanks): Dict<ManagedNode> => {
+  return pickBy(managedBanks, (managedBank) => !!managedBank.account_signing_key && !!managedBank.nid_signing_key);
+});
 
 export const getHasAuthenticatedBanks = createSelector([getManagedBanks], (managedBanks): boolean => {
   return !!Object.values(managedBanks).find(

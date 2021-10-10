@@ -78,24 +78,24 @@ const DropdownMenuButton: SFC<ComponentProps> = ({
     toggleIsOpen(false);
   };
 
-  const handleOptionKeyDown = (optionOnClick: GenericVoidFunction, index: number, disabled: boolean) => async (
-    e: KeyboardEvent<HTMLDivElement>,
-  ): Promise<void> => {
-    if (e.key === 'ArrowDown' && index !== options.length - 1) {
-      optionsRef.current[index + 1]?.focus();
-      return;
-    }
+  const handleOptionKeyDown =
+    (optionOnClick: GenericVoidFunction, index: number, disabled: boolean) =>
+    async (e: KeyboardEvent<HTMLDivElement>): Promise<void> => {
+      if (e.key === 'ArrowDown' && index !== options.length - 1) {
+        optionsRef.current[index + 1]?.focus();
+        return;
+      }
 
-    if (e.key === 'ArrowUp' && index !== 0) {
-      optionsRef.current[index - 1]?.focus();
-      return;
-    }
+      if (e.key === 'ArrowUp' && index !== 0) {
+        optionsRef.current[index - 1]?.focus();
+        return;
+      }
 
-    if (e.key === 'Enter' && !disabled) {
-      toggleIsOpen(false);
-      await optionOnClick();
-    }
-  };
+      if (e.key === 'Enter' && !disabled) {
+        toggleIsOpen(false);
+        await optionOnClick();
+      }
+    };
 
   const renderButtonIcon = useCallback((): ReactNode => {
     const iconProps = {

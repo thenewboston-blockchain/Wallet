@@ -14,10 +14,7 @@ const validatorValidators = createSlice({
   },
 });
 
-export const {
-  setValidatorValidators,
-  setValidatorValidatorsError,
-  unsetValidatorValidators,
-} = validatorValidators.actions;
+export const {setValidatorValidators, setValidatorValidatorsError, unsetValidatorValidators} =
+  validatorValidators.actions;
 
 export default validatorValidators.reducer;

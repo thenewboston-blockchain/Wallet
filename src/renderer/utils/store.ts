@@ -46,11 +46,13 @@ export const clearLocalAndStateReducer = () => (state: any, action: PayloadActio
   return {};
 };
 
-export const setBalanceReducer = () => (state: Dict<AccountBalance>, {payload}: PayloadAction<AccountBalance>) => {
-  const {account_number: accountNumber} = payload;
-  const account = state[accountNumber];
-  state[accountNumber] = account ? {...account, ...payload} : payload;
-};
+export const setBalanceReducer =
+  () =>
+  (state: Dict<AccountBalance>, {payload}: PayloadAction<AccountBalance>) => {
+    const {account_number: accountNumber} = payload;
+    const account = state[accountNumber];
+    state[accountNumber] = account ? {...account, ...payload} : payload;
+  };
 
 export function setLocalAndAccountReducer<T extends AccountNumber>(sliceName: string) {
   return (state: any, {payload}: PayloadAction<T>) => {
@@ -165,12 +167,11 @@ export function unsetDataReducer() {
   };
 }
 
-export const unsetBalanceReducer = () => (
-  state: Dict<AccountBalance>,
-  {payload: {account_number: accountNumber}}: PayloadAction<AccountNumber>,
-) => {
-  delete state[accountNumber];
-};
+export const unsetBalanceReducer =
+  () =>
+  (state: Dict<AccountBalance>, {payload: {account_number: accountNumber}}: PayloadAction<AccountNumber>) => {
+    delete state[accountNumber];
+  };
 
 export function unsetLocalAndAccountReducer(sliceName: string) {
   return (state: any, {payload: {account_number: accountNumber}}: PayloadAction<AccountNumber>) => {

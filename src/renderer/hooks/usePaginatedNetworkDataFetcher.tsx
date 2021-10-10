@@ -91,27 +91,27 @@ type PaginatedSelector<T> = (state: RootState) => DictWithPaginatedResultsAndErr
 function getSelectorFromType<T>(type: string): PaginatedSelector<T> {
   switch (type) {
     case BANK_ACCOUNTS:
-      return (getBankAccounts as unknown) as PaginatedSelector<T>;
+      return getBankAccounts as unknown as PaginatedSelector<T>;
     case BANK_BANKS:
-      return (getBankBanks as unknown) as PaginatedSelector<T>;
+      return getBankBanks as unknown as PaginatedSelector<T>;
     case BANK_BANK_TRANSACTIONS:
-      return (getBankBankTransactions as unknown) as PaginatedSelector<T>;
+      return getBankBankTransactions as unknown as PaginatedSelector<T>;
     case BANK_BLOCKS:
-      return (getBankBlocks as unknown) as PaginatedSelector<T>;
+      return getBankBlocks as unknown as PaginatedSelector<T>;
     case BANK_CONFIRMATION_BLOCKS:
-      return (getBankConfirmationBlocks as unknown) as PaginatedSelector<T>;
+      return getBankConfirmationBlocks as unknown as PaginatedSelector<T>;
     case BANK_INVALID_BLOCKS:
-      return (getBankInvalidBlocks as unknown) as PaginatedSelector<T>;
+      return getBankInvalidBlocks as unknown as PaginatedSelector<T>;
     case BANK_VALIDATORS:
-      return (getBankValidators as unknown) as PaginatedSelector<T>;
+      return getBankValidators as unknown as PaginatedSelector<T>;
     case BANK_VALIDATOR_CONFIRMATION_SERVICES:
-      return (getBankValidatorConfirmationServices as unknown) as PaginatedSelector<T>;
+      return getBankValidatorConfirmationServices as unknown as PaginatedSelector<T>;
     case VALIDATOR_ACCOUNTS:
-      return (getValidatorAccounts as unknown) as PaginatedSelector<T>;
+      return getValidatorAccounts as unknown as PaginatedSelector<T>;
     case VALIDATOR_BANKS:
-      return (getValidatorBanks as unknown) as PaginatedSelector<T>;
+      return getValidatorBanks as unknown as PaginatedSelector<T>;
     case VALIDATOR_VALIDATORS:
-      return (getValidatorValidators as unknown) as PaginatedSelector<T>;
+      return getValidatorValidators as unknown as PaginatedSelector<T>;
     default:
       throw new Error();
   }

@@ -11,6 +11,7 @@ import {AccountBalance} from './balances';
 import {
   BaseFormComponentProps,
   BaseFormInlineComponentProps,
+  CheckableInputOption,
   GenericFormValues,
   SelectOption,
   SelectOptionMeta,
@@ -114,6 +115,7 @@ export {
   BaseFormInlineComponentProps,
   BaseValidator,
   BlockResponse,
+  CheckableInputOption,
   ClassName,
   CleanCommand,
   CleanSocketState,

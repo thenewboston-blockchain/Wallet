@@ -22,11 +22,7 @@ const managedValidators = createSlice({
   },
 });
 
-export const {
-  changeActivePrimaryValidator,
-  clearManagedValidators,
-  setManagedValidator,
-  unsetManagedValidator,
-} = managedValidators.actions;
+export const {changeActivePrimaryValidator, clearManagedValidators, setManagedValidator, unsetManagedValidator} =
+  managedValidators.actions;
 
 export default managedValidators.reducer;

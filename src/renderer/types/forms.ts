@@ -15,6 +15,13 @@ export interface GenericFormValues {
   [fieldName: string]: any;
 }
 
+export interface CheckableInputOption {
+  disabled?: boolean;
+  focused?: boolean;
+  label: string;
+  value: string;
+}
+
 export interface SelectOption {
   disabled?: boolean;
   focused?: boolean;

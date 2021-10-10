@@ -10,7 +10,7 @@ import {
   getManagedAccounts,
   getManagedFriends,
 } from '@renderer/selectors';
-import {InputOption, SFC} from '@renderer/types';
+import {SelectOption, SelectOptionMeta, SFC} from '@renderer/types';
 import {getBankTxFee, getPrimaryValidatorTxFee} from '@renderer/utils/transactions';
 
 import * as S from './Styles';
@@ -36,7 +36,7 @@ const SendCoinsModalFields: SFC<ComponentProps> = ({className, submitting}) => {
 
   const matchError = errors.recipientAccountNumber === MATCH_ERROR;
 
-  const getFromOptions = useMemo<InputOption[]>(
+  const getFromOptions = useMemo<SelectOption[]>(
     () =>
       Object.values(managedAccounts).map(({account_number, nickname}) => ({
         label: nickname,
@@ -45,12 +45,40 @@ const SendCoinsModalFields: SFC<ComponentProps> = ({className, submitting}) => {
     [managedAccounts],
   );
 
-  const getToOptions = useMemo<InputOption[]>(() => {
+  const getFromOptionsMeta = useMemo<SelectOptionMeta>(
+    () =>
+      Object.values(managedAccounts).reduce((acc: SelectOptionMeta, {account_number, nickname}) => {
+        const accountBalance = managedAccountBalances[account_number];
+        return {
+          ...acc,
+          [account_number]: {
+            accountNumber: account_number,
+            amount: accountBalance?.balance || 0,
+            nickname,
+          },
+        };
+      }, {}),
+    [managedAccountBalances, managedAccounts],
+  );
+
+  const getToOptions = useMemo<SelectOption[]>(() => {
     const accounts = [...Object.values(managedAccounts), ...Object.values(managedFriends)];
-    return accounts.map(({account_number, nickname}) => ({
-      label: nickname,
+    return accounts.map(({account_number}) => ({
       value: account_number,
     }));
+  }, [managedAccounts, managedFriends]);
+
+  const getToOptionsMeta = useMemo<SelectOptionMeta>(() => {
+    const accounts = [...Object.values(managedAccounts), ...Object.values(managedFriends)];
+    return accounts.reduce((acc: SelectOptionMeta, {account_number, nickname}) => {
+      return {
+        ...acc,
+        [account_number]: {
+          accountNumber: account_number,
+          nickname,
+        },
+      };
+    }, {});
   }, [managedAccounts, managedFriends]);
 
   const renderCoinsAmount = (): string => {
@@ -82,25 +110,27 @@ const SendCoinsModalFields: SFC<ComponentProps> = ({className, submitting}) => {
   return (
     <div className={className}>
       {matchError ? <S.ErrorSpan>{MATCH_ERROR}</S.ErrorSpan> : null}
-      <S.FormSelectDetailed
+      <S.Select
         disabled={submitting}
+        emptyState="You have no accounts."
         focused
         label="From"
         name="senderAccountNumber"
         options={getFromOptions}
+        optionsMeta={getFromOptionsMeta}
         required
       />
-      <S.FormSelectDetailed
-        creatable
+      <S.Select
         disabled={submitting}
         hideErrorText={matchError}
         label="To"
         name="recipientAccountNumber"
         options={getToOptions}
+        optionsMeta={getToOptionsMeta}
         required
       />
       <S.TextField disabled={submitting} label="Memo" name="memo" placeholder="What is it for?" />
-      <S.TextField disabled={submitting} label="Coins" name="coins" type="number" />
+      <S.TextField disabled={submitting} label="Coins" name="coins" required type="number" />
       <S.Table>
         <S.Row label="Account Balance" value={renderSenderAccountBalance()} />
         <S.Row label="Coins" value={renderCoinsAmount()} />

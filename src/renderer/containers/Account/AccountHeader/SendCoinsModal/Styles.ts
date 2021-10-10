@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import UKeyValueTable, {Row as URow} from '@renderer/components/KeyValueTable';
-import {FormSelectDetailed as UFormSelectDetailed} from '@renderer/components/FormComponents';
-import {TextField as UTextField} from '@renderer/components/FormElements';
+import {Select as USelect, TextField as UTextField} from '@renderer/components/FormElements';
 import {colors} from '@renderer/styles';
 
 export const ErrorSpan = styled.span`
@@ -13,7 +12,7 @@ export const ErrorSpan = styled.span`
   }
 `;
 
-export const FormSelectDetailed = styled(UFormSelectDetailed)`
+export const Select = styled(USelect)`
   margin-bottom: 12px;
 `;
 

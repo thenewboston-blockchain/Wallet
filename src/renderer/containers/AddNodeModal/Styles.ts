@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import {FormSelect as UFormSelect} from '@renderer/components/FormComponents';
-import {TextField as UTextField} from '@renderer/components/FormElements';
+import {Select as USelect, TextField as UTextField} from '@renderer/components/FormElements';
 import {colors} from '@renderer/styles';
 
 export const FormError = styled.span`
@@ -9,7 +8,7 @@ export const FormError = styled.span`
   margin-bottom: 6px;
 `;
 
-export const FormSelect = styled(UFormSelect)`
+export const Select = styled(USelect)`
   margin-bottom: 6px;
 `;
 

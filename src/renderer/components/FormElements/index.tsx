@@ -6,13 +6,11 @@ import HelperText, {HelperTextProps, HelperTextType, HelperTextStyles} from './H
 import Loader, {LoaderStyles} from './Loader';
 import Radio, {RadioProps, RadioStyles} from './Radio';
 import RadioGroup, {RadioGroupProps, RadioGroupStyles} from './RadioGroup';
-import Select, {BaseSelectProps} from './Select';
-import SelectDetailed from './SelectDetailed';
+import Select, {SelectProps, SelectStyles} from './Select';
 import Switch, {SwitchProps, SwitchStyles} from './Switch';
 import TextField, {TextFieldProps, TextFieldStyles} from './TextField';
 
 export {
-  BaseSelectProps,
   Button,
   ButtonColor,
   ButtonProps,
@@ -39,7 +37,8 @@ export {
   RadioProps,
   RadioStyles,
   Select,
-  SelectDetailed,
+  SelectProps,
+  SelectStyles,
   Switch,
   SwitchProps,
   SwitchStyles,

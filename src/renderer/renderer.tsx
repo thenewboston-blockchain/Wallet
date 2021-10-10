@@ -13,7 +13,6 @@ import ToastifyStyle from '@renderer/styles/components/ToastifyStyle';
 import muiTheme from '@renderer/themes/mui';
 
 import './fonts.css';
-import './styles/main.scss';
 
 ReactDOM.render(
   <Provider store={store}>

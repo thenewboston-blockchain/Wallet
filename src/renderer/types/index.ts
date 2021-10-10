@@ -8,7 +8,13 @@ import {
   Nickname,
 } from './app';
 import {AccountBalance} from './balances';
-import {BaseFormComponentProps, BaseFormInlineComponentProps, GenericFormValues, InputOption} from './forms';
+import {
+  BaseFormComponentProps,
+  BaseFormInlineComponentProps,
+  GenericFormValues,
+  SelectOption,
+  SelectOptionMeta,
+} from './forms';
 import {ClassName, GenericFunction, GenericVoidFunction, SFC} from './generic';
 import {AppElectronStore, LocalStore, MigrationFunction} from './localStore';
 import {
@@ -109,15 +115,15 @@ export {
   BaseValidator,
   BlockResponse,
   ClassName,
+  CleanCommand,
+  CleanSocketState,
+  CleanStatus,
+  CleanStatusNotificationPayload,
   ConfirmationBlockNotificationPayload,
   CrawlCommand,
   CrawlSocketState,
   CrawlStatus,
   CrawlStatusNotificationPayload,
-  CleanCommand,
-  CleanSocketState,
-  CleanStatus,
-  CleanStatusNotificationPayload,
   Dict,
   DictWithDataAndError,
   DictWithError,
@@ -126,7 +132,6 @@ export {
   GenericFunction,
   GenericVoidFunction,
   Id,
-  InputOption,
   InvalidBlock,
   LocalStore,
   ManagedAccount,
@@ -135,10 +140,10 @@ export {
   MigrationFunction,
   Nickname,
   Node,
-  NodeCrawlStatus,
-  NodeCrawlStatusWithAddress,
   NodeCleanStatus,
   NodeCleanStatusWithAddress,
+  NodeCrawlStatus,
+  NodeCrawlStatusWithAddress,
   NodeIdentifier,
   NodeParams,
   NodeSection,
@@ -154,8 +159,10 @@ export {
   RawBankConfig,
   RawPrimaryValidatorConfig,
   RootState,
-  SectionParams,
   SFC,
+  SectionParams,
+  SelectOption,
+  SelectOptionMeta,
   SocketConnectionStatus,
   SocketType,
   ToastType,

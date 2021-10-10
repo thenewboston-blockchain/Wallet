@@ -1,7 +1,7 @@
 import React, {ChangeEvent, ReactNode} from 'react';
 
 import {useFormContext2} from '@renderer/hooks';
-import {InputOption, SFC} from '@renderer/types';
+import {SelectOption, SFC} from '@renderer/types';
 import * as S from './Styles';
 
 export interface RadioGroupProps {
@@ -10,7 +10,7 @@ export interface RadioGroupProps {
   label?: ReactNode;
   name?: string;
   onChange?(e: ChangeEvent<HTMLInputElement>, value: string): void;
-  options: InputOption[];
+  options: SelectOption[];
   required?: boolean;
   value?: string;
 }

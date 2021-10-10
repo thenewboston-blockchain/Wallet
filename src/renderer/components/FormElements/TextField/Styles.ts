@@ -1,10 +1,18 @@
 import styled from 'styled-components';
-import {TextField as MuiTextField} from '@mui/material';
+import FormControl from '@mui/material/FormControl';
+import MuiTextField from '@mui/material/TextField';
 import {colors} from '@renderer/styles';
 
 const label = 'TextField__label';
 
-export const Container = styled.div``;
+export const Container = styled(FormControl).attrs(() => ({
+  fullWidth: true,
+}))`
+  && {
+    background: ${colors.white};
+    margin-top: 6px;
+  }
+`;
 
 export const TextField = styled(MuiTextField).attrs(({multiline}) => ({
   InputLabelProps: {
@@ -12,14 +20,8 @@ export const TextField = styled(MuiTextField).attrs(({multiline}) => ({
   },
   multiline,
   rows: multiline ? 2 : undefined,
-  size: 'small',
-  variant: 'outlined',
 }))`
   && {
-    background: ${colors.white};
-    margin-top: 6px;
-    width: 100%;
-
     .${label} {
       color: ${colors.palette.neutral['400']};
     }

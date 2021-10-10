@@ -15,8 +15,16 @@ export interface GenericFormValues {
   [fieldName: string]: any;
 }
 
-export interface InputOption {
+export interface SelectOption {
   disabled?: boolean;
-  label?: string;
+  focused?: boolean;
   value: string;
+}
+
+export interface SelectOptionMeta {
+  [value: string]: {
+    accountNumber?: string;
+    nickname?: string;
+    amount?: number;
+  };
 }

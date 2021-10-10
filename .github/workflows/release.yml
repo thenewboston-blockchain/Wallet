@@ -18,9 +18,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: Install Dependencies
-        run: npm install
+        run: yarn install
       - name: release
-        run: npm run release
+        run: yarn run release
         env:
           EP_PRE_RELEASE: true
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -38,9 +38,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: Install Dependencies
-        run: npm install
+        run: yarn install
       - name: release
-        run: npm run release
+        run: yarn run release
         env:
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APPLE_PWD: ${{ secrets.APPLE_PWD }}
@@ -62,9 +62,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: Install Dependencies
-        run: npm install
+        run: yarn install
       - name: release
-        run: npm run release
+        run: yarn run release
         env:
           CSC_KEY_PASSWORD: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
           CSC_LINK: ${{ secrets.WIN_CSC_LINK }}

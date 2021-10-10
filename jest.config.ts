@@ -3,12 +3,12 @@ import type {Config} from '@jest/types';
 const config: Config.InitialOptions = {
   collectCoverageFrom: ['<rootDir>/src/**/*.{js,jsx,ts,tsx}', '!<rootDir>/src/**/*.d.ts'],
   globalSetup: './global-setup.js',
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'scss'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   moduleNameMapper: {
     '@main/(.*)': '<rootDir>/src/main/$1',
     '@renderer/(.*)': '<rootDir>/src/renderer/$1',
     '@shared/(.*)': '<rootDir>/src/shared/$1',
-    '^.+.module.(css|sass|scss)$': 'identity-obj-proxy',
+    '^.+.module.css$': 'identity-obj-proxy',
   },
   modulePathIgnorePatterns: ['<rootDir>/src/renderer/store/local/migrationFiles/'],
   resetMocks: true,
@@ -22,10 +22,7 @@ const config: Config.InitialOptions = {
     '^.+\\.(js|jsx|mjs|cjs|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
     '^.+\\.css$': '<rootDir>/config/jest/cssTransform.js',
   },
-  transformIgnorePatterns: [
-    '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$',
-    '^.+\\.module\\.(css|sass|scss)$',
-  ],
+  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$', '^.+\\.module\\.css$'],
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
 };
 

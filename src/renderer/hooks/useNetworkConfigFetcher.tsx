@@ -14,9 +14,9 @@ type DataSelector<T> = (state: RootState) => DictWithDataAndError<T>;
 function getSelectorFromType<T>(type: string): DataSelector<T> {
   switch (type) {
     case BANK_CONFIGS:
-      return (getBankConfigs as unknown) as DataSelector<T>;
+      return getBankConfigs as unknown as DataSelector<T>;
     case VALIDATOR_CONFIGS:
-      return (getValidatorConfigs as unknown) as DataSelector<T>;
+      return getValidatorConfigs as unknown as DataSelector<T>;
     default:
       throw new Error();
   }
@@ -33,9 +33,7 @@ const getDispatcherFromType = (type: string): ((address: string) => (dispatch: A
   }
 };
 
-function useNetworkConfigFetcher<T>(
-  type: string,
-): {
+function useNetworkConfigFetcher<T>(type: string): {
   error: string | null;
   loading: boolean;
   data: T | null;

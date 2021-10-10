@@ -23,7 +23,6 @@ module.exports = {
       '@models': srcPaths('src/models'),
       '@renderer': srcPaths('src/renderer'),
       '@shared': srcPaths('src/shared'),
-      '@thenewboston/ui': srcPaths('node_modules/@thenewboston/ui'),
       '@thenewboston/utils': srcPaths('node_modules/@thenewboston/utils'),
       react: srcPaths('node_modules/react'),
       'react-dom': srcPaths('node_modules/react-dom'),

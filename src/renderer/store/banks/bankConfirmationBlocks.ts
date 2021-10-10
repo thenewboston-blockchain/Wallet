@@ -14,10 +14,7 @@ const bankConfirmationBlocks = createSlice({
   },
 });
 
-export const {
-  setBankConfirmationBlocks,
-  setBankConfirmationBlocksError,
-  unsetBankConfirmationBlocks,
-} = bankConfirmationBlocks.actions;
+export const {setBankConfirmationBlocks, setBankConfirmationBlocksError, unsetBankConfirmationBlocks} =
+  bankConfirmationBlocks.actions;
 
 export default bankConfirmationBlocks.reducer;

@@ -102,4 +102,4 @@ dist/
 credential
 
 # Lock files
-yarn.lock
+package-lock.json

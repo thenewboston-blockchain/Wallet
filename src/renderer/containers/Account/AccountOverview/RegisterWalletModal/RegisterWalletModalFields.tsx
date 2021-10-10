@@ -105,6 +105,7 @@ const RegisterWalletModalFields: SFC = ({className}) => {
         onFocus={handleInputFocus}
         onChange={handleInputChange}
         ref={textFieldRef}
+        required
       />
       <S.ErrorArea>{isValidatingField ? <S.Loader /> : null}</S.ErrorArea>
       <S.Popover

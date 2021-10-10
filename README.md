@@ -15,6 +15,10 @@ currency network, create accounts, send and receive funds, manage your nodes, an
 
 <b>NOTE: There is an issue with our app when using Node v.15. Please use Node v.14.</b>
 
+This repo uses Yarn as the package manager instead of npm. Specifically it uses Yarn 2.
+
+TODO: Write steps here to install Yarn 2.
+
 Install required packages:
 
 ```

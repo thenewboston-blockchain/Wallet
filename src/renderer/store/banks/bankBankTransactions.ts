@@ -14,10 +14,7 @@ const bankBankTransactions = createSlice({
   },
 });
 
-export const {
-  setBankBankTransactions,
-  setBankBankTransactionsError,
-  unsetBankBankTransactions,
-} = bankBankTransactions.actions;
+export const {setBankBankTransactions, setBankBankTransactionsError, unsetBankBankTransactions} =
+  bankBankTransactions.actions;
 
 export default bankBankTransactions.reducer;

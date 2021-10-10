@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {FormSelectDetailed as UFormSelectDetailed} from '@renderer/components/FormComponents';
+import {Select as USelect} from '@renderer/components/FormElements';
 import UKeyValueTable, {Row as URow} from '@renderer/components/KeyValueTable';
 import {colors} from '@renderer/styles';
 import * as NodeCenterStyles from '../Styles';
@@ -14,7 +14,7 @@ export const {StatusWrapper, StatusBadge, ProgressBar, TotalBoostsContainer} = N
 
 export const Container = styled.div``;
 
-export const FormSelectDetailed = styled(UFormSelectDetailed)`
+export const Select = styled(USelect)`
   margin-bottom: 16px;
 `;
 

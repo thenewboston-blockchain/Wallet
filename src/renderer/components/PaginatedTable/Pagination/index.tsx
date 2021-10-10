@@ -16,10 +16,10 @@ const Pagination: SFC<PaginationProps> = ({className, currentPage, setPage, tota
   const nextIsDisabled = useMemo(() => currentPage >= totalPages, [currentPage, totalPages]);
   const prevIsDisabled = useMemo(() => currentPage === 1, [currentPage]);
   const leftEllipsesIsVisible = useMemo(() => currentPage > Math.floor(TOTAL_VISIBLE_PAGES / 2) + 1, [currentPage]);
-  const rightEllipsesIsVisible = useMemo(() => currentPage < totalPages - Math.floor(TOTAL_VISIBLE_PAGES / 2), [
-    currentPage,
-    totalPages,
-  ]);
+  const rightEllipsesIsVisible = useMemo(
+    () => currentPage < totalPages - Math.floor(TOTAL_VISIBLE_PAGES / 2),
+    [currentPage, totalPages],
+  );
 
   const renderEllipses = useCallback((key: string): ReactNode => {
     return <S.Ellipse key={key}>...</S.Ellipse>;

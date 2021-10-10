@@ -4,7 +4,7 @@ import {useHistory} from 'react-router-dom';
 
 import {connectAndStoreLocalData} from '@renderer/dispatchers/app';
 import {getActiveBankConfig} from '@renderer/selectors';
-import {AppDispatch, InputOption, ProtocolType, SFC} from '@renderer/types';
+import {AppDispatch, SelectOption, ProtocolType, SFC} from '@renderer/types';
 import {formatPathFromNode} from '@renderer/utils/address';
 import {getIpAddressField, getNicknameField, getPortField, getProtocolField} from '@renderer/utils/forms/fields';
 import yup from '@renderer/utils/forms/yup';
@@ -21,7 +21,7 @@ const initialValues = {
 
 type FormValues = typeof initialValues;
 
-const protocolOptions: InputOption[] = [{value: 'http'}, {value: 'https'}];
+const protocolOptions: SelectOption[] = [{value: 'http'}, {value: 'https'}];
 
 const validationSchema = yup.object().shape({
   ipAddress: getIpAddressField(),
@@ -67,7 +67,7 @@ const Connect: SFC = ({className}) => {
       </S.Header>
       <S.Subheader>Enter the address of a bank.</S.Subheader>
       <S.Form initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
-        <S.FormSelect focused label="Protocol" name="protocol" options={protocolOptions} required searchable={false} />
+        <S.Select focused label="Protocol" name="protocol" options={protocolOptions} required />
         <S.TextField label="IP Address" name="ipAddress" required />
         <S.TextField label="Port" name="port" type="number" required />
         <S.TextField label="Nickname" name="nickname" />

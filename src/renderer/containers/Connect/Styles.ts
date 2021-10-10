@@ -1,9 +1,9 @@
 import styled, {css} from 'styled-components';
-import {FormSelect as UFormSelect} from '@renderer/components/FormComponents';
 import {
   ButtonType,
   Form as UForm,
   FormButton as UFormButton,
+  Select as USelect,
   TextField as UTextField,
 } from '@renderer/components/FormElements';
 import ULogo from '@renderer/components/Logo';
@@ -42,7 +42,7 @@ const fieldMixin = css`
   width: 360px;
 `;
 
-export const FormSelect = styled(UFormSelect)`
+export const Select = styled(USelect)`
   ${fieldMixin};
 `;
 

@@ -62,6 +62,7 @@ const TextField = forwardRef<HTMLDivElement, TextFieldProps & ClassName>(
     const nonFormikProps = {
       onBlur,
       onChange,
+      onFocus,
       value,
     };
 

@@ -24,11 +24,10 @@ const IconWrapper = forwardRef<HTMLDivElement, IconProps>(
       onKeyDown?.(e);
     };
 
-    const tabIndex = useMemo(() => (unfocusable || disabled || !onClick ? undefined : 0), [
-      disabled,
-      onClick,
-      unfocusable,
-    ]);
+    const tabIndex = useMemo(
+      () => (unfocusable || disabled || !onClick ? undefined : 0),
+      [disabled, onClick, unfocusable],
+    );
 
     return (
       <S.Wrapper

@@ -1,7 +1,7 @@
 import React, {useMemo} from 'react';
 import {useSelector} from 'react-redux';
 import {getManagedAccounts} from '@renderer/selectors';
-import {InputOption, SFC} from '@renderer/types';
+import {SelectOption, SelectOptionMeta, SFC} from '@renderer/types';
 
 import * as S from './Styles';
 
@@ -19,16 +19,31 @@ interface ComponentProps {
 const NodeCenterBoostNodeModalFields: SFC<ComponentProps> = ({className, submitting}) => {
   const managedAccounts = useSelector(getManagedAccounts);
 
-  const accountNumberOptions = useMemo<InputOption[]>(
+  const accountNumberOptions = useMemo<SelectOption[]>(
+    () => Object.values(managedAccounts).map(({account_number}) => ({value: account_number})),
+    [managedAccounts],
+  );
+
+  const accountNumberMeta = useMemo<SelectOptionMeta>(
     () =>
-      Object.values(managedAccounts).map(({account_number, nickname}) => ({label: nickname, value: account_number})),
+      Object.values(managedAccounts).reduce(
+        (acc: SelectOptionMeta, {account_number, nickname}) => ({
+          ...acc,
+          [account_number]: {
+            accountNumber: account_number,
+            nickname,
+          },
+        }),
+        {},
+      ),
     [managedAccounts],
   );
 
   return (
     <S.Container className={className}>
-      <S.FormSelectDetailed
+      <S.Select
         options={accountNumberOptions}
+        optionsMeta={accountNumberMeta}
         name="accountNumber"
         disabled={submitting}
         label="Wallet"

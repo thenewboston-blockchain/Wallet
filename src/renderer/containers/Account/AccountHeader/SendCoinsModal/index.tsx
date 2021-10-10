@@ -1,16 +1,17 @@
-import React, {FC, useCallback, useMemo, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import Modal from '@renderer/components/Modal';
 import {INVALID_AMOUNT_ERROR, MATCH_ERROR} from '@renderer/constants/form-validation';
 import {fetchAccountBalance} from '@renderer/dispatchers/balances';
+import {useToggle} from '@renderer/hooks';
 import {
   getActiveBankConfig,
   getManagedAccountBalances,
   getManagedAccounts,
   getPrimaryValidatorConfig,
 } from '@renderer/selectors';
-import {AppDispatch} from '@renderer/types';
+import {AppDispatch, SFC} from '@renderer/types';
 import {sendBlock} from '@renderer/utils/blocks';
 import yup from '@renderer/utils/forms/yup';
 import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
@@ -26,13 +27,27 @@ interface ComponentProps {
   initialSender: string;
 }
 
-const SendCoinsModal: FC<ComponentProps> = ({close, initialRecipient, initialSender}) => {
+const SendCoinsModal: SFC<ComponentProps> = ({className, close, initialRecipient, initialSender}) => {
   const dispatch = useDispatch<AppDispatch>();
   const [submitting, setSubmitting] = useState<boolean>(false);
+  const [loadingBalance, toggleLoadingBalance] = useToggle(false);
   const activeBank = useSelector(getActiveBankConfig)!;
   const primaryValidator = useSelector(getPrimaryValidatorConfig)!;
   const managedAccounts = useSelector(getManagedAccounts);
   const managedAccountBalances = useSelector(getManagedAccountBalances);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        toggleLoadingBalance(true);
+        const managedAccountNumbers = Object.keys(managedAccounts);
+        await Promise.all(managedAccountNumbers.map((accountNumber) => dispatch(fetchAccountBalance(accountNumber))));
+        toggleLoadingBalance(false);
+      } catch (error) {
+        displayErrorToast('There was an error fetching your account balances');
+      }
+    })();
+  }, [dispatch, managedAccounts, toggleLoadingBalance]);
 
   const checkCoinsWithBalance = useCallback(
     (coins: number, accountNumber: string): boolean => {
@@ -109,7 +124,7 @@ const SendCoinsModal: FC<ComponentProps> = ({close, initialRecipient, initialSen
 
   return (
     <Modal
-      className="SendCoinsModal"
+      className={className}
       close={close}
       header="Send Coins"
       initialValues={initialValues}
@@ -118,7 +133,7 @@ const SendCoinsModal: FC<ComponentProps> = ({close, initialRecipient, initialSen
       submitting={submitting}
       validationSchema={validationSchema}
     >
-      <SendCoinsModalFields submitting={submitting} />
+      {loadingBalance ? <div>loader</div> : <SendCoinsModalFields submitting={submitting} />}
     </Modal>
   );
 };

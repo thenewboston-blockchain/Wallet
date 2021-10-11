@@ -17,24 +17,28 @@ currency network, create accounts, send and receive funds, manage your nodes, an
 
 This repo uses Yarn as the package manager instead of npm. Specifically it uses Yarn 2.
 
-TODO: Write steps here to install Yarn 2.
+Ensure that you have Yarn installed:
+
+```
+npm install -g yarn
+```
 
 Install required packages:
 
 ```
-npm install
+yarn install
 ```
 
 Start the app:
 
 ```
-npm start
+yarn start
 ```
 
 To make an executable package:
 
 ```
-npm run build
+yarn run build
 ```
 
 ### Troubleshooting setup
@@ -91,7 +95,7 @@ If you are contributing to this project, please make sure your code follows thes
 You can check your styling by running:
 
 ```
-npm run lint
+yarn run lint
 ```
 
 ## Community

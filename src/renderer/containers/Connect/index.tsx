@@ -13,7 +13,7 @@ import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast'
 import * as S from './Styles';
 
 const initialValues = {
-  ipAddress: '54.219.234.129',
+  ipAddress: '54.183.16.194',
   nickname: '',
   port: '80',
   protocol: 'http' as ProtocolType,

@@ -5,7 +5,6 @@ import contextMenu from 'electron-context-menu';
 import installExtension, {REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS} from 'electron-devtools-installer';
 import fs from 'fs';
 import {getFailChannel, getSuccessChannel, IpcChannel} from '@shared/ipc';
-import WindowStateManager from 'electron-window-state-manager';
 import menu from './menu';
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
@@ -21,32 +20,17 @@ contextMenu({
 
 let mainWindow: BrowserWindow;
 
-const mainWindowState = new WindowStateManager('mainWindow', {
-  defaultHeight: 1080,
-  defaultWidth: 1920,
-});
-
 const createWindow = (): void => {
   mainWindow = new BrowserWindow({
-    height: mainWindowState.height,
+    height: 1080,
     webPreferences: {
       enableRemoteModule: true, // Consider moving away from this! https://nornagon.medium.com/electrons-remote-module-considered-harmful-70d69500f31
       nodeIntegration: true,
     },
-    width: mainWindowState.width,
-    x: mainWindowState.x < 0 ? 0 : mainWindowState.x,
-    y: mainWindowState.y < 0 ? 0 : mainWindowState.y,
+    width: 1920,
   });
 
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-
-  if (mainWindowState.maximized) {
-    mainWindow.maximize();
-  }
-
-  mainWindow.on('close', () => {
-    mainWindowState.saveState(mainWindow);
-  });
 };
 
 // if gotTheLock is false, another instance of application is already running

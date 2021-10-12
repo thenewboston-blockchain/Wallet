@@ -2650,7 +2650,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/material@npm:^5.0.2":
+"@mui/material@npm:5.0.3":
   version: 5.0.3
   resolution: "@mui/material@npm:5.0.3"
   dependencies:
@@ -2701,7 +2701,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/styled-engine-sc@npm:^5.0.0":
+"@mui/styled-engine-sc@npm:5.0.3, @mui/styled-engine@npm:@mui/styled-engine-sc@5.0.3":
   version: 5.0.3
   resolution: "@mui/styled-engine-sc@npm:5.0.3"
   dependencies:
@@ -2716,22 +2716,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/styled-engine@npm:@mui/styled-engine-sc@5.0.0":
-  version: 5.0.0
-  resolution: "@mui/styled-engine-sc@npm:5.0.0"
-  dependencies:
-    prop-types: ^15.7.2
-  peerDependencies:
-    "@types/styled-components": ^5.1.14
-    styled-components: ^5.3.1
-  peerDependenciesMeta:
-    "@types/styled-components":
-      optional: true
-  checksum: 481f02850d544e4493f4cfd50355afa9ae32ae5e7e3dfc2a3b7b4f8b1fba84d653c5c7a5be99218d02fd381de9d28710a1fe1f9c2389df6c62978407bf6cdf67
-  languageName: node
-  linkType: hard
-
-"@mui/styles@npm:^5.0.1":
+"@mui/styles@npm:5.0.1":
   version: 5.0.1
   resolution: "@mui/styles@npm:5.0.1"
   dependencies:
@@ -19948,10 +19933,10 @@ resolve@^2.0.0-next.3:
     "@electron-forge/publisher-github": ^6.0.0-beta.54
     "@hot-loader/react-dom": ^16.14.0
     "@marshallofsound/webpack-asset-relocator-loader": ^0.5.0
-    "@mui/material": ^5.0.2
-    "@mui/styled-engine": "npm:@mui/styled-engine-sc@5.0.0"
-    "@mui/styled-engine-sc": ^5.0.0
-    "@mui/styles": ^5.0.1
+    "@mui/material": 5.0.3
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@5.0.3"
+    "@mui/styled-engine-sc": 5.0.3
+    "@mui/styles": 5.0.1
     "@pmmmwh/react-refresh-webpack-plugin": ^0.4.2
     "@reduxjs/toolkit": 1.6.1
     "@svgr/webpack": ^5.5.0

@@ -17517,16 +17517,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-toastify@npm:^6.2.0":
-  version: 6.2.0
-  resolution: "react-toastify@npm:6.2.0"
+"react-toastify@npm:8.0.3":
+  version: 8.0.3
+  resolution: "react-toastify@npm:8.0.3"
   dependencies:
     clsx: ^1.1.1
-    prop-types: ^15.7.2
-    react-transition-group: ^4.4.1
   peerDependencies:
     react: ">=16"
-  checksum: a065c8900feb6c5f744dcf8788a46ccba87e0f59a69b855d1e01b04429380f9fa8f7e0ef3e1a428a6143681531a221a7b655c0841fa0c61f7ac2436ae75b86ef
+    react-dom: ">=16"
+  checksum: a428f310bfb7b02dd67559ac6377509fe602e1c85bc831bf079a4694d56b1251e79ef9a4d1b2035a4564690aa4ede7de4886d6fe7ab311fb96dcd15a0e17b051
   languageName: node
   linkType: hard
 
@@ -17545,7 +17544,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-transition-group@npm:^4.4.1, react-transition-group@npm:^4.4.2":
+"react-transition-group@npm:^4.4.2":
   version: 4.4.2
   resolution: "react-transition-group@npm:4.4.2"
   dependencies:
@@ -17736,7 +17735,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"recharts@npm:^2.0.10":
+"recharts@npm:2.1.4":
   version: 2.1.4
   resolution: "recharts@npm:2.1.4"
   dependencies:
@@ -20080,8 +20079,8 @@ resolve@^2.0.0-next.3:
     react-refresh: ^0.8.3
     react-router-dom: ^5.2.0
     react-switch: ^6.0.0
-    react-toastify: ^6.2.0
-    recharts: ^2.0.10
+    react-toastify: 8.0.3
+    recharts: 2.1.4
     reconnecting-websocket: ^4.4.0
     resolve: ^1.18.1
     resolve-url-loader: ^3.1.2

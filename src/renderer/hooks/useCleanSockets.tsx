@@ -1,6 +1,6 @@
 import {useCallback, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import axios from 'axios';
+import axios, {AxiosResponse} from 'axios';
 
 import {getInactiveCleanSockets} from '@renderer/selectors/sockets';
 import {
@@ -34,11 +34,15 @@ const useCleanSockets = (): void => {
         const socketAddress = formatSocketAddressFromNode(cleanSocket);
         const {publicKeyHex, signingKey} = getKeyPairFromSigningKeyHex(cleanSocket.signingKey);
         const signedMessage = generateSignedMessage(cleanData, publicKeyHex, signingKey);
-        const {data} = await axios.post<NodeCleanStatusWithAddress>(`${address}/clean`, signedMessage, {
-          headers: {
-            'Content-Type': 'application/json',
+        const {data} = await axios.post<string, AxiosResponse<NodeCleanStatusWithAddress>>(
+          `${address}/clean`,
+          signedMessage,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
           },
-        });
+        );
 
         dispatch(
           updateCleanProcess({

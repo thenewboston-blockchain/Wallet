@@ -58,8 +58,8 @@
     "@types/react-redux": "^7.1.15",
     "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.11",
-    "@types/uuid": "^8.3.0",
-    "@types/yup": "^0.29.11",
+    "@types/uuid": "8.3.1",
+    "@types/yup": "0.29.13",
     "@typescript-eslint/eslint-plugin": "^4.13.0",
     "@typescript-eslint/parser": "^4.13.0",
     "babel-eslint": "^10.1.0",
@@ -169,9 +169,8 @@
     "recharts": "^2.0.10",
     "reconnecting-websocket": "^4.4.0",
     "tweetnacl": "^1.0.3",
-    "typeface-roboto": "^0.0.75",
     "uuid": "^8.3.2",
-    "yup": "^0.32.9"
+    "yup": "0.32.10"
   },
   "husky": {
     "hooks": {

@@ -112,7 +112,7 @@ const LeftMenu: SFC = ({className}) => {
 
   return (
     <S.Container className={className}>
-      <S.LeftSubmenu menuItems={accountItems} rightOnClick={toggleCreateAccountModal} title="My Wallets" />
+      <S.LeftSubmenu menuItems={accountItems} rightOnClick={toggleCreateAccountModal} title="My Accounts" />
       <S.LeftSubmenu menuItems={friendMenuItems} rightOnClick={toggleAddFriendModal} title="My Friends" />
       <S.LeftSubmenu menuItems={communityItems} title="Community" />
       <S.LeftSubmenu menuItems={nodeMenuItems} rightOnClick={toggleAddNodeModal} title="Nodes" />

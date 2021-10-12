@@ -1,55 +1,60 @@
-import React, {SyntheticEvent, useMemo} from 'react';
-import ReactSwitch from 'react-switch';
+/* eslint-disable react/jsx-props-no-spreading */
 
-import {colors} from '@renderer/styles';
+import React, {SyntheticEvent} from 'react';
+import {Field, FieldInputProps} from 'formik';
 import {SFC} from '@renderer/types';
-
 import * as S from './Styles';
 
 export interface SwitchProps {
-  checked: boolean;
+  checked?: boolean;
   disabled?: boolean;
-  id?: string;
+  focused?: boolean;
   label?: string;
   name?: string;
-  onChange(checked: boolean, e: MouseEvent | SyntheticEvent<MouseEvent | KeyboardEvent, Event>): void;
+  onChange?(e: SyntheticEvent): void;
+  value?: string;
 }
 
-const Switch: SFC<SwitchProps> = ({checked, className, disabled = false, id, label, name, onChange}) => {
-  const switchComponent = useMemo(
-    () => (
-      <ReactSwitch
-        activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
-        boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-        checked={checked}
-        checkedIcon={false}
-        className={label ? undefined : className}
-        disabled={disabled}
-        handleDiameter={15}
-        height={10}
-        id={id}
-        name={name}
-        offColor={colors.palette.gray['300']}
-        onChange={onChange}
-        onColor={colors.palette.gray['300']}
-        onHandleColor={colors.primary}
-        uncheckedIcon={false}
-        width={24}
-      />
-    ),
-    [checked, className, disabled, id, label, name, onChange],
+const Switch: SFC<SwitchProps> = ({
+  checked,
+  className,
+  disabled = false,
+  focused = false,
+  label,
+  name,
+  onChange,
+  value,
+}) => {
+  const baseProps = {
+    className,
+    control: <S.Switch autoFocus={focused} />,
+    disabled,
+    label,
+  };
+
+  const nonFormikProps = {
+    checked,
+    onChange,
+  };
+
+  return name ? (
+    <Field name={name} value={value} type="checkbox">
+      {({field}: {field: FieldInputProps<string>}) => (
+        <S.FormControlLabel
+          {...baseProps}
+          {...field}
+          checked={!!field.value}
+          name={name}
+          onChange={(e: SyntheticEvent) => {
+            field.onChange(e);
+            onChange?.(e);
+          }}
+        />
+      )}
+    </Field>
+  ) : (
+    <S.FormControlLabel {...baseProps} {...nonFormikProps} />
   );
-
-  if (label) {
-    return (
-      <S.Label className={className} $disabled={disabled} htmlFor={id}>
-        {switchComponent}
-        <S.Text>{label}</S.Text>
-      </S.Label>
-    );
-  }
-
-  return switchComponent;
 };
 
 export {S as SwitchStyles};

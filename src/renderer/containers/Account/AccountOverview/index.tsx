@@ -42,8 +42,12 @@ const AccountOverview: SFC = ({className}) => {
 
       {/* Temp */}
       <S.TempCard>
-        <Switch checked={moneyDeposited} onChange={toggleMoneyDeposited} label="Money has been deposited" />
-        <Switch checked={accountRegistered} onChange={toggleAccountRegistered} label="Account has been registered" />
+        <div>
+          <Switch checked={moneyDeposited} onChange={toggleMoneyDeposited} label="Money has been deposited" />
+        </div>
+        <div>
+          <Switch checked={accountRegistered} onChange={toggleAccountRegistered} label="Account has been registered" />
+        </div>
       </S.TempCard>
       {/* Temp End */}
     </S.Container>

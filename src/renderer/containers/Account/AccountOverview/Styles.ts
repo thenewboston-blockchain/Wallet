@@ -25,13 +25,5 @@ export const BottomRow = styled.div`
 export const TempCard = styled(Card)`
   padding: 24px;
   margin-top: 24px;
-
-  & > * {
-    margin-bottom: 12px;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
 `;
 // Temp End

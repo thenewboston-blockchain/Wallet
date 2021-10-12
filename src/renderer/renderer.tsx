@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 
 import {ThemeProvider, StyledEngineProvider} from '@mui/material';
-import 'typeface-roboto';
-import 'normalize.css';
 
 import App from '@renderer/containers/App';
 import store from '@renderer/store';

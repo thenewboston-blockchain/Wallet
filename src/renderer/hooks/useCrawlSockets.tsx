@@ -1,6 +1,6 @@
 import {useCallback, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import axios from 'axios';
+import axios, {AxiosResponse} from 'axios';
 
 import {getInactiveCrawlSockets} from '@renderer/selectors/sockets';
 import {
@@ -34,11 +34,15 @@ const useCrawlSockets = (): void => {
         const socketAddress = formatSocketAddressFromNode(crawlSocket);
         const {publicKeyHex, signingKey} = getKeyPairFromSigningKeyHex(crawlSocket.signingKey);
         const signedMessage = generateSignedMessage(crawlData, publicKeyHex, signingKey);
-        const {data} = await axios.post<NodeCrawlStatusWithAddress>(`${address}/crawl`, signedMessage, {
-          headers: {
-            'Content-Type': 'application/json',
+        const {data} = await axios.post<string, AxiosResponse<NodeCrawlStatusWithAddress>>(
+          `${address}/crawl`,
+          signedMessage,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
           },
-        });
+        );
 
         dispatch(
           updateCrawlProcess({

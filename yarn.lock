@@ -5212,7 +5212,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-loader@npm:^8.2.2":
+"babel-loader@npm:8.2.2":
   version: 8.2.2
   resolution: "babel-loader@npm:8.2.2"
   dependencies:
@@ -5272,7 +5272,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-named-asset-import@npm:^0.3.7":
+"babel-plugin-named-asset-import@npm:0.3.7":
   version: 0.3.7
   resolution: "babel-plugin-named-asset-import@npm:0.3.7"
   peerDependencies:
@@ -5396,7 +5396,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-react-app@npm:^10.0.0":
+"babel-preset-react-app@npm:10.0.0":
   version: 10.0.0
   resolution: "babel-preset-react-app@npm:10.0.0"
   dependencies:
@@ -5496,18 +5496,6 @@ __metadata:
   version: 2.2.2
   resolution: "before-after-hook@npm:2.2.2"
   checksum: dc2e1ffe389e5afbef2a46790b1b5a50247ed57aba67649cfa9ec2552d248cc9278f222e72fb5a8ff59bbb39d78fbaa97e7234ead0c6b5e8418b67a8644ce207
-  languageName: node
-  linkType: hard
-
-"bfj@npm:^7.0.2":
-  version: 7.0.2
-  resolution: "bfj@npm:7.0.2"
-  dependencies:
-    bluebird: ^3.5.5
-    check-types: ^11.1.1
-    hoopy: ^0.1.4
-    tryer: ^1.0.1
-  checksum: 0ca673234170eb3dcf00fb1d867ba274729ab05779dd19b35628c49da7adc32472b5f0bca0554ffdca15b094f9b36f16f2a8992ba8884ebd1d351d7f27abee7b
   languageName: node
   linkType: hard
 
@@ -6262,13 +6250,6 @@ __metadata:
   version: 0.7.0
   resolution: "chardet@npm:0.7.0"
   checksum: 6fd5da1f5d18ff5712c1e0aed41da200d7c51c28f11b36ee3c7b483f3696dabc08927fc6b227735eb8f0e1215c9a8abd8154637f3eff8cada5959df7f58b024d
-  languageName: node
-  linkType: hard
-
-"check-types@npm:^11.1.1":
-  version: 11.1.2
-  resolution: "check-types@npm:11.1.2"
-  checksum: 6c339a5dfe326e34a5275016c7f9464665405cd79007c057852acd677d265ddfe36236ad5567bd1e601ea88fa78bf1f882b6bc3dc7c5616c26f6b54b2c0ef4fc
   languageName: node
   linkType: hard
 
@@ -11020,13 +11001,6 @@ fsevents@^1.2.7:
   dependencies:
     parse-passwd: ^1.0.0
   checksum: 18dd4db87052c6a2179d1813adea0c4bfcfa4f9996f0e226fefb29eb3d548e564350fa28ec46b0bf1fbc0a1d2d6922ceceb80093115ea45ff8842a4990139250
-  languageName: node
-  linkType: hard
-
-"hoopy@npm:^0.1.4":
-  version: 0.1.4
-  resolution: "hoopy@npm:0.1.4"
-  checksum: cfa60c7684c5e1ee4efe26e167bc54b73f839ffb59d1d44a5c4bf891e26b4f5bcc666555219a98fec95508fea4eda3a79540c53c05cc79afc1f66f9a238f4d9e
   languageName: node
   linkType: hard
 
@@ -19960,11 +19934,10 @@ resolve@^2.0.0-next.3:
     "@typescript-eslint/parser": 5.0.0
     axios: 0.22.0
     babel-jest: 27.2.5
-    babel-loader: ^8.2.2
-    babel-plugin-named-asset-import: ^0.3.7
+    babel-loader: 8.2.2
+    babel-plugin-named-asset-import: 0.3.7
     babel-plugin-styled-components: 1.13.2
-    babel-preset-react-app: ^10.0.0
-    bfj: ^7.0.2
+    babel-preset-react-app: 10.0.0
     camelcase: 6.2.0
     case-sensitive-paths-webpack-plugin: ^2.3.0
     clsx: 1.1.1
@@ -20356,13 +20329,6 @@ resolve@^2.0.0-next.3:
   dependencies:
     utf8-byte-length: ^1.0.1
   checksum: ad097314709ea98444ad9c80c03aac8da805b894f37ceb5685c49ad297483afe3a5ec9572ebcaff699dda72b6cd447a2ba2a3fd10e96c2628cd16d94abeb328a
-  languageName: node
-  linkType: hard
-
-"tryer@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "tryer@npm:1.0.1"
-  checksum: 1cf14d7f67c79613f054b569bfc9a89c7020d331573a812dfcf7437244e8f8e6eb6893b210cbd9cc217f67c1d72617f89793df231e4fe7d53634ed91cf3a89d1
   languageName: node
   linkType: hard
 

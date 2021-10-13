@@ -12,7 +12,8 @@
     "prettier": "prettier --write \"{,!(.webpack|bundle|node_modules|out|release)/**/}*.{ts,tsx,js,json,css}\"",
     "release": "cross-env NODE_ENV=production yarn run package && electron-builder --publish always",
     "start": "cross-env NODE_ENV=development electron-forge start",
-    "test": "jest"
+    "test": "jest",
+    "prepare": "husky install"
   },
   "keywords": [],
   "license": "MIT",
@@ -93,14 +94,14 @@
     "fork-ts-checker-webpack-plugin": "6.3.4",
     "fs-extra": "^9.0.1",
     "html-webpack-plugin": "5.3.2",
-    "husky": "^4.3.7",
+    "husky": "7.0.2",
     "identity-obj-proxy": "3.0.0",
     "jest": "27.2.5",
     "jest-circus": "27.2.5",
     "jest-resolve": "27.2.5",
     "jest-watch-typeahead": "1.0.0",
     "jsonfile": "^6.1.0",
-    "lint-staged": "^10.5.3",
+    "lint-staged": "11.2.3",
     "mini-css-extract-plugin": "^0.11.3",
     "node-abi": "^2.19.3",
     "node-loader": "^1.0.2",
@@ -164,11 +165,6 @@
     "tweetnacl": "1.0.3",
     "uuid": "8.3.2",
     "yup": "0.32.10"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "resolutions": {
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@5.0.3"

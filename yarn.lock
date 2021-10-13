@@ -6174,7 +6174,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"case-sensitive-paths-webpack-plugin@npm:^2.3.0":
+"case-sensitive-paths-webpack-plugin@npm:2.4.0":
   version: 2.4.0
   resolution: "case-sensitive-paths-webpack-plugin@npm:2.4.0"
   checksum: bcf469446eeee9ac0046e30860074ebb9aa4803aab9140e6bb72b600b23b1d70635690754be4504ce35cd99cdf05226bee8d894ba362a3f5485d5f6310fc6d02
@@ -7071,7 +7071,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cross-env@npm:^7.0.3":
+"cross-env@npm:7.0.3":
   version: 7.0.3
   resolution: "cross-env@npm:7.0.3"
   dependencies:
@@ -8244,10 +8244,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^8.2.0":
-  version: 8.6.0
-  resolution: "dotenv@npm:8.6.0"
-  checksum: 38e902c80b0666ab59e9310a3d24ed237029a7ce34d976796349765ac96b8d769f6df19090f1f471b77a25ca391971efde8a1ea63bb83111bd8bec8e5cc9b2cd
+"dotenv@npm:10.0.0":
+  version: 10.0.0
+  resolution: "dotenv@npm:10.0.0"
+  checksum: f412c5fe8c24fbe313d302d2500e247ba8a1946492db405a4de4d30dd0eb186a88a43f13c958c5a7de303938949c4231c56994f97d05c4bc1f22478d631b4005
   languageName: node
   linkType: hard
 
@@ -19939,12 +19939,12 @@ resolve@^2.0.0-next.3:
     babel-plugin-styled-components: 1.13.2
     babel-preset-react-app: 10.0.0
     camelcase: 6.2.0
-    case-sensitive-paths-webpack-plugin: ^2.3.0
+    case-sensitive-paths-webpack-plugin: 2.4.0
     clsx: 1.1.1
-    cross-env: ^7.0.3
+    cross-env: 7.0.3
     css-loader: ^5.0.1
     date-fns: 2.25.0
-    dotenv: ^8.2.0
+    dotenv: 10.0.0
     dotenv-expand: 5.1.0
     electron: ^11.0.0
     electron-builder: ^22.11.7

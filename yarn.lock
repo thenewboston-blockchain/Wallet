@@ -16247,7 +16247,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss-preset-env@npm:^6.7.0":
+"postcss-preset-env@npm:6.7.0":
   version: 6.7.0
   resolution: "postcss-preset-env@npm:6.7.0"
   dependencies:
@@ -16505,7 +16505,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.2.1":
+"prettier@npm:2.4.1":
   version: 2.4.1
   resolution: "prettier@npm:2.4.1"
   bin:
@@ -16662,7 +16662,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prompts@npm:^2.0.1, prompts@npm:^2.4.0":
+"prompts@npm:^2.0.1":
   version: 2.4.2
   resolution: "prompts@npm:2.4.2"
   dependencies:
@@ -19679,10 +19679,9 @@ resolve@^2.0.0-next.3:
     postcss-flexbugs-fixes: 5.0.2
     postcss-loader: ^3.0.0
     postcss-normalize: 10.0.1
-    postcss-preset-env: ^6.7.0
+    postcss-preset-env: 6.7.0
     postcss-safe-parser: 6.0.0
-    prettier: ^2.2.1
-    prompts: ^2.4.0
+    prettier: 2.4.1
     qrcode: 1.4.4
     re-reselect: 4.0.0
     react: 17.0.2

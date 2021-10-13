@@ -38,7 +38,7 @@
     "@electron-forge/plugin-auto-unpack-natives": "^6.0.0-beta.54",
     "@electron-forge/plugin-webpack": "6.0.0-beta.51",
     "@electron-forge/publisher-github": "^6.0.0-beta.54",
-    "@hot-loader/react-dom": "^16.14.0",
+    "@hot-loader/react-dom": "17.0.1",
     "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@5.0.3",
     "@mui/styled-engine-sc": "5.0.3",

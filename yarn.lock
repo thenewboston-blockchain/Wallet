@@ -15466,7 +15466,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"path@npm:^0.12.7":
+"path@npm:0.12.7":
   version: 0.12.7
   resolution: "path@npm:0.12.7"
   dependencies:
@@ -15625,7 +15625,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"pnp-webpack-plugin@npm:^1.6.4":
+"pnp-webpack-plugin@npm:1.7.0":
   version: 1.7.0
   resolution: "pnp-webpack-plugin@npm:1.7.0"
   dependencies:
@@ -19673,8 +19673,8 @@ resolve@^2.0.0-next.3:
     mini-css-extract-plugin: 2.4.2
     node-loader: 2.0.0
     optimize-css-assets-webpack-plugin: ^5.0.4
-    path: ^0.12.7
-    pnp-webpack-plugin: ^1.6.4
+    path: 0.12.7
+    pnp-webpack-plugin: 1.7.0
     postcss: ^8.3.6
     postcss-flexbugs-fixes: ^4.2.1
     postcss-loader: ^3.0.0

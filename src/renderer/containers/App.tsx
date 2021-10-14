@@ -4,7 +4,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import {MemoryRouter as Router} from 'react-router-dom';
 import {Flip, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import electronIsDev from 'electron-is-dev';
 
 import CreateAccountModal from '@renderer/containers/CreateAccountModal';
 import Connect from '@renderer/containers/Connect';
@@ -14,6 +13,8 @@ import {useCleanSockets, useCrawlSockets, useToggle, useWebSockets} from '@rende
 import {getActiveBank, getActiveBankConfig} from '@renderer/selectors';
 import {AppDispatch, ProtocolType, ToastType} from '@renderer/types';
 import {displayErrorToast, displayToast} from '@renderer/utils/toast';
+
+const isDevEnvironment = process.env.NODE_ENV === 'development';
 
 const DEFAULT_BANK = {
   ip_address: '54.183.16.194',
@@ -96,4 +97,4 @@ const App: FC = () => {
   );
 };
 
-export default electronIsDev ? hot((): JSX.Element => <App />) : App;
+export default isDevEnvironment ? hot((): JSX.Element => <App />) : App;

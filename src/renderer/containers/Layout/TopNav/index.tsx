@@ -51,16 +51,18 @@ const TopNav: SFC = ({className}) => {
   const {back, backEnabled, forward, forwardEnabled, reload} = useNavigationalHistory();
   const primaryValidatorConfig = useSelector(getPrimaryValidatorConfig);
 
-  const handleImportSuccessCallback = useCallback((event: any, storeData: LocalStore) => {
-    localStore.clear();
-    localStore.set(storeData);
-    ipcRenderer.send(IpcChannel.restartApp);
-  }, []);
+  const handleImportSuccessCallback = useCallback(
+    (event: any, storeData: LocalStore) => {
+      toggleImportStoreDataModal(false);
+      localStore.clear();
+      localStore.set(storeData);
+      ipcRenderer.send(IpcChannel.restartApp);
+    },
+    [toggleImportStoreDataModal],
+  );
 
-  const handleExportClick = useWriteIpc({
+  const handleExportClick = useWriteIpc<string>({
     channel: IpcChannel.exportStoreData,
-    downloadOptions: {buttonLabel: 'Export', defaultPath: 'store-data.json', title: 'Export Store Data'},
-    extension: 'json',
     failCallback: exportFailToast,
     payload: JSON.stringify(localStore.store),
     successCallback: exportSuccessToast,
@@ -68,9 +70,7 @@ const TopNav: SFC = ({className}) => {
 
   const handleImportIpc = useReadIpc({
     channel: IpcChannel.importStoreData,
-    downloadOptions: {buttonLabel: 'Import', title: 'Import Store Data'},
     failCallback: importFailToast,
-    postSendCallback: () => toggleImportStoreDataModal(false),
     successCallback: handleImportSuccessCallback,
   });
 

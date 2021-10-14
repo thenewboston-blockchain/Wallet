@@ -1,10 +1,10 @@
 /* eslint-disable no-console  */
 
-import {app, BrowserWindow, ipcMain, Menu} from 'electron';
+import {app, dialog, BrowserWindow, ipcMain, Menu, SaveDialogOptions, OpenDialogOptions} from 'electron';
 import contextMenu from 'electron-context-menu';
 import installExtension, {REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS} from 'electron-devtools-installer';
 import fs from 'fs';
-import {getFailChannel, getSuccessChannel, IpcChannel} from '@shared/ipc';
+import {DownloadSigningKeyPayload, getFailChannel, getSuccessChannel, IpcChannel} from '@shared/ipc';
 import menu from './menu';
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
@@ -72,8 +72,20 @@ app.on('activate', () => {
   }
 });
 
-ipcMain.on(IpcChannel.downloadSigningKey, (event, {filePath, payload: signingKey}) => {
+ipcMain.on(IpcChannel.downloadSigningKey, async (event, {accountNumber, signingKey}: DownloadSigningKeyPayload) => {
+  const options: SaveDialogOptions = {
+    buttonLabel: 'Save',
+    defaultPath: `${accountNumber}.txt`,
+    filters: [
+      {extensions: ['txt'], name: 'txt'},
+      {extensions: ['*'], name: 'All Files'},
+    ],
+    title: 'Save Signing Key',
+  };
+
   try {
+    const {canceled, filePath} = await dialog.showSaveDialog(options);
+    if (canceled || !filePath) return;
     fs.writeFileSync(filePath, signingKey);
     event.reply(getSuccessChannel(IpcChannel.downloadSigningKey));
   } catch (error: any) {
@@ -82,9 +94,21 @@ ipcMain.on(IpcChannel.downloadSigningKey, (event, {filePath, payload: signingKey
   }
 });
 
-ipcMain.on(IpcChannel.exportStoreData, (event, {filePath, payload: storeData}) => {
+ipcMain.on(IpcChannel.exportStoreData, async (event, payload: string) => {
+  const options: SaveDialogOptions = {
+    buttonLabel: 'Export',
+    defaultPath: 'store-data.json',
+    filters: [
+      {extensions: ['json'], name: 'json'},
+      {extensions: ['*'], name: 'All Files'},
+    ],
+    title: 'Export Store Data',
+  };
+
   try {
-    fs.writeFileSync(filePath, storeData);
+    const {canceled, filePath} = await dialog.showSaveDialog(options);
+    if (canceled || !filePath) return;
+    fs.writeFileSync(filePath, payload);
     event.reply(getSuccessChannel(IpcChannel.exportStoreData));
   } catch (error: any) {
     console.log(`Failed to save file: ${IpcChannel.exportStoreData}`, error);
@@ -92,8 +116,21 @@ ipcMain.on(IpcChannel.exportStoreData, (event, {filePath, payload: storeData}) =
   }
 });
 
-ipcMain.on(IpcChannel.importStoreData, (event, {filePath}) => {
+ipcMain.on(IpcChannel.importStoreData, async (event) => {
+  const options: OpenDialogOptions = {
+    buttonLabel: 'Import',
+    filters: [
+      {extensions: ['json'], name: 'json'},
+      {extensions: ['*'], name: 'All Files'},
+    ],
+    title: 'Import Store Data',
+  };
+
   try {
+    const {canceled, filePaths} = await dialog.showOpenDialog(options);
+    if (canceled || !filePaths.length) return;
+    const filePath = filePaths[0];
+
     fs.readFile(filePath, 'utf-8', (err, jsonData) => {
       if (err) {
         throw err;

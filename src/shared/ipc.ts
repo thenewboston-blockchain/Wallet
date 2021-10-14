@@ -8,3 +8,8 @@ export enum IpcChannel {
 export const getSuccessChannel = (channel: IpcChannel) => `${channel}-success`;
 
 export const getFailChannel = (channel: IpcChannel) => `${channel}-fail`;
+
+export interface DownloadSigningKeyPayload {
+  accountNumber: string;
+  signingKey: string;
+}

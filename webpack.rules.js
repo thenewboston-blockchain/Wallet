@@ -6,8 +6,8 @@ const styledComponentsTransformer = createStyledComponentsTransformer();
 const rules = [
   // Add support for native node modules
   {
+    loader: 'node-loader',
     test: /\.node$/,
-    use: 'node-loader',
   },
   {
     exclude: /(bundle|node_modules)/,
@@ -31,6 +31,9 @@ const rules = [
     use: [
       {
         loader: 'babel-loader',
+        options: {
+          presets: [['@babel/preset-env', {targets: 'defaults'}]],
+        },
       },
       {
         loader: 'ts-loader',

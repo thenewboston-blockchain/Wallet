@@ -7,16 +7,12 @@ import {useAccountContext, useToggle, useWriteIpc} from '@renderer/hooks';
 import {SFC} from '@renderer/types';
 import {truncateLongText} from '@renderer/utils/accounts';
 import {displayToast, ToastType} from '@renderer/utils/toast';
-import {IpcChannel} from '@shared/ipc';
+import {DownloadSigningKeyPayload, IpcChannel} from '@shared/ipc';
 import * as S from './Styles';
 
 interface AccountHeaderSigningKeyProps {
   signingKey: string;
 }
-
-const downloadSuccessToast = () => {
-  displayToast('Signing Key has been saved locally', ToastType.success);
-};
 
 const downloadFailToast = (e: any, error: string) => {
   displayToast(`Could not save signing key: ${error}`, ToastType.error);
@@ -37,14 +33,16 @@ const AccountHeaderSigningKey: SFC<AccountHeaderSigningKeyProps> = ({className, 
     signingKeyDownloadRef.current?.blur();
   }, [signingKeyDownloadRef]);
 
-  const handleDownloadClick = useWriteIpc({
+  const downloadSuccessCallback = () => {
+    handleDownloadBlur();
+    displayToast('Signing Key has been saved locally', ToastType.success);
+  };
+
+  const handleDownloadClick = useWriteIpc<DownloadSigningKeyPayload>({
     channel: IpcChannel.downloadSigningKey,
-    downloadOptions: {buttonLabel: 'Save', defaultPath: `${accountNumber}.txt`, title: 'Save Signing Key'},
-    extension: 'txt',
     failCallback: downloadFailToast,
-    payload: signingKey || '',
-    postSendCallback: handleDownloadBlur,
-    successCallback: downloadSuccessToast,
+    payload: {accountNumber, signingKey},
+    successCallback: downloadSuccessCallback,
   });
 
   const handleSigningKeyCopy = (): void => {

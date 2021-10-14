@@ -132,7 +132,6 @@
     "clsx": "1.1.1",
     "date-fns": "2.25.0",
     "electron-context-menu": "^2.4.0",
-    "electron-is-dev": "^1.2.0",
     "electron-store": "^5.2.0",
     "formik": "2.2.9",
     "lodash-es": "4.17.21",

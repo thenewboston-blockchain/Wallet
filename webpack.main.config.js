@@ -2,7 +2,6 @@
 /* eslint-disable sort-keys */
 
 const path = require('path');
-const optimization = require('./webpack.optimization');
 const rules = require('./webpack.rules');
 
 function srcPaths(...paths) {
@@ -10,22 +9,17 @@ function srcPaths(...paths) {
 }
 
 const mode = process.env.NODE_ENVIRONMENT;
-const isEnvProduction = mode === 'production';
-const isEnvDevelopment = mode === 'development';
 
 module.exports = {
-  bail: isEnvProduction,
-  devtool: isEnvProduction ? 'source-map' : 'cheap-module-source-map',
+  devtool: 'source-map',
   entry: './src/main/main.ts',
   mode,
   module: {
     rules,
   },
   output: {
-    path: isEnvProduction ? srcPaths('bundle', 'main') : undefined,
-    pathinfo: isEnvDevelopment,
+    path: srcPaths('bundle', 'main'),
   },
-  optimization,
   resolve: {
     alias: {
       '@main': srcPaths('src', 'main'),

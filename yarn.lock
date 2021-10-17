@@ -7774,6 +7774,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"electron-squirrel-startup@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "electron-squirrel-startup@npm:1.0.0"
+  dependencies:
+    debug: ^2.2.0
+  checksum: a1f658e326bd0f5c24aec95fd9a94a2e2b8b645adbd421465829f32719d15e85d6469d9369914c3b766d61e71eebb9f6725057b7fafa78adbcc5d6d3ce5d7a22
+  languageName: node
+  linkType: hard
+
 "electron-store@npm:^5.2.0":
   version: 5.2.0
   resolution: "electron-store@npm:5.2.0"
@@ -8189,18 +8198,6 @@ __metadata:
     find-up: ^2.1.0
     pkg-dir: ^2.0.0
   checksum: 98f284dee995ed3e12a7ea61525ad421abf1ec6483182555382c29d087890d6e79e8cad15edd189e3389e76e593098105d38435990e1fa4e6cb855869c79980a
-  languageName: node
-  linkType: hard
-
-"eslint-plugin-flowtype@npm:^5.2.0":
-  version: 5.10.0
-  resolution: "eslint-plugin-flowtype@npm:5.10.0"
-  dependencies:
-    lodash: ^4.17.15
-    string-natural-compare: ^3.0.1
-  peerDependencies:
-    eslint: ^7.1.0
-  checksum: 791cd53c886bf819d52d6353cdfb4d49276dcd8a14f564a85d275d5017d81c7b1cc1921013ac9749f69c3f1bc4d23f36182137aab42bc059c2ae3f9773dd7740
   languageName: node
   linkType: hard
 
@@ -17090,13 +17087,6 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"string-natural-compare@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "string-natural-compare@npm:3.0.1"
-  checksum: 65910d9995074086e769a68728395effbba9b7186be5b4c16a7fad4f4ef50cae95ca16e3e9086e019cbb636ae8daac9c7b8fe91b5f21865c5c0f26e3c0725406
-  languageName: node
-  linkType: hard
-
 "string-width@npm:^1.0.1":
   version: 1.0.2
   resolution: "string-width@npm:1.0.2"
@@ -17673,6 +17663,7 @@ resolve@^2.0.0-next.3:
     electron-context-menu: ^2.4.0
     electron-devtools-installer: ^3.2.0
     electron-notarize: ^1.0.0
+    electron-squirrel-startup: ^1.0.0
     electron-store: ^5.2.0
     eslint: 7.32.0
     eslint-config-airbnb: 18.2.1
@@ -17680,7 +17671,6 @@ resolve@^2.0.0-next.3:
     eslint-config-prettier: 8.3.0
     eslint-config-react-app: 6.0.0
     eslint-import-resolver-node: 0.3.6
-    eslint-plugin-flowtype: ^5.2.0
     eslint-plugin-import: 2.25.2
     eslint-plugin-jest: 25.0.5
     eslint-plugin-jsx-a11y: 6.4.1

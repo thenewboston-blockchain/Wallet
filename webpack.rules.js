@@ -14,7 +14,7 @@ const rules = [
     parser: {amd: false},
     test: /\.(m?js|node)$/,
     use: {
-      loader: '@marshallofsound/webpack-asset-relocator-loader',
+      loader: '@vercel/webpack-asset-relocator-loader',
       options: {
         outputAssetBase: 'native_modules',
       },

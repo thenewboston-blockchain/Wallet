@@ -1962,16 +1962,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@electron-forge/plugin-auto-unpack-natives@npm:^6.0.0-beta.54":
-  version: 6.0.0-beta.61
-  resolution: "@electron-forge/plugin-auto-unpack-natives@npm:6.0.0-beta.61"
-  dependencies:
-    "@electron-forge/plugin-base": 6.0.0-beta.61
-    "@electron-forge/shared-types": 6.0.0-beta.61
-  checksum: ffe92e68a0ebfe57ba8ee618a503ea97e5ef8cf46d005210ce4635c16b13f6dc524adb6e142f7febe9df2469df32496ce826472e4a3fbcf581cb049602e6af83
-  languageName: node
-  linkType: hard
-
 "@electron-forge/plugin-base@npm:6.0.0-beta.51":
   version: 6.0.0-beta.51
   resolution: "@electron-forge/plugin-base@npm:6.0.0-beta.51"
@@ -18315,7 +18305,6 @@ resolve@^2.0.0-next.3:
     "@electron-forge/maker-rpm": 6.0.0-beta.51
     "@electron-forge/maker-squirrel": 6.0.0-beta.51
     "@electron-forge/maker-zip": 6.0.0-beta.51
-    "@electron-forge/plugin-auto-unpack-natives": ^6.0.0-beta.54
     "@electron-forge/plugin-webpack": 6.0.0-beta.51
     "@electron-forge/publisher-github": ^6.0.0-beta.54
     "@hot-loader/react-dom": 17.0.1

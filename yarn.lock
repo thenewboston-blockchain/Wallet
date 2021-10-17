@@ -7660,7 +7660,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron-notarize@npm:^1.0.0, electron-notarize@npm:^1.1.1":
+"electron-notarize@npm:^1.1.1":
   version: 1.1.1
   resolution: "electron-notarize@npm:1.1.1"
   dependencies:
@@ -17662,7 +17662,7 @@ resolve@^2.0.0-next.3:
     electron: ^11.0.0
     electron-context-menu: ^2.4.0
     electron-devtools-installer: ^3.2.0
-    electron-notarize: ^1.0.0
+    electron-notarize: ^1.1.1
     electron-squirrel-startup: ^1.0.0
     electron-store: ^5.2.0
     eslint: 7.32.0

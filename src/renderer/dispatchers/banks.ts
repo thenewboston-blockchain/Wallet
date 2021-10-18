@@ -31,6 +31,7 @@ import {
   setBankValidators,
   setBankValidatorsError,
 } from '@renderer/store/banks';
+import {fetchPaginatedResults, sanitizePortFieldFromRawBankConfig} from '@renderer/utils/api';
 import {
   AppDispatch,
   BankAccount,
@@ -45,8 +46,7 @@ import {
   PaginatedQueryParams,
   RawBankConfig,
   ValidatorConfirmationService,
-} from '@renderer/types';
-import {fetchPaginatedResults, sanitizePortFieldFromRawBankConfig} from '@renderer/utils/api';
+} from '@shared/types';
 
 export const fetchBankAccounts =
   (address: string, params: PaginatedQueryParams = defaultPaginatedQueryParam) =>

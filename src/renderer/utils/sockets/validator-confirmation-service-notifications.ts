@@ -1,7 +1,7 @@
 import {setValidatorConfirmationServiceNotification} from '@renderer/store/notifications';
-import {AppDispatch} from '@renderer/types';
 import {displayToast, ToastType} from '@renderer/utils/toast';
 import {generateUuid} from '@renderer/utils/local';
+import {AppDispatch} from '@shared/types';
 
 const handleValidatorConfirmationServiceNotifications = async (
   bankSocketAddress: string,

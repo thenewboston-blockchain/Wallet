@@ -1,7 +1,7 @@
 import {useMemo} from 'react';
 import {useParams} from 'react-router-dom';
-import {AddressParams} from '@renderer/types';
 import {formatAddress} from '@renderer/utils/address';
+import {AddressParams} from '@shared/types';
 
 const useAddress = (): string => {
   const {ipAddress, port, protocol} = useParams<AddressParams>();

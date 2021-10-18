@@ -6,10 +6,10 @@ import axios from 'axios';
 import {AXIOS_TIMEOUT_MS} from '@renderer/config';
 import {getCrawlSockets} from '@renderer/selectors';
 import {toggleCrawlProcess} from '@renderer/store/sockets';
-import {AddressParams, AppDispatch, CrawlStatus, ManagedNode, NodeCrawlStatusWithAddress} from '@renderer/types';
 import {generateUuid} from '@renderer/utils/local';
 import {displayToast, ToastType} from '@renderer/utils/toast';
 import {formatAddress} from '@renderer/utils/address';
+import {AddressParams, AppDispatch, CrawlStatus, ManagedNode, NodeCrawlStatusWithAddress} from '@shared/types';
 
 import useAddress from './useAddress';
 

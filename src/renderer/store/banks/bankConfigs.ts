@@ -1,8 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 import {BANK_CONFIGS} from '@renderer/constants/actions';
-import {BankConfig, DictWithDataAndError} from '@renderer/types';
 import {setDataErrorReducer, setDataReducer} from '@renderer/utils/store';
+import {BankConfig, DictWithDataAndError} from '@shared/types';
 
 const bankConfigs = createSlice({
   initialState: {} as DictWithDataAndError<BankConfig>,

@@ -3,6 +3,12 @@ import {useDispatch, useSelector} from 'react-redux';
 import axios, {AxiosResponse} from 'axios';
 
 import {getInactiveCrawlSockets} from '@renderer/selectors/sockets';
+import {updateCrawlProcess} from '@renderer/store/sockets';
+import {formatAddressFromNode, formatSocketAddressFromNode} from '@renderer/utils/address';
+import {generateSignedMessage, getKeyPairFromSigningKeyHex} from '@renderer/utils/signing';
+import {initializeSocketForCrawlStatus} from '@renderer/utils/sockets';
+import handleCrawlSocketEvent from '@renderer/utils/sockets/crawl';
+import {displayErrorToast} from '@renderer/utils/toast';
 import {
   AppDispatch,
   CrawlCommand,
@@ -10,13 +16,7 @@ import {
   CrawlStatus,
   NodeCrawlStatusWithAddress,
   SocketConnectionStatus,
-} from '@renderer/types';
-import {formatAddressFromNode, formatSocketAddressFromNode} from '@renderer/utils/address';
-import {generateSignedMessage, getKeyPairFromSigningKeyHex} from '@renderer/utils/signing';
-import {initializeSocketForCrawlStatus} from '@renderer/utils/sockets';
-import handleCrawlSocketEvent from '@renderer/utils/sockets/crawl';
-import {displayErrorToast} from '@renderer/utils/toast';
-import {updateCrawlProcess} from '@renderer/store/sockets';
+} from '@shared/types';
 
 const useCrawlSockets = (): void => {
   const dispatch = useDispatch<AppDispatch>();

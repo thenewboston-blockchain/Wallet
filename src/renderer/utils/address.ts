@@ -1,5 +1,5 @@
 import {parse, ParsedUrlQuery, stringify} from 'querystring';
-import {AddressData, ProtocolType} from '@renderer/types';
+import {AddressData, ProtocolType} from '@shared/types';
 
 export const formatAddress = (ipAddress: string, port: number | string, protocol: string): string => {
   return `${protocol}://${ipAddress}:${port}`;

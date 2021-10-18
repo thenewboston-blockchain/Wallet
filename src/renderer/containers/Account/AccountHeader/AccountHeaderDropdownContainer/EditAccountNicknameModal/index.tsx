@@ -5,9 +5,9 @@ import Modal from '@renderer/components/Modal';
 import {useAccountContext} from '@renderer/hooks';
 import {getManagedAccounts, getManagedFriends} from '@renderer/selectors';
 import {setManagedAccount, setManagedFriend} from '@renderer/store/app';
-import {AccountType, AppDispatch, ManagedAccount, ManagedFriend, SFC} from '@renderer/types';
 import {getNicknameField} from '@renderer/utils/forms/fields';
 import yup from '@renderer/utils/forms/yup';
+import {AccountType, AppDispatch, ManagedAccount, ManagedFriend, SFC} from '@shared/types';
 
 interface ComponentProps {
   close(): void;

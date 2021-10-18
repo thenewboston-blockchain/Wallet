@@ -1,4 +1,7 @@
 import axios from 'axios';
+import {AXIOS_TIMEOUT_MS} from '@renderer/config';
+import {formatQueryParams} from '@renderer/utils/address';
+import {SetError, SetResults} from '@renderer/utils/store';
 import {
   AppDispatch,
   BankConfig,
@@ -7,10 +10,7 @@ import {
   PrimaryValidatorConfig,
   RawBankConfig,
   RawPrimaryValidatorConfig,
-} from '@renderer/types';
-import {formatQueryParams} from '@renderer/utils/address';
-import {SetError, SetResults} from '@renderer/utils/store';
-import {AXIOS_TIMEOUT_MS} from '@renderer/config';
+} from '@shared/types';
 
 export async function fetchPaginatedResults<T>(
   address: string,

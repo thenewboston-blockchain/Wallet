@@ -1,7 +1,7 @@
 import {createCachedSelector} from 're-reselect';
 
-import {RootState} from '@renderer/types';
 import {formatAddressFromNode} from '@renderer/utils/address';
+import {RootState} from '@shared/types';
 
 import {getPrimaryValidator} from './app';
 import {getManagedValidators} from './state';

@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-import {AcceptedFees, BankConfig, Tx, ValidatorConfig} from '@renderer/types';
+import {AXIOS_TIMEOUT_MS} from '@renderer/config';
 import {formatAddress} from '@renderer/utils/address';
 import {generateBlock, getKeyPairFromSigningKeyHex} from '@renderer/utils/signing';
 import {getBankTxFee, getPrimaryValidatorTxFee} from '@renderer/utils/transactions';
-import {AXIOS_TIMEOUT_MS} from '@renderer/config';
+import {AcceptedFees, BankConfig, Tx, ValidatorConfig} from '@shared/types';
 
 const createBlock = async (
   activePrimaryValidator: ValidatorConfig,

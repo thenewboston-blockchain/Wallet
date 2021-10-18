@@ -1,7 +1,7 @@
 import React, {ChangeEvent, ReactNode} from 'react';
 
 import {useFormContext2} from '@renderer/hooks';
-import {CheckableInputOption, SFC} from '@renderer/types';
+import {CheckableInputOption, SFC} from '@shared/types';
 import * as S from './Styles';
 
 export interface RadioGroupProps {

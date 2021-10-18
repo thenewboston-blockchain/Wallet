@@ -4,7 +4,7 @@ import {
   CheckCircleIcon as UCheckCircleIcon,
 } from '@renderer/components/Icons';
 import {colors} from '@renderer/styles';
-import {ToastType} from '@renderer/types/toast';
+import {ToastType} from '@shared/types/toast';
 
 export const Container = styled.div<{type: ToastType}>`
   background-color: ${({type}) => {

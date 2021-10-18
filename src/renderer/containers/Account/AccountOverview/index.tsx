@@ -6,7 +6,7 @@ import {Switch} from '@renderer/components/FormElements';
 import {useToggle} from '@renderer/hooks';
 // Temp End
 
-import {SFC} from '@renderer/types';
+import {SFC} from '@shared/types';
 import AccountOverviewCarousel, {AccountOverviewCarouselTopic} from './AccountOverviewCarousel';
 import AccountOverviewVaultCard from './AccountOverviewVaultCard';
 import AccountOverviewVoteCard from './AccountOverviewVoteCard';

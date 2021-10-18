@@ -3,8 +3,8 @@ import {useDispatch} from 'react-redux';
 
 import {fetchAccountBalance} from '@renderer/dispatchers/balances';
 import {useAccountBalance, useAccountContext} from '@renderer/hooks';
-import {AppDispatch, SFC} from '@renderer/types';
 import {displayErrorToast} from '@renderer/utils/toast';
+import {AppDispatch, SFC} from '@shared/types';
 import * as S from './Styles';
 
 const AccountBalance: SFC = ({className}) => {

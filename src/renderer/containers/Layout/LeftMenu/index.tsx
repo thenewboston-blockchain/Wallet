@@ -13,10 +13,10 @@ import {
   getManagedValidators,
   getValidatorConfigs,
 } from '@renderer/selectors';
-import {ManagedAccount, ManagedFriend, ManagedNode, NodeSection, RootState, SFC} from '@renderer/types';
 import {truncateLongText} from '@renderer/utils/accounts';
 import {formatAddressFromNode, formatPathFromNode} from '@renderer/utils/address';
 import {sortByBooleanKey, sortDictValuesByPreferredKey} from '@renderer/utils/sort';
+import {ManagedAccount, ManagedFriend, ManagedNode, NodeSection, RootState, SFC} from '@shared/types';
 
 import LeftSubmenuItem from './LeftSubmenuItem';
 import * as S from './Styles';

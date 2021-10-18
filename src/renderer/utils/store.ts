@@ -1,6 +1,7 @@
 import {PayloadAction} from '@reduxjs/toolkit';
 
 import localStore from '@renderer/store/local';
+import {formatAddressFromNode} from '@renderer/utils/address';
 import {
   AccountBalance,
   AccountNumber,
@@ -13,8 +14,7 @@ import {
   ManagedNode,
   NodeIdentifier,
   PaginatedResults,
-} from '@renderer/types';
-import {formatAddressFromNode} from '@renderer/utils/address';
+} from '@shared/types';
 
 interface Address {
   address: string;

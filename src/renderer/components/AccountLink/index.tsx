@@ -1,6 +1,6 @@
 import React from 'react';
 import ExpandableText from '@renderer/components/ExpandableText';
-import {SFC} from '@renderer/types';
+import {SFC} from '@shared/types';
 import * as S from './Styles';
 
 interface ComponentProps {

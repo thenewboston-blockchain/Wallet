@@ -12,6 +12,7 @@ import {
   setValidatorValidators,
   setValidatorValidatorsError,
 } from '@renderer/store/validators';
+import {fetchPaginatedResults, sanitizePortFieldFromRawPrimaryValidatorConfig} from '@renderer/utils/api';
 import {
   AppDispatch,
   BaseValidator,
@@ -21,8 +22,7 @@ import {
   ValidatorAccount,
   ValidatorBank,
   ValidatorConfig,
-} from '@renderer/types';
-import {fetchPaginatedResults, sanitizePortFieldFromRawPrimaryValidatorConfig} from '@renderer/utils/api';
+} from '@shared/types';
 
 export const fetchValidatorAccounts =
   (address: string, params: PaginatedQueryParams = defaultPaginatedQueryParam) =>

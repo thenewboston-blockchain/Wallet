@@ -3,7 +3,7 @@
 import React, {ChangeEvent, FocusEvent, forwardRef, ReactNode} from 'react';
 import {Field, FieldInputProps} from 'formik';
 import {useFormContext} from '@renderer/hooks';
-import {ClassName} from '@renderer/types';
+import {ClassName} from '@shared/types';
 
 import HelperText, {HelperTextType} from '../HelperText';
 import * as S from './Styles';

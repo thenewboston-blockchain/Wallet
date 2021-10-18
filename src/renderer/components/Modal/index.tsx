@@ -4,8 +4,7 @@ import noop from 'lodash/noop';
 
 import {ButtonType, Form, FormButton, FormButtonProps} from '@renderer/components/FormElements';
 import Loader from '@renderer/components/FormElements/Loader';
-
-import {GenericFormValues, GenericFunction, SFC} from '@renderer/types';
+import {GenericFormValues, GenericFunction, SFC} from '@shared/types';
 
 import * as S from './Styles';
 

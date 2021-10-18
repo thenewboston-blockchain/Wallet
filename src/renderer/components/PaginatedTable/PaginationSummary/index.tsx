@@ -1,7 +1,7 @@
 import React, {memo} from 'react';
 
 import {PAGINATED_RESULTS_LIMIT} from '@renderer/config';
-import {SFC} from '@renderer/types';
+import {SFC} from '@shared/types';
 import * as S from './Styles';
 
 export interface PaginationSummaryProps {

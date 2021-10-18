@@ -1,7 +1,7 @@
 import React, {useMemo} from 'react';
 import {useSelector} from 'react-redux';
 import {getManagedAccounts} from '@renderer/selectors';
-import {SelectOption, SelectOptionMeta, SFC} from '@renderer/types';
+import {SelectOption, SelectOptionMeta, SFC} from '@shared/types';
 
 import * as S from './Styles';
 

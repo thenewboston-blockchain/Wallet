@@ -1,5 +1,5 @@
 import ElectronStore from 'electron-store';
-import {LocalStore} from '@renderer/types';
+import {LocalStore} from '@shared/types';
 
 const localStore = new ElectronStore<LocalStore>();
 

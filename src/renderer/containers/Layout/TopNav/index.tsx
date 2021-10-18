@@ -15,9 +15,9 @@ import {clearLocalState} from '@renderer/dispatchers/app';
 import {useToggle, useIpcEffect, useNavigationalHistory, useReadIpc, useWriteIpc} from '@renderer/hooks';
 import {getPrimaryValidatorConfig} from '@renderer/selectors';
 import localStore from '@renderer/store/local';
-import {AppDispatch, LocalStore, SFC} from '@renderer/types';
 import {displayToast, ToastType} from '@renderer/utils/toast';
 import {getFailChannel, getSuccessChannel, IpcChannel} from '@shared/ipc';
+import {AppDispatch, LocalStore, SFC} from '@shared/types';
 
 import * as S from './Styles';
 

@@ -6,10 +6,10 @@ import axios from 'axios';
 import {AXIOS_TIMEOUT_MS} from '@renderer/config';
 import {getCleanSockets} from '@renderer/selectors';
 import {toggleCleanProcess} from '@renderer/store/sockets';
-import {AddressParams, AppDispatch, CleanStatus, ManagedNode, NodeCleanStatusWithAddress} from '@renderer/types';
 import {generateUuid} from '@renderer/utils/local';
 import {displayToast, ToastType} from '@renderer/utils/toast';
 import {formatAddress} from '@renderer/utils/address';
+import {AddressParams, AppDispatch, CleanStatus, ManagedNode, NodeCleanStatusWithAddress} from '@shared/types';
 
 import useAddress from './useAddress';
 

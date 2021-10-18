@@ -11,11 +11,11 @@ import {
   getManagedAccounts,
   getPrimaryValidatorConfig,
 } from '@renderer/selectors';
-import {AppDispatch, SFC} from '@renderer/types';
 import {sendBlock} from '@renderer/utils/blocks';
 import yup from '@renderer/utils/forms/yup';
 import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
 import {getBankTxFee, getPrimaryValidatorTxFee} from '@renderer/utils/transactions';
+import {AppDispatch, SFC} from '@shared/types';
 
 import SendCoinsModalFields, {FormValues} from './SendCoinsModalFields';
 

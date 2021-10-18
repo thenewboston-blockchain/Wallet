@@ -3,7 +3,7 @@ import React from 'react';
 import {Button, ButtonVariant} from '@renderer/components/FormElements';
 import PageHeader, {PageHeaderSection} from '@renderer/components/PageHeader';
 import {useNodeContext, useToggle} from '@renderer/hooks';
-import {SFC} from '@renderer/types';
+import {SFC} from '@shared/types';
 
 import NodeHeaderDropdownContainer from './NodeHeaderDropdownContainer';
 

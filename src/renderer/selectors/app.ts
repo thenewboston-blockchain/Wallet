@@ -1,6 +1,6 @@
 import {createSelector} from '@reduxjs/toolkit';
 import {formatAddressFromNode} from '@renderer/utils/address';
-import {BankConfig} from '@renderer/types';
+import {BankConfig} from '@shared/types';
 import {
   getBankConfigs,
   getManagedAccountBalances,

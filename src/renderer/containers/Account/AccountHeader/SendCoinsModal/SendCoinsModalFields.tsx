@@ -10,8 +10,8 @@ import {
   getManagedAccounts,
   getManagedFriends,
 } from '@renderer/selectors';
-import {SelectOption, SelectOptionMeta, SFC} from '@renderer/types';
 import {getBankTxFee, getPrimaryValidatorTxFee} from '@renderer/utils/transactions';
+import {SelectOption, SelectOptionMeta, SFC} from '@shared/types';
 
 import * as S from './Styles';
 

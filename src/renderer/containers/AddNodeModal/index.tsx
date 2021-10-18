@@ -6,7 +6,6 @@ import Modal from '@renderer/components/Modal';
 import {fetchValidatorConfig} from '@renderer/dispatchers/validators';
 import {getManagedValidators} from '@renderer/selectors';
 import {setManagedValidator} from '@renderer/store/app';
-import {AppDispatch, ProtocolType, SFC} from '@renderer/types';
 import {formatAddressFromNode, formatPathFromNode} from '@renderer/utils/address';
 import {
   getAddressFormField,
@@ -17,6 +16,7 @@ import {
 } from '@renderer/utils/forms/fields';
 import yup from '@renderer/utils/forms/yup';
 import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
+import {AppDispatch, ProtocolType, SFC} from '@shared/types';
 
 import AddNodeModalFields from './AddNodeModalFields';
 

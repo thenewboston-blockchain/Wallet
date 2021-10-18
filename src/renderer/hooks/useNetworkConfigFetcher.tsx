@@ -5,7 +5,7 @@ import {BANK_CONFIGS, VALIDATOR_CONFIGS} from '@renderer/constants/actions';
 import {fetchBankConfig} from '@renderer/dispatchers/banks';
 import {fetchValidatorConfig} from '@renderer/dispatchers/validators';
 import {getBankConfigs, getValidatorConfigs} from '@renderer/selectors';
-import {AppDispatch, DictWithDataAndError, RootState} from '@renderer/types';
+import {AppDispatch, DictWithDataAndError, RootState} from '@shared/types';
 
 import useAddress from './useAddress';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {IconProps} from '@renderer/components/Icons';
-import {SFC} from '@renderer/types';
+import {SFC} from '@shared/types';
 import * as S from './Styles';
 
 type LoaderProps = Pick<IconProps, 'size'>;

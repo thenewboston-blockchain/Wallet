@@ -17,8 +17,8 @@ import {
   setManagedBank,
   setManagedValidator,
 } from '@renderer/store/app';
-import {AddressData, AppDispatch, RootState, ValidatorConfig} from '@renderer/types';
 import {formatAddressFromNode} from '@renderer/utils/address';
+import {AddressData, AppDispatch, RootState, ValidatorConfig} from '@shared/types';
 
 import {fetchBankConfig} from './banks';
 import {fetchValidatorConfig} from './validators';

@@ -8,9 +8,9 @@ import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/component
 import {BANK_BANK_TRANSACTIONS} from '@renderer/constants/actions';
 import {useToggle, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
 import {getActiveBankConfig} from '@renderer/selectors';
-import {AccountNumberParams, BankTransaction, SFC} from '@renderer/types';
 import {formatAddressFromNode} from '@renderer/utils/address';
 import {formatDate} from '@renderer/utils/dates';
+import {AccountNumberParams, BankTransaction, SFC} from '@shared/types';
 
 import AccountTransactionsHeader from './AccountTransactionsHeader';
 import * as S from './Styles';

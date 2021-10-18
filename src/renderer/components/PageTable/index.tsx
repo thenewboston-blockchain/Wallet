@@ -1,7 +1,7 @@
 import React, {Fragment, ReactNode} from 'react';
 
 import {Checkbox} from '@renderer/components/FormElements';
-import {GenericVoidFunction, SFC} from '@renderer/types';
+import {GenericVoidFunction, SFC} from '@shared/types';
 import * as S from './Styles';
 
 interface Header {

@@ -1,15 +1,14 @@
 import {useCallback, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
-import axios from 'axios';
 
-import {AXIOS_TIMEOUT_MS} from '@renderer/config';
 import {getCleanSockets} from '@renderer/selectors';
 import {toggleCleanProcess} from '@renderer/store/sockets';
-import {AddressParams, AppDispatch, CleanStatus, ManagedNode, NodeCleanStatusWithAddress} from '@renderer/types';
+import {formatAddress} from '@renderer/utils/address';
+import axios from '@renderer/utils/axios';
 import {generateUuid} from '@renderer/utils/local';
 import {displayToast, ToastType} from '@renderer/utils/toast';
-import {formatAddress} from '@renderer/utils/address';
+import {AddressParams, AppDispatch, CleanStatus, ManagedNode, NodeCleanStatusWithAddress} from '@shared/types';
 
 import useAddress from './useAddress';
 
@@ -42,7 +41,7 @@ const useNetworkCleanFetcher = (
     const fetchData = async (): Promise<void> => {
       try {
         setLoading(true);
-        const {data} = await axios.get<NodeCleanStatusWithAddress>(`${address}/clean`, {timeout: AXIOS_TIMEOUT_MS});
+        const {data} = await axios.get<NodeCleanStatusWithAddress>(`${address}/clean`);
         setCleanStatus(data.clean_status || CleanStatus.notCleaning);
         setCleanLastCompleted(data.clean_last_completed);
       } catch (error) {

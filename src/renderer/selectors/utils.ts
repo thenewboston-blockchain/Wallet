@@ -1,4 +1,4 @@
-import {RootState} from '@renderer/types';
+import {RootState} from '@shared/types';
 
 export const getNthArg =
   (n: number) =>

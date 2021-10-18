@@ -1,5 +1,5 @@
 import React from 'react';
-import {SFC} from '@renderer/types';
+import {SFC} from '@shared/types';
 import {NODE_FEE, PV_FEE, USERNAME_FEE} from '../constants';
 import * as S from './Styles';
 

@@ -1,9 +1,9 @@
 import {fetchAndDispatchPrimaryValidator} from '@renderer/dispatchers/app';
 import {setPrimaryValidatorUpdatedNotification} from '@renderer/store/notifications';
-import {AppDispatch} from '@renderer/types';
 import {formatAddressFromNode} from '@renderer/utils/address';
 import {generateUuid} from '@renderer/utils/local';
 import {displayToast, ToastType} from '@renderer/utils/toast';
+import {AppDispatch} from '@shared/types';
 
 const handlePrimaryValidatorUpdatedNotifications = async (
   bankSocketAddress: string,

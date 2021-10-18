@@ -9,7 +9,7 @@ import {
   Id,
   NodeCrawlStatus,
   SocketConnectionStatus,
-} from '@renderer/types';
+} from '@shared/types';
 
 interface ToggleCrawlProcessPayload extends AddressData, Id {
   signingKey: string;

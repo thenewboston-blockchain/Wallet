@@ -1,4 +1,4 @@
-import {AddressData, Id} from '@renderer/types/network';
+import {AddressData, Id} from '@shared/types/network';
 
 export enum CrawlCommand {
   start = 'start',

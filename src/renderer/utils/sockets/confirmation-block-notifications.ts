@@ -3,8 +3,8 @@ import intersection from 'lodash/intersection';
 import {setAccountBalance} from '@renderer/store/accountBalances';
 import {setManagedAccountBalance} from '@renderer/store/managedAccountBalances';
 import {setConfirmationBlockNotification} from '@renderer/store/notifications';
-import {AppDispatch} from '@renderer/types';
 import {generateUuid} from '@renderer/utils/local';
+import {AppDispatch} from '@shared/types';
 
 const handleConfirmationBlockNotification = (
   relevantManagedAccountNumbers: string[],

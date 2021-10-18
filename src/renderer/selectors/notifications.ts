@@ -2,13 +2,13 @@ import createCachedSelector from 're-reselect';
 
 import {getNthArg} from '@renderer/selectors/utils';
 import {parseAddressData} from '@renderer/utils/address';
+import {parseDate} from '@renderer/utils/dates';
 import {
   CrawlStatusNotificationPayload,
   CleanStatusNotificationPayload,
   NotificationType,
   RootState,
-} from '@renderer/types';
-import {parseDate} from '@renderer/utils/dates';
+} from '@shared/types';
 
 import {getNotifications} from './state';
 

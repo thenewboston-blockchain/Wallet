@@ -4,7 +4,7 @@ import {useParams} from 'react-router-dom';
 
 import {useAddress} from '@renderer/hooks';
 import {getManagedValidators} from '@renderer/selectors';
-import {AddressParams, ManagedNode, ProtocolType} from '@renderer/types';
+import {AddressParams, ManagedNode, ProtocolType} from '@shared/types';
 
 enum NodeActionType {
   set = 'set',

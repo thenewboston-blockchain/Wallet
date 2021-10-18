@@ -3,7 +3,7 @@ import React, {ReactNode} from 'react';
 import ArrowToggle from '@renderer/components/ArrowToggle';
 import {PlusIcon} from '@renderer/components/Icons';
 import {useToggle} from '@renderer/hooks';
-import {SFC} from '@renderer/types';
+import {SFC} from '@shared/types';
 
 import * as S from './Styles';
 

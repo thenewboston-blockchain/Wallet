@@ -9,7 +9,7 @@ import {
   Id,
   NodeCleanStatus,
   SocketConnectionStatus,
-} from '@renderer/types';
+} from '@shared/types';
 
 interface ToggleCleanProcessPayload extends AddressData, Id {
   signingKey: string;

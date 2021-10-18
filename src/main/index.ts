@@ -3,9 +3,12 @@
 import {app, dialog, BrowserWindow, ipcMain, Menu, SaveDialogOptions, OpenDialogOptions} from 'electron';
 import contextMenu from 'electron-context-menu';
 import installExtension, {REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS} from 'electron-devtools-installer';
+import ElectronStore from 'electron-store';
 import fs from 'fs';
 import {DownloadSigningKeyPayload, getFailChannel, getSuccessChannel, IpcChannel} from '@shared/ipc';
 import menu from './menu';
+
+ElectronStore.initRenderer();
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 
@@ -25,7 +28,6 @@ const createWindow = (): void => {
     height: 1080,
     webPreferences: {
       contextIsolation: false,
-      enableRemoteModule: true, // Consider moving away from this! https://nornagon.medium.com/electrons-remote-module-considered-harmful-70d69500f31
       nodeIntegration: true,
     },
     width: 1920,

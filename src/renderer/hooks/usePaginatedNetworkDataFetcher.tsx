@@ -53,7 +53,7 @@ import {
   unsetBankValidators,
 } from '@renderer/store/banks';
 import {unsetValidatorAccounts, unsetValidatorBanks, unsetValidatorValidators} from '@renderer/store/validators';
-import {AppDispatch, DictWithPaginatedResultsAndError, PaginatedQueryParams, RootState} from '@renderer/types';
+import {AppDispatch, DictWithPaginatedResultsAndError, PaginatedQueryParams, RootState} from '@shared/types';
 
 const getDispatcherFromType = (
   type: string,

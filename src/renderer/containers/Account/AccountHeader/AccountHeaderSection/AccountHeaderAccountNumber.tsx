@@ -3,9 +3,9 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 
 import {PageHeaderSection} from '@renderer/components/PageHeader';
 import {useAccountContext, useToggle} from '@renderer/hooks';
-import {AccountType, SFC} from '@renderer/types';
 import {truncateLongText} from '@renderer/utils/accounts';
 import {displayToast, ToastType} from '@renderer/utils/toast';
+import {AccountType, SFC} from '@shared/types';
 
 import QrcodeModal from '../../QrcodeModal';
 import * as S from './Styles';

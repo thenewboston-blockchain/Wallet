@@ -1,6 +1,6 @@
 import ElectronStore from 'electron-store';
 import {v4 as uuidv4} from 'uuid';
-import {LocalStore, MigrationFunction} from '@renderer/types';
+import {LocalStore, MigrationFunction} from '@shared/types';
 
 export const generateUuid = () => uuidv4();
 

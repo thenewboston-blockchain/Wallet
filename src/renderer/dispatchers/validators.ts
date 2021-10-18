@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-import {AXIOS_TIMEOUT_MS, defaultPaginatedQueryParam} from '@renderer/config';
+import {defaultPaginatedQueryParam} from '@renderer/config';
 import {ACCOUNTS, BANKS, VALIDATORS} from '@renderer/constants/actions';
 import {
   setValidatorAccounts,
@@ -12,6 +10,8 @@ import {
   setValidatorValidators,
   setValidatorValidatorsError,
 } from '@renderer/store/validators';
+import {fetchPaginatedResults, sanitizePortFieldFromRawPrimaryValidatorConfig} from '@renderer/utils/api';
+import axios from '@renderer/utils/axios';
 import {
   AppDispatch,
   BaseValidator,
@@ -21,8 +21,7 @@ import {
   ValidatorAccount,
   ValidatorBank,
   ValidatorConfig,
-} from '@renderer/types';
-import {fetchPaginatedResults, sanitizePortFieldFromRawPrimaryValidatorConfig} from '@renderer/utils/api';
+} from '@shared/types';
 
 export const fetchValidatorAccounts =
   (address: string, params: PaginatedQueryParams = defaultPaginatedQueryParam) =>
@@ -54,9 +53,7 @@ export const fetchValidatorConfig =
   (address: string) =>
   async (dispatch: AppDispatch): Promise<{address: string; data?: ValidatorConfig; error?: any}> => {
     try {
-      const {data: rawData} = await axios.get<RawPrimaryValidatorConfig>(`${address}/config`, {
-        timeout: AXIOS_TIMEOUT_MS,
-      });
+      const {data: rawData} = await axios.get<RawPrimaryValidatorConfig>(`${address}/config`);
       const data = sanitizePortFieldFromRawPrimaryValidatorConfig(rawData);
 
       if (data.node_type !== NodeType.primaryValidator && data.node_type !== NodeType.confirmationValidator) {

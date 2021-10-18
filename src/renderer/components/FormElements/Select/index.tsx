@@ -4,8 +4,8 @@ import React, {ChangeEvent, FocusEvent, forwardRef, ReactNode, useCallback, useS
 import {Field, FieldInputProps} from 'formik';
 import {v4 as uuid} from 'uuid';
 import {useFormContext} from '@renderer/hooks';
-import {ClassName, SelectOption, SelectOptionMeta} from '@renderer/types';
 import {truncateLongText} from '@renderer/utils/accounts';
+import {ClassName, SelectOption, SelectOptionMeta} from '@shared/types';
 
 import HelperText, {HelperTextType} from '../HelperText';
 import * as S from './Styles';

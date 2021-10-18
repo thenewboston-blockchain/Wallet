@@ -1,6 +1,6 @@
 import React from 'react';
 import {PageTableData, PageTableItems} from '@renderer/components/PageTable';
-import {SFC} from '@renderer/types';
+import {SFC} from '@shared/types';
 import * as S from './Styles';
 
 export enum NodeCenterTableKeys {

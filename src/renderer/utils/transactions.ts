@@ -1,4 +1,4 @@
-import {BankConfig, ValidatorConfig} from '@renderer/types';
+import {BankConfig, ValidatorConfig} from '@shared/types';
 
 export const getBankTxFee = (activeBankConfig: BankConfig, senderAccountNumber?: string): number => {
   if (senderAccountNumber && activeBankConfig.account_number === senderAccountNumber) return 0;

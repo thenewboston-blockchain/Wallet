@@ -4,7 +4,7 @@ import {useLocation} from 'react-router-dom';
 import throttle from 'lodash/throttle';
 
 import {useEventListener, useWindowDimensions} from '@renderer/hooks';
-import {SFC} from '@renderer/types';
+import {SFC} from '@shared/types';
 import * as S from './Styles';
 
 export interface DomRect {

@@ -2,7 +2,7 @@
 
 import React, {SyntheticEvent} from 'react';
 import {Field, FieldInputProps} from 'formik';
-import {SFC} from '@renderer/types';
+import {SFC} from '@shared/types';
 import * as S from './Styles';
 
 export interface SwitchProps {

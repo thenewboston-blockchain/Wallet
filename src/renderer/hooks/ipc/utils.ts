@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import {ipcRenderer} from 'electron';
-import {GenericVoidFunction} from '@renderer/types';
+import {GenericVoidFunction} from '@shared/types';
 
 export const useIpcEffect = (channel: string, callback: GenericVoidFunction) => {
   useEffect(() => {

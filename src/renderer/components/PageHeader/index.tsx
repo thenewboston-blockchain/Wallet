@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import React, {Fragment, ReactNode} from 'react';
-import {SFC} from '@renderer/types';
+import {SFC} from '@shared/types';
 
 import PageHeaderSection, {PageHeaderSectionStyles} from './PageHeaderSection';
 import * as S from './Styles';

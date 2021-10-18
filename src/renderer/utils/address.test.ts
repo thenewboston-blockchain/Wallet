@@ -1,4 +1,4 @@
-import {ProtocolType} from '@renderer/types';
+import {ProtocolType} from '@shared/types';
 import {
   formatAddress,
   formatAddressFromNode,

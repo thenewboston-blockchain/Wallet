@@ -3,7 +3,7 @@ import React from 'react';
 import {Loader} from '@renderer/components/FormElements';
 import {VALIDATOR_CONFIGS} from '@renderer/constants/actions';
 import {useNetworkConfigFetcher} from '@renderer/hooks';
-import {SFC, ValidatorConfig} from '@renderer/types';
+import {SFC, ValidatorConfig} from '@shared/types';
 import * as S from './Styles';
 
 const NodeOverview: SFC = ({className}) => {

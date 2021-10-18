@@ -12,7 +12,7 @@ const mode = process.env.NODE_ENVIRONMENT;
 
 module.exports = {
   devtool: 'source-map',
-  entry: './src/main/main.ts',
+  entry: './src/main/index.ts',
   mode,
   module: {
     rules,

@@ -1,4 +1,4 @@
-import {parse, ParsedUrlQuery, stringify} from 'querystring';
+import {parse, ParsedQuery, stringify} from 'query-string';
 import {AddressData, ProtocolType} from '@shared/types';
 
 export const formatAddress = (ipAddress: string, port: number | string, protocol: string): string => {
@@ -41,7 +41,7 @@ export const parseAddressData = (address: string): {ipAddress: string; port: num
   };
 };
 
-export const parseQueryParams = (url: string): ParsedUrlQuery => {
+export const parseQueryParams = (url: string): ParsedQuery => {
   const questionMarkIndex = url.indexOf('?');
   if (questionMarkIndex === -1) return {};
 

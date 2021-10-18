@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import {
   ACCOUNTS,
   BANK_TRANSACTIONS,
@@ -10,7 +8,7 @@ import {
   VALIDATOR_CONFIRMATION_SERVICES,
   VALIDATORS,
 } from '@renderer/constants/actions';
-import {AXIOS_TIMEOUT_MS, defaultPaginatedQueryParam} from '@renderer/config';
+import {defaultPaginatedQueryParam} from '@renderer/config';
 import {
   setBankAccounts,
   setBankAccountsError,
@@ -32,6 +30,7 @@ import {
   setBankValidatorsError,
 } from '@renderer/store/banks';
 import {fetchPaginatedResults, sanitizePortFieldFromRawBankConfig} from '@renderer/utils/api';
+import axios from '@renderer/utils/axios';
 import {
   AppDispatch,
   BankAccount,
@@ -90,7 +89,7 @@ export const fetchBankConfig =
   (address: string) =>
   async (dispatch: AppDispatch): Promise<{address: string; data?: BankConfig; error?: any}> => {
     try {
-      const {data: rawData} = await axios.get<RawBankConfig>(`${address}/config`, {timeout: AXIOS_TIMEOUT_MS});
+      const {data: rawData} = await axios.get<RawBankConfig>(`${address}/config`);
       const data = sanitizePortFieldFromRawBankConfig(rawData);
 
       if (data.node_type !== NodeType.bank) {

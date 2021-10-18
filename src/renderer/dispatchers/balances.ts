@@ -1,9 +1,8 @@
-import axios from 'axios';
-import {AXIOS_TIMEOUT_MS} from '@renderer/config';
 import {getPrimaryValidator, getManagedAccounts} from '@renderer/selectors';
 import {setAccountBalance} from '@renderer/store/accountBalances';
 import {setManagedAccountBalance} from '@renderer/store/managedAccountBalances';
 import {formatAddressFromNode} from '@renderer/utils/address';
+import axios from '@renderer/utils/axios';
 import {AppDispatch, Balance, RootState} from '@shared/types';
 
 export const fetchAccountBalance =
@@ -17,9 +16,7 @@ export const fetchAccountBalance =
     if (!primaryValidator) throw new Error('No primary validator. Unable to fetch account balance.');
     const address = formatAddressFromNode(primaryValidator);
 
-    const {data} = await axios.get<Balance>(`${address}/accounts/${accountNumber}/balance`, {
-      timeout: AXIOS_TIMEOUT_MS,
-    });
+    const {data} = await axios.get<Balance>(`${address}/accounts/${accountNumber}/balance`);
     const balance = data.balance || 0;
     const balancePayload = {
       account_number: accountNumber,

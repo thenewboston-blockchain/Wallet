@@ -1,7 +1,5 @@
-import axios from 'axios';
-
-import {AXIOS_TIMEOUT_MS} from '@renderer/config';
 import {formatAddress} from '@renderer/utils/address';
+import axios from '@renderer/utils/axios';
 import {generateBlock, getKeyPairFromSigningKeyHex} from '@renderer/utils/signing';
 import {getBankTxFee, getPrimaryValidatorTxFee} from '@renderer/utils/transactions';
 import {AcceptedFees, BankConfig, Tx, ValidatorConfig} from '@shared/types';
@@ -25,7 +23,7 @@ const fetchAccountBalanceLock = async (
   const address = formatAddress(ipAddress, port, protocol);
   const {
     data: {balance_lock: balanceLock},
-  } = await axios.get(`${address}/accounts/${accountNumber}/balance_lock`, {timeout: AXIOS_TIMEOUT_MS});
+  } = await axios.get(`${address}/accounts/${accountNumber}/balance_lock`);
   return balanceLock;
 };
 

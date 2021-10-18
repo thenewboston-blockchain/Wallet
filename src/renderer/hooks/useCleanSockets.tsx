@@ -1,10 +1,10 @@
 import {useCallback, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import axios, {AxiosResponse} from 'axios';
 
 import {getInactiveCleanSockets} from '@renderer/selectors/sockets';
 import {updateCleanProcess} from '@renderer/store/sockets';
 import {formatAddressFromNode, formatSocketAddressFromNode} from '@renderer/utils/address';
+import axios, {AxiosResponse} from '@renderer/utils/axios';
 import {generateSignedMessage, getKeyPairFromSigningKeyHex} from '@renderer/utils/signing';
 import {initializeSocketForCleanStatus} from '@renderer/utils/sockets';
 import handleCleanSocketEvent from '@renderer/utils/sockets/clean';

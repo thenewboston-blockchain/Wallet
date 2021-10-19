@@ -2,14 +2,12 @@
 
 import {app, dialog, ipcMain, SaveDialogOptions, OpenDialogOptions} from 'electron';
 import installExtension, {REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS} from 'electron-devtools-installer';
-import ElectronStore from 'electron-store';
 import fs from 'fs';
 
 import '@main/Menu';
 import MainWindow from '@main/MainWindow';
+import '@main/Store';
 import {DownloadSigningKeyPayload, getFailChannel, getSuccessChannel, IpcChannel} from '@shared/ipc';
-
-ElectronStore.initRenderer();
 
 const isMac = process.platform === 'darwin';
 const gotTheLock = app.requestSingleInstanceLock();

@@ -1,25 +1,18 @@
 /* eslint-disable no-console  */
 
-import {app, dialog, ipcMain, Menu, SaveDialogOptions, OpenDialogOptions} from 'electron';
-import contextMenu from 'electron-context-menu';
+import {app, dialog, ipcMain, SaveDialogOptions, OpenDialogOptions} from 'electron';
 import installExtension, {REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS} from 'electron-devtools-installer';
 import ElectronStore from 'electron-store';
 import fs from 'fs';
-import {DownloadSigningKeyPayload, getFailChannel, getSuccessChannel, IpcChannel} from '@shared/ipc';
 
+import '@main/Menu';
 import MainWindow from '@main/MainWindow';
-import menu from './menu';
+import {DownloadSigningKeyPayload, getFailChannel, getSuccessChannel, IpcChannel} from '@shared/ipc';
 
 ElectronStore.initRenderer();
 
 const isMac = process.platform === 'darwin';
 const gotTheLock = app.requestSingleInstanceLock();
-
-Menu.setApplicationMenu(menu);
-
-contextMenu({
-  menu: (defaultActions) => [defaultActions.inspect()],
-});
 
 // if gotTheLock is false, another instance of application is already running
 if (!gotTheLock) {

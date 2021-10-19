@@ -1,16 +1,16 @@
 /* eslint-disable no-console  */
 
-import {app, dialog, BrowserWindow, ipcMain, Menu, SaveDialogOptions, OpenDialogOptions} from 'electron';
+import {app, dialog, ipcMain, Menu, SaveDialogOptions, OpenDialogOptions} from 'electron';
 import contextMenu from 'electron-context-menu';
 import installExtension, {REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS} from 'electron-devtools-installer';
 import ElectronStore from 'electron-store';
 import fs from 'fs';
 import {DownloadSigningKeyPayload, getFailChannel, getSuccessChannel, IpcChannel} from '@shared/ipc';
+
+import MainWindow from '@main/MainWindow';
 import menu from './menu';
 
 ElectronStore.initRenderer();
-
-declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 
 const isMac = process.platform === 'darwin';
 const gotTheLock = app.requestSingleInstanceLock();
@@ -21,31 +21,16 @@ contextMenu({
   menu: (defaultActions) => [defaultActions.inspect()],
 });
 
-let mainWindow: BrowserWindow;
-
-const createWindow = (): void => {
-  mainWindow = new BrowserWindow({
-    height: 1080,
-    webPreferences: {
-      contextIsolation: false,
-      nodeIntegration: true,
-    },
-    width: 1920,
-  });
-
-  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-};
-
 // if gotTheLock is false, another instance of application is already running
 if (!gotTheLock) {
   app.quit();
 } else {
   app.on('second-instance', () => {
     // focus back to the previous instance, if someone tried to create new instance
-    if (mainWindow) {
-      if (mainWindow.isMinimized() || !mainWindow.isFocused()) {
-        mainWindow.restore();
-        mainWindow.focus();
+    if (MainWindow.exists()) {
+      if (MainWindow.isMinimized() || !MainWindow.isFocused()) {
+        MainWindow.restore();
+        MainWindow.focus();
       }
     }
   });
@@ -54,7 +39,7 @@ if (!gotTheLock) {
       .then((name) => console.log(`Added Extension: ${name}`))
       .catch((error) => console.log('An error occurred: ', error));
   });
-  app.on('ready', createWindow);
+  app.on('ready', MainWindow.createWindow);
 }
 
 app.setName('TNB Wallet');
@@ -70,8 +55,8 @@ app.on('window-all-closed', () => {
 app.on('activate', () => {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
+  if (MainWindow.getNumOfWindows() === 0) {
+    MainWindow.createWindow();
   }
 });
 
@@ -161,7 +146,7 @@ ipcMain.on(IpcChannel.importStoreData, async (event) => {
 ipcMain.on(IpcChannel.restartApp, (event) => {
   try {
     console.log('Trying to restart app');
-    mainWindow.webContents.reloadIgnoringCache();
+    MainWindow.reloadIgnoringCache();
     setTimeout(() => {
       event.reply(getSuccessChannel(IpcChannel.restartApp));
     }, 1000);

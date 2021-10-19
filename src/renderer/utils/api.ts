@@ -1,4 +1,6 @@
-import axios from 'axios';
+import {formatQueryParams} from '@renderer/utils/address';
+import axios from '@renderer/utils/axios';
+import {SetError, SetResults} from '@renderer/utils/store';
 import {
   AppDispatch,
   BankConfig,
@@ -7,10 +9,7 @@ import {
   PrimaryValidatorConfig,
   RawBankConfig,
   RawPrimaryValidatorConfig,
-} from '@renderer/types';
-import {formatQueryParams} from '@renderer/utils/address';
-import {SetError, SetResults} from '@renderer/utils/store';
-import {AXIOS_TIMEOUT_MS} from '@renderer/config';
+} from '@shared/types';
 
 export async function fetchPaginatedResults<T>(
   address: string,
@@ -23,7 +22,6 @@ export async function fetchPaginatedResults<T>(
   try {
     const {data: rawData} = await axios.get<PaginatedResults<T>>(
       `${address}/${urlParam}${formatQueryParams(queryParams)}`,
-      {timeout: AXIOS_TIMEOUT_MS},
     );
 
     const data: PaginatedResults<T> = {

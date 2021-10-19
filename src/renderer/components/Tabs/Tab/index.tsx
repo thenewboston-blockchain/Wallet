@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 import {useTabsContext} from '@renderer/hooks';
-import {SFC} from '@renderer/types';
+import {SFC} from '@shared/types';
 import * as S from './Styles';
 
 interface TabProps {

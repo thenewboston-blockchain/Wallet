@@ -9,7 +9,7 @@ import {
   NotificationType,
   PrimaryValidatorUpdatedNotificationPayload,
   ValidatorConfirmationServiceNotificationPayload,
-} from '@renderer/types';
+} from '@shared/types';
 
 const notifications = createSlice({
   initialState: [] as NotificationPayload[],

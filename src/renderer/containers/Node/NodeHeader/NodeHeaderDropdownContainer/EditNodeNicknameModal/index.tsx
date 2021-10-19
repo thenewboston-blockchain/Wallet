@@ -5,9 +5,9 @@ import {TextField} from '@renderer/components/FormElements';
 import Modal from '@renderer/components/Modal';
 import {getManagedValidators} from '@renderer/selectors';
 import {setManagedValidator} from '@renderer/store/app';
-import {AppDispatch, SFC} from '@renderer/types';
 import {getNicknameField} from '@renderer/utils/forms/fields';
 import yup from '@renderer/utils/forms/yup';
+import {AppDispatch, SFC} from '@shared/types';
 
 interface ComponentProps {
   close(): void;

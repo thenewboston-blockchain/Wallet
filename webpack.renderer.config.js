@@ -1,32 +1,33 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable sort-keys */
 
 const path = require('path');
 const rules = require('./webpack.rules');
 
-function srcPaths(src) {
-  return path.join(__dirname, src);
+function srcPaths(...paths) {
+  return path.join(__dirname, ...paths);
 }
+
+const mode = process.env.NODE_ENVIRONMENT;
+const isEnvProduction = mode === 'production';
 
 module.exports = {
   devtool: 'source-map',
-  mode: 'development',
+  mode,
   module: {
     rules,
   },
   output: {
-    path: path.join(__dirname, 'bundle', 'renderer'),
+    path: isEnvProduction ? srcPaths('bundle', 'renderer') : undefined,
   },
   resolve: {
     alias: {
-      '@main': srcPaths('src/main'),
-      '@models': srcPaths('src/models'),
-      '@renderer': srcPaths('src/renderer'),
-      '@shared': srcPaths('src/shared'),
-      '@thenewboston/ui': srcPaths('node_modules/@thenewboston/ui'),
-      '@thenewboston/utils': srcPaths('node_modules/@thenewboston/utils'),
-      react: srcPaths('node_modules/react'),
-      'react-dom': srcPaths('node_modules/react-dom'),
-      'react-hot-loader': srcPaths('node_modules/react-hot-loader'),
+      '@main': srcPaths('src', 'main'),
+      '@renderer': srcPaths('src', 'renderer'),
+      '@shared': srcPaths('src', 'shared'),
+      react: srcPaths('node_modules', 'react'),
+      'react-dom': srcPaths('node_modules', 'react-dom'),
+      'react-hot-loader': srcPaths('node_modules', 'react-hot-loader'),
     },
     extensions: ['.js', '.ts', '.tsx', '.jsx', '.json'],
   },

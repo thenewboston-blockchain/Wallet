@@ -8,8 +8,8 @@ import NodeCenter from '@renderer/containers/NodeCenter';
 
 import {AccountProvider, NodeProvider} from '@renderer/context';
 import {getActiveBankConfig} from '@renderer/selectors';
-import {SFC} from '@renderer/types';
 import {formatPathFromNode} from '@renderer/utils/address';
+import {SFC} from '@shared/types';
 
 import * as S from './Styles';
 

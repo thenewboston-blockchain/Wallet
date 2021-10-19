@@ -2,8 +2,8 @@ import React, {FocusEvent, ReactNode, useEffect, useMemo, useRef, useState} from
 
 import {HelperTextType, TextField} from '@renderer/components/FormElements';
 import {useAccountBalance, useFormContext2} from '@renderer/hooks';
-import {SFC} from '@renderer/types';
 import {ALPHANUMERIC} from '@renderer/utils/regex';
+import {SFC} from '@shared/types';
 
 import {NODE_FEE, PV_FEE, USERNAME_FEE} from './constants';
 import * as S from './Styles';

@@ -3,7 +3,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import ReconnectingWebSocket from 'reconnecting-websocket';
 
 import {getActiveBank, getManagedAccounts} from '@renderer/selectors';
-import {AppDispatch} from '@renderer/types';
 import {formatSocketAddressFromNode} from '@renderer/utils/address';
 import {
   initializeSocketForPrimaryValidatorUpdated,
@@ -11,6 +10,7 @@ import {
   initializeSocketsForConfirmationBlocks,
   processSocketEvent,
 } from '@renderer/utils/sockets';
+import {AppDispatch} from '@shared/types';
 
 const useWebSockets = (): void => {
   const dispatch = useDispatch<AppDispatch>();

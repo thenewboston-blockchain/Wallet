@@ -6,15 +6,15 @@ const styledComponentsTransformer = createStyledComponentsTransformer();
 const rules = [
   // Add support for native node modules
   {
+    loader: 'node-loader',
     test: /\.node$/,
-    use: 'node-loader',
   },
   {
     exclude: /(bundle|node_modules)/,
     parser: {amd: false},
     test: /\.(m?js|node)$/,
     use: {
-      loader: '@marshallofsound/webpack-asset-relocator-loader',
+      loader: '@vercel/webpack-asset-relocator-loader',
       options: {
         outputAssetBase: 'native_modules',
       },
@@ -31,6 +31,9 @@ const rules = [
     use: [
       {
         loader: 'babel-loader',
+        options: {
+          presets: [['@babel/preset-env', {targets: 'defaults'}]],
+        },
       },
       {
         loader: 'ts-loader',

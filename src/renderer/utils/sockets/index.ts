@@ -1,7 +1,6 @@
 import ReconnectingWebSocket from 'reconnecting-websocket';
-
-import {AppDispatch, NotificationType} from '@renderer/types';
 import {displayErrorToast} from '@renderer/utils/toast';
+import {AppDispatch, NotificationType} from '@shared/types';
 
 import handleConfirmationBlockNotification from './confirmation-block-notifications';
 import handleCrawlSocketEvent from './crawl';

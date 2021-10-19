@@ -13,7 +13,6 @@
     "outDir": "./bundle/main",
     "paths": {
       "@main/*": ["./src/main/*"],
-      "@models/*": ["./src/models/*"],
       "@renderer/*": ["./src/renderer/*"],
       "@shared/*": ["./src/shared/*"]
     },

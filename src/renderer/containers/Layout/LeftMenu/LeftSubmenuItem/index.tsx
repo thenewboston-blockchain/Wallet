@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
 import {useLocation} from 'react-router-dom';
-import {SFC} from '@renderer/types';
+import {SFC} from '@shared/types';
 
 import * as S from './Styles';
 

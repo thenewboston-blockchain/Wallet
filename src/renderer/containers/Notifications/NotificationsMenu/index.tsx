@@ -2,7 +2,7 @@ import React, {ReactNode, RefObject, useRef} from 'react';
 import noop from 'lodash/noop';
 
 import {useEventListener} from '@renderer/hooks';
-import {SFC} from '@renderer/types';
+import {SFC} from '@shared/types';
 
 import * as S from './Styles';
 

@@ -12,9 +12,9 @@ import {
 } from '@renderer/constants/form-validation';
 import {getManagedAccounts, getManagedFriends} from '@renderer/selectors';
 import {setManagedFriend} from '@renderer/store/app';
-import {AppDispatch, SFC} from '@renderer/types';
 import {getNicknameField} from '@renderer/utils/forms/fields';
 import yup from '@renderer/utils/forms/yup';
+import {AppDispatch, SFC} from '@shared/types';
 
 import * as S from './Styles';
 

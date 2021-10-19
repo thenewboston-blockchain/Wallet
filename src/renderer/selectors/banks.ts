@@ -3,8 +3,8 @@ import {createCachedSelector} from 're-reselect';
 import pickBy from 'lodash/pickBy';
 
 import {getNthArg} from '@renderer/selectors/utils';
-import {Dict, ManagedNode, RootState} from '@renderer/types';
 import {formatAddressFromNode} from '@renderer/utils/address';
+import {Dict, ManagedNode, RootState} from '@shared/types';
 
 import {getActiveBank} from './app';
 import {getManagedBanks} from './state';

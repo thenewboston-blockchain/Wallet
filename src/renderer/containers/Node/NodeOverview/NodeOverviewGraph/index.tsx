@@ -7,8 +7,8 @@ import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAx
 import Link from '@renderer/components/Link';
 import {PageTableItems} from '@renderer/components/PageTable';
 import {colors} from '@renderer/styles';
-import {SFC} from '@renderer/types';
 import {truncateLongText} from '@renderer/utils/accounts';
+import {SFC} from '@shared/types';
 
 import {mockBoostData, mockBoostTableData} from './data';
 import * as S from './Styles';

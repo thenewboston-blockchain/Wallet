@@ -4,10 +4,10 @@ import {useLocation} from 'react-router-dom';
 
 import {PageHeaderSection} from '@renderer/components/PageHeader';
 import {useAccountContext, useToggle, useWriteIpc} from '@renderer/hooks';
-import {SFC} from '@renderer/types';
 import {truncateLongText} from '@renderer/utils/accounts';
 import {displayToast, ToastType} from '@renderer/utils/toast';
 import {DownloadSigningKeyPayload, IpcChannel} from '@shared/ipc';
+import {SFC} from '@shared/types';
 import * as S from './Styles';
 
 interface AccountHeaderSigningKeyProps {

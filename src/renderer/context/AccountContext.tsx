@@ -2,7 +2,7 @@ import React, {createContext, FC, Reducer, useEffect, useMemo, useReducer} from 
 import {useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
 import {getManagedAccounts, getManagedFriends} from '@renderer/selectors';
-import {AccountNumberParams, AccountType, ManagedAccount, ManagedFriend} from '@renderer/types';
+import {AccountNumberParams, AccountType, ManagedAccount, ManagedFriend} from '@shared/types';
 
 enum AccountActionType {
   set = 'set',

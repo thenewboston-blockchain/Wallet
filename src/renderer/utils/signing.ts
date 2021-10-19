@@ -1,7 +1,7 @@
 import {sign, SignKeyPair} from 'tweetnacl';
 import orderBy from 'lodash/orderBy';
 
-import {Tx} from '@renderer/types';
+import {Tx} from '@shared/types';
 
 export const generateBlock = (
   balanceLock: string,

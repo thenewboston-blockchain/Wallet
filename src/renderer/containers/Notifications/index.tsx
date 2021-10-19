@@ -8,6 +8,8 @@ import intervalToDuration from 'date-fns/intervalToDuration';
 
 import {useToggle} from '@renderer/hooks';
 import {getManagedAccounts, getManagedFriends, getNotifications} from '@renderer/selectors';
+import {formatAddressFromNode} from '@renderer/utils/address';
+import {sortByNumberKey} from '@renderer/utils/sort';
 import {
   CleanStatusNotificationPayload,
   ConfirmationBlockNotificationPayload,
@@ -17,9 +19,7 @@ import {
   PrimaryValidatorUpdatedNotificationPayload,
   SFC,
   ValidatorConfirmationServiceNotificationPayload,
-} from '@renderer/types';
-import {formatAddressFromNode} from '@renderer/utils/address';
-import {sortByNumberKey} from '@renderer/utils/sort';
+} from '@shared/types';
 
 import NotificationsMenu from './NotificationsMenu';
 import * as S from './Styles';

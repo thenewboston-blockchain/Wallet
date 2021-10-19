@@ -68,14 +68,14 @@ export {
 
 const bankReducers = combineReducers({
   [ACCOUNTS]: bankAccountsReducer,
-  [BANK_TRANSACTIONS]: bankBankTransactionsReducer,
   [BANKS]: bankBanksReducer,
+  [BANK_TRANSACTIONS]: bankBankTransactionsReducer,
   [BLOCKS]: bankBlocksReducer,
   [CONFIGS]: bankConfigsReducer,
   [CONFIRMATION_BLOCKS]: bankConfirmationBlocksReducer,
   [INVALID_BLOCKS]: bankInvalidBlocksReducer,
-  [VALIDATOR_CONFIRMATION_SERVICES]: bankValidatorConfirmationServicesReducer,
   [VALIDATORS]: bankValidatorsReducer,
+  [VALIDATOR_CONFIRMATION_SERVICES]: bankValidatorConfirmationServicesReducer,
 });
 
 export default bankReducers;

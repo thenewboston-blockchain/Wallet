@@ -14,12 +14,12 @@ import {getManagedAccounts, getManagedFriends} from '@renderer/selectors';
 import {setManagedAccount} from '@renderer/store/app';
 import {setAccountBalance} from '@renderer/store/accountBalances';
 import {setManagedAccountBalance} from '@renderer/store/managedAccountBalances';
-import {AppDispatch, SFC} from '@renderer/types';
 import {generateAccount} from '@renderer/utils/accounts';
 import {getNicknameField} from '@renderer/utils/forms/fields';
 import yup from '@renderer/utils/forms/yup';
 import {getKeyPairFromSigningKeyHex} from '@renderer/utils/signing';
 import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
+import {AppDispatch, SFC} from '@shared/types';
 
 import CreateAccountModalFields, {FormValues, initialValues} from './CreateAccountModalFields';
 

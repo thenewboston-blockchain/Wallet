@@ -1,6 +1,6 @@
 import {useSelector} from 'react-redux';
 import {getManagedFriends} from '@renderer/selectors';
-import {AccountType, ManagedFriend} from '@renderer/types';
+import {AccountType, ManagedFriend} from '@shared/types';
 import useAccountContext from './useAccountContext';
 
 const useManagedFriend = (): ManagedFriend | null => {

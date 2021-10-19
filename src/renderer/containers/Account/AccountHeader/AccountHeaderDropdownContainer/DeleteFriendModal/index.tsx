@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 import Modal from '@renderer/components/Modal';
 import {useManagedFriend} from '@renderer/hooks';
 import {unsetManagedFriend} from '@renderer/store/app';
-import {AppDispatch, SFC} from '@renderer/types';
+import {AppDispatch, SFC} from '@shared/types';
 
 interface ComponentProps {
   close(): void;

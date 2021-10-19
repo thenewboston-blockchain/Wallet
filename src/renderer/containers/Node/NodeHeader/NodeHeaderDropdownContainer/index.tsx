@@ -1,8 +1,8 @@
 import React, {useMemo} from 'react';
 
-import {SFC} from '@renderer/types';
 import {useToggle} from '@renderer/hooks';
 import DropdownMenuButton, {DropdownMenuDirection, DropdownMenuOption} from '@renderer/components/DropdownMenuButton';
+import {SFC} from '@shared/types';
 
 import EditNodeNicknameModal from './EditNodeNicknameModal';
 import RemoveNodeModal from './RemoveNodeModal';

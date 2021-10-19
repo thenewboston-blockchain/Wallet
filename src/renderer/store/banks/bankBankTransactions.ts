@@ -1,8 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 import {BANK_BANK_TRANSACTIONS} from '@renderer/constants/actions';
-import {BankTransaction, DictWithPaginatedResultsAndError} from '@renderer/types';
 import {setPaginatedResultErrorReducer, setPaginatedResultReducer, unsetDataReducer} from '@renderer/utils/store';
+import {BankTransaction, DictWithPaginatedResultsAndError} from '@shared/types';
 
 const bankBankTransactions = createSlice({
   initialState: {} as DictWithPaginatedResultsAndError<BankTransaction>,

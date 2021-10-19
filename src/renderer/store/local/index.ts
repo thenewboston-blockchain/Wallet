@@ -1,8 +1,6 @@
 import ElectronStore from 'electron-store';
-import {LocalStore} from '@renderer/types';
-import {runMigrations} from './migrations';
+import {LocalStore} from '@shared/types';
 
 const localStore = new ElectronStore<LocalStore>();
-runMigrations(localStore);
 
 export default localStore;

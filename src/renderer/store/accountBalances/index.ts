@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {ACCOUNT_BALANCES} from '@renderer/constants/actions';
-import {AccountBalance, Dict} from '@renderer/types';
 import {setBalanceReducer, unsetBalanceReducer} from '@renderer/utils/store';
+import {AccountBalance, Dict} from '@shared/types';
 
 const accountBalances = createSlice({
   initialState: {} as Dict<AccountBalance>,

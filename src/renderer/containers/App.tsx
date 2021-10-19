@@ -11,8 +11,8 @@ import Layout from '@renderer/containers/Layout';
 import {connect, connectAndStoreLocalData, fetchNonDefaultNodeConfigs} from '@renderer/dispatchers/app';
 import {useCleanSockets, useCrawlSockets, useToggle, useWebSockets} from '@renderer/hooks';
 import {getActiveBank, getActiveBankConfig} from '@renderer/selectors';
-import {AppDispatch, ProtocolType, ToastType} from '@renderer/types';
 import {displayErrorToast, displayToast} from '@renderer/utils/toast';
+import {AppDispatch, ProtocolType, ToastType} from '@shared/types';
 
 const isDevEnvironment = process.env.NODE_ENV === 'development';
 

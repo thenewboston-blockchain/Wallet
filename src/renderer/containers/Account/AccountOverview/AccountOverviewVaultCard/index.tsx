@@ -2,7 +2,7 @@ import React from 'react';
 
 import Link from '@renderer/components/Link';
 import {useAccountContext} from '@renderer/hooks';
-import {AccountSection, SFC} from '@renderer/types';
+import {AccountSection, SFC} from '@shared/types';
 import * as S from './Styles';
 
 const AccountOverviewVaultCard: SFC = ({className}) => {

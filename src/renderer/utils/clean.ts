@@ -1,4 +1,4 @@
-import {CleanStatus} from '@renderer/types';
+import {CleanStatus} from '@shared/types';
 
 export const getCleanButtonLabel = (cleanStatus: CleanStatus | null): string => {
   switch (cleanStatus) {

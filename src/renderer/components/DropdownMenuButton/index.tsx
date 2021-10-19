@@ -5,7 +5,7 @@ import {createPortal} from 'react-dom';
 import noop from 'lodash/noop';
 
 import {useToggle, useEventListener} from '@renderer/hooks';
-import {GenericVoidFunction, SFC} from '@renderer/types';
+import {GenericVoidFunction, SFC} from '@shared/types';
 
 import * as S from './Styles';
 

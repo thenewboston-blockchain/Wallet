@@ -2,7 +2,7 @@ import React from 'react';
 
 import {PageTableItems, PageTableData, PageTableProps} from '@renderer/components/PageTable';
 import {Loader} from '@renderer/components/FormElements';
-import {SFC} from '@renderer/types';
+import {SFC} from '@shared/types';
 
 import Pagination, {PaginationProps, PaginationStyles} from './Pagination';
 import PaginationSummary, {PaginationSummaryProps, PaginationSummaryStyles} from './PaginationSummary';

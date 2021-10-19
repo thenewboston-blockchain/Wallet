@@ -1,4 +1,4 @@
-import {ProtocolType} from '@renderer/types/network';
+import {ProtocolType} from './network';
 
 export interface AccountNumberParams {
   accountNumber: string;

@@ -1,8 +1,14 @@
 import {useCallback, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import axios, {AxiosResponse} from 'axios';
 
 import {getInactiveCleanSockets} from '@renderer/selectors/sockets';
+import {updateCleanProcess} from '@renderer/store/sockets';
+import {formatAddressFromNode, formatSocketAddressFromNode} from '@renderer/utils/address';
+import axios, {AxiosResponse} from '@renderer/utils/axios';
+import {generateSignedMessage, getKeyPairFromSigningKeyHex} from '@renderer/utils/signing';
+import {initializeSocketForCleanStatus} from '@renderer/utils/sockets';
+import handleCleanSocketEvent from '@renderer/utils/sockets/clean';
+import {displayErrorToast} from '@renderer/utils/toast';
 import {
   AppDispatch,
   CleanCommand,
@@ -10,13 +16,7 @@ import {
   CleanStatus,
   NodeCleanStatusWithAddress,
   SocketConnectionStatus,
-} from '@renderer/types';
-import {formatAddressFromNode, formatSocketAddressFromNode} from '@renderer/utils/address';
-import {generateSignedMessage, getKeyPairFromSigningKeyHex} from '@renderer/utils/signing';
-import {initializeSocketForCleanStatus} from '@renderer/utils/sockets';
-import handleCleanSocketEvent from '@renderer/utils/sockets/clean';
-import {displayErrorToast} from '@renderer/utils/toast';
-import {updateCleanProcess} from '@renderer/store/sockets';
+} from '@shared/types';
 
 const useCleanSockets = (): void => {
   const dispatch = useDispatch<AppDispatch>();

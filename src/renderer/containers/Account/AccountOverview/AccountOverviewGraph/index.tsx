@@ -7,7 +7,7 @@ import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAx
 import Link from '@renderer/components/Link';
 import {useAccountContext} from '@renderer/hooks';
 import {colors} from '@renderer/styles';
-import {AccountSection, SFC} from '@renderer/types';
+import {AccountSection, SFC} from '@shared/types';
 
 import AccountBalance from '../../AccountBalance';
 import {mockBalanceData} from './data';

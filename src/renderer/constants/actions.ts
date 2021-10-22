@@ -1,5 +1,6 @@
 const APP = 'app';
 export const BANKS = 'banks';
+export const CONFIG = 'config';
 export const NOTIFICATIONS = 'notifications';
 export const SOCKETS = 'sockets';
 export const VALIDATORS = 'validators';

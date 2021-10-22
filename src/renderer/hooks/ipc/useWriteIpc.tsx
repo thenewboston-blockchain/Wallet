@@ -4,7 +4,7 @@ import {getFailChannel, getSuccessChannel, IpcChannel} from '@shared/ipc';
 import {GenericVoidFunction} from '@shared/types';
 import {useIpcEffect} from './utils';
 
-function useWriteIpc<P>({
+function useWriteIpc<P = undefined>({
   channel,
   failCallback,
   payload,
@@ -12,7 +12,7 @@ function useWriteIpc<P>({
 }: {
   channel: IpcChannel;
   failCallback: GenericVoidFunction;
-  payload: P;
+  payload?: P;
   successCallback: GenericVoidFunction;
 }) {
   useIpcEffect(getSuccessChannel(channel), successCallback);

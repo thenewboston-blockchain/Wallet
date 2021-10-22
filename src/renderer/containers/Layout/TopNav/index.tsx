@@ -14,10 +14,9 @@ import Notifications from '@renderer/containers/Notifications';
 import {clearLocalState} from '@renderer/dispatchers/app';
 import {useToggle, useIpcEffect, useNavigationalHistory, useReadIpc, useWriteIpc} from '@renderer/hooks';
 import {getPrimaryValidatorConfig} from '@renderer/selectors';
-import localStore from '@renderer/store/local';
 import {displayToast, ToastType} from '@renderer/utils/toast';
 import {getFailChannel, getSuccessChannel, IpcChannel} from '@shared/ipc';
-import {AppDispatch, LocalStore, SFC} from '@shared/types';
+import {AppDispatch, SFC} from '@shared/types';
 
 import * as S from './Styles';
 
@@ -51,20 +50,14 @@ const TopNav: SFC = ({className}) => {
   const {back, backEnabled, forward, forwardEnabled, reload} = useNavigationalHistory();
   const primaryValidatorConfig = useSelector(getPrimaryValidatorConfig);
 
-  const handleImportSuccessCallback = useCallback(
-    (event: any, storeData: LocalStore) => {
-      toggleImportStoreDataModal(false);
-      localStore.clear();
-      localStore.set(storeData);
-      ipcRenderer.send(IpcChannel.restartApp);
-    },
-    [toggleImportStoreDataModal],
-  );
+  const handleImportSuccessCallback = useCallback(() => {
+    toggleImportStoreDataModal(false);
+    ipcRenderer.send(IpcChannel.restartApp);
+  }, [toggleImportStoreDataModal]);
 
-  const handleExportClick = useWriteIpc<string>({
+  const handleExportClick = useWriteIpc({
     channel: IpcChannel.exportStoreData,
     failCallback: exportFailToast,
-    payload: JSON.stringify(localStore.store),
     successCallback: exportSuccessToast,
   });
 

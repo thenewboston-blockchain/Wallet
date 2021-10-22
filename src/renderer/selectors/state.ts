@@ -18,6 +18,8 @@ export const getBankValidators = (state: RootState) => state.banks.validators;
 export const getAccountBalances = (state: RootState) => state.accountBalances;
 export const getManagedAccountBalances = (state: RootState) => state.managedAccountBalances;
 
+export const getStoreLoaded = (state: RootState) => state.config.storeLoaded;
+
 export const getNotifications = (state: RootState) => state.notifications;
 
 export const getCrawlSockets = (state: RootState) => state.sockets.crawl;

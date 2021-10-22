@@ -3,6 +3,7 @@ import {configureStore} from '@reduxjs/toolkit';
 import accountBalancesReducer from './accountBalances';
 import appReducers from './app';
 import bankReducers from './banks';
+import configReducers from './config';
 import managedAccountBalancesReducer from './managedAccountBalances';
 import notificationsReducer from './notifications';
 import socketReducers from './sockets';
@@ -13,6 +14,7 @@ const store = configureStore({
     accountBalances: accountBalancesReducer,
     app: appReducers,
     banks: bankReducers,
+    config: configReducers,
     managedAccountBalances: managedAccountBalancesReducer,
     notifications: notificationsReducer,
     sockets: socketReducers,

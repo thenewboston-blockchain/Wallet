@@ -7865,18 +7865,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"file-loader@npm:6.2.0":
-  version: 6.2.0
-  resolution: "file-loader@npm:6.2.0"
-  dependencies:
-    loader-utils: ^2.0.0
-    schema-utils: ^3.0.0
-  peerDependencies:
-    webpack: ^4.0.0 || ^5.0.0
-  checksum: faf43eecf233f4897b0150aaa874eeeac214e4f9de49738a9e0ef734a30b5260059e85b7edadf852b98e415f875bd5f12587768a93fd52aaf2e479ecf95fab20
-  languageName: node
-  linkType: hard
-
 "filename-reserved-regex@npm:^2.0.0":
   version: 2.0.0
   resolution: "filename-reserved-regex@npm:2.0.0"
@@ -14291,7 +14279,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"schema-utils@npm:^3.0.0, schema-utils@npm:^3.1.0, schema-utils@npm:^3.1.1":
+"schema-utils@npm:^3.1.0, schema-utils@npm:^3.1.1":
   version: 3.1.1
   resolution: "schema-utils@npm:3.1.1"
   dependencies:
@@ -15408,7 +15396,6 @@ resolve@^2.0.0-next.3:
     eslint-plugin-react: 7.26.1
     eslint-plugin-react-hooks: 4.2.0
     eslint-plugin-testing-library: 4.12.4
-    file-loader: 6.2.0
     fork-ts-checker-webpack-plugin: 6.3.4
     formik: 2.2.9
     fs-extra: ^9.0.1
@@ -15453,7 +15440,6 @@ resolve@^2.0.0-next.3:
     tweetnacl: 1.0.3
     typescript: 4.4.3
     typescript-plugin-styled-components: 2.0.0
-    url-loader: 4.1.1
     uuid: 8.3.2
     yup: 0.32.10
   languageName: unknown
@@ -16085,23 +16071,6 @@ typescript@4.4.3:
   dependencies:
     punycode: ^2.1.0
   checksum: 7167432de6817fe8e9e0c9684f1d2de2bb688c94388f7569f7dbdb1587c9f4ca2a77962f134ec90be0cc4d004c939ff0d05acc9f34a0db39a3c797dada262633
-  languageName: node
-  linkType: hard
-
-"url-loader@npm:4.1.1":
-  version: 4.1.1
-  resolution: "url-loader@npm:4.1.1"
-  dependencies:
-    loader-utils: ^2.0.0
-    mime-types: ^2.1.27
-    schema-utils: ^3.0.0
-  peerDependencies:
-    file-loader: "*"
-    webpack: ^4.0.0 || ^5.0.0
-  peerDependenciesMeta:
-    file-loader:
-      optional: true
-  checksum: c1122a992c6cff70a7e56dfc2b7474534d48eb40b2cc75467cde0c6972e7597faf8e43acb4f45f93c2473645dfd803bcbc20960b57544dd1e4c96e77f72ba6fd
   languageName: node
   linkType: hard
 

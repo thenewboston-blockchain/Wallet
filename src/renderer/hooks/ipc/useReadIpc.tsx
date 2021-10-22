@@ -10,8 +10,8 @@ function useReadIpc({
   successCallback,
 }: {
   channel: IpcChannel;
-  failCallback: GenericVoidFunction;
-  successCallback: GenericVoidFunction;
+  failCallback?: GenericVoidFunction;
+  successCallback?: GenericVoidFunction;
 }) {
   useIpcEffect(getSuccessChannel(channel), successCallback);
   useIpcEffect(getFailChannel(channel), failCallback);

@@ -49,18 +49,8 @@ const rules = [
     use: ['style-loader', 'css-loader'],
   },
   {
-    loader: 'file-loader',
-    options: {
-      name: '[path][name].[ext]',
-    },
-    test: /\.(svg|ico|icns)$/,
-  },
-  {
-    loader: 'url-loader',
-    options: {
-      name: '[path][name].[ext]',
-    },
-    test: /\.(jpg|png|woff|woff2|eot|ttf)$/,
+    test: /\.(jpe?g|svg|png|gif|ico|eot|ttf|woff2?)(\?v=\d+\.\d+\.\d+)?$/i,
+    type: 'asset/resource',
   },
 ];
 

@@ -1,7 +1,8 @@
-import {PayloadAction} from '@reduxjs/toolkit';
+import {ipcRenderer} from 'electron';
+import {current, PayloadAction} from '@reduxjs/toolkit';
 
-import localStore from '@renderer/store/local';
 import {formatAddressFromNode} from '@renderer/utils/address';
+import {IpcChannel} from '@shared/ipc';
 import {
   AccountBalance,
   AccountNumber,
@@ -37,12 +38,12 @@ export function changeActiveNodeReducer<T extends ManagedNode>(sliceName: string
     Object.values(state).forEach((node) => {
       node.is_default = formatAddressFromNode(node) === formatAddressFromNode(payload);
     });
-    localStore.set(getStateName(sliceName), state);
+    ipcRenderer.send(IpcChannel.setStoreValue, {key: getStateName(sliceName), state: current(state)});
   };
 }
 
 export const clearLocalAndStateReducer = () => (state: any, action: PayloadAction<undefined>) => {
-  localStore.set(getStateName(action.type), {});
+  ipcRenderer.send(IpcChannel.clearStoreValue, getStateName(action.type));
   return {};
 };
 
@@ -59,13 +60,13 @@ export function setLocalAndAccountReducer<T extends AccountNumber>(sliceName: st
     const {account_number: accountNumber} = payload;
     const account = state[accountNumber];
     state[accountNumber] = account ? {...account, ...payload} : payload;
-    localStore.set(getStateName(sliceName), state);
+    ipcRenderer.send(IpcChannel.setStoreValue, {key: getStateName(sliceName), state: current(state)});
   };
 }
 
 export function setLocalAndStateReducer<T>() {
   return (state: any, action: PayloadAction<T>) => {
-    localStore.set(getStateName(action.type), action.payload as any);
+    ipcRenderer.send(IpcChannel.setStoreValue, {key: getStateName(action.type), state: action.payload});
     return action.payload;
   };
 }
@@ -114,7 +115,7 @@ export function setLocalAndAddressReducer<T extends AddressData>(sliceName: stri
     const address = formatAddressFromNode(payload);
     const node = state[address];
     state[address] = node ? {...node, ...payload} : payload;
-    localStore.set(getStateName(sliceName), state);
+    ipcRenderer.send(IpcChannel.setStoreValue, {key: getStateName(sliceName), state: current(state)});
   };
 }
 
@@ -176,7 +177,7 @@ export const unsetBalanceReducer =
 export function unsetLocalAndAccountReducer(sliceName: string) {
   return (state: any, {payload: {account_number: accountNumber}}: PayloadAction<AccountNumber>) => {
     delete state[accountNumber];
-    localStore.set(getStateName(sliceName), state);
+    ipcRenderer.send(IpcChannel.clearStoreValue, getStateName(sliceName));
   };
 }
 
@@ -184,6 +185,6 @@ export function unsetLocalAndAddressReducer(sliceName: string) {
   return (state: any, {payload}: PayloadAction<AddressData>) => {
     const address = formatAddressFromNode(payload);
     delete state[address];
-    localStore.set(getStateName(sliceName), state);
+    ipcRenderer.send(IpcChannel.clearStoreValue, getStateName(sliceName));
   };
 }

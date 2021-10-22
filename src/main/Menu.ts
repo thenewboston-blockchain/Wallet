@@ -1,4 +1,5 @@
 import {app, shell, Menu} from 'electron';
+import contextMenu from 'electron-context-menu';
 
 const isMac = process.platform === 'darwin';
 
@@ -83,4 +84,8 @@ const template = [
 
 const menu = Menu.buildFromTemplate(template);
 
-export default menu;
+Menu.setApplicationMenu(menu);
+
+contextMenu({
+  menu: (defaultActions) => [defaultActions.inspect()],
+});

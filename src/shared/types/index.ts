@@ -8,6 +8,7 @@ import {
   Nickname,
 } from './app';
 import {AccountBalance} from './balances';
+import {ConfigSlice} from './config';
 import {
   BaseFormComponentProps,
   BaseFormInlineComponentProps,
@@ -121,6 +122,7 @@ export {
   CleanSocketState,
   CleanStatus,
   CleanStatusNotificationPayload,
+  ConfigSlice,
   ConfirmationBlockNotificationPayload,
   CrawlCommand,
   CrawlSocketState,

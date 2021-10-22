@@ -1,17 +1,29 @@
 import {combineReducers} from '@reduxjs/toolkit';
 
-import managedAccountsReducer, {clearManagedAccounts, setManagedAccount, unsetManagedAccount} from './managedAccounts';
+import managedAccountsReducer, {
+  clearManagedAccounts,
+  setManagedAccount,
+  setManagedAccounts,
+  unsetManagedAccount,
+} from './managedAccounts';
 import managedBanksReducer, {
   changeActiveBank,
   clearManagedBanks,
   setManagedBank,
+  setManagedBanks,
   unsetManagedBank,
 } from './managedBanks';
-import managedFriendsReducer, {clearManagedFriends, setManagedFriend, unsetManagedFriend} from './managedFriends';
+import managedFriendsReducer, {
+  clearManagedFriends,
+  setManagedFriend,
+  setManagedFriends,
+  unsetManagedFriend,
+} from './managedFriends';
 import managedValidatorsReducer, {
   changeActivePrimaryValidator,
   clearManagedValidators,
   setManagedValidator,
+  setManagedValidators,
   unsetManagedValidator,
 } from './managedValidators';
 
@@ -23,9 +35,13 @@ export {
   clearManagedFriends,
   clearManagedValidators,
   setManagedAccount,
+  setManagedAccounts,
   setManagedBank,
+  setManagedBanks,
   setManagedFriend,
+  setManagedFriends,
   setManagedValidator,
+  setManagedValidators,
   unsetManagedAccount,
   unsetManagedBank,
   unsetManagedFriend,

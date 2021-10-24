@@ -5,7 +5,7 @@
   "description": "thenewboston Wallet Electron Application",
   "main": "./bundle/main/index.js",
   "scripts": {
-    "lint": "tsc --noEmit && eslint \"./src/**/*.{js,ts,tsx}\"",
+    "lint": "cross-env NODE_ENV=development eslint . --cache --ext .js,.jsx,.ts,.tsx",
     "package": "cross-env NODE_ENV=production electron-forge package",
     "prettier": "prettier --write \"{,!(.webpack|bundle|node_modules|out|release)/**/}*.{ts,tsx,js,json,css}\"",
     "make": "cross-env NODE_ENV=production electron-forge make",
@@ -23,6 +23,12 @@
     ],
     "{,!(node_modules)/**/}*.css": [
       "prettier --write"
+    ],
+    "*.json,.{eslintrc,prettierrc}": [
+      "prettier --ignore-path .eslintignore --parser json --write"
+    ],
+    "*.{html,md,yml}": [
+      "prettier --ignore-path .eslintignore --single-quote --write"
     ]
   },
   "devDependencies": {
@@ -105,6 +111,7 @@
     "prettier": "2.4.1",
     "react-app-polyfill": "2.0.0",
     "react-hot-loader": "4.13.0",
+    "react-refresh": "0.10.0",
     "resolve": "1.20.0",
     "resolve-url-loader": "4.0.0",
     "semver": "7.3.5",
@@ -137,7 +144,6 @@
     "react-copy-to-clipboard": "5.0.4",
     "react-dom": "17.0.2",
     "react-redux": "7.2.5",
-    "react-refresh": "0.10.0",
     "react-router-dom": "5.3.0",
     "react-toastify": "8.0.3",
     "recharts": "2.1.4",

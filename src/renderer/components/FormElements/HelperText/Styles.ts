@@ -1,6 +1,6 @@
 import styled, {css} from 'styled-components';
-import {AlertIcon as UAlertIcon, CheckCircleIcon as UCheckCircleIcon} from '@renderer/components/Icons';
-import {b2, colors} from '@renderer/styles';
+import {AlertIcon as UAlertIcon, CheckCircleIcon as UCheckCircleIcon} from 'renderer/components/Icons';
+import {b2, colors} from 'renderer/styles';
 import {HelperTextType} from './types';
 
 interface Type {

@@ -1,5 +1,5 @@
 import {createSelector} from '@reduxjs/toolkit';
-import {SocketConnectionStatus} from '@shared/types';
+import {SocketConnectionStatus} from 'shared/types';
 import {getCrawlSockets, getCleanSockets} from './state';
 
 export const getInactiveCrawlSockets = createSelector([getCrawlSockets], (crawlSockets) => {

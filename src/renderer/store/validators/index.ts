@@ -1,6 +1,6 @@
 import {combineReducers} from '@reduxjs/toolkit';
 
-import {ACCOUNTS, BANKS, CONFIGS, VALIDATORS} from '@renderer/constants/actions';
+import {ACCOUNTS, BANKS, CONFIGS, VALIDATORS} from 'renderer/constants/actions';
 import validatorAccountsReducer, {
   setValidatorAccounts,
   setValidatorAccountsError,

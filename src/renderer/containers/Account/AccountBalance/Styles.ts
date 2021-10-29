@@ -1,6 +1,6 @@
 import styled, {css, keyframes} from 'styled-components';
-import {RefreshIcon as URefreshIcon} from '@renderer//components/Icons';
-import {colors, d2} from '@renderer/styles';
+import {RefreshIcon as URefreshIcon} from 'renderer//components/Icons';
+import {colors, d2} from 'renderer/styles';
 
 export const Container = styled.div`
   display: flex;

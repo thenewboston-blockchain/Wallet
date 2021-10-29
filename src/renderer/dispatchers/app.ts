@@ -5,8 +5,8 @@ import {
   getIsManagedValidator,
   getManagedBanks,
   getManagedValidators,
-} from '@renderer/selectors';
-import store from '@renderer/store';
+} from 'renderer/selectors';
+import store from 'renderer/store';
 import {
   changeActiveBank,
   changeActivePrimaryValidator,
@@ -16,9 +16,9 @@ import {
   clearManagedValidators,
   setManagedBank,
   setManagedValidator,
-} from '@renderer/store/app';
-import {formatAddressFromNode} from '@renderer/utils/address';
-import {AddressData, AppDispatch, RootState, ValidatorConfig} from '@shared/types';
+} from 'renderer/store/app';
+import {formatAddressFromNode} from 'renderer/utils/address';
+import {AddressData, AppDispatch, RootState, ValidatorConfig} from 'shared/types';
 
 import {fetchBankConfig} from './banks';
 import {fetchValidatorConfig} from './validators';

@@ -1,11 +1,10 @@
-import React from 'react';
 import {useDispatch} from 'react-redux';
 
-import Modal from '@renderer/components/Modal';
-import {useManagedAccount} from '@renderer/hooks';
-import {unsetManagedAccount} from '@renderer/store/app';
-import {unsetManagedAccountBalance} from '@renderer/store/managedAccountBalances';
-import {AppDispatch, SFC} from '@shared/types';
+import Modal from 'renderer/components/Modal';
+import {useManagedAccount} from 'renderer/hooks';
+import {unsetManagedAccount} from 'renderer/store/app';
+import {unsetManagedAccountBalance} from 'renderer/store/managedAccountBalances';
+import {AppDispatch, SFC} from 'shared/types';
 
 import * as S from './Styles';
 

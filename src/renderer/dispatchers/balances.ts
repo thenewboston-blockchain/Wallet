@@ -1,9 +1,9 @@
-import {getPrimaryValidator, getManagedAccounts} from '@renderer/selectors';
-import {setAccountBalance} from '@renderer/store/accountBalances';
-import {setManagedAccountBalance} from '@renderer/store/managedAccountBalances';
-import {formatAddressFromNode} from '@renderer/utils/address';
-import axios from '@renderer/utils/axios';
-import {AppDispatch, Balance, RootState} from '@shared/types';
+import {getPrimaryValidator, getManagedAccounts} from 'renderer/selectors';
+import {setAccountBalance} from 'renderer/store/accountBalances';
+import {setManagedAccountBalance} from 'renderer/store/managedAccountBalances';
+import {formatAddressFromNode} from 'renderer/utils/address';
+import axios from 'renderer/utils/axios';
+import {AppDispatch, Balance, RootState} from 'shared/types';
 
 export const fetchAccountBalance =
   (accountNumber: string) =>

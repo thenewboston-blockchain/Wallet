@@ -1,5 +1,5 @@
-import {defaultPaginatedQueryParam} from '@renderer/config';
-import {ACCOUNTS, BANKS, VALIDATORS} from '@renderer/constants/actions';
+import {defaultPaginatedQueryParam} from 'renderer/config';
+import {ACCOUNTS, BANKS, VALIDATORS} from 'renderer/constants/actions';
 import {
   setValidatorAccounts,
   setValidatorAccountsError,
@@ -9,9 +9,9 @@ import {
   setValidatorConfigError,
   setValidatorValidators,
   setValidatorValidatorsError,
-} from '@renderer/store/validators';
-import {fetchPaginatedResults, sanitizePortFieldFromRawPrimaryValidatorConfig} from '@renderer/utils/api';
-import axios from '@renderer/utils/axios';
+} from 'renderer/store/validators';
+import {fetchPaginatedResults, sanitizePortFieldFromRawPrimaryValidatorConfig} from 'renderer/utils/api';
+import axios from 'renderer/utils/axios';
 import {
   AppDispatch,
   BaseValidator,
@@ -21,7 +21,7 @@ import {
   ValidatorAccount,
   ValidatorBank,
   ValidatorConfig,
-} from '@shared/types';
+} from 'shared/types';
 
 export const fetchValidatorAccounts =
   (address: string, params: PaginatedQueryParams = defaultPaginatedQueryParam) =>

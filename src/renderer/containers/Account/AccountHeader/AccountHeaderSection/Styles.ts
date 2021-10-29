@@ -5,7 +5,7 @@ import {
   EyeIcon as UEyeIcon,
   EyeOffIcon as UEyeOffIcon,
   QrcodeIcon as UQrcodeIcon,
-} from '@renderer/components/Icons';
+} from 'renderer/components/Icons';
 
 const iconStyle = css`
   margin-left: 6px;

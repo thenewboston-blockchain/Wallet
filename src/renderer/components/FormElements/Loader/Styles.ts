@@ -1,5 +1,5 @@
 import styled, {keyframes} from 'styled-components';
-import {LoadingIcon as ULoadingIcon} from '@renderer/components/Icons';
+import {LoadingIcon as ULoadingIcon} from 'renderer/components/Icons';
 
 export const Container = styled.div`
   align-items: center;

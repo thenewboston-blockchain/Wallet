@@ -1,7 +1,7 @@
 /* eslint-disable sort-keys */
 
 import {createTheme} from '@mui/material';
-import {colors} from '@renderer/styles';
+import {colors} from 'renderer/styles';
 
 const muiTheme = createTheme({
   palette: {

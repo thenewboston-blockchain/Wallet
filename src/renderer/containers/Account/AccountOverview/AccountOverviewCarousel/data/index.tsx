@@ -1,4 +1,4 @@
-import React, {ReactNode} from 'react';
+import {ReactNode} from 'react';
 import benefitGraph from '../assets/BenefitGraph.png';
 import boostNode from '../assets/BoostNode.png';
 import pointsIllustration from '../assets/PointsIllustration.png';

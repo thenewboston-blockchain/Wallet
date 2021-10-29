@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import {Select as USelect, TextField as UTextField} from '@renderer/components/FormElements';
-import {colors} from '@renderer/styles';
+import {Select as USelect, TextField as UTextField} from 'renderer/components/FormElements';
+import {colors} from 'renderer/styles';
 
 export const FormError = styled.span`
   color: ${colors.palette.red['500']};

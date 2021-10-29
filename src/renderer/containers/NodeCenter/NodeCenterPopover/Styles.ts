@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import {Button, ButtonVariant} from '@renderer/components/FormElements';
-import {OpenInNewIcon} from '@renderer/components/Icons';
-import UPopover, {HorizontalPosition, VerticalPosition, PopoverStyles} from '@renderer/components/Popover';
-import {b1, colors, h2, mixinButtonFocusDarkmode} from '@renderer/styles';
+import {Button, ButtonVariant} from 'renderer/components/FormElements';
+import {OpenInNewIcon} from 'renderer/components/Icons';
+import UPopover, {HorizontalPosition, VerticalPosition, PopoverStyles} from 'renderer/components/Popover';
+import {b1, colors, h2, mixinButtonFocusDarkmode} from 'renderer/styles';
 
 export const Popover = styled(UPopover).attrs(() => ({
   anchorOrigin: {horizontal: HorizontalPosition.left, vertical: VerticalPosition.center},

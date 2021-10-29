@@ -1,8 +1,8 @@
-import React, {createContext, FC, Reducer, useEffect, useMemo, useReducer} from 'react';
+import {createContext, FC, Reducer, useEffect, useMemo, useReducer} from 'react';
 import {useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
-import {getManagedAccounts, getManagedFriends} from '@renderer/selectors';
-import {AccountNumberParams, AccountType, ManagedAccount, ManagedFriend} from '@shared/types';
+import {getManagedAccounts, getManagedFriends} from 'renderer/selectors';
+import {AccountNumberParams, AccountType, ManagedAccount, ManagedFriend} from 'shared/types';
 
 enum AccountActionType {
   set = 'set',
@@ -32,7 +32,7 @@ const accountReducer: Reducer<ReducerState, AccountAction> = (state, action) => 
   }
 };
 
-interface AccountState extends ReducerState {
+export interface AccountState extends ReducerState {
   accountNumber: string;
   managedAccount: ManagedAccount | null;
   managedFriend: ManagedFriend | null;

@@ -1,5 +1,5 @@
 import {useContext} from 'react';
-import {TabsContext} from '@renderer/context';
+import {TabsContext} from 'renderer/context';
 
 const useTabsContext = () => {
   return useContext(TabsContext);

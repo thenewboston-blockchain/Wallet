@@ -1,6 +1,6 @@
 import styled, {css, keyframes} from 'styled-components';
-import {CloseIcon as UCloseIcon} from '@renderer/components/Icons';
-import {colors} from '@renderer/styles';
+import {CloseIcon as UCloseIcon} from 'renderer/components/Icons';
+import {colors} from 'renderer/styles';
 
 const fadeIn = keyframes`
   from {

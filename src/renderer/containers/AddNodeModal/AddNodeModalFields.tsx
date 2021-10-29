@@ -1,6 +1,6 @@
-import React, {FC} from 'react';
-import {useFormContext} from '@renderer/hooks';
-import {SelectOption} from '@shared/types';
+import {FC} from 'react';
+import {useFormContext} from 'renderer/hooks';
+import {SelectOption} from 'shared/types';
 import * as S from './Styles';
 
 const protocolOptions: SelectOption[] = [{value: 'http'}, {value: 'https'}];

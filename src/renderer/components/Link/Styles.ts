@@ -1,7 +1,7 @@
 import styled, {css} from 'styled-components';
 import {Link as RRLink, LinkProps as RRLinkProps} from 'react-router-dom';
-import {ChevronRightIcon as UChevronRightIcon} from '@renderer/components/Icons';
-import {colors} from '@renderer/styles';
+import {ChevronRightIcon as UChevronRightIcon} from 'renderer/components/Icons';
+import {colors} from 'renderer/styles';
 
 interface LinkProps extends RRLinkProps {
   $disabled: boolean;

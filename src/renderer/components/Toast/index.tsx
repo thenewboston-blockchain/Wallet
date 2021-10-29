@@ -1,5 +1,5 @@
-import React, {ReactNode, useCallback} from 'react';
-import {SFC, ToastType} from '@shared/types';
+import {ReactNode, useCallback} from 'react';
+import {SFC, ToastType} from 'shared/types';
 
 import * as S from './Styles';
 

@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React, {CSSProperties, KeyboardEvent, ReactNode, useCallback, useEffect, useRef, useState} from 'react';
+import {CSSProperties, KeyboardEvent, ReactNode, useCallback, useEffect, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 import noop from 'lodash/noop';
 
-import {useToggle, useEventListener} from '@renderer/hooks';
-import {GenericVoidFunction, SFC} from '@shared/types';
+import {useToggle, useEventListener} from 'renderer/hooks';
+import {GenericVoidFunction, SFC} from 'shared/types';
 
 import * as S from './Styles';
 

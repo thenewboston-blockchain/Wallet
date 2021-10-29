@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import {colors, mixinButtonFocus} from '@renderer/styles';
+import {colors, mixinButtonFocus} from 'renderer/styles';
 import {ButtonColor, ButtonSize, ButtonVariant} from './types';
 
 interface ButtonProps {
@@ -80,6 +80,8 @@ export const Button = styled.button<ButtonProps>`
     if ($variant === ButtonVariant.outlined) {
       return outlinedMixin;
     }
+
+    return;
   }};
 
   ${({$variant, $color}) => {
@@ -91,15 +93,22 @@ export const Button = styled.button<ButtonProps>`
       if ($color === ButtonColor.danger) {
         return containedDangerMixin;
       }
+
+      return;
     }
 
     if ($variant === ButtonVariant.outlined) {
       if ($color === ButtonColor.primary) {
         return outlinedPrimaryMixin;
       }
+
       if ($color === ButtonColor.secondary) {
         return outlinedSecondaryMixin;
       }
+
+      return;
     }
+
+    return;
   }};
 `;

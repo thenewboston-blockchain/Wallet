@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import {
   AlertCircleOutlineIcon as UAlertCircleOutlineIcon,
   CheckCircleIcon as UCheckCircleIcon,
-} from '@renderer/components/Icons';
-import {colors} from '@renderer/styles';
-import {ToastType} from '@shared/types/toast';
+} from 'renderer/components/Icons';
+import {colors} from 'renderer/styles';
+import {ToastType} from 'shared/types/toast';
 
 export const Container = styled.div<{type: ToastType}>`
   background-color: ${({type}) => {

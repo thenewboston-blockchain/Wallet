@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import UCard from '@renderer/components/Card';
-import UKeyValueTable, {Row as URow, KeyValueTableStyles} from '@renderer/components/KeyValueTable';
-import {colors, h3} from '@renderer/styles';
+import UCard from 'renderer/components/Card';
+import UKeyValueTable, {Row as URow, KeyValueTableStyles} from 'renderer/components/KeyValueTable';
+import {colors, h3} from 'renderer/styles';
 
 export const Card = styled(UCard)`
   padding-bottom: 24px;

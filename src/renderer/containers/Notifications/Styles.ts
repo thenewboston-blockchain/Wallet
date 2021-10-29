@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import {NavLink as UNavLink} from 'react-router-dom';
-import {BellIcon as UBellIcon} from '@renderer/components/Icons';
-import UStatusBadge, {StatusBadgeType} from '@renderer/components/StatusBadge';
-import {b3, colors} from '@renderer/styles';
+import {BellIcon as UBellIcon} from 'renderer/components/Icons';
+import UStatusBadge, {StatusBadgeType} from 'renderer/components/StatusBadge';
+import {b3, colors} from 'renderer/styles';
 
 export const Container = styled.div`
   position: relative;

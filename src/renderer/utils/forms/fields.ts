@@ -1,5 +1,5 @@
-import {REQUIRED_FIELD_ERROR} from '@renderer/constants/form-validation';
-import {Dict, ManagedNode, Nickname} from '@shared/types';
+import {REQUIRED_FIELD_ERROR} from 'renderer/constants/form-validation';
+import {Dict, ManagedNode, Nickname} from 'shared/types';
 import yup from './yup';
 
 export const getAddressFormField = (managedNodes: Dict<ManagedNode>, errorMessage: string) =>

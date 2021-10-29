@@ -1,11 +1,7 @@
-import React, {FC} from 'react';
+import {SFC} from 'shared/types';
 import * as S from './Styles';
 
-interface CardProps {
-  className?: string;
-}
-
-const Card: FC<CardProps> = ({children, className}) => {
+const Card: SFC = ({children, className}) => {
   return <S.Card className={className}>{children}</S.Card>;
 };
 

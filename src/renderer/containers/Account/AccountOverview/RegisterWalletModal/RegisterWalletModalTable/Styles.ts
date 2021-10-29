@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import UKeyValueTable, {Row as URow} from '@renderer/components/KeyValueTable';
-import {InformationOutlineIcon} from '@renderer/components/Icons';
-import {colors} from '@renderer/styles';
+import UKeyValueTable, {Row as URow} from 'renderer/components/KeyValueTable';
+import {InformationOutlineIcon} from 'renderer/components/Icons';
+import {colors} from 'renderer/styles';
 
 export const Table = styled(UKeyValueTable)`
   margin-bottom: 50px;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 // Temp
-import Card from '@renderer/components/Card';
+import Card from 'renderer/components/Card';
 // Temp end
 import UAccountOverviewGraph from './AccountOverviewGraph';
 

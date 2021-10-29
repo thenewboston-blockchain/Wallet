@@ -1,4 +1,4 @@
-import {RootState} from '@shared/types';
+import {RootState} from 'shared/types';
 
 export const getManagedAccounts = (state: RootState) => state.app.managedAccounts;
 export const getManagedBanks = (state: RootState) => state.app.managedBanks;

@@ -1,5 +1,5 @@
-import React, {ReactNode} from 'react';
-import {SFC} from '@shared/types';
+import {ReactNode} from 'react';
+import {SFC} from 'shared/types';
 import * as S from './Styles';
 
 const KeyValueTable: SFC = ({className, children}) => {

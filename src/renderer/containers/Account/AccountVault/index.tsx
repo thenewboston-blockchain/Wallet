@@ -1,8 +1,8 @@
-import React, {ReactNode, useEffect, useMemo} from 'react';
+import {ReactNode, useEffect, useMemo} from 'react';
 import {Route, Switch, useHistory, useParams} from 'react-router-dom';
 
-import {useAccountContext} from '@renderer/hooks';
-import {AccountVaultParams, AccountVaultSection, SFC} from '@shared/types';
+import {useAccountContext} from 'renderer/hooks';
+import {AccountVaultParams, AccountVaultSection, SFC} from 'shared/types';
 
 import AccountVaultBoostHistory from './AccountVaultBoostHistory';
 import AccountVaultCoins from './AccountVaultCoins';

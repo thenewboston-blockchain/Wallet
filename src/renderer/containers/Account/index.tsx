@@ -1,8 +1,7 @@
-import React from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
-import MainContainer from '@renderer/components/MainContainer';
-import {AccountSection, SFC} from '@shared/types';
+import MainContainer from 'renderer/components/MainContainer';
+import {AccountSection, SFC} from 'shared/types';
 
 import AccountOverview from './AccountOverview';
 import AccountTransactions from './AccountTransactions';

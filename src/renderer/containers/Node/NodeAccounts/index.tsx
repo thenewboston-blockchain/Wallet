@@ -1,11 +1,11 @@
-import React, {useMemo} from 'react';
+import {useMemo} from 'react';
 
-import AccountLink from '@renderer/components/AccountLink';
-import ExpandableText from '@renderer/components/ExpandableText';
-import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
-import {VALIDATOR_ACCOUNTS} from '@renderer/constants/actions';
-import {useNodeContext, usePaginatedNetworkDataFetcher, useToggle} from '@renderer/hooks';
-import {SFC, ValidatorAccount} from '@shared/types';
+import AccountLink from 'renderer/components/AccountLink';
+import ExpandableText from 'renderer/components/ExpandableText';
+import PaginatedTable, {PageTableData, PageTableItems} from 'renderer/components/PaginatedTable';
+import {VALIDATOR_ACCOUNTS} from 'renderer/constants/actions';
+import {useNodeContext, usePaginatedNetworkDataFetcher, useToggle} from 'renderer/hooks';
+import {SFC, ValidatorAccount} from 'shared/types';
 import * as S from './Styles';
 
 enum TableKeys {

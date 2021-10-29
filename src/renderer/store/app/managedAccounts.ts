@@ -1,13 +1,13 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-import {MANAGED_ACCOUNTS} from '@renderer/constants/actions';
+import {MANAGED_ACCOUNTS} from 'renderer/constants/actions';
 import {
   clearLocalAndStateReducer,
   setLocalAndAccountReducer,
   setStateReducer,
   unsetLocalAndAccountReducer,
-} from '@renderer/utils/store';
-import {Dict, ManagedAccount} from '@shared/types';
+} from 'renderer/utils/store';
+import {Dict, ManagedAccount} from 'shared/types';
 
 const managedAccounts = createSlice({
   initialState: {} as Dict<ManagedAccount>,

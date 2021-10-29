@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React, {ChangeEvent, FocusEvent, forwardRef, ReactNode, useCallback, useState} from 'react';
+import {ChangeEvent, FocusEvent, forwardRef, ReactNode, useCallback, useState} from 'react';
 import {Field, FieldInputProps} from 'formik';
 import {v4 as uuid} from 'uuid';
-import {useFormContext} from '@renderer/hooks';
-import {truncateLongText} from '@renderer/utils/accounts';
-import {ClassName, SelectOption, SelectOptionMeta} from '@shared/types';
+import {useFormContext} from 'renderer/hooks';
+import {truncateLongText} from 'renderer/utils/accounts';
+import {ClassName, SelectOption, SelectOptionMeta} from 'shared/types';
 
 import HelperText, {HelperTextType} from '../HelperText';
 import * as S from './Styles';

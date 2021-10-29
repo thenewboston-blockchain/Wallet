@@ -1,6 +1,6 @@
 import styled, {css} from 'styled-components';
-import {ChevronLeftIcon as UChevronLeftIcon, ChevronRightIcon as UChevronRightIcon} from '@renderer/components/Icons';
-import {colors} from '@renderer/styles';
+import {ChevronLeftIcon as UChevronLeftIcon, ChevronRightIcon as UChevronRightIcon} from 'renderer/components/Icons';
+import {colors} from 'renderer/styles';
 
 export const Container = styled.div`
   align-items: center;

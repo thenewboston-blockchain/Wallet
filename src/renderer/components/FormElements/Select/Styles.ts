@@ -3,7 +3,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MuiMenuItem from '@mui/material/MenuItem';
 import MuiSelect from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
-import {colors, b1, b2} from '@renderer/styles';
+import {colors, b1, b2} from 'renderer/styles';
 
 export const Container = styled(FormControl).attrs(() => ({
   fullWidth: true,

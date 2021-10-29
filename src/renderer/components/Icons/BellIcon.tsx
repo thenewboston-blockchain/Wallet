@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React, {forwardRef} from 'react';
+import {forwardRef} from 'react';
 import MdiReactIcon from 'mdi-react/BellIcon';
-import IconWrapper from '@renderer/components/Icons/IconWrapper';
-import {IconProps} from '@renderer/components/Icons/types';
+import IconWrapper from 'renderer/components/Icons/IconWrapper';
+import {IconProps} from 'renderer/components/Icons/types';
 
 const BellIcon = forwardRef<HTMLDivElement, IconProps>(({size = 24, ...props}, ref) => {
   return (

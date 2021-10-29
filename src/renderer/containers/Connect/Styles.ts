@@ -5,8 +5,8 @@ import {
   FormButton as UFormButton,
   Select as USelect,
   TextField as UTextField,
-} from '@renderer/components/FormElements';
-import ULogo from '@renderer/components/Logo';
+} from 'renderer/components/FormElements';
+import ULogo from 'renderer/components/Logo';
 
 export const Container = styled.div`
   align-items: center;

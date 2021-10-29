@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {colors, mixinButtonFocus} from '@renderer/styles';
+import {colors, mixinButtonFocus} from 'renderer/styles';
 
 export const Button = styled.button<{$isActive: boolean}>`
   ${mixinButtonFocus};

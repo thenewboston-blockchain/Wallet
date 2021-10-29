@@ -1,5 +1,5 @@
-import React, {FC, useEffect} from 'react';
-import {useFormContext} from '@renderer/hooks';
+import {FC, useEffect} from 'react';
+import {useFormContext} from 'renderer/hooks';
 import * as S from './Styles';
 
 export const initialValues = {

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import {Loader as ULoader} from '@renderer/components/FormElements';
-import {AlertIcon as UAlertIcon, CheckCircleIcon as UCheckCircleIcon} from '@renderer/components/Icons';
-import UPopover, {HorizontalPosition, VerticalPosition} from '@renderer/components/Popover';
-import {colors, h4} from '@renderer/styles';
+import {Loader as ULoader} from 'renderer/components/FormElements';
+import {AlertIcon as UAlertIcon, CheckCircleIcon as UCheckCircleIcon} from 'renderer/components/Icons';
+import UPopover, {HorizontalPosition, VerticalPosition} from 'renderer/components/Popover';
+import {colors, h4} from 'renderer/styles';
 
 export const Container = styled.div``;
 

@@ -1,17 +1,17 @@
-import React, {useMemo} from 'react';
+import {useMemo} from 'react';
 import {useSelector} from 'react-redux';
 
-import {MATCH_ERROR} from '@renderer/constants/form-validation';
-import {useFormContext} from '@renderer/hooks';
+import {MATCH_ERROR} from 'renderer/constants/form-validation';
+import {useFormContext} from 'renderer/hooks';
 import {
   getActiveBankConfig,
   getPrimaryValidatorConfig,
   getManagedAccountBalances,
   getManagedAccounts,
   getManagedFriends,
-} from '@renderer/selectors';
-import {getBankTxFee, getPrimaryValidatorTxFee} from '@renderer/utils/transactions';
-import {SelectOption, SelectOptionMeta, SFC} from '@shared/types';
+} from 'renderer/selectors';
+import {getBankTxFee, getPrimaryValidatorTxFee} from 'renderer/utils/transactions';
+import {SelectOption, SelectOptionMeta, SFC} from 'shared/types';
 
 import * as S from './Styles';
 

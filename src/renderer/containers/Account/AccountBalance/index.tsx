@@ -1,10 +1,10 @@
-import React, {useEffect, useMemo, useRef, useState} from 'react';
+import {useEffect, useMemo, useRef, useState} from 'react';
 import {useDispatch} from 'react-redux';
 
-import {fetchAccountBalance} from '@renderer/dispatchers/balances';
-import {useAccountBalance, useAccountContext} from '@renderer/hooks';
-import {displayErrorToast} from '@renderer/utils/toast';
-import {AppDispatch, SFC} from '@shared/types';
+import {fetchAccountBalance} from 'renderer/dispatchers/balances';
+import {useAccountBalance, useAccountContext} from 'renderer/hooks';
+import {displayErrorToast} from 'renderer/utils/toast';
+import {AppDispatch, SFC} from 'shared/types';
 import * as S from './Styles';
 
 const AccountBalance: SFC = ({className}) => {

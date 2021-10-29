@@ -1,6 +1,6 @@
 import styled, {css} from 'styled-components';
-import {PlayIcon} from '@renderer/components/Icons';
-import {colors} from '@renderer/styles';
+import {PlayIcon} from 'renderer/components/Icons';
+import {colors} from 'renderer/styles';
 
 interface ArrowToggleProps {
   $expanded: boolean;

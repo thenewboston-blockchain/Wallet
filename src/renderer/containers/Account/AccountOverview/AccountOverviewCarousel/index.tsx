@@ -1,8 +1,8 @@
-import React, {ReactNode, useCallback} from 'react';
+import {ReactNode, useCallback} from 'react';
 
-import {Button} from '@renderer/components/FormElements';
-import {useAccountContext} from '@renderer/hooks';
-import {AccountType, SFC} from '@shared/types';
+import {Button} from 'renderer/components/FormElements';
+import {useAccountContext} from 'renderer/hooks';
+import {AccountType, SFC} from 'shared/types';
 
 import identificationBadge from './assets/IdentificationBadge.png';
 import piggyBank from './assets/PiggyBank.png';

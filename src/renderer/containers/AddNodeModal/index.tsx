@@ -1,22 +1,22 @@
-import React, {useMemo, useState} from 'react';
+import {useMemo, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
-import Modal from '@renderer/components/Modal';
-import {fetchValidatorConfig} from '@renderer/dispatchers/validators';
-import {getManagedValidators} from '@renderer/selectors';
-import {setManagedValidator} from '@renderer/store/app';
-import {formatAddressFromNode, formatPathFromNode} from '@renderer/utils/address';
+import Modal from 'renderer/components/Modal';
+import {fetchValidatorConfig} from 'renderer/dispatchers/validators';
+import {getManagedValidators} from 'renderer/selectors';
+import {setManagedValidator} from 'renderer/store/app';
+import {formatAddressFromNode, formatPathFromNode} from 'renderer/utils/address';
 import {
   getAddressFormField,
   getIpAddressField,
   getNicknameField,
   getPortField,
   getProtocolField,
-} from '@renderer/utils/forms/fields';
-import yup from '@renderer/utils/forms/yup';
-import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
-import {AppDispatch, ProtocolType, SFC} from '@shared/types';
+} from 'renderer/utils/forms/fields';
+import yup from 'renderer/utils/forms/yup';
+import {displayErrorToast, displayToast, ToastType} from 'renderer/utils/toast';
+import {AppDispatch, ProtocolType, SFC} from 'shared/types';
 
 import AddNodeModalFields from './AddNodeModalFields';
 

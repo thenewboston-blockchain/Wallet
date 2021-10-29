@@ -1,6 +1,6 @@
-import {formatQueryParams} from '@renderer/utils/address';
-import axios from '@renderer/utils/axios';
-import {SetError, SetResults} from '@renderer/utils/store';
+import {formatQueryParams} from 'renderer/utils/address';
+import axios from 'renderer/utils/axios';
+import {SetError, SetResults} from 'renderer/utils/store';
 import {
   AppDispatch,
   BankConfig,
@@ -9,7 +9,7 @@ import {
   PrimaryValidatorConfig,
   RawBankConfig,
   RawPrimaryValidatorConfig,
-} from '@shared/types';
+} from 'shared/types';
 
 export async function fetchPaginatedResults<T>(
   address: string,
@@ -44,6 +44,7 @@ export async function fetchPaginatedResults<T>(
       throw error;
     }
     dispatch(setError({address, error: error.response.data}));
+    return;
   }
 }
 

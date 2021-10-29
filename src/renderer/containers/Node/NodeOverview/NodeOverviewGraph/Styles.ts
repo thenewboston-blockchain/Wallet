@@ -1,8 +1,8 @@
 import styled, {css} from 'styled-components';
-import UBadge from '@renderer/components/Badge';
-import UCard from '@renderer/components/Card';
-import UPageTable from '@renderer/components/PageTable';
-import {colors, d2} from '@renderer/styles';
+import UBadge from 'renderer/components/Badge';
+import UCard from 'renderer/components/Card';
+import UPageTable from 'renderer/components/PageTable';
+import {colors, d2} from 'renderer/styles';
 
 export const Card = styled(UCard)`
   padding-top: 24px;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import UCard from '@renderer/components/Card';
-import {Button} from '@renderer/components/FormElements';
-import {b2, colors, h3} from '@renderer/styles';
+import UCard from 'renderer/components/Card';
+import {Button} from 'renderer/components/FormElements';
+import {b2, colors, h3} from 'renderer/styles';
 import voteBox from './assets/VoteBox.png';
 
 export const Card = styled(UCard)`

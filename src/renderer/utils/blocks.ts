@@ -1,8 +1,8 @@
-import {formatAddress} from '@renderer/utils/address';
-import axios from '@renderer/utils/axios';
-import {generateBlock, getKeyPairFromSigningKeyHex} from '@renderer/utils/signing';
-import {getBankTxFee, getPrimaryValidatorTxFee} from '@renderer/utils/transactions';
-import {AcceptedFees, BankConfig, Tx, ValidatorConfig} from '@shared/types';
+import {formatAddress} from 'renderer/utils/address';
+import axios from 'renderer/utils/axios';
+import {generateBlock, getKeyPairFromSigningKeyHex} from 'renderer/utils/signing';
+import {getBankTxFee, getPrimaryValidatorTxFee} from 'renderer/utils/transactions';
+import {AcceptedFees, BankConfig, Tx, ValidatorConfig} from 'shared/types';
 
 const createBlock = async (
   activePrimaryValidator: ValidatorConfig,

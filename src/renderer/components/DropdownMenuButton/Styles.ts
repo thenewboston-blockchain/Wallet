@@ -1,6 +1,6 @@
 import styled, {css} from 'styled-components';
-import {DevToIcon as UDevToIcon, DotsVerticalIcon as UDotsVerticalIcon} from '@renderer/components/Icons';
-import {colors} from '@renderer/styles';
+import {DevToIcon as UDevToIcon, DotsVerticalIcon as UDotsVerticalIcon} from 'renderer/components/Icons';
+import {colors} from 'renderer/styles';
 
 interface ButtonIconProps {
   $isActive: boolean;

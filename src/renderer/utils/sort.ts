@@ -1,6 +1,6 @@
 import sortBy from 'lodash/sortBy';
 
-import {Dict} from '@shared/types';
+import {Dict} from 'shared/types';
 
 export function sortByBooleanKey<T>(key: keyof T) {
   return (a: T, b: T) => {

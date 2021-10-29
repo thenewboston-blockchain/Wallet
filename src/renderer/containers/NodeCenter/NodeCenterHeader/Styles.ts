@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import {Button, ButtonColor, ButtonVariant} from '@renderer/components/FormElements';
-import {OpenInNewIcon} from '@renderer/components/Icons';
-import {h1} from '@renderer/styles';
+import {Button, ButtonColor, ButtonVariant} from 'renderer/components/FormElements';
+import {OpenInNewIcon} from 'renderer/components/Icons';
+import {h1} from 'renderer/styles';
 
 export const Container = styled.div`
   align-items: center;

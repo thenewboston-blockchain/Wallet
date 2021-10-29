@@ -1,25 +1,25 @@
-import React, {useMemo, useState} from 'react';
+import {useMemo, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
-import Modal from '@renderer/components/Modal';
+import Modal from 'renderer/components/Modal';
 import {
   ACCOUNT_EXISTS_ERROR,
   SIGNING_KEY_LENGTH,
   SIGNING_KEY_LENGTH_ERROR,
   SIGNING_KEY_REQUIRED_ERROR,
-} from '@renderer/constants/form-validation';
-import {fetchAccountBalance} from '@renderer/dispatchers/balances';
-import {getManagedAccounts, getManagedFriends} from '@renderer/selectors';
-import {setManagedAccount} from '@renderer/store/app';
-import {setAccountBalance} from '@renderer/store/accountBalances';
-import {setManagedAccountBalance} from '@renderer/store/managedAccountBalances';
-import {generateAccount} from '@renderer/utils/accounts';
-import {getNicknameField} from '@renderer/utils/forms/fields';
-import yup from '@renderer/utils/forms/yup';
-import {getKeyPairFromSigningKeyHex} from '@renderer/utils/signing';
-import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
-import {AppDispatch, SFC} from '@shared/types';
+} from 'renderer/constants/form-validation';
+import {fetchAccountBalance} from 'renderer/dispatchers/balances';
+import {getManagedAccounts, getManagedFriends} from 'renderer/selectors';
+import {setManagedAccount} from 'renderer/store/app';
+import {setAccountBalance} from 'renderer/store/accountBalances';
+import {setManagedAccountBalance} from 'renderer/store/managedAccountBalances';
+import {generateAccount} from 'renderer/utils/accounts';
+import {getNicknameField} from 'renderer/utils/forms/fields';
+import yup from 'renderer/utils/forms/yup';
+import {getKeyPairFromSigningKeyHex} from 'renderer/utils/signing';
+import {displayErrorToast, displayToast, ToastType} from 'renderer/utils/toast';
+import {AppDispatch, SFC} from 'shared/types';
 
 import CreateAccountModalFields, {FormValues, initialValues} from './CreateAccountModalFields';
 

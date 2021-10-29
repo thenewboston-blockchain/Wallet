@@ -1,6 +1,6 @@
 import {sign} from 'tweetnacl';
 
-import {getKeyPairDetails} from '@renderer/utils/signing';
+import {getKeyPairDetails} from 'renderer/utils/signing';
 
 export const truncateLongText = (text: string): string => {
   const VISIBLE_COUNT = 7;

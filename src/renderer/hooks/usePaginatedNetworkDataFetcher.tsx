@@ -2,7 +2,7 @@ import {useCallback, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import isEqual from 'lodash/isEqual';
 
-import {PAGINATED_RESULTS_LIMIT} from '@renderer/config';
+import {PAGINATED_RESULTS_LIMIT} from 'renderer/config';
 import {
   BANK_ACCOUNTS,
   BANK_BANK_TRANSACTIONS,
@@ -17,7 +17,7 @@ import {
   VALIDATOR_BANKS,
   VALIDATOR_CONFIGS,
   VALIDATOR_VALIDATORS,
-} from '@renderer/constants/actions';
+} from 'renderer/constants/actions';
 import {
   fetchBankAccounts,
   fetchBankBanks,
@@ -27,8 +27,8 @@ import {
   fetchBankInvalidBlocks,
   fetchBankValidatorConfirmationServices,
   fetchBankValidators,
-} from '@renderer/dispatchers/banks';
-import {fetchValidatorAccounts, fetchValidatorBanks, fetchValidatorValidators} from '@renderer/dispatchers/validators';
+} from 'renderer/dispatchers/banks';
+import {fetchValidatorAccounts, fetchValidatorBanks, fetchValidatorValidators} from 'renderer/dispatchers/validators';
 import {
   getBankAccounts,
   getBankBanks,
@@ -41,7 +41,7 @@ import {
   getValidatorAccounts,
   getValidatorBanks,
   getValidatorValidators,
-} from '@renderer/selectors';
+} from 'renderer/selectors';
 import {
   unsetBankAccounts,
   unsetBankBanks,
@@ -51,9 +51,9 @@ import {
   unsetBankInvalidBlocks,
   unsetBankValidatorConfirmationServices,
   unsetBankValidators,
-} from '@renderer/store/banks';
-import {unsetValidatorAccounts, unsetValidatorBanks, unsetValidatorValidators} from '@renderer/store/validators';
-import {AppDispatch, DictWithPaginatedResultsAndError, PaginatedQueryParams, RootState} from '@shared/types';
+} from 'renderer/store/banks';
+import {unsetValidatorAccounts, unsetValidatorBanks, unsetValidatorValidators} from 'renderer/store/validators';
+import {AppDispatch, DictWithPaginatedResultsAndError, PaginatedQueryParams, RootState} from 'shared/types';
 
 const getDispatcherFromType = (
   type: string,

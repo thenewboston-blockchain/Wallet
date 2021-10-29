@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 
-import Modal from '@renderer/components/Modal';
-import {StatusBadgeType} from '@renderer/components/StatusBadge';
-import {truncateLongText} from '@renderer/utils/accounts';
-import yup from '@renderer/utils/forms/yup';
-import {SFC} from '@shared/types';
+import Modal from 'renderer/components/Modal';
+import {StatusBadgeType} from 'renderer/components/StatusBadge';
+import {truncateLongText} from 'renderer/utils/accounts';
+import yup from 'renderer/utils/forms/yup';
+import {SFC} from 'shared/types';
 
 import {NodeData} from '../data';
 import NodeCenterBoostNodeModalFields from './NodeCenterBoostNodeModalFields';

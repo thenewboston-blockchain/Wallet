@@ -1,20 +1,20 @@
-import React, {useMemo} from 'react';
+import {useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
-import Modal from '@renderer/components/Modal';
+import Modal from 'renderer/components/Modal';
 import {
   ACCOUNT_NUMBER_LENGTH,
   ACCOUNT_NUMBER_LENGTH_ERROR,
   FRIEND_AS_OWN_ACCOUNT_ERROR,
   FRIEND_EXISTS_ERROR,
   REQUIRED_FIELD_ERROR,
-} from '@renderer/constants/form-validation';
-import {getManagedAccounts, getManagedFriends} from '@renderer/selectors';
-import {setManagedFriend} from '@renderer/store/app';
-import {getNicknameField} from '@renderer/utils/forms/fields';
-import yup from '@renderer/utils/forms/yup';
-import {AppDispatch, SFC} from '@shared/types';
+} from 'renderer/constants/form-validation';
+import {getManagedAccounts, getManagedFriends} from 'renderer/selectors';
+import {setManagedFriend} from 'renderer/store/app';
+import {getNicknameField} from 'renderer/utils/forms/fields';
+import yup from 'renderer/utils/forms/yup';
+import {AppDispatch, SFC} from 'shared/types';
 
 import * as S from './Styles';
 

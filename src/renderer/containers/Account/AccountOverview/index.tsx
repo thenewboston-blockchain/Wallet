@@ -1,12 +1,11 @@
-import React from 'react';
 import noop from 'lodash/noop';
 
 // Temp
-import {Switch} from '@renderer/components/FormElements';
-import {useToggle} from '@renderer/hooks';
+import {Switch} from 'renderer/components/FormElements';
+import {useToggle} from 'renderer/hooks';
 // Temp End
 
-import {SFC} from '@shared/types';
+import {SFC} from 'shared/types';
 import AccountOverviewCarousel, {AccountOverviewCarouselTopic} from './AccountOverviewCarousel';
 import AccountOverviewVaultCard from './AccountOverviewVaultCard';
 import AccountOverviewVoteCard from './AccountOverviewVoteCard';

@@ -1,8 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-import {BANK_BANKS} from '@renderer/constants/actions';
-import {setPaginatedResultErrorReducer, setPaginatedResultReducer, unsetDataReducer} from '@renderer/utils/store';
-import {DictWithPaginatedResultsAndError, Node} from '@shared/types';
+import {BANK_BANKS} from 'renderer/constants/actions';
+import {setPaginatedResultErrorReducer, setPaginatedResultReducer, unsetDataReducer} from 'renderer/utils/store';
+import {DictWithPaginatedResultsAndError, Node} from 'shared/types';
 
 const bankBanks = createSlice({
   initialState: {} as DictWithPaginatedResultsAndError<Node>,

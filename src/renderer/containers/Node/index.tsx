@@ -1,10 +1,10 @@
-import React, {ReactNode} from 'react';
+import {ReactNode} from 'react';
 import {Redirect, Route, Switch, useHistory, useParams} from 'react-router-dom';
 
-import MainContainer from '@renderer/components/MainContainer';
-import {useNodeContext} from '@renderer/hooks';
-import {formatPath} from '@renderer/utils/address';
-import {NodeParams, NodeSection, SFC} from '@shared/types';
+import MainContainer from 'renderer/components/MainContainer';
+import {useNodeContext} from 'renderer/hooks';
+import {formatPath} from 'renderer/utils/address';
+import {NodeParams, NodeSection, SFC} from 'shared/types';
 
 import NodeAccounts from './NodeAccounts';
 import NodeBlocks from './NodeBlocks';

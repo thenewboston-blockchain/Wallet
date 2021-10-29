@@ -1,10 +1,10 @@
 import styled, {css} from 'styled-components';
 
-import UCard from '@renderer/components/Card';
-import {Button, ButtonColor, ButtonVariant} from '@renderer/components/FormElements';
-import {RocketLaunchIcon as URocketLaunchIcon} from '@renderer/components/Icons';
-import UProgressBar from '@renderer/components/ProgressBar';
-import {b1, b2, colors, d2, h3} from '@renderer/styles';
+import UCard from 'renderer/components/Card';
+import {Button, ButtonColor, ButtonVariant} from 'renderer/components/FormElements';
+import {RocketLaunchIcon as URocketLaunchIcon} from 'renderer/components/Icons';
+import UProgressBar from 'renderer/components/ProgressBar';
+import {b1, b2, colors, d2, h3} from 'renderer/styles';
 
 export const Card = styled(UCard)`
   height: 100%;

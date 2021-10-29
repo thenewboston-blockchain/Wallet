@@ -1,6 +1,6 @@
 import styled, {css} from 'styled-components';
-import Card from '@renderer/components/Card';
-import {colors} from '@renderer/styles';
+import Card from 'renderer/components/Card';
+import {colors} from 'renderer/styles';
 
 export const Container = styled(Card)`
   padding-top: 24px;

@@ -1,4 +1,4 @@
-import React, {Fragment, ReactNode, useEffect, useMemo, useRef, useState} from 'react';
+import {Fragment, ReactNode, useEffect, useMemo, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 import {useSelector} from 'react-redux';
 import {useLocation} from 'react-router-dom';
@@ -6,10 +6,10 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import formatDuration from 'date-fns/formatDuration';
 import intervalToDuration from 'date-fns/intervalToDuration';
 
-import {useToggle} from '@renderer/hooks';
-import {getManagedAccounts, getManagedFriends, getNotifications} from '@renderer/selectors';
-import {formatAddressFromNode} from '@renderer/utils/address';
-import {sortByNumberKey} from '@renderer/utils/sort';
+import {useToggle} from 'renderer/hooks';
+import {getManagedAccounts, getManagedFriends, getNotifications} from 'renderer/selectors';
+import {formatAddressFromNode} from 'renderer/utils/address';
+import {sortByNumberKey} from 'renderer/utils/sort';
 import {
   CleanStatusNotificationPayload,
   ConfirmationBlockNotificationPayload,
@@ -19,7 +19,7 @@ import {
   PrimaryValidatorUpdatedNotificationPayload,
   SFC,
   ValidatorConfirmationServiceNotificationPayload,
-} from '@shared/types';
+} from 'shared/types';
 
 import NotificationsMenu from './NotificationsMenu';
 import * as S from './Styles';

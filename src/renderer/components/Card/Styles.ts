@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {colors} from '@renderer/styles';
+import {colors} from 'renderer/styles';
 
 export const Card = styled.div`
   background: ${colors.white};

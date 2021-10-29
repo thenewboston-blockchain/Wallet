@@ -1,6 +1,6 @@
-import React, {useMemo} from 'react';
-import {truncateLongText} from '@renderer/utils/accounts';
-import {SFC} from '@shared/types';
+import {useMemo} from 'react';
+import {truncateLongText} from 'renderer/utils/accounts';
+import {SFC} from 'shared/types';
 import * as S from './Styles';
 
 interface ComponentProps {

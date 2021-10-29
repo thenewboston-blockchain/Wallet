@@ -1,6 +1,4 @@
-import React from 'react';
-
-import {SFC} from '@shared/types';
+import {SFC} from 'shared/types';
 import AccountBreadcrumb from '../../AccountBreadcrumb';
 import * as S from './Styles';
 

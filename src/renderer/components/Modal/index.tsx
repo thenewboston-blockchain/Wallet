@@ -1,10 +1,10 @@
-import React, {CSSProperties, ReactNode, useMemo} from 'react';
+import {CSSProperties, ReactNode, useMemo} from 'react';
 import {createPortal} from 'react-dom';
 import noop from 'lodash/noop';
 
-import {ButtonType, Form, FormButton, FormButtonProps} from '@renderer/components/FormElements';
-import Loader from '@renderer/components/FormElements/Loader';
-import {GenericFormValues, GenericFunction, SFC} from '@shared/types';
+import {ButtonType, Form, FormButton, FormButtonProps} from 'renderer/components/FormElements';
+import Loader from 'renderer/components/FormElements/Loader';
+import {GenericFormValues, GenericFunction, SFC} from 'shared/types';
 
 import * as S from './Styles';
 

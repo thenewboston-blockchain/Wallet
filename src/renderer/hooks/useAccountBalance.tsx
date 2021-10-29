@@ -1,5 +1,5 @@
 import {useSelector} from 'react-redux';
-import {getAccountBalances} from '@renderer/selectors';
+import {getAccountBalances} from 'renderer/selectors';
 import useAccountContext from './useAccountContext';
 
 const useAccountBalance = (): number | null => {

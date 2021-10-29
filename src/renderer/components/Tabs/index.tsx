@@ -1,6 +1,5 @@
-import React from 'react';
-import {TabsProvider} from '@renderer/context';
-import {SFC} from '@shared/types';
+import {TabsProvider} from 'renderer/context';
+import {SFC} from 'shared/types';
 
 import Tab from './Tab';
 import * as S from './Styles';

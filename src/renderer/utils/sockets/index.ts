@@ -1,6 +1,6 @@
 import ReconnectingWebSocket from 'reconnecting-websocket';
-import {displayErrorToast} from '@renderer/utils/toast';
-import {AppDispatch, NotificationType} from '@shared/types';
+import {displayErrorToast} from 'renderer/utils/toast';
+import {AppDispatch, NotificationType} from 'shared/types';
 
 import handleConfirmationBlockNotification from './confirmation-block-notifications';
 import handleCrawlSocketEvent from './crawl';
@@ -45,10 +45,10 @@ export const processSocketEvent = (payload: any, dispatch: AppDispatch, event: M
         handleCleanSocketEvent(payload, dispatch, notification);
         break;
       case NotificationType.primaryValidatorUpdatedNotification:
-        handlePrimaryValidatorUpdatedNotifications(payload, dispatch, notification);
+        handlePrimaryValidatorUpdatedNotifications(dispatch, notification);
         break;
       case NotificationType.validatorConfirmationServiceNotification:
-        handleValidatorConfirmationServiceNotifications(payload, dispatch, notification);
+        handleValidatorConfirmationServiceNotifications(dispatch, notification);
         break;
       default:
         displayErrorToast(`${notification.notification_type} is an unhandled notification type.`);

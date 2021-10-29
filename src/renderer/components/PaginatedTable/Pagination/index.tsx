@@ -1,6 +1,6 @@
-import React, {ReactNode, useCallback, useMemo} from 'react';
+import {ReactNode, useCallback, useMemo} from 'react';
 import noop from 'lodash/noop';
-import {SFC} from '@shared/types';
+import {SFC} from 'shared/types';
 
 import * as S from './Styles';
 

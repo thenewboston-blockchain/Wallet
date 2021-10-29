@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import Badge from '@renderer/components/Badge';
-import {Button, ButtonColor, ButtonSize, ButtonVariant} from '@renderer/components/FormElements';
-import {RocketLaunchIcon as URocketLaunchIcon} from '@renderer/components/Icons';
-import UProgressBar from '@renderer/components/ProgressBar';
-import UStatusBadge from '@renderer/components/StatusBadge';
-import {b1, colors, h1} from '@renderer/styles';
+import Badge from 'renderer/components/Badge';
+import {Button, ButtonColor, ButtonSize, ButtonVariant} from 'renderer/components/FormElements';
+import {RocketLaunchIcon as URocketLaunchIcon} from 'renderer/components/Icons';
+import UProgressBar from 'renderer/components/ProgressBar';
+import UStatusBadge from 'renderer/components/StatusBadge';
+import {b1, colors, h1} from 'renderer/styles';
 import UNodeCenterTable from './NodeCenterTable';
 
 export const Container = styled.div``;

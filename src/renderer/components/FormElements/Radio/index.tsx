@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import React, {ReactNode} from 'react';
-import {SFC} from '@shared/types';
+import {SFC} from 'shared/types';
 import * as S from './Styles';
 
 export interface RadioProps {

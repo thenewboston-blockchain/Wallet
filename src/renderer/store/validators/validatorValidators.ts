@@ -1,8 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-import {VALIDATOR_VALIDATORS} from '@renderer/constants/actions';
-import {setPaginatedResultErrorReducer, setPaginatedResultReducer, unsetDataReducer} from '@renderer/utils/store';
-import {BaseValidator, DictWithPaginatedResultsAndError} from '@shared/types';
+import {VALIDATOR_VALIDATORS} from 'renderer/constants/actions';
+import {setPaginatedResultErrorReducer, setPaginatedResultReducer, unsetDataReducer} from 'renderer/utils/store';
+import {BaseValidator, DictWithPaginatedResultsAndError} from 'shared/types';
 
 const validatorValidators = createSlice({
   initialState: {} as DictWithPaginatedResultsAndError<BaseValidator>,

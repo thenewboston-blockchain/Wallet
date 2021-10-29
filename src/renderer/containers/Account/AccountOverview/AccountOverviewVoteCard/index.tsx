@@ -1,7 +1,6 @@
-import React from 'react';
 import {useHistory} from 'react-router-dom';
 
-import {SFC} from '@shared/types';
+import {SFC} from 'shared/types';
 import * as S from './Styles';
 
 const AccountOverviewVoteCard: SFC = ({className}) => {

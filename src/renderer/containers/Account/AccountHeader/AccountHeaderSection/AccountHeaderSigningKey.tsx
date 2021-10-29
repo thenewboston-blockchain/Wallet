@@ -1,20 +1,20 @@
-import React, {ReactNode, useCallback, useEffect, useRef} from 'react';
+import {ReactNode, useCallback, useEffect, useRef} from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import {useLocation} from 'react-router-dom';
 
-import {PageHeaderSection} from '@renderer/components/PageHeader';
-import {useAccountContext, useToggle, useWriteIpc} from '@renderer/hooks';
-import {truncateLongText} from '@renderer/utils/accounts';
-import {displayToast, ToastType} from '@renderer/utils/toast';
-import {DownloadSigningKeyPayload, IpcChannel} from '@shared/ipc';
-import {SFC} from '@shared/types';
+import {PageHeaderSection} from 'renderer/components/PageHeader';
+import {useAccountContext, useToggle, useWriteIpc} from 'renderer/hooks';
+import {truncateLongText} from 'renderer/utils/accounts';
+import {displayToast, ToastType} from 'renderer/utils/toast';
+import {DownloadSigningKeyPayload, IpcChannel} from 'shared/ipc';
+import {SFC} from 'shared/types';
 import * as S from './Styles';
 
 interface AccountHeaderSigningKeyProps {
   signingKey: string;
 }
 
-const downloadFailToast = (e: any, error: string) => {
+const downloadFailToast = (_: any, error: string) => {
   displayToast(`Could not save signing key: ${error}`, ToastType.error);
 };
 

@@ -1,5 +1,5 @@
 import ElectronStore from 'electron-store';
-import {LocalStore} from '@shared/types';
+import {LocalStore} from 'shared/types';
 
 class Store {
   private static instance = new ElectronStore<LocalStore>();

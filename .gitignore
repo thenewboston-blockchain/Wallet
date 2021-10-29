@@ -98,10 +98,6 @@ release/app/dist
 release/build
 .erb/dll
 
-# Bundle
-bundle/
-config/bundle
-
 # Webstorm
 .idea/
 

@@ -1,4 +1,4 @@
-import {LocalStore} from '@shared/types';
+import {LocalStore} from 'shared/types';
 
 export enum IpcChannel {
   downloadSigningKey = 'download-signing-key',

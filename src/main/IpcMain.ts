@@ -1,7 +1,6 @@
 import {dialog, ipcMain, OpenDialogOptions, SaveDialogOptions} from 'electron';
 import fs from 'fs';
-import MainWindow from '@main/MainWindow';
-import Store from '@main/Store';
+
 import {
   ClearStoreValuePayload,
   DownloadSigningKeyPayload,
@@ -9,8 +8,10 @@ import {
   getSuccessChannel,
   IpcChannel,
   SetStoreValuePayload,
-} from '@shared/ipc';
-import {LocalStore} from '@shared/types';
+} from '../shared/ipc';
+import {LocalStore} from '../shared/types';
+import MainWindow from './MainWindow';
+import Store from './Store';
 
 ipcMain.on(IpcChannel.loadStoreData, (event) => {
   try {
@@ -132,7 +133,7 @@ ipcMain.on(IpcChannel.importStoreData, async (event) => {
 ipcMain.on(IpcChannel.restartApp, (event) => {
   try {
     console.log('Trying to restart app');
-    MainWindow.reloadIgnoringCache();
+    MainWindow.getWebContents()?.reloadIgnoringCache();
     setTimeout(() => {
       event.reply(getSuccessChannel(IpcChannel.restartApp));
     }, 1000);

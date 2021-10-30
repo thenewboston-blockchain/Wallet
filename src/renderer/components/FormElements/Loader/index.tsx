@@ -1,4 +1,4 @@
-import {IconProps} from 'renderer/components/Icons';
+import {IconProps} from 'renderer/components/Icon';
 import {SFC} from 'shared/types';
 import * as S from './Styles';
 

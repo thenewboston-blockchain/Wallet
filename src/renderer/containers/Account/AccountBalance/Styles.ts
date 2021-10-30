@@ -1,5 +1,7 @@
 import styled, {css, keyframes} from 'styled-components';
-import {RefreshIcon as URefreshIcon} from 'renderer//components/Icons';
+import {mdiRefresh} from '@mdi/js';
+
+import Icon from 'renderer/components/Icon';
 import {colors, d2} from 'renderer/styles';
 
 export const Container = styled.div`
@@ -39,7 +41,7 @@ const spin = keyframes`
   }
 `;
 
-export const RefreshIcon = styled(URefreshIcon)<{disabled: boolean}>`
+export const RefreshIcon = styled(Icon).attrs(() => ({icon: mdiRefresh}))<{disabled: boolean}>`
   animation: ${({disabled}) =>
     disabled
       ? css`

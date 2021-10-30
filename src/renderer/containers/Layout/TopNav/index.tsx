@@ -1,12 +1,12 @@
 import {ReactNode, useCallback, useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {mdiArrowLeft, mdiArrowRight, mdiRefresh} from '@mdi/js';
 
 import DropdownMenuButton, {
   DropdownMenuDirection,
   DropdownMenuIcon,
   DropdownMenuOption,
 } from 'renderer/components/DropdownMenuButton';
-import {ArrowLeftIcon, ArrowRightIcon, RefreshIcon} from 'renderer/components/Icons';
 import Modal from 'renderer/components/Modal';
 import ChangeActiveBankModal from 'renderer/containers/ChangeActiveBankModal';
 import Notifications from 'renderer/containers/Notifications';
@@ -80,9 +80,9 @@ const TopNav: SFC = ({className}) => {
 
   const renderLeft = (): ReactNode => (
     <S.SectionWrapper>
-      <S.Icon as={ArrowLeftIcon} disabled={!backEnabled} onClick={back} />
-      <S.Icon as={ArrowRightIcon} disabled={!forwardEnabled} onClick={forward} />
-      <S.Icon as={RefreshIcon} onClick={reload} />
+      <S.Icon disabled={!backEnabled} icon={mdiArrowLeft} onClick={back} />
+      <S.Icon disabled={!forwardEnabled} icon={mdiArrowRight} onClick={forward} />
+      <S.Icon icon={mdiRefresh} onClick={reload} />
     </S.SectionWrapper>
   );
 

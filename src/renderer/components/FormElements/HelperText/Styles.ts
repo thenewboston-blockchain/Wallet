@@ -1,5 +1,7 @@
 import styled, {css} from 'styled-components';
-import {AlertIcon as UAlertIcon, CheckCircleIcon as UCheckCircleIcon} from 'renderer/components/Icons';
+import {mdiAlert, mdiCheckCircle} from '@mdi/js';
+
+import Icon from 'renderer/components/Icon';
 import {b2, colors} from 'renderer/styles';
 import {HelperTextType} from './types';
 
@@ -27,14 +29,16 @@ const iconStyle = css<Type>`
   margin-right: 3px;
 `;
 
-export const AlertIcon = styled(UAlertIcon).attrs(() => ({
+export const AlertIcon = styled(Icon).attrs(() => ({
+  icon: mdiAlert,
   size: 14,
   totalSize: 'unset',
 }))<Type>`
   ${iconStyle};
 `;
 
-export const CheckCircleIcon = styled(UCheckCircleIcon).attrs(() => ({
+export const CheckCircleIcon = styled(Icon).attrs(() => ({
+  icon: mdiCheckCircle,
   size: 14,
   totalSize: 'unset',
 }))<Type>`

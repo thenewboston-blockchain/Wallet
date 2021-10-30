@@ -35,7 +35,7 @@ const headers = {
   [NodeCenterTableKeys.boostAction]: '',
 };
 
-interface NodeCenterTableProps {
+export interface NodeCenterTableProps {
   data: PageTableData[];
 }
 

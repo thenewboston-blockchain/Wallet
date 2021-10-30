@@ -1,8 +1,9 @@
 import styled, {css} from 'styled-components';
+import {mdiRocketLaunch} from '@mdi/js';
 
 import UCard from 'renderer/components/Card';
 import {Button, ButtonColor, ButtonVariant} from 'renderer/components/FormElements';
-import {RocketLaunchIcon as URocketLaunchIcon} from 'renderer/components/Icons';
+import Icon from 'renderer/components/Icon';
 import UProgressBar from 'renderer/components/ProgressBar';
 import {b1, b2, colors, d2, h3} from 'renderer/styles';
 
@@ -80,8 +81,9 @@ export const BoostNodeButton = styled(Button).attrs(() => ({
   white-space: nowrap;
 `;
 
-export const RocketLaunchIcon = styled(URocketLaunchIcon).attrs(() => ({
+export const RocketLaunchIcon = styled(Icon).attrs(() => ({
   color: colors.palette.blue['500'],
+  icon: mdiRocketLaunch,
 }))`
   margin-right: 3px;
 `;

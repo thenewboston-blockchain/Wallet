@@ -1,5 +1,7 @@
 import styled, {css, keyframes} from 'styled-components';
-import {CloseIcon as UCloseIcon} from 'renderer/components/Icons';
+import {mdiClose} from '@mdi/js';
+
+import Icon from 'renderer/components/Icon';
 import {colors} from 'renderer/styles';
 
 const fadeIn = keyframes`
@@ -29,7 +31,7 @@ export const Container = styled.div<{$isOpen: boolean}>`
     `};
 `;
 
-export const CloseIcon = styled(UCloseIcon)`
+export const CloseIcon = styled(Icon).attrs(() => ({icon: mdiClose}))`
   position: absolute;
   right: 18px;
   top: 18px;

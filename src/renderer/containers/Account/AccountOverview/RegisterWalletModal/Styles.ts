@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import {mdiAlert, mdiCheckCircle} from '@mdi/js';
+
 import {Loader as ULoader} from 'renderer/components/FormElements';
-import {AlertIcon as UAlertIcon, CheckCircleIcon as UCheckCircleIcon} from 'renderer/components/Icons';
+import Icon from 'renderer/components/Icon';
 import UPopover, {HorizontalPosition, VerticalPosition} from 'renderer/components/Popover';
 import {colors, h4} from 'renderer/styles';
 
@@ -17,7 +19,8 @@ export const InsufficientFunds = styled.div`
   padding: 12px 16px;
 `;
 
-export const AlertIcon = styled(UAlertIcon).attrs(() => ({
+export const AlertIcon = styled(Icon).attrs(() => ({
+  icon: mdiAlert,
   size: 24,
   totalSize: 'unset',
 }))`
@@ -53,6 +56,8 @@ export const PopoverRow = styled.div`
   }
 `;
 
-export const CheckIcon = styled(UCheckCircleIcon).attrs(() => ({size: 20, totalSize: 'unset'}))<{$isValid: boolean}>`
+export const CheckIcon = styled(Icon).attrs(() => ({icon: mdiCheckCircle, size: 20, totalSize: 'unset'}))<{
+  $isValid: boolean;
+}>`
   color: ${({$isValid}) => ($isValid ? colors.palette.green['400'] : colors.palette.neutral['200'])};
 `;

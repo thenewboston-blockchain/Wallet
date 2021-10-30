@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import {mdiInformationOutline} from '@mdi/js';
+
 import UKeyValueTable, {Row as URow} from 'renderer/components/KeyValueTable';
-import {InformationOutlineIcon} from 'renderer/components/Icons';
+import Icon from 'renderer/components/Icon';
 import {colors} from 'renderer/styles';
 
 export const Table = styled(UKeyValueTable)`
@@ -11,7 +13,8 @@ export const Table = styled(UKeyValueTable)`
 
 export const Row = styled(URow)``;
 
-export const InfoIcon = styled(InformationOutlineIcon).attrs(() => ({
+export const InfoIcon = styled(Icon).attrs(() => ({
+  icon: mdiInformationOutline,
   size: 14,
   totalSize: 'unset',
 }))`

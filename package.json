@@ -240,6 +240,8 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "@mdi/js": "^6.4.95",
+    "@mdi/react": "^1.5.0",
     "@mui/material": "^5.0.6",
     "@mui/styles": "^5.0.2",
     "@reduxjs/toolkit": "^1.6.2",
@@ -251,7 +253,6 @@
     "electron-updater": "^4.3.9",
     "formik": "^2.2.9",
     "lodash-es": "^4.17.21",
-    "mdi-react": "^8.1.0",
     "qrcode": "^1.4.4",
     "query-string": "^7.0.1",
     "re-reselect": "^4.0.0",

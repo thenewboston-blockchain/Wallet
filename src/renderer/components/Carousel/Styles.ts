@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import {ArrowLeftIcon as UArrowLeftIcon, ArrowRightIcon as UArrowRightIcon} from 'renderer/components/Icons';
+import {mdiArrowLeft, mdiArrowRight} from '@mdi/js';
+
+import Icon from 'renderer/components/Icon';
 import {colors} from 'renderer/styles';
 
 const TRANSITION_TIME = '0.3s';
@@ -52,6 +54,6 @@ export const SlideContainer = styled.div<SlideContainerProps>`
   transition: left ${TRANSITION_TIME} linear;
 `;
 
-export const ArrowLeftIcon = styled(UArrowLeftIcon)``;
+export const ArrowLeftIcon = styled(Icon).attrs(() => ({icon: mdiArrowLeft}))``;
 
-export const ArrowRightIcon = styled(UArrowRightIcon)``;
+export const ArrowRightIcon = styled(Icon).attrs(() => ({icon: mdiArrowRight}))``;

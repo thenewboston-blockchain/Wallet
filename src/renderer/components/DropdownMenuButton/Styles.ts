@@ -1,5 +1,7 @@
 import styled, {css} from 'styled-components';
-import {DevToIcon as UDevToIcon, DotsVerticalIcon as UDotsVerticalIcon} from 'renderer/components/Icons';
+import {mdiDevTo, mdiDotsVertical} from '@mdi/js';
+
+import Icon from 'renderer/components/Icon';
 import {colors} from 'renderer/styles';
 
 interface ButtonIconProps {
@@ -11,11 +13,11 @@ const iconStyle = css<ButtonIconProps>`
   border-radius: 6px;
 `;
 
-export const DevToIcon = styled(UDevToIcon)<ButtonIconProps>`
+export const DevToIcon = styled(Icon).attrs(() => ({icon: mdiDevTo}))<ButtonIconProps>`
   ${iconStyle};
 `;
 
-export const DotsVerticalIcon = styled(UDotsVerticalIcon)<ButtonIconProps>`
+export const DotsVerticalIcon = styled(Icon).attrs(() => ({icon: mdiDotsVertical}))<ButtonIconProps>`
   ${iconStyle};
 `;
 

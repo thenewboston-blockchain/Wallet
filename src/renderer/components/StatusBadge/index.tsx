@@ -3,7 +3,7 @@ import {SFC} from 'shared/types';
 import * as S from './Styles';
 import {StatusBadgeType} from './Styles';
 
-interface StatusBadgeProps {
+export interface StatusBadgeProps {
   status: StatusBadgeType;
 }
 

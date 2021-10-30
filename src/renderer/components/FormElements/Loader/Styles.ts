@@ -1,5 +1,7 @@
 import styled, {keyframes} from 'styled-components';
-import {LoadingIcon as ULoadingIcon} from 'renderer/components/Icons';
+import {mdiLoading} from '@mdi/js';
+
+import Icon from 'renderer/components/Icon';
 
 export const Container = styled.div`
   align-items: center;
@@ -28,7 +30,7 @@ const spin = keyframes`
   }
 `;
 
-export const LoadingIcon = styled(ULoadingIcon)`
+export const LoadingIcon = styled(Icon).attrs(() => ({icon: mdiLoading}))`
   animation: ${fade} 1s linear infinite, ${spin} 1s linear infinite;
   display: inline;
 `;

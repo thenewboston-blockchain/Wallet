@@ -1,5 +1,7 @@
 import styled, {css} from 'styled-components';
-import {ChevronLeftIcon as UChevronLeftIcon, ChevronRightIcon as UChevronRightIcon} from 'renderer/components/Icons';
+import {mdiChevronLeft, mdiChevronRight} from '@mdi/js';
+
+import Icon from 'renderer/components/Icon';
 import {colors} from 'renderer/styles';
 
 export const Container = styled.div`
@@ -54,14 +56,14 @@ const prevNextButtonStyle = css`
   padding: 0;
 `;
 
-export const ChevronLeftIcon = styled(UChevronLeftIcon)<{disabled: boolean}>`
+export const ChevronLeftIcon = styled(Icon).attrs(() => ({icon: mdiChevronLeft}))<{disabled: boolean}>`
   ${buttonStyle};
   ${prevNextButtonStyle};
 
   ${({disabled}) => disabled && disabledStyle};
 `;
 
-export const ChevronRightIcon = styled(UChevronRightIcon)<{disabled: boolean}>`
+export const ChevronRightIcon = styled(Icon).attrs(() => ({icon: mdiChevronRight}))<{disabled: boolean}>`
   ${buttonStyle};
   ${prevNextButtonStyle};
 

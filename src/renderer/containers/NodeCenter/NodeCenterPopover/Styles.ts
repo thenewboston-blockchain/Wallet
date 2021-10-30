@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import {mdiOpenInNew} from '@mdi/js';
+
 import {Button, ButtonVariant} from 'renderer/components/FormElements';
-import {OpenInNewIcon} from 'renderer/components/Icons';
+import Icon from 'renderer/components/Icon';
 import UPopover, {HorizontalPosition, VerticalPosition, PopoverStyles} from 'renderer/components/Popover';
 import {b1, colors, h2, mixinButtonFocusDarkmode} from 'renderer/styles';
 
@@ -87,7 +89,8 @@ export const LearnMoreButton = styled(Button).attrs(() => ({
   }
 `;
 
-export const ExternalIcon = styled(OpenInNewIcon).attrs(() => ({
+export const ExternalIcon = styled(Icon).attrs(() => ({
+  icon: mdiOpenInNew,
   size: 14,
   totalSize: 'unset',
 }))`

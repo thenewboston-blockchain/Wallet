@@ -1,7 +1,8 @@
 import {useRef} from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
+import {mdiContentCopy} from '@mdi/js';
 
-import {ContentCopyIcon} from 'renderer/components/Icons';
+import Icon from 'renderer/components/Icon';
 import Modal from 'renderer/components/Modal';
 import Qr from 'renderer/components/Qr';
 import {displayToast, ToastType} from 'renderer/utils/toast';
@@ -35,7 +36,7 @@ const QrcodeModal: SFC<QrcodeModalProps> = ({accountLabel, accountNumber, classN
         <Qr text={accountNumber} width={178} />
         <S.AccountNumber>{formatAccountNumber(accountNumber)}</S.AccountNumber>
         <CopyToClipboard text={accountNumber} onCopy={handleCopy}>
-          <ContentCopyIcon ref={copyIconRef} />
+          <Icon icon={mdiContentCopy} ref={copyIconRef} />
         </CopyToClipboard>
       </S.Container>
     </Modal>

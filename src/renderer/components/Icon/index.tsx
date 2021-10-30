@@ -1,11 +1,23 @@
-import React, {forwardRef, useMemo} from 'react';
+import React, {forwardRef, HTMLAttributes, useMemo} from 'react';
+import MdiIcon from '@mdi/react';
 
-import {IconProps} from '../types';
 import * as S from './Styles';
 
-const IconWrapper = forwardRef<HTMLDivElement, IconProps>(
+export interface IconProps extends HTMLAttributes<HTMLDivElement> {
+  className?: string;
+  dataTestId?: string;
+  disabled?: boolean;
+  icon: string;
+  onClick?(e?: React.MouseEvent<HTMLDivElement, MouseEvent>): void;
+  onKeyDown?(e?: React.KeyboardEvent<HTMLDivElement>): void;
+  size?: number;
+  totalSize?: number | 'unset';
+  unfocusable?: boolean;
+}
+
+const Icon = forwardRef<HTMLDivElement, IconProps>(
   (
-    {children, className, dataTestId, disabled = false, onClick, onKeyDown, size, totalSize, unfocusable = false},
+    {className, dataTestId, disabled = false, icon, onClick, onKeyDown, size = 24, totalSize, unfocusable = false},
     ref,
   ) => {
     const handleClick = (e?: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
@@ -44,10 +56,10 @@ const IconWrapper = forwardRef<HTMLDivElement, IconProps>(
         totalSize={totalSize}
         unfocusable={unfocusable}
       >
-        {children}
+        <MdiIcon path={icon} size={`${size}px`} />
       </S.Wrapper>
     );
   },
 );
 
-export default IconWrapper;
+export default Icon;

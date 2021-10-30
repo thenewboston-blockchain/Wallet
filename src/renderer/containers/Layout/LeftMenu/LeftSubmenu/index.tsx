@@ -1,7 +1,8 @@
 import {ReactNode} from 'react';
+import {mdiPlus} from '@mdi/js';
 
 import ArrowToggle from 'renderer/components/ArrowToggle';
-import {PlusIcon} from 'renderer/components/Icons';
+import Icon from 'renderer/components/Icon';
 import {useToggle} from 'renderer/hooks';
 import {SFC} from 'shared/types';
 
@@ -31,7 +32,7 @@ const LeftSubmenu: SFC<ComponentProps> = ({className, menuItems, rightOnClick, t
   const renderRightSection = (): ReactNode => {
     if (!rightOnClick) return null;
 
-    return <PlusIcon onClick={rightOnClick} size={20} totalSize={20} />;
+    return <Icon icon={mdiPlus} onClick={rightOnClick} size={20} totalSize={20} />;
   };
 
   return (

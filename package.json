@@ -135,6 +135,7 @@
   ],
   "homepage": "https://github.com/thenewboston-developers/Wallet",
   "jest": {
+    "globalSetup": "<rootDir>/.erb/scripts/globalSetup.js",
     "testURL": "http://localhost/",
     "testEnvironment": "jsdom",
     "transform": {

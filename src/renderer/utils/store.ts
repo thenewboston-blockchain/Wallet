@@ -176,7 +176,7 @@ export const unsetBalanceReducer =
 export function unsetLocalAndAccountReducer(sliceName: string) {
   return (state: any, {payload: {account_number: accountNumber}}: PayloadAction<AccountNumber>) => {
     delete state[accountNumber];
-    window.electron.ipcRenderer.send(IpcChannel.clearStoreValue, getStateName(sliceName));
+    window.electron.ipcRenderer.send(IpcChannel.setStoreValue, {key: getStateName(sliceName), state: current(state)});
   };
 }
 
@@ -184,6 +184,6 @@ export function unsetLocalAndAddressReducer(sliceName: string) {
   return (state: any, {payload}: PayloadAction<AddressData>) => {
     const address = formatAddressFromNode(payload);
     delete state[address];
-    window.electron.ipcRenderer.send(IpcChannel.clearStoreValue, getStateName(sliceName));
+    window.electron.ipcRenderer.send(IpcChannel.setStoreValue, {key: getStateName(sliceName), state: current(state)});
   };
 }

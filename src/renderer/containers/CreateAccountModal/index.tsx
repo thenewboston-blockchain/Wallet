@@ -17,7 +17,6 @@ import {setManagedAccountBalance} from 'renderer/store/managedAccountBalances';
 import {generateAccount} from 'renderer/utils/accounts';
 import {getNicknameField} from 'renderer/utils/forms/fields';
 import yup from 'renderer/utils/forms/yup';
-import {getKeyPairFromSigningKeyHex} from 'renderer/utils/signing';
 import {displayErrorToast, displayToast, ToastType} from 'renderer/utils/toast';
 import {AppDispatch, SFC} from 'shared/types';
 
@@ -48,7 +47,7 @@ const CreateAccountModal: SFC<ComponentProps> = ({className, close, isGetStarted
 
     if (type === 'add') {
       try {
-        const {publicKeyHex, signingKeyHex} = getKeyPairFromSigningKeyHex(signingKey);
+        const {publicKeyHex, signingKeyHex} = window.electron.signing.getKeyPairFromSigningKeyHex(signingKey);
         accountNumberStr = publicKeyHex;
         signingKeyStr = signingKeyHex;
 

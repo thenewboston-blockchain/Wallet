@@ -1,6 +1,6 @@
 import {formatAddress} from 'renderer/utils/address';
 import axios from 'renderer/utils/axios';
-import {generateBlock, getKeyPairFromSigningKeyHex} from 'renderer/utils/signing';
+import {generateBlock} from 'renderer/utils/signing';
 import {getBankTxFee, getPrimaryValidatorTxFee} from 'renderer/utils/transactions';
 import {AcceptedFees, BankConfig, Tx, ValidatorConfig} from 'shared/types';
 
@@ -10,7 +10,7 @@ const createBlock = async (
   senderAccountNumber: string,
   txs: Tx[],
 ): Promise<string> => {
-  const {publicKeyHex, signingKey} = getKeyPairFromSigningKeyHex(senderSigningKey);
+  const {publicKeyHex, signingKey} = window.electron.signing.getKeyPairFromSigningKeyHex(senderSigningKey);
   const balanceLock = await fetchAccountBalanceLock(senderAccountNumber, activePrimaryValidator);
   return generateBlock(balanceLock, publicKeyHex, signingKey, txs);
 };

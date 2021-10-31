@@ -22,11 +22,11 @@ export interface FormValues {
   senderAccountNumber: string;
 }
 
-interface ComponentProps {
+export interface SendCoinsModalFieldsProps {
   submitting: boolean;
 }
 
-const SendCoinsModalFields: SFC<ComponentProps> = ({className, submitting}) => {
+const SendCoinsModalFields: SFC<SendCoinsModalFieldsProps> = ({className, submitting}) => {
   const {errors, values} = useFormContext<FormValues>();
   const activeBankConfig = useSelector(getActiveBankConfig)!;
   const managedAccountBalances = useSelector(getManagedAccountBalances);

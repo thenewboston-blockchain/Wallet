@@ -22,12 +22,12 @@ import {AppDispatch, SFC} from 'shared/types';
 
 import CreateAccountModalFields, {FormValues, initialValues} from './CreateAccountModalFields';
 
-interface ComponentProps {
+export interface CreateAccountModalProps {
   close(): void;
   isGetStartedModal?: boolean;
 }
 
-const CreateAccountModal: SFC<ComponentProps> = ({className, close, isGetStartedModal = false}) => {
+const CreateAccountModal: SFC<CreateAccountModalProps> = ({className, close, isGetStartedModal = false}) => {
   const [isCreatingNewAccount, setIsCreatingNewAccount] = useState<boolean>(true);
   const dispatch = useDispatch<AppDispatch>();
   const history = useHistory();

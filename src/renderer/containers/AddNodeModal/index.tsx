@@ -30,11 +30,11 @@ const initialValues = {
 
 type FormValues = typeof initialValues;
 
-interface ComponentProps {
+export interface AddNodeModalProps {
   close(): void;
 }
 
-const AddNodeModal: SFC<ComponentProps> = ({className, close}) => {
+const AddNodeModal: SFC<AddNodeModalProps> = ({className, close}) => {
   const dispatch = useDispatch<AppDispatch>();
   const history = useHistory();
   const managedNodes = useSelector(getManagedValidators);

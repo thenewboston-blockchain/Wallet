@@ -8,11 +8,11 @@ import {AppDispatch, SFC} from 'shared/types';
 
 import * as S from './Styles';
 
-interface ComponentProps {
+export interface DeleteAccountModalProps {
   close(): void;
 }
 
-const DeleteAccountModal: SFC<ComponentProps> = ({className, close}) => {
+const DeleteAccountModal: SFC<DeleteAccountModalProps> = ({className, close}) => {
   const dispatch = useDispatch<AppDispatch>();
   const managedAccount = useManagedAccount();
 

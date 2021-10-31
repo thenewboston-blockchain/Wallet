@@ -21,7 +21,7 @@ const validationSchema = yup.object().shape({
     .max(16, MINMAX),
 });
 
-interface RegisterWalletModalProps {
+export interface RegisterWalletModalProps {
   close(): void;
 }
 

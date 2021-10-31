@@ -21,13 +21,13 @@ import SendCoinsModalFields, {FormValues} from './SendCoinsModalFields';
 
 const COIN_AMOUNT_CEILING = 100_000_000;
 
-interface ComponentProps {
+export interface SendCoinsModalProps {
   close(): void;
   initialRecipient: string;
   initialSender: string;
 }
 
-const SendCoinsModal: SFC<ComponentProps> = ({className, close, initialRecipient, initialSender}) => {
+const SendCoinsModal: SFC<SendCoinsModalProps> = ({className, close, initialRecipient, initialSender}) => {
   const dispatch = useDispatch<AppDispatch>();
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [loadingBalance, toggleLoadingBalance] = useToggle(false);

@@ -9,11 +9,11 @@ import {getNicknameField} from 'renderer/utils/forms/fields';
 import yup from 'renderer/utils/forms/yup';
 import {AppDispatch, SFC} from 'shared/types';
 
-interface ComponentProps {
+export interface EditNodeNicknameModalProps {
   close(): void;
 }
 
-const EditNodeNicknameModal: SFC<ComponentProps> = ({className, close}) => {
+const EditNodeNicknameModal: SFC<EditNodeNicknameModalProps> = ({className, close}) => {
   const {managedNode} = useNodeContext();
   const dispatch = useDispatch<AppDispatch>();
   const managedNodes = useSelector(getManagedValidators);

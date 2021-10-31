@@ -9,11 +9,11 @@ import {getNicknameField} from 'renderer/utils/forms/fields';
 import yup from 'renderer/utils/forms/yup';
 import {AccountType, AppDispatch, ManagedAccount, ManagedFriend, SFC} from 'shared/types';
 
-interface ComponentProps {
+export interface EditAccountNicknameModalProps {
   close(): void;
 }
 
-const EditAccountNicknameModal: SFC<ComponentProps> = ({className, close}) => {
+const EditAccountNicknameModal: SFC<EditAccountNicknameModalProps> = ({className, close}) => {
   const {accountNumber, type} = useAccountContext();
   const dispatch = useDispatch<AppDispatch>();
   const managedAccounts = useSelector(getManagedAccounts);

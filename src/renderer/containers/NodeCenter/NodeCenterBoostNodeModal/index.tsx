@@ -10,7 +10,7 @@ import {NodeData} from '../data';
 import NodeCenterBoostNodeModalFields from './NodeCenterBoostNodeModalFields';
 import * as S from './Styles';
 
-interface ComponentProps {
+export interface NodeCenterBoostNodeModalProps {
   close(): void;
   nodeData: NodeData;
 }
@@ -20,7 +20,7 @@ const validationSchema = yup.object().shape({
   form: yup.string(),
 });
 
-const NodeCenterBoostNodeModal: SFC<ComponentProps> = ({className, close, nodeData}) => {
+const NodeCenterBoostNodeModal: SFC<NodeCenterBoostNodeModalProps> = ({className, close, nodeData}) => {
   const [submitting, setSubmitting] = useState<boolean>(false);
 
   const handleSubmit = async (): Promise<void> => {

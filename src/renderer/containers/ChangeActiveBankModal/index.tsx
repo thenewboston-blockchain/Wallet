@@ -23,11 +23,11 @@ const initialValues = {
 
 type FormValues = typeof initialValues;
 
-interface ComponentProps {
+export interface ChangeActiveBankModalProps {
   close(): void;
 }
 
-const ChangeActiveBankModal: SFC<ComponentProps> = ({className, close}) => {
+const ChangeActiveBankModal: SFC<ChangeActiveBankModalProps> = ({className, close}) => {
   const [submitting, setSubmitting] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
   const history = useHistory();

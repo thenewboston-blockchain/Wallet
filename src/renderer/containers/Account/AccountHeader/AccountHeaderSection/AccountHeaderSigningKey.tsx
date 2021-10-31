@@ -10,7 +10,7 @@ import {DownloadSigningKeyPayload, IpcChannel} from 'shared/ipc';
 import {SFC} from 'shared/types';
 import * as S from './Styles';
 
-interface AccountHeaderSigningKeyProps {
+export interface AccountHeaderSigningKeyProps {
   signingKey: string;
 }
 

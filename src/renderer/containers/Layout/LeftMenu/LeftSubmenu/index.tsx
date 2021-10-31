@@ -8,13 +8,13 @@ import {SFC} from 'shared/types';
 
 import * as S from './Styles';
 
-interface ComponentProps {
+export interface LeftSubmenuProps {
   menuItems: ReactNode[];
   rightOnClick?(): void;
   title: string;
 }
 
-const LeftSubmenu: SFC<ComponentProps> = ({className, menuItems, rightOnClick, title}) => {
+const LeftSubmenu: SFC<LeftSubmenuProps> = ({className, menuItems, rightOnClick, title}) => {
   const [expanded, toggleExpanded] = useToggle(true);
 
   const renderHeaderContent = (): ReactNode => {

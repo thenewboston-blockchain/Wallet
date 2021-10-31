@@ -3,7 +3,7 @@ import {useTabsContext} from 'renderer/hooks';
 import {SFC} from 'shared/types';
 import * as S from './Styles';
 
-interface TabProps {
+export interface TabProps {
   value: string;
 }
 

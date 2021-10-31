@@ -12,7 +12,7 @@ export interface ModalButtonProps extends FormButtonProps {
   content: ReactNode;
 }
 
-interface ComponentProps {
+export interface ModalProps {
   close(): void;
   disableOverlayClick?: boolean;
   displayCloseButton?: boolean;
@@ -30,7 +30,7 @@ interface ComponentProps {
   validationSchema?: any;
 }
 
-const Modal: SFC<ComponentProps> = ({
+const Modal: SFC<ModalProps> = ({
   children,
   className,
   close,

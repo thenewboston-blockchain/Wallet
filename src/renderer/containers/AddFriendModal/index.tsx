@@ -18,12 +18,12 @@ import {AppDispatch, SFC} from 'shared/types';
 
 import * as S from './Styles';
 
-interface ComponentProps {
+export interface AddFriendModalProps {
   accountNumberToAdd?: string;
   close(): void;
 }
 
-const AddFriendModal: SFC<ComponentProps> = ({accountNumberToAdd, className, close}) => {
+const AddFriendModal: SFC<AddFriendModalProps> = ({accountNumberToAdd, className, close}) => {
   const dispatch = useDispatch<AppDispatch>();
   const history = useHistory();
   const managedAccounts = useSelector(getManagedAccounts);

@@ -25,7 +25,7 @@ export enum DropdownMenuIcon {
   devTo = 'devTo',
 }
 
-interface ComponentProps {
+export interface DropdownMenuButtonProps {
   className?: string;
   direction?: DropdownMenuDirection;
   icon?: DropdownMenuIcon;
@@ -34,7 +34,7 @@ interface ComponentProps {
 
 const dropdownRoot = document.getElementById('dropdown-root')!;
 
-const DropdownMenuButton: SFC<ComponentProps> = ({
+const DropdownMenuButton: SFC<DropdownMenuButtonProps> = ({
   className,
   direction = DropdownMenuDirection.right,
   icon = DropdownMenuIcon.dotsVertical,

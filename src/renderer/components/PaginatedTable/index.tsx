@@ -6,7 +6,7 @@ import Pagination, {PaginationProps, PaginationStyles} from './Pagination';
 import PaginationSummary, {PaginationSummaryProps, PaginationSummaryStyles} from './PaginationSummary';
 import * as S from './Styles';
 
-interface PaginatedTableProps extends PageTableProps, PaginationProps, PaginationSummaryProps {
+export interface PaginatedTableProps extends PageTableProps, PaginationProps, PaginationSummaryProps {
   expanded?: boolean;
   loading: boolean;
   showFees?: boolean;

@@ -1,7 +1,7 @@
 import {Children, FC, Fragment, ReactNode, useCallback, useRef, useState} from 'react';
 import * as S from './Styles';
 
-interface CarouselProps {
+export interface CarouselProps {
   className?: string;
 }
 

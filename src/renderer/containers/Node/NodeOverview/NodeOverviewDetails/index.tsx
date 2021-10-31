@@ -1,7 +1,7 @@
 import {SFC, ValidatorConfig} from 'shared/types';
 import * as S from './Styles';
 
-interface NodeOverviewDetailsProps {
+export interface NodeOverviewDetailsProps {
   nodeConfig: ValidatorConfig;
 }
 

@@ -14,7 +14,7 @@ export enum AccountOverviewCarouselTopic {
   registerWallet = 'Register Wallet',
 }
 
-interface AccountOverviewCarouselProps {
+export interface AccountOverviewCarouselProps {
   carouselTopic: AccountOverviewCarouselTopic;
   onClick(): void;
 }

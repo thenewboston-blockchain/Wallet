@@ -3,11 +3,11 @@ import {SFC, ToastType} from 'shared/types';
 
 import * as S from './Styles';
 
-interface ComponentProps {
+export interface ToastProps {
   type: ToastType;
 }
 
-const Toast: SFC<ComponentProps> = ({children, className, type = ToastType.error}) => {
+const Toast: SFC<ToastProps> = ({children, className, type = ToastType.error}) => {
   const renderIcon = useCallback((): ReactNode => {
     switch (type) {
       case ToastType.success:

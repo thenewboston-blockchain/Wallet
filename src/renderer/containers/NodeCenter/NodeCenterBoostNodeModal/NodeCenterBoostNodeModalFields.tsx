@@ -12,11 +12,11 @@ export const initialValues = {
 
 export type FormValues = typeof initialValues;
 
-interface ComponentProps {
+export interface NodeCenterBoostNodeModalFieldsProps {
   submitting: boolean;
 }
 
-const NodeCenterBoostNodeModalFields: SFC<ComponentProps> = ({className, submitting}) => {
+const NodeCenterBoostNodeModalFields: SFC<NodeCenterBoostNodeModalFieldsProps> = ({className, submitting}) => {
   const managedAccounts = useSelector(getManagedAccounts);
 
   const accountNumberOptions = useMemo<SelectOption[]>(

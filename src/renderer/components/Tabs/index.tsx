@@ -4,7 +4,7 @@ import {SFC} from 'shared/types';
 import Tab from './Tab';
 import * as S from './Styles';
 
-interface TabsProps {
+export interface TabsProps {
   onChange(newValue: string): void;
   value: string;
 }

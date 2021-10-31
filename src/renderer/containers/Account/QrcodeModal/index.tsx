@@ -16,7 +16,7 @@ const formatAccountNumber = (accountNumber: string): string => {
   ${accountNumber.slice(length / 2)}`;
 };
 
-interface QrcodeModalProps {
+export interface QrcodeModalProps {
   accountLabel: string;
   accountNumber: string;
   close(): void;

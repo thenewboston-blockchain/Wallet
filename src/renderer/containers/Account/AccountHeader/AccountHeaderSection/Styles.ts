@@ -1,32 +1,28 @@
 import styled, {css} from 'styled-components';
-import {
-  ContentCopyIcon as UContentCopyIcon,
-  DownloadIcon as UDownloadIcon,
-  EyeIcon as UEyeIcon,
-  EyeOffIcon as UEyeOffIcon,
-  QrcodeIcon as UQrcodeIcon,
-} from '@renderer/components/Icons';
+import {mdiContentCopy, mdiDownload, mdiEye, mdiEyeOff, mdiQrcode} from '@mdi/js';
+
+import Icon from 'renderer/components/Icon';
 
 const iconStyle = css`
   margin-left: 6px;
 `;
 
-export const QrcodeIcon = styled(UQrcodeIcon)`
+export const QrcodeIcon = styled(Icon).attrs(() => ({icon: mdiQrcode}))`
   ${iconStyle};
 `;
 
-export const ContentCopyIcon = styled(UContentCopyIcon)`
+export const ContentCopyIcon = styled(Icon).attrs(() => ({icon: mdiContentCopy}))`
   ${iconStyle};
 `;
 
-export const EyeIcon = styled(UEyeIcon)`
+export const EyeIcon = styled(Icon).attrs(() => ({icon: mdiEye}))`
   ${iconStyle};
 `;
 
-export const EyeOffIcon = styled(UEyeOffIcon)`
+export const EyeOffIcon = styled(Icon).attrs(() => ({icon: mdiEyeOff}))`
   ${iconStyle};
 `;
 
-export const DownloadIcon = styled(UDownloadIcon)`
+export const DownloadIcon = styled(Icon).attrs(() => ({icon: mdiDownload}))`
   ${iconStyle};
 `;

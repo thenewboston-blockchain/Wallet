@@ -1,12 +1,12 @@
-import React, {ReactNode, RefObject, useRef} from 'react';
+import {ReactNode, RefObject, useRef} from 'react';
 import noop from 'lodash/noop';
 
-import {useEventListener} from '@renderer/hooks';
-import {SFC} from '@shared/types';
+import {useEventListener} from 'renderer/hooks';
+import {SFC} from 'shared/types';
 
 import * as S from './Styles';
 
-interface ComponentProps {
+export interface NotificationsMenuProps {
   handleMenuClose(): void;
   iconRef: RefObject<HTMLDivElement>;
   menuOpen: boolean;
@@ -15,7 +15,7 @@ interface ComponentProps {
   updateLastReadTime(): void;
 }
 
-const NotificationsMenu: SFC<ComponentProps> = ({
+const NotificationsMenu: SFC<NotificationsMenuProps> = ({
   className,
   handleMenuClose,
   iconRef,

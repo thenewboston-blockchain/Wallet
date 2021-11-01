@@ -1,8 +1,8 @@
-import {setCleanStatusNotification} from '@renderer/store/notifications';
-import {updateCleanProcess} from '@renderer/store/sockets';
-import {generateUuid} from '@renderer/utils/local';
-import {displayToast, ToastType} from '@renderer/utils/toast';
-import {AppDispatch, NodeCleanStatusWithAddress, NotificationType} from '@shared/types';
+import {setCleanStatusNotification} from 'renderer/store/notifications';
+import {updateCleanProcess} from 'renderer/store/sockets';
+import {generateUuid} from 'renderer/utils/local';
+import {displayToast, ToastType} from 'renderer/utils/toast';
+import {AppDispatch, NodeCleanStatusWithAddress, NotificationType} from 'shared/types';
 
 const handleCleanSocketEvent = async (cleanSocketId: string, dispatch: AppDispatch, event: any): Promise<void> => {
   try {

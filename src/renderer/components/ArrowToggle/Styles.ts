@@ -1,6 +1,7 @@
 import styled, {css} from 'styled-components';
-import {PlayIcon} from '@renderer/components/Icons';
-import {colors} from '@renderer/styles';
+import {mdiPlay} from '@mdi/js';
+import Icon from 'renderer/components/Icon';
+import {colors} from 'renderer/styles';
 
 interface ArrowToggleProps {
   $expanded: boolean;
@@ -12,7 +13,7 @@ const expandedStyles = css`
   transform: rotate(90deg);
 `;
 
-export const ArrowToggle = styled(PlayIcon)<ArrowToggleProps>`
+export const ArrowToggle = styled(Icon).attrs(() => ({icon: mdiPlay}))<ArrowToggleProps>`
   color: ${colors.palette.gray['700']};
   transition: transform 0.06s linear;
 

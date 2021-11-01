@@ -1,10 +1,10 @@
-import React, {createContext, FC, Reducer, useEffect, useMemo, useReducer} from 'react';
+import {createContext, FC, Reducer, useEffect, useMemo, useReducer} from 'react';
 import {useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
 
-import {useAddress} from '@renderer/hooks';
-import {getManagedValidators} from '@renderer/selectors';
-import {AddressParams, ManagedNode, ProtocolType} from '@shared/types';
+import {useAddress} from 'renderer/hooks';
+import {getManagedValidators} from 'renderer/selectors';
+import {AddressParams, ManagedNode, ProtocolType} from 'shared/types';
 
 enum NodeActionType {
   set = 'set',
@@ -30,7 +30,7 @@ const nodeReducer: Reducer<ReducerState, NodeAction> = (state, action) => {
   }
 };
 
-interface NodeState extends ReducerState {
+export interface NodeState extends ReducerState {
   address: string;
   ipAddress: string;
   isAuthenticated: boolean;

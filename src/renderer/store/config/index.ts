@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {CONFIG} from '@renderer/constants/actions';
-import {ConfigSlice} from '@shared/types';
+import {CONFIG} from 'renderer/constants/actions';
+import {ConfigSlice} from 'shared/types';
 
 const initialState: ConfigSlice = {
   storeLoaded: false,

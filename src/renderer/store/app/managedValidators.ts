@@ -1,14 +1,14 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-import {MANAGED_VALIDATORS} from '@renderer/constants/actions';
+import {MANAGED_VALIDATORS} from 'renderer/constants/actions';
 import {
   changeActiveNodeReducer,
   clearLocalAndStateReducer,
   setLocalAndAddressReducer,
   setStateReducer,
   unsetLocalAndAddressReducer,
-} from '@renderer/utils/store';
-import {Dict, ManagedNode} from '@shared/types';
+} from 'renderer/utils/store';
+import {Dict, ManagedNode} from 'shared/types';
 
 const managedValidators = createSlice({
   initialState: {} as Dict<ManagedNode>,

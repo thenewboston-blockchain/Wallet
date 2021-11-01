@@ -1,15 +1,14 @@
-import React from 'react';
 import {useDispatch} from 'react-redux';
-import Modal from '@renderer/components/Modal';
-import {useNodeContext} from '@renderer/hooks';
-import {unsetManagedValidator} from '@renderer/store/app';
-import {AppDispatch, SFC} from '@shared/types';
+import Modal from 'renderer/components/Modal';
+import {useNodeContext} from 'renderer/hooks';
+import {unsetManagedValidator} from 'renderer/store/app';
+import {AppDispatch, SFC} from 'shared/types';
 
-interface ComponentProps {
+export interface RemoveValidatorModalProps {
   close(): void;
 }
 
-const RemoveValidatorModal: SFC<ComponentProps> = ({className, close}) => {
+const RemoveValidatorModal: SFC<RemoveValidatorModalProps> = ({className, close}) => {
   const {managedNode} = useNodeContext();
   const dispatch = useDispatch<AppDispatch>();
 

@@ -1,5 +1,5 @@
 import {useContext} from 'react';
-import {AccountContext} from '@renderer/context';
+import {AccountContext} from 'renderer/context';
 
 const useAccountContext = () => {
   return useContext(AccountContext);

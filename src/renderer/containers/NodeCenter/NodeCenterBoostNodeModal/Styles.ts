@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import {Select as USelect} from '@renderer/components/FormElements';
-import UKeyValueTable, {Row as URow} from '@renderer/components/KeyValueTable';
-import {colors} from '@renderer/styles';
+import {Select as USelect} from 'renderer/components/FormElements';
+import UKeyValueTable, {Row as URow} from 'renderer/components/KeyValueTable';
+import {colors} from 'renderer/styles';
 import * as NodeCenterStyles from '../Styles';
 
 export const Table = styled(UKeyValueTable)`

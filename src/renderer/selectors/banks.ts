@@ -2,9 +2,9 @@ import {createSelector} from '@reduxjs/toolkit';
 import {createCachedSelector} from 're-reselect';
 import pickBy from 'lodash/pickBy';
 
-import {getNthArg} from '@renderer/selectors/utils';
-import {formatAddressFromNode} from '@renderer/utils/address';
-import {Dict, ManagedNode, RootState} from '@shared/types';
+import {getNthArg} from 'renderer/selectors/utils';
+import {formatAddressFromNode} from 'renderer/utils/address';
+import {Dict, ManagedNode, RootState} from 'shared/types';
 
 import {getActiveBank} from './app';
 import {getManagedBanks} from './state';

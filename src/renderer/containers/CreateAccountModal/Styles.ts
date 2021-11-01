@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {RadioGroup as URadioGroup, TextField as UTextField} from '@renderer/components/FormElements';
+import {RadioGroup as URadioGroup, TextField as UTextField} from 'renderer/components/FormElements';
 
 export const Container = styled.div`
   min-height: 250px;

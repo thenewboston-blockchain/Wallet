@@ -1,10 +1,12 @@
 import styled from 'styled-components';
-import Badge from '@renderer/components/Badge';
-import {Button, ButtonColor, ButtonSize, ButtonVariant} from '@renderer/components/FormElements';
-import {RocketLaunchIcon as URocketLaunchIcon} from '@renderer/components/Icons';
-import UProgressBar from '@renderer/components/ProgressBar';
-import UStatusBadge from '@renderer/components/StatusBadge';
-import {b1, colors, h1} from '@renderer/styles';
+import {mdiRocketLaunch} from '@mdi/js';
+
+import Badge from 'renderer/components/Badge';
+import {Button, ButtonColor, ButtonSize, ButtonVariant} from 'renderer/components/FormElements';
+import Icon from 'renderer/components/Icon';
+import UProgressBar from 'renderer/components/ProgressBar';
+import UStatusBadge from 'renderer/components/StatusBadge';
+import {b1, colors, h1} from 'renderer/styles';
 import UNodeCenterTable from './NodeCenterTable';
 
 export const Container = styled.div``;
@@ -61,8 +63,9 @@ export const BoostButton = styled(Button).attrs(() => ({
   white-space: nowrap;
 `;
 
-export const RocketLaunchIcon = styled(URocketLaunchIcon).attrs(() => ({
+export const RocketLaunchIcon = styled(Icon).attrs(() => ({
   color: colors.palette.blue['500'],
+  icon: mdiRocketLaunch,
   size: 16,
   totalSize: 'unset',
 }))`

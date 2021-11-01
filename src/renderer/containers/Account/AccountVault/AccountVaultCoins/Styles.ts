@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import UCard from '@renderer/components/Card';
-import {Button, ButtonSize, ButtonVariant} from '@renderer/components/FormElements';
+import UCard from 'renderer/components/Card';
+import {Button, ButtonSize, ButtonVariant} from 'renderer/components/FormElements';
 
 export const Card = styled(UCard)`
   padding: 24px 0;

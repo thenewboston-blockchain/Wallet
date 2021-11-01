@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
-import {connectAndStoreLocalData} from '@renderer/dispatchers/app';
-import {getActiveBankConfig} from '@renderer/selectors';
-import {formatPathFromNode} from '@renderer/utils/address';
-import {getIpAddressField, getNicknameField, getPortField, getProtocolField} from '@renderer/utils/forms/fields';
-import yup from '@renderer/utils/forms/yup';
-import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
-import {AppDispatch, SelectOption, ProtocolType, SFC} from '@shared/types';
+import {connectAndStoreLocalData} from 'renderer/dispatchers/app';
+import {getActiveBankConfig} from 'renderer/selectors';
+import {formatPathFromNode} from 'renderer/utils/address';
+import {getIpAddressField, getNicknameField, getPortField, getProtocolField} from 'renderer/utils/forms/fields';
+import yup from 'renderer/utils/forms/yup';
+import {displayErrorToast, displayToast, ToastType} from 'renderer/utils/toast';
+import {AppDispatch, SelectOption, ProtocolType, SFC} from 'shared/types';
 
 import * as S from './Styles';
 

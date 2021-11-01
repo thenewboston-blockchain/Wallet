@@ -2,15 +2,15 @@ import {useEffect, useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import ReconnectingWebSocket from 'reconnecting-websocket';
 
-import {getActiveBank, getManagedAccounts} from '@renderer/selectors';
-import {formatSocketAddressFromNode} from '@renderer/utils/address';
+import {getActiveBank, getManagedAccounts} from 'renderer/selectors';
+import {formatSocketAddressFromNode} from 'renderer/utils/address';
 import {
   initializeSocketForPrimaryValidatorUpdated,
   initializeSocketForValidatorConfirmationService,
   initializeSocketsForConfirmationBlocks,
   processSocketEvent,
-} from '@renderer/utils/sockets';
-import {AppDispatch} from '@shared/types';
+} from 'renderer/utils/sockets';
+import {AppDispatch} from 'shared/types';
 
 const useWebSockets = (): void => {
   const dispatch = useDispatch<AppDispatch>();

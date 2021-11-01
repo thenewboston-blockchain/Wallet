@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import {colors} from '@renderer/styles';
+import UIcon from 'renderer/components/Icon';
+import {colors} from 'renderer/styles';
 
 export const Container = styled.div`
   align-items: center;
@@ -9,7 +10,7 @@ export const Container = styled.div`
   padding: 6px 12px;
 `;
 
-export const Icon = styled.div<{$dev?: boolean}>`
+export const Icon = styled(UIcon)<{$dev?: boolean}>`
   &:hover {
     color: ${({$dev}) => $dev && colors.palette.red['500']};
   }

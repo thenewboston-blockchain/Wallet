@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React, {Fragment, ReactNode} from 'react';
-import {SFC} from '@shared/types';
+import {Fragment, ReactNode} from 'react';
+import {SFC} from 'shared/types';
 
 import PageHeaderSection, {PageHeaderSectionStyles} from './PageHeaderSection';
 import * as S from './Styles';
 
-interface PageHeaderProps {
+export interface PageHeaderProps {
   dropdown?: ReactNode;
   rightButtons?: ReactNode | ReactNode[];
 }

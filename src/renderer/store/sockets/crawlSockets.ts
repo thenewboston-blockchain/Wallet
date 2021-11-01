@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-import {CRAWL_SOCKETS} from '@renderer/constants/actions';
+import {CRAWL_SOCKETS} from 'renderer/constants/actions';
 import {
   AddressData,
   CrawlSocketState,
@@ -9,7 +9,7 @@ import {
   Id,
   NodeCrawlStatus,
   SocketConnectionStatus,
-} from '@shared/types';
+} from 'shared/types';
 
 interface ToggleCrawlProcessPayload extends AddressData, Id {
   signingKey: string;

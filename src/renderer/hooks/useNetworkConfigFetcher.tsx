@@ -1,11 +1,11 @@
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {BANK_CONFIGS, VALIDATOR_CONFIGS} from '@renderer/constants/actions';
-import {fetchBankConfig} from '@renderer/dispatchers/banks';
-import {fetchValidatorConfig} from '@renderer/dispatchers/validators';
-import {getBankConfigs, getValidatorConfigs} from '@renderer/selectors';
-import {AppDispatch, DictWithDataAndError, RootState} from '@shared/types';
+import {BANK_CONFIGS, VALIDATOR_CONFIGS} from 'renderer/constants/actions';
+import {fetchBankConfig} from 'renderer/dispatchers/banks';
+import {fetchValidatorConfig} from 'renderer/dispatchers/validators';
+import {getBankConfigs, getValidatorConfigs} from 'renderer/selectors';
+import {AppDispatch, DictWithDataAndError, RootState} from 'shared/types';
 
 import useAddress from './useAddress';
 

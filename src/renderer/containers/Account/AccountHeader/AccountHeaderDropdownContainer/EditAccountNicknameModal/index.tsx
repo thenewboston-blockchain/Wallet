@@ -1,19 +1,19 @@
-import React, {useMemo} from 'react';
+import {useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {TextField} from '@renderer/components/FormElements';
-import Modal from '@renderer/components/Modal';
-import {useAccountContext} from '@renderer/hooks';
-import {getManagedAccounts, getManagedFriends} from '@renderer/selectors';
-import {setManagedAccount, setManagedFriend} from '@renderer/store/app';
-import {getNicknameField} from '@renderer/utils/forms/fields';
-import yup from '@renderer/utils/forms/yup';
-import {AccountType, AppDispatch, ManagedAccount, ManagedFriend, SFC} from '@shared/types';
+import {TextField} from 'renderer/components/FormElements';
+import Modal from 'renderer/components/Modal';
+import {useAccountContext} from 'renderer/hooks';
+import {getManagedAccounts, getManagedFriends} from 'renderer/selectors';
+import {setManagedAccount, setManagedFriend} from 'renderer/store/app';
+import {getNicknameField} from 'renderer/utils/forms/fields';
+import yup from 'renderer/utils/forms/yup';
+import {AccountType, AppDispatch, ManagedAccount, ManagedFriend, SFC} from 'shared/types';
 
-interface ComponentProps {
+export interface EditAccountNicknameModalProps {
   close(): void;
 }
 
-const EditAccountNicknameModal: SFC<ComponentProps> = ({className, close}) => {
+const EditAccountNicknameModal: SFC<EditAccountNicknameModalProps> = ({className, close}) => {
   const {accountNumber, type} = useAccountContext();
   const dispatch = useDispatch<AppDispatch>();
   const managedAccounts = useSelector(getManagedAccounts);

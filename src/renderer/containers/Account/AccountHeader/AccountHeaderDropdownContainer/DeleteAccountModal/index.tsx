@@ -1,19 +1,18 @@
-import React from 'react';
 import {useDispatch} from 'react-redux';
 
-import Modal from '@renderer/components/Modal';
-import {useManagedAccount} from '@renderer/hooks';
-import {unsetManagedAccount} from '@renderer/store/app';
-import {unsetManagedAccountBalance} from '@renderer/store/managedAccountBalances';
-import {AppDispatch, SFC} from '@shared/types';
+import Modal from 'renderer/components/Modal';
+import {useManagedAccount} from 'renderer/hooks';
+import {unsetManagedAccount} from 'renderer/store/app';
+import {unsetManagedAccountBalance} from 'renderer/store/managedAccountBalances';
+import {AppDispatch, SFC} from 'shared/types';
 
 import * as S from './Styles';
 
-interface ComponentProps {
+export interface DeleteAccountModalProps {
   close(): void;
 }
 
-const DeleteAccountModal: SFC<ComponentProps> = ({className, close}) => {
+const DeleteAccountModal: SFC<DeleteAccountModalProps> = ({className, close}) => {
   const dispatch = useDispatch<AppDispatch>();
   const managedAccount = useManagedAccount();
 

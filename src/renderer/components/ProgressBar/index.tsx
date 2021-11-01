@@ -1,8 +1,7 @@
-import React from 'react';
-import {SFC} from '@shared/types';
+import {SFC} from 'shared/types';
 import * as S from './Styles';
 
-interface ProgressBarProps {
+export interface ProgressBarProps {
   progress: number;
   total: number;
 }

@@ -1,16 +1,16 @@
-import React, {useMemo} from 'react';
+import {useMemo} from 'react';
 import {useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
 
-import AccountLink from '@renderer/components/AccountLink';
-import ExpandableText from '@renderer/components/ExpandableText';
-import PaginatedTable, {PageTableData, PageTableItems} from '@renderer/components/PaginatedTable';
-import {BANK_BANK_TRANSACTIONS} from '@renderer/constants/actions';
-import {useToggle, usePaginatedNetworkDataFetcher} from '@renderer/hooks';
-import {getActiveBankConfig} from '@renderer/selectors';
-import {formatAddressFromNode} from '@renderer/utils/address';
-import {formatDate} from '@renderer/utils/dates';
-import {AccountNumberParams, BankTransaction, SFC} from '@shared/types';
+import AccountLink from 'renderer/components/AccountLink';
+import ExpandableText from 'renderer/components/ExpandableText';
+import PaginatedTable, {PageTableData, PageTableItems} from 'renderer/components/PaginatedTable';
+import {BANK_BANK_TRANSACTIONS} from 'renderer/constants/actions';
+import {useToggle, usePaginatedNetworkDataFetcher} from 'renderer/hooks';
+import {getActiveBankConfig} from 'renderer/selectors';
+import {formatAddressFromNode} from 'renderer/utils/address';
+import {formatDate} from 'renderer/utils/dates';
+import {AccountNumberParams, BankTransaction, SFC} from 'shared/types';
 
 import AccountTransactionsHeader from './AccountTransactionsHeader';
 import * as S from './Styles';

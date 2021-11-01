@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React, {CSSProperties, KeyboardEvent, ReactNode, useCallback, useEffect, useRef, useState} from 'react';
+import {CSSProperties, KeyboardEvent, ReactNode, useCallback, useEffect, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 import noop from 'lodash/noop';
 
-import {useToggle, useEventListener} from '@renderer/hooks';
-import {GenericVoidFunction, SFC} from '@shared/types';
+import {useToggle, useEventListener} from 'renderer/hooks';
+import {GenericVoidFunction, SFC} from 'shared/types';
 
 import * as S from './Styles';
 
@@ -25,7 +25,7 @@ export enum DropdownMenuIcon {
   devTo = 'devTo',
 }
 
-interface ComponentProps {
+export interface DropdownMenuButtonProps {
   className?: string;
   direction?: DropdownMenuDirection;
   icon?: DropdownMenuIcon;
@@ -34,7 +34,7 @@ interface ComponentProps {
 
 const dropdownRoot = document.getElementById('dropdown-root')!;
 
-const DropdownMenuButton: SFC<ComponentProps> = ({
+const DropdownMenuButton: SFC<DropdownMenuButtonProps> = ({
   className,
   direction = DropdownMenuDirection.right,
   icon = DropdownMenuIcon.dotsVertical,

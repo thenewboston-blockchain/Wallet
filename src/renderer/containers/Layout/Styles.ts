@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {colors, constants} from '@renderer/styles';
+import {colors, constants} from 'renderer/styles';
 
 import ULeftMenu from './LeftMenu';
 import UTopNav from './TopNav';

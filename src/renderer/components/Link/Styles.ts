@@ -1,7 +1,9 @@
 import styled, {css} from 'styled-components';
 import {Link as RRLink, LinkProps as RRLinkProps} from 'react-router-dom';
-import {ChevronRightIcon as UChevronRightIcon} from '@renderer/components/Icons';
-import {colors} from '@renderer/styles';
+import {mdiChevronRight} from '@mdi/js';
+
+import Icon from 'renderer/components/Icon';
+import {colors} from 'renderer/styles';
 
 interface LinkProps extends RRLinkProps {
   $disabled: boolean;
@@ -36,7 +38,7 @@ export const Link = styled(RRLink)<LinkProps>`
   }
 `;
 
-export const ChevronRightIcon = styled(UChevronRightIcon)`
+export const ChevronRightIcon = styled(Icon).attrs(() => ({icon: mdiChevronRight}))`
   margin-right: -8px;
   position: relative;
   top: 1px;

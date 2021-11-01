@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {colors, h4} from '@renderer/styles';
+import {colors, h4} from 'renderer/styles';
 
 export const Badge = styled.span`
   ${h4.bold};

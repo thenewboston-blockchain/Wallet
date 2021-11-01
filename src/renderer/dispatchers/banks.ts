@@ -7,8 +7,8 @@ import {
   INVALID_BLOCKS,
   VALIDATOR_CONFIRMATION_SERVICES,
   VALIDATORS,
-} from '@renderer/constants/actions';
-import {defaultPaginatedQueryParam} from '@renderer/config';
+} from 'renderer/constants/actions';
+import {defaultPaginatedQueryParam} from 'renderer/config';
 import {
   setBankAccounts,
   setBankAccountsError,
@@ -28,9 +28,9 @@ import {
   setBankValidatorConfirmationServicesError,
   setBankValidators,
   setBankValidatorsError,
-} from '@renderer/store/banks';
-import {fetchPaginatedResults, sanitizePortFieldFromRawBankConfig} from '@renderer/utils/api';
-import axios from '@renderer/utils/axios';
+} from 'renderer/store/banks';
+import {fetchPaginatedResults, sanitizePortFieldFromRawBankConfig} from 'renderer/utils/api';
+import axios from 'renderer/utils/axios';
 import {
   AppDispatch,
   BankAccount,
@@ -45,7 +45,7 @@ import {
   PaginatedQueryParams,
   RawBankConfig,
   ValidatorConfirmationService,
-} from '@shared/types';
+} from 'shared/types';
 
 export const fetchBankAccounts =
   (address: string, params: PaginatedQueryParams = defaultPaginatedQueryParam) =>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {colors} from '@renderer/styles';
+import {colors} from 'renderer/styles';
 
 export const Cell = styled.div<{$align?: 'left' | 'center' | 'right'; $isHeader?: boolean; $numOfCols: number}>`
   align-items: center;

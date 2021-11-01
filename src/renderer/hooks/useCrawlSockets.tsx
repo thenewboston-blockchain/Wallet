@@ -1,14 +1,14 @@
 import {useCallback, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {getInactiveCrawlSockets} from '@renderer/selectors/sockets';
-import {updateCrawlProcess} from '@renderer/store/sockets';
-import {formatAddressFromNode, formatSocketAddressFromNode} from '@renderer/utils/address';
-import axios, {AxiosResponse} from '@renderer/utils/axios';
-import {generateSignedMessage, getKeyPairFromSigningKeyHex} from '@renderer/utils/signing';
-import {initializeSocketForCrawlStatus} from '@renderer/utils/sockets';
-import handleCrawlSocketEvent from '@renderer/utils/sockets/crawl';
-import {displayErrorToast} from '@renderer/utils/toast';
+import {getInactiveCrawlSockets} from 'renderer/selectors/sockets';
+import {updateCrawlProcess} from 'renderer/store/sockets';
+import {formatAddressFromNode, formatSocketAddressFromNode} from 'renderer/utils/address';
+import axios, {AxiosResponse} from 'renderer/utils/axios';
+import {generateSignedMessage} from 'renderer/utils/signing';
+import {initializeSocketForCrawlStatus} from 'renderer/utils/sockets';
+import handleCrawlSocketEvent from 'renderer/utils/sockets/crawl';
+import {displayErrorToast} from 'renderer/utils/toast';
 import {
   AppDispatch,
   CrawlCommand,
@@ -16,7 +16,7 @@ import {
   CrawlStatus,
   NodeCrawlStatusWithAddress,
   SocketConnectionStatus,
-} from '@shared/types';
+} from 'shared/types';
 
 const useCrawlSockets = (): void => {
   const dispatch = useDispatch<AppDispatch>();
@@ -32,7 +32,7 @@ const useCrawlSockets = (): void => {
 
         const address = formatAddressFromNode(crawlSocket);
         const socketAddress = formatSocketAddressFromNode(crawlSocket);
-        const {publicKeyHex, signingKey} = getKeyPairFromSigningKeyHex(crawlSocket.signingKey);
+        const {publicKeyHex, signingKey} = window.electron.signing.getKeyPairFromSigningKeyHex(crawlSocket.signingKey);
         const signedMessage = generateSignedMessage(crawlData, publicKeyHex, signingKey);
         const {data} = await axios.post<string, AxiosResponse<NodeCrawlStatusWithAddress>>(
           `${address}/crawl`,

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import UTabs, {Tab as UTab} from '@renderer/components/Tabs';
-import {colors, constants, mixinPageHeaderMargin} from '@renderer/styles';
+import UTabs, {Tab as UTab} from 'renderer/components/Tabs';
+import {colors, constants, mixinPageHeaderMargin} from 'renderer/styles';
 import UNodeHeader from './NodeHeader';
 
 export const Header = styled(UNodeHeader)`

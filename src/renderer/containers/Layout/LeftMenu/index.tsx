@@ -1,10 +1,10 @@
-import React, {ReactNode, useMemo} from 'react';
+import {ReactNode, useMemo} from 'react';
 import {useSelector} from 'react-redux';
 
-import CreateAccountModal from '@renderer/containers/CreateAccountModal';
-import AddFriendModal from '@renderer/containers/AddFriendModal';
-import AddNodeModal from '@renderer/containers/AddNodeModal';
-import {useToggle} from '@renderer/hooks';
+import CreateAccountModal from 'renderer/containers/CreateAccountModal';
+import AddFriendModal from 'renderer/containers/AddFriendModal';
+import AddNodeModal from 'renderer/containers/AddNodeModal';
+import {useToggle} from 'renderer/hooks';
 import {
   getBankConfigs,
   getManagedAccounts,
@@ -12,11 +12,11 @@ import {
   getManagedFriends,
   getManagedValidators,
   getValidatorConfigs,
-} from '@renderer/selectors';
-import {truncateLongText} from '@renderer/utils/accounts';
-import {formatAddressFromNode, formatPathFromNode} from '@renderer/utils/address';
-import {sortByBooleanKey, sortDictValuesByPreferredKey} from '@renderer/utils/sort';
-import {ManagedAccount, ManagedFriend, ManagedNode, NodeSection, RootState, SFC} from '@shared/types';
+} from 'renderer/selectors';
+import {truncateLongText} from 'renderer/utils/accounts';
+import {formatAddressFromNode, formatPathFromNode} from 'renderer/utils/address';
+import {sortByBooleanKey, sortDictValuesByPreferredKey} from 'renderer/utils/sort';
+import {ManagedAccount, ManagedFriend, ManagedNode, NodeSection, RootState, SFC} from 'shared/types';
 
 import LeftSubmenuItem from './LeftSubmenuItem';
 import * as S from './Styles';

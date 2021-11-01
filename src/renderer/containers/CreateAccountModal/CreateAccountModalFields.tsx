@@ -1,5 +1,5 @@
-import React, {FC, useEffect} from 'react';
-import {useFormContext} from '@renderer/hooks';
+import {FC, useEffect} from 'react';
+import {useFormContext} from 'renderer/hooks';
 import * as S from './Styles';
 
 export const initialValues = {
@@ -10,11 +10,11 @@ export const initialValues = {
 
 export type FormValues = typeof initialValues;
 
-interface ComponentProps {
+export interface CreateAccountModalFieldsProps {
   setIsCreatingNewAccount(val: boolean): void;
 }
 
-const CreateAccountModalFields: FC<ComponentProps> = ({setIsCreatingNewAccount}) => {
+const CreateAccountModalFields: FC<CreateAccountModalFieldsProps> = ({setIsCreatingNewAccount}) => {
   const {
     values: {type},
   } = useFormContext<FormValues>();

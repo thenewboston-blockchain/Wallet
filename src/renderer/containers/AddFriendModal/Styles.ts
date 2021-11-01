@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {TextField as UTextField} from '@renderer/components/FormElements';
+import {TextField as UTextField} from 'renderer/components/FormElements';
 
 export const TextField = styled(UTextField)`
   && {

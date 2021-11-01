@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import UCard from '@renderer/components/Card';
-import {colors, d2, h3} from '@renderer/styles';
+import UCard from 'renderer/components/Card';
+import {colors, d2, h3} from 'renderer/styles';
 
 import UNodeOverviewDetails from './NodeOverviewDetails';
 import UNodeOverviewGraph from './NodeOverviewGraph';

@@ -1,13 +1,12 @@
-import React from 'react';
-import {SFC} from '@shared/types';
+import {SFC} from 'shared/types';
 
 import TnbLogo from './logo.png';
 
-interface ComponentProps {
+export interface LogoProps {
   size?: number;
 }
 
-const Logo: SFC<ComponentProps> = ({className, size = 24}) => {
+const Logo: SFC<LogoProps> = ({className, size = 24}) => {
   return <img alt="thenewboston logo" className={className} src={TnbLogo} style={{height: size, width: size}} />;
 };
 

@@ -1,22 +1,21 @@
-import React, {ReactNode, useCallback, useMemo} from 'react';
+import {ReactNode, useCallback, useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {ipcRenderer} from 'electron';
+import {mdiArrowLeft, mdiArrowRight, mdiRefresh} from '@mdi/js';
 
 import DropdownMenuButton, {
   DropdownMenuDirection,
   DropdownMenuIcon,
   DropdownMenuOption,
-} from '@renderer/components/DropdownMenuButton';
-import {ArrowLeftIcon, ArrowRightIcon, RefreshIcon} from '@renderer/components/Icons';
-import Modal from '@renderer/components/Modal';
-import ChangeActiveBankModal from '@renderer/containers/ChangeActiveBankModal';
-import Notifications from '@renderer/containers/Notifications';
-import {clearLocalState} from '@renderer/dispatchers/app';
-import {useToggle, useIpcEffect, useNavigationalHistory, useReadIpc, useWriteIpc} from '@renderer/hooks';
-import {getPrimaryValidatorConfig} from '@renderer/selectors';
-import {displayToast, ToastType} from '@renderer/utils/toast';
-import {getFailChannel, getSuccessChannel, IpcChannel} from '@shared/ipc';
-import {AppDispatch, SFC} from '@shared/types';
+} from 'renderer/components/DropdownMenuButton';
+import Modal from 'renderer/components/Modal';
+import ChangeActiveBankModal from 'renderer/containers/ChangeActiveBankModal';
+import Notifications from 'renderer/containers/Notifications';
+import {clearLocalState} from 'renderer/dispatchers/app';
+import {useToggle, useIpcEffect, useNavigationalHistory, useReadIpc, useWriteIpc} from 'renderer/hooks';
+import {getPrimaryValidatorConfig} from 'renderer/selectors';
+import {displayToast, ToastType} from 'renderer/utils/toast';
+import {getFailChannel, getSuccessChannel, IpcChannel} from 'shared/ipc';
+import {AppDispatch, SFC} from 'shared/types';
 
 import * as S from './Styles';
 
@@ -24,11 +23,11 @@ const exportSuccessToast = () => {
   displayToast('Store Data has successfully been exported', ToastType.success);
 };
 
-const exportFailToast = (event: any, errorMessage: string) => {
+const exportFailToast = (_: any, errorMessage: string) => {
   displayToast(`Could not export Store Data: ${errorMessage}`, ToastType.error);
 };
 
-const importFailToast = (event: any, errorMessage: string) => {
+const importFailToast = (_: any, errorMessage: string) => {
   displayToast(`Could not import Store Data: ${errorMessage}`, ToastType.error);
 };
 
@@ -36,7 +35,7 @@ const restartAppSuccessToast = () => {
   displayToast('Successfully Imported Data', ToastType.success);
 };
 
-const restartAppFailToast = (event: any, errorMessage: string) => {
+const restartAppFailToast = (_: any, errorMessage: string) => {
   displayToast(`There was a problem restarting the app: ${errorMessage}`, ToastType.error);
 };
 
@@ -52,7 +51,7 @@ const TopNav: SFC = ({className}) => {
 
   const handleImportSuccessCallback = useCallback(() => {
     toggleImportStoreDataModal(false);
-    ipcRenderer.send(IpcChannel.restartApp);
+    window.electron.ipcRenderer.send(IpcChannel.restartApp);
   }, [toggleImportStoreDataModal]);
 
   const handleExportClick = useWriteIpc({
@@ -81,9 +80,9 @@ const TopNav: SFC = ({className}) => {
 
   const renderLeft = (): ReactNode => (
     <S.SectionWrapper>
-      <S.Icon as={ArrowLeftIcon} disabled={!backEnabled} onClick={back} />
-      <S.Icon as={ArrowRightIcon} disabled={!forwardEnabled} onClick={forward} />
-      <S.Icon as={RefreshIcon} onClick={reload} />
+      <S.Icon disabled={!backEnabled} icon={mdiArrowLeft} onClick={back} />
+      <S.Icon disabled={!forwardEnabled} icon={mdiArrowRight} onClick={forward} />
+      <S.Icon icon={mdiRefresh} onClick={reload} />
     </S.SectionWrapper>
   );
 

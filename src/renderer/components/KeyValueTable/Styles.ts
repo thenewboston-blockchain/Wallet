@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import {colors} from '@renderer/styles';
+import {colors} from 'renderer/styles';
 
 export const Container = styled.div``;
 

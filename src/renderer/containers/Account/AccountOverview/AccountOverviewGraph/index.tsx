@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import format from 'date-fns/format';
 import getTime from 'date-fns/getTime';
 import parseISO from 'date-fns/parseISO';
 import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts';
 
-import Link from '@renderer/components/Link';
-import {useAccountContext} from '@renderer/hooks';
-import {colors} from '@renderer/styles';
-import {AccountSection, SFC} from '@shared/types';
+import Link from 'renderer/components/Link';
+import {useAccountContext} from 'renderer/hooks';
+import {colors} from 'renderer/styles';
+import {AccountSection, SFC} from 'shared/types';
 
 import AccountBalance from '../../AccountBalance';
 import {mockBalanceData} from './data';

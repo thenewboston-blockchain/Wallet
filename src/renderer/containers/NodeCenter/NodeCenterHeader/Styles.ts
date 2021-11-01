@@ -1,7 +1,9 @@
 import styled from 'styled-components';
-import {Button, ButtonColor, ButtonVariant} from '@renderer/components/FormElements';
-import {OpenInNewIcon} from '@renderer/components/Icons';
-import {h1} from '@renderer/styles';
+import {mdiOpenInNew} from '@mdi/js';
+
+import {Button, ButtonColor, ButtonVariant} from 'renderer/components/FormElements';
+import Icon from 'renderer/components/Icon';
+import {h1} from 'renderer/styles';
 
 export const Container = styled.div`
   align-items: center;
@@ -24,7 +26,8 @@ export const LearnMoreButton = styled(Button).attrs(() => ({
   gap: 9px;
 `;
 
-export const LearnMoreIcon = styled(OpenInNewIcon).attrs(() => ({
+export const LearnMoreIcon = styled(Icon).attrs(() => ({
+  icon: mdiOpenInNew,
   size: 14,
   totalSize: 'unset',
 }))`

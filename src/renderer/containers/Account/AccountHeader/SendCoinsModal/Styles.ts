@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import UKeyValueTable, {Row as URow} from '@renderer/components/KeyValueTable';
-import {Select as USelect, TextField as UTextField} from '@renderer/components/FormElements';
-import {colors} from '@renderer/styles';
+import UKeyValueTable, {Row as URow} from 'renderer/components/KeyValueTable';
+import {Select as USelect, TextField as UTextField} from 'renderer/components/FormElements';
+import {colors} from 'renderer/styles';
 
 export const ErrorSpan = styled.span`
   color: ${colors.palette.red['500']};

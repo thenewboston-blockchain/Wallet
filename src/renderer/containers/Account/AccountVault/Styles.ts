@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import UTabs, {Tab as UTab} from '@renderer/components/Tabs';
+import UTabs, {Tab as UTab} from 'renderer/components/Tabs';
 
 export const Container = styled.div``;
 

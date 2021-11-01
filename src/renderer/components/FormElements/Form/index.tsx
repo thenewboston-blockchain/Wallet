@@ -1,8 +1,8 @@
-import React, {FC} from 'react';
+import {FC} from 'react';
 import {Form as FormikForm, Formik} from 'formik';
-import {GenericFormValues} from '@shared/types';
+import {GenericFormValues} from 'shared/types';
 
-interface ComponentProps {
+export interface FormProps {
   className?: string;
   initialValues?: GenericFormValues;
   onSubmit(values: GenericFormValues): void | Promise<any>;
@@ -10,7 +10,7 @@ interface ComponentProps {
   validationSchema?: any;
 }
 
-const Form: FC<ComponentProps> = ({
+const Form: FC<FormProps> = ({
   children,
   className,
   onSubmit,

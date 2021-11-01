@@ -1,14 +1,14 @@
 import {useCallback, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {getInactiveCleanSockets} from '@renderer/selectors/sockets';
-import {updateCleanProcess} from '@renderer/store/sockets';
-import {formatAddressFromNode, formatSocketAddressFromNode} from '@renderer/utils/address';
-import axios, {AxiosResponse} from '@renderer/utils/axios';
-import {generateSignedMessage, getKeyPairFromSigningKeyHex} from '@renderer/utils/signing';
-import {initializeSocketForCleanStatus} from '@renderer/utils/sockets';
-import handleCleanSocketEvent from '@renderer/utils/sockets/clean';
-import {displayErrorToast} from '@renderer/utils/toast';
+import {getInactiveCleanSockets} from 'renderer/selectors/sockets';
+import {updateCleanProcess} from 'renderer/store/sockets';
+import {formatAddressFromNode, formatSocketAddressFromNode} from 'renderer/utils/address';
+import axios, {AxiosResponse} from 'renderer/utils/axios';
+import {generateSignedMessage} from 'renderer/utils/signing';
+import {initializeSocketForCleanStatus} from 'renderer/utils/sockets';
+import handleCleanSocketEvent from 'renderer/utils/sockets/clean';
+import {displayErrorToast} from 'renderer/utils/toast';
 import {
   AppDispatch,
   CleanCommand,
@@ -16,7 +16,7 @@ import {
   CleanStatus,
   NodeCleanStatusWithAddress,
   SocketConnectionStatus,
-} from '@shared/types';
+} from 'shared/types';
 
 const useCleanSockets = (): void => {
   const dispatch = useDispatch<AppDispatch>();
@@ -32,7 +32,7 @@ const useCleanSockets = (): void => {
 
         const address = formatAddressFromNode(cleanSocket);
         const socketAddress = formatSocketAddressFromNode(cleanSocket);
-        const {publicKeyHex, signingKey} = getKeyPairFromSigningKeyHex(cleanSocket.signingKey);
+        const {publicKeyHex, signingKey} = window.electron.signing.getKeyPairFromSigningKeyHex(cleanSocket.signingKey);
         const signedMessage = generateSignedMessage(cleanData, publicKeyHex, signingKey);
         const {data} = await axios.post<string, AxiosResponse<NodeCleanStatusWithAddress>>(
           `${address}/clean`,

@@ -1,9 +1,9 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 
-import {StatusBadgeType} from '@renderer/components/StatusBadge';
-import {useToggle} from '@renderer/hooks';
-import {truncateLongText} from '@renderer/utils/accounts';
-import {SFC} from '@shared/types';
+import {StatusBadgeType} from 'renderer/components/StatusBadge';
+import {useToggle} from 'renderer/hooks';
+import {truncateLongText} from 'renderer/utils/accounts';
+import {SFC} from 'shared/types';
 
 import {NodeData, otherNodes, top20Nodes} from './data';
 import NodeCenterBoostNodeModal from './NodeCenterBoostNodeModal';

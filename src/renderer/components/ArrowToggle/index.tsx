@@ -1,13 +1,13 @@
 import React, {useRef} from 'react';
-import {SFC} from '@shared/types';
+import {SFC} from 'shared/types';
 import * as S from './Styles';
 
-interface ComponentProps {
+export interface ArrowToggleProps {
   expanded: boolean;
   onClick(e?: React.MouseEvent<HTMLDivElement, MouseEvent>): void;
 }
 
-const ArrowToggle: SFC<ComponentProps> = ({className, expanded, onClick}) => {
+const ArrowToggle: SFC<ArrowToggleProps> = ({className, expanded, onClick}) => {
   const iconRef = useRef<HTMLDivElement>(null);
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {

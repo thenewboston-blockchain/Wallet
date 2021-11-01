@@ -94,10 +94,9 @@ electron-builder.env
 .webpack/
 
 # Build resource
-out/
-release/
-bundle/
-dist/
+release/app/dist
+release/build
+.erb/dll
 
 # Webstorm
 .idea/
@@ -110,3 +109,8 @@ credential
 
 # Lock files
 package-lock.json
+
+# style source maps
+*.css.d.ts
+*.sass.d.ts
+*.scss.d.ts

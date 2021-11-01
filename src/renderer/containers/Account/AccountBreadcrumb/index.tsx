@@ -1,10 +1,8 @@
-import React from 'react';
+import {useAccountContext} from 'renderer/hooks';
+import Link from 'renderer/components/Link';
+import {AccountSection, SFC} from 'shared/types';
 
-import {useAccountContext} from '@renderer/hooks';
-import Link from '@renderer/components/Link';
-import {AccountSection, SFC} from '@shared/types';
-
-interface AccountBreadcrumbProps {
+export interface AccountBreadcrumbProps {
   currentSection: string;
 }
 

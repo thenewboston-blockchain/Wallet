@@ -1,10 +1,9 @@
-import React from 'react';
-import {SFC} from '@shared/types';
+import {SFC} from 'shared/types';
 
 import RocketImage from './tothemoon.png';
 import * as S from './Styles';
 
-interface NodeCenterPopoverProps {
+export interface NodeCenterPopoverProps {
   anchorEl: HTMLButtonElement | null;
   closePopover(): void;
   open: boolean;

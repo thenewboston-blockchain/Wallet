@@ -1,8 +1,8 @@
-import {setCrawlStatusNotification} from '@renderer/store/notifications';
-import {updateCrawlProcess} from '@renderer/store/sockets';
-import {generateUuid} from '@renderer/utils/local';
-import {displayToast, ToastType} from '@renderer/utils/toast';
-import {AppDispatch, NodeCrawlStatusWithAddress, NotificationType} from '@shared/types';
+import {setCrawlStatusNotification} from 'renderer/store/notifications';
+import {updateCrawlProcess} from 'renderer/store/sockets';
+import {generateUuid} from 'renderer/utils/local';
+import {displayToast, ToastType} from 'renderer/utils/toast';
+import {AppDispatch, NodeCrawlStatusWithAddress, NotificationType} from 'shared/types';
 
 const handleCrawlSocketEvent = async (crawlSocketId: string, dispatch: AppDispatch, event: any): Promise<void> => {
   try {

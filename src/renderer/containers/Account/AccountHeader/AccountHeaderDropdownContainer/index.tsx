@@ -1,8 +1,8 @@
-import React, {useMemo} from 'react';
-import DropdownMenuButton, {DropdownMenuDirection, DropdownMenuOption} from '@renderer/components/DropdownMenuButton';
-import AddFriendModal from '@renderer/containers/AddFriendModal';
-import {useAccountContext, useToggle} from '@renderer/hooks';
-import {AccountType, SFC} from '@shared/types';
+import {useMemo} from 'react';
+import DropdownMenuButton, {DropdownMenuDirection, DropdownMenuOption} from 'renderer/components/DropdownMenuButton';
+import AddFriendModal from 'renderer/containers/AddFriendModal';
+import {useAccountContext, useToggle} from 'renderer/hooks';
+import {AccountType, SFC} from 'shared/types';
 
 import DeleteAccountModal from './DeleteAccountModal';
 import DeleteFriendModal from './DeleteFriendModal';

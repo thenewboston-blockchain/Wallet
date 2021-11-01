@@ -1,14 +1,14 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-import {MANAGED_BANKS} from '@renderer/constants/actions';
+import {MANAGED_BANKS} from 'renderer/constants/actions';
 import {
   changeActiveNodeReducer,
   clearLocalAndStateReducer,
   setLocalAndAddressReducer,
   setStateReducer,
   unsetLocalAndAddressReducer,
-} from '@renderer/utils/store';
-import {Dict, ManagedNode} from '@shared/types';
+} from 'renderer/utils/store';
+import {Dict, ManagedNode} from 'shared/types';
 
 const managedBanks = createSlice({
   initialState: {} as Dict<ManagedNode>,

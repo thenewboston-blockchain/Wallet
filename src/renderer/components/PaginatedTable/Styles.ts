@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import {Switch as USwitch} from '@renderer/components/FormElements';
-import UPageTable from '@renderer/components/PageTable';
+import {Switch as USwitch} from 'renderer/components/FormElements';
+import UPageTable from 'renderer/components/PageTable';
 
 export const Header = styled.div`
   align-items: center;

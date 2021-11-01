@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {b3, colors} from '@renderer/styles';
+import {b3, colors} from 'renderer/styles';
 
 const maxWidthText = '175px';
 

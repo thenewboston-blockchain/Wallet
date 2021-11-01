@@ -1,9 +1,9 @@
-import React, {ReactNode, useCallback, useMemo} from 'react';
+import {ReactNode, useCallback, useMemo} from 'react';
 
-import {Button} from '@renderer/components/FormElements';
-import PageHeader, {PageHeaderSection} from '@renderer/components/PageHeader';
-import {useAccountContext, useToggle} from '@renderer/hooks';
-import {AccountType, SFC} from '@shared/types';
+import {Button} from 'renderer/components/FormElements';
+import PageHeader, {PageHeaderSection} from 'renderer/components/PageHeader';
+import {useAccountContext, useToggle} from 'renderer/hooks';
+import {AccountType, SFC} from 'shared/types';
 
 import AccountHeaderDropdownContainer from './AccountHeaderDropdownContainer';
 import {AccountHeaderAccountNumber, AccountHeaderSigningKey} from './AccountHeaderSection';

@@ -1,25 +1,21 @@
-import React, {FC, ReactNode, useCallback, useEffect, useState} from 'react';
-import {hot} from 'react-hot-loader/root';
+import {FC, ReactNode, useCallback, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {MemoryRouter as Router} from 'react-router-dom';
 import {Flip, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {IpcRendererEvent} from 'electron';
 
-import CreateAccountModal from '@renderer/containers/CreateAccountModal';
-import Connect from '@renderer/containers/Connect';
-import Layout from '@renderer/containers/Layout';
-import {connect, connectAndStoreLocalData, fetchNonDefaultNodeConfigs} from '@renderer/dispatchers/app';
-import {useCleanSockets, useCrawlSockets, useReadIpc, useToggle, useWebSockets} from '@renderer/hooks';
-import {getActiveBank, getActiveBankConfig} from '@renderer/selectors';
-import {displayErrorToast, displayToast} from '@renderer/utils/toast';
-import {AppDispatch, LocalStore, ProtocolType, ToastType} from '@shared/types';
-import {IpcChannel} from '@shared/ipc';
-import {setManagedAccounts, setManagedBanks, setManagedFriends, setManagedValidators} from '@renderer/store/app';
-import {setStoreLoadedTrue} from '@renderer/store/config';
-import {getStoreLoaded} from '@renderer/selectors/state';
-
-const isDevEnvironment = process.env.NODE_ENV === 'development';
+import CreateAccountModal from 'renderer/containers/CreateAccountModal';
+import Connect from 'renderer/containers/Connect';
+import Layout from 'renderer/containers/Layout';
+import {connect, connectAndStoreLocalData, fetchNonDefaultNodeConfigs} from 'renderer/dispatchers/app';
+import {useCleanSockets, useCrawlSockets, useReadIpc, useToggle, useWebSockets} from 'renderer/hooks';
+import {getActiveBank, getActiveBankConfig} from 'renderer/selectors';
+import {displayErrorToast, displayToast} from 'renderer/utils/toast';
+import {AppDispatch, LocalStore, ProtocolType, ToastType} from 'shared/types';
+import {IpcChannel} from 'shared/ipc';
+import {setManagedAccounts, setManagedBanks, setManagedFriends, setManagedValidators} from 'renderer/store/app';
+import {setStoreLoadedTrue} from 'renderer/store/config';
+import {getStoreLoaded} from 'renderer/selectors/state';
 
 const DEFAULT_BANK = {
   ip_address: '54.183.16.194',
@@ -27,7 +23,7 @@ const DEFAULT_BANK = {
   protocol: 'http' as ProtocolType,
 };
 
-const loadStoreFailToast = (event: any, errorMessage: string) => {
+const loadStoreFailToast = (_: any, errorMessage: string) => {
   displayToast(`Could not load Store Data: ${errorMessage}`, ToastType.error);
 };
 
@@ -43,7 +39,7 @@ const App: FC = () => {
   useWebSockets();
 
   const loadStoreSuccessCallback = useCallback(
-    (event: IpcRendererEvent, store: LocalStore) => {
+    (store: LocalStore) => {
       dispatch(setManagedAccounts(store?.managed_accounts || {}));
       dispatch(setManagedBanks(store?.managed_banks || {}));
       dispatch(setManagedFriends(store?.managed_friends || {}));
@@ -132,4 +128,4 @@ const App: FC = () => {
   );
 };
 
-export default isDevEnvironment ? hot((): JSX.Element => <App />) : App;
+export default App;

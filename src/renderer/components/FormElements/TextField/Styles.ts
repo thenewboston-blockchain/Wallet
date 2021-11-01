@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import FormControl from '@mui/material/FormControl';
 import MuiTextField from '@mui/material/TextField';
-import {colors} from '@renderer/styles';
+import {colors} from 'renderer/styles';
 
 const label = 'TextField__label';
 

@@ -1,7 +1,7 @@
-import React, {ReactNode, useMemo} from 'react';
+import {ReactNode, useMemo} from 'react';
 
-import {useFormContext2} from '@renderer/hooks/useFormContext';
-import {SFC} from '@shared/types';
+import {useFormContext2} from 'renderer/hooks/useFormContext';
+import {SFC} from 'shared/types';
 import {HelperTextType} from './types';
 import * as S from './Styles';
 

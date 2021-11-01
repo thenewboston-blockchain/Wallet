@@ -1,15 +1,15 @@
-import React, {useMemo, useState} from 'react';
+import {useMemo, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
-import {connectAndStoreLocalData} from '@renderer/dispatchers/app';
-import Modal from '@renderer/components/Modal';
-import {formatPathFromNode} from '@renderer/utils/address';
-import {getIpAddressField, getNicknameField, getPortField, getProtocolField} from '@renderer/utils/forms/fields';
-import yup from '@renderer/utils/forms/yup';
-import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
-import {getManagedBanks} from '@renderer/selectors';
-import {AppDispatch, ProtocolType, SFC} from '@shared/types';
+import {connectAndStoreLocalData} from 'renderer/dispatchers/app';
+import Modal from 'renderer/components/Modal';
+import {formatPathFromNode} from 'renderer/utils/address';
+import {getIpAddressField, getNicknameField, getPortField, getProtocolField} from 'renderer/utils/forms/fields';
+import yup from 'renderer/utils/forms/yup';
+import {displayErrorToast, displayToast, ToastType} from 'renderer/utils/toast';
+import {getManagedBanks} from 'renderer/selectors';
+import {AppDispatch, ProtocolType, SFC} from 'shared/types';
 
 import ChangeActiveBankModalFields from './ChangeActiveBankModalFields';
 
@@ -23,11 +23,11 @@ const initialValues = {
 
 type FormValues = typeof initialValues;
 
-interface ComponentProps {
+export interface ChangeActiveBankModalProps {
   close(): void;
 }
 
-const ChangeActiveBankModal: SFC<ComponentProps> = ({className, close}) => {
+const ChangeActiveBankModal: SFC<ChangeActiveBankModalProps> = ({className, close}) => {
   const [submitting, setSubmitting] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
   const history = useHistory();

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import ULink from '@renderer/components/Link';
+import ULink from 'renderer/components/Link';
 import ULeftSubmenu from './LeftSubmenu';
 
 export const Container = styled.div`

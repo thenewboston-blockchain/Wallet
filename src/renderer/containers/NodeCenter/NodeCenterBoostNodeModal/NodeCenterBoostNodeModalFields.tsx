@@ -1,7 +1,7 @@
-import React, {useMemo} from 'react';
+import {useMemo} from 'react';
 import {useSelector} from 'react-redux';
-import {getManagedAccounts} from '@renderer/selectors';
-import {SelectOption, SelectOptionMeta, SFC} from '@shared/types';
+import {getManagedAccounts} from 'renderer/selectors';
+import {SelectOption, SelectOptionMeta, SFC} from 'shared/types';
 
 import * as S from './Styles';
 
@@ -12,11 +12,11 @@ export const initialValues = {
 
 export type FormValues = typeof initialValues;
 
-interface ComponentProps {
+export interface NodeCenterBoostNodeModalFieldsProps {
   submitting: boolean;
 }
 
-const NodeCenterBoostNodeModalFields: SFC<ComponentProps> = ({className, submitting}) => {
+const NodeCenterBoostNodeModalFields: SFC<NodeCenterBoostNodeModalFieldsProps> = ({className, submitting}) => {
   const managedAccounts = useSelector(getManagedAccounts);
 
   const accountNumberOptions = useMemo<SelectOption[]>(

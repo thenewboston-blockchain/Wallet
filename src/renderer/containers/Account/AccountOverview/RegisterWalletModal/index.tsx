@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 
-import {REQUIRED_FIELD_ERROR} from '@renderer/constants/form-validation';
-import Modal from '@renderer/components/Modal';
-import yup from '@renderer/utils/forms/yup';
-import {ALPHANUMERIC} from '@renderer/utils/regex';
-import {displayToast, ToastType} from '@renderer/utils/toast';
-import {SFC} from '@shared/types';
+import {REQUIRED_FIELD_ERROR} from 'renderer/constants/form-validation';
+import Modal from 'renderer/components/Modal';
+import yup from 'renderer/utils/forms/yup';
+import {ALPHANUMERIC} from 'renderer/utils/regex';
+import {displayToast, ToastType} from 'renderer/utils/toast';
+import {SFC} from 'shared/types';
 
 import RegisterWalletModalFields, {initialValues, FormValues} from './RegisterWalletModalFields';
 import RegisterWalletModalTable from './RegisterWalletModalTable';
@@ -21,7 +21,7 @@ const validationSchema = yup.object().shape({
     .max(16, MINMAX),
 });
 
-interface RegisterWalletModalProps {
+export interface RegisterWalletModalProps {
   close(): void;
 }
 

@@ -1,33 +1,33 @@
-import React, {useCallback, useEffect, useMemo, useState} from 'react';
+import {useCallback, useEffect, useMemo, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import Modal from '@renderer/components/Modal';
-import {INVALID_AMOUNT_ERROR, MATCH_ERROR} from '@renderer/constants/form-validation';
-import {fetchAccountBalance} from '@renderer/dispatchers/balances';
-import {useToggle} from '@renderer/hooks';
+import Modal from 'renderer/components/Modal';
+import {INVALID_AMOUNT_ERROR, MATCH_ERROR} from 'renderer/constants/form-validation';
+import {fetchAccountBalance} from 'renderer/dispatchers/balances';
+import {useToggle} from 'renderer/hooks';
 import {
   getActiveBankConfig,
   getManagedAccountBalances,
   getManagedAccounts,
   getPrimaryValidatorConfig,
-} from '@renderer/selectors';
-import {sendBlock} from '@renderer/utils/blocks';
-import yup from '@renderer/utils/forms/yup';
-import {displayErrorToast, displayToast, ToastType} from '@renderer/utils/toast';
-import {getBankTxFee, getPrimaryValidatorTxFee} from '@renderer/utils/transactions';
-import {AppDispatch, SFC} from '@shared/types';
+} from 'renderer/selectors';
+import {sendBlock} from 'renderer/utils/blocks';
+import yup from 'renderer/utils/forms/yup';
+import {displayErrorToast, displayToast, ToastType} from 'renderer/utils/toast';
+import {getBankTxFee, getPrimaryValidatorTxFee} from 'renderer/utils/transactions';
+import {AppDispatch, SFC} from 'shared/types';
 
 import SendCoinsModalFields, {FormValues} from './SendCoinsModalFields';
 
 const COIN_AMOUNT_CEILING = 100_000_000;
 
-interface ComponentProps {
+export interface SendCoinsModalProps {
   close(): void;
   initialRecipient: string;
   initialSender: string;
 }
 
-const SendCoinsModal: SFC<ComponentProps> = ({className, close, initialRecipient, initialSender}) => {
+const SendCoinsModal: SFC<SendCoinsModalProps> = ({className, close, initialRecipient, initialSender}) => {
   const dispatch = useDispatch<AppDispatch>();
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [loadingBalance, toggleLoadingBalance] = useToggle(false);

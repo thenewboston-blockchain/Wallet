@@ -1,9 +1,9 @@
-import React, {FocusEvent, ReactNode, useEffect, useMemo, useRef, useState} from 'react';
+import {FocusEvent, ReactNode, useEffect, useMemo, useRef, useState} from 'react';
 
-import {HelperTextType, TextField} from '@renderer/components/FormElements';
-import {useAccountBalance, useFormContext2} from '@renderer/hooks';
-import {ALPHANUMERIC} from '@renderer/utils/regex';
-import {SFC} from '@shared/types';
+import {HelperTextType, TextField} from 'renderer/components/FormElements';
+import {useAccountBalance, useFormContext2} from 'renderer/hooks';
+import {ALPHANUMERIC} from 'renderer/utils/regex';
+import {SFC} from 'shared/types';
 
 import {NODE_FEE, PV_FEE, USERNAME_FEE} from './constants';
 import * as S from './Styles';

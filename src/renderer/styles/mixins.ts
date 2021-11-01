@@ -1,5 +1,5 @@
 import {css} from 'styled-components';
-import {colors} from '@renderer/styles/index';
+import {colors} from 'renderer/styles/index';
 
 export const mixinButtonFocus = css`
   margin: 6px; // margin needed to account for the focused box shadow

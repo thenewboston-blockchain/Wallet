@@ -1,19 +1,20 @@
-import React, {ReactNode} from 'react';
+import {ReactNode} from 'react';
+import {mdiPlus} from '@mdi/js';
 
-import ArrowToggle from '@renderer/components/ArrowToggle';
-import {PlusIcon} from '@renderer/components/Icons';
-import {useToggle} from '@renderer/hooks';
-import {SFC} from '@shared/types';
+import ArrowToggle from 'renderer/components/ArrowToggle';
+import Icon from 'renderer/components/Icon';
+import {useToggle} from 'renderer/hooks';
+import {SFC} from 'shared/types';
 
 import * as S from './Styles';
 
-interface ComponentProps {
+export interface LeftSubmenuProps {
   menuItems: ReactNode[];
   rightOnClick?(): void;
   title: string;
 }
 
-const LeftSubmenu: SFC<ComponentProps> = ({className, menuItems, rightOnClick, title}) => {
+const LeftSubmenu: SFC<LeftSubmenuProps> = ({className, menuItems, rightOnClick, title}) => {
   const [expanded, toggleExpanded] = useToggle(true);
 
   const renderHeaderContent = (): ReactNode => {
@@ -31,7 +32,7 @@ const LeftSubmenu: SFC<ComponentProps> = ({className, menuItems, rightOnClick, t
   const renderRightSection = (): ReactNode => {
     if (!rightOnClick) return null;
 
-    return <PlusIcon onClick={rightOnClick} size={20} totalSize={20} />;
+    return <Icon icon={mdiPlus} onClick={rightOnClick} size={20} totalSize={20} />;
   };
 
   return (

@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React, {SyntheticEvent} from 'react';
+import {SyntheticEvent} from 'react';
 import {Field, FieldInputProps} from 'formik';
-import {SFC} from '@shared/types';
+import {SFC} from 'shared/types';
 import * as S from './Styles';
 
 export interface SwitchProps {

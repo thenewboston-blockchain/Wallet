@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import {DropdownMenuButtonStyles} from '@renderer/components/DropdownMenuButton';
+import {DropdownMenuButtonStyles} from 'renderer/components/DropdownMenuButton';
 
 export const Container = styled.div`
   display: flex;

@@ -1,7 +1,7 @@
-import React, {ReactNode} from 'react';
+import {ReactNode} from 'react';
 import {toast} from 'react-toastify';
-import Toast from '@renderer/components/Toast';
-import {ToastType} from '@shared/types';
+import Toast from 'renderer/components/Toast';
+import {ToastType} from 'shared/types';
 
 export {ToastType};
 

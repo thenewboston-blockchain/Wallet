@@ -38,7 +38,7 @@ yarn start
 To make an executable package:
 
 ```
-yarn run build
+yarn run package
 ```
 
 ### Troubleshooting setup
@@ -86,11 +86,6 @@ sudo rm -r -f /Library/Developer/CommandLineTools
 ![command-line-tools-installation-prompt](https://miro.medium.com/max/700/0*s8rdlR3j3xVHcl95)
 
 ## Contributing
-
-If you are contributing to this project, please make sure your code follows these styles guides:
-
-- [React / JSX Style Guide](https://thenewboston.com/style-guide/react)
-- [CSS / SASS Style Guide](https://thenewboston.com/style-guide/css)
 
 You can check your styling by running:
 

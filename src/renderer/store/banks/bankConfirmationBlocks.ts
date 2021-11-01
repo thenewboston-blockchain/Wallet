@@ -1,8 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-import {BANK_CONFIRMATION_BLOCKS} from '@renderer/constants/actions';
-import {setPaginatedResultErrorReducer, setPaginatedResultReducer, unsetDataReducer} from '@renderer/utils/store';
-import {BankConfirmationBlock, DictWithPaginatedResultsAndError} from '@shared/types';
+import {BANK_CONFIRMATION_BLOCKS} from 'renderer/constants/actions';
+import {setPaginatedResultErrorReducer, setPaginatedResultReducer, unsetDataReducer} from 'renderer/utils/store';
+import {BankConfirmationBlock, DictWithPaginatedResultsAndError} from 'shared/types';
 
 const bankConfirmationBlocks = createSlice({
   initialState: {} as DictWithPaginatedResultsAndError<BankConfirmationBlock>,

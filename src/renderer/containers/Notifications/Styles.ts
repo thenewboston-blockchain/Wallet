@@ -1,14 +1,16 @@
 import styled from 'styled-components';
+import {mdiBell} from '@mdi/js';
+
 import {NavLink as UNavLink} from 'react-router-dom';
-import {BellIcon as UBellIcon} from '@renderer/components/Icons';
-import UStatusBadge, {StatusBadgeType} from '@renderer/components/StatusBadge';
-import {b3, colors} from '@renderer/styles';
+import Icon from 'renderer/components/Icon';
+import UStatusBadge, {StatusBadgeType} from 'renderer/components/StatusBadge';
+import {b3, colors} from 'renderer/styles';
 
 export const Container = styled.div`
   position: relative;
 `;
 
-export const BellIcon = styled(UBellIcon)<{$isActive: boolean}>`
+export const BellIcon = styled(Icon).attrs(() => ({icon: mdiBell}))<{$isActive: boolean}>`
   background: ${({$isActive}) => $isActive && colors.palette.gray['100']};
 `;
 

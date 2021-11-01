@@ -1,11 +1,11 @@
-import React, {useMemo, useRef} from 'react';
+import {useMemo, useRef} from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
-import {PageHeaderSection} from '@renderer/components/PageHeader';
-import {useAccountContext, useToggle} from '@renderer/hooks';
-import {truncateLongText} from '@renderer/utils/accounts';
-import {displayToast, ToastType} from '@renderer/utils/toast';
-import {AccountType, SFC} from '@shared/types';
+import {PageHeaderSection} from 'renderer/components/PageHeader';
+import {useAccountContext, useToggle} from 'renderer/hooks';
+import {truncateLongText} from 'renderer/utils/accounts';
+import {displayToast, ToastType} from 'renderer/utils/toast';
+import {AccountType, SFC} from 'shared/types';
 
 import QrcodeModal from '../../QrcodeModal';
 import * as S from './Styles';

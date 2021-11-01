@@ -1,10 +1,10 @@
-import React, {useEffect, useMemo, useRef, useState} from 'react';
+import {useEffect, useMemo, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 import {useLocation} from 'react-router-dom';
 import throttle from 'lodash/throttle';
 
-import {useEventListener, useWindowDimensions} from '@renderer/hooks';
-import {SFC} from '@shared/types';
+import {useEventListener, useWindowDimensions} from 'renderer/hooks';
+import {SFC} from 'shared/types';
 import * as S from './Styles';
 
 export interface DomRect {

@@ -1,13 +1,13 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-import {MANAGED_FRIENDS} from '@renderer/constants/actions';
+import {MANAGED_FRIENDS} from 'renderer/constants/actions';
 import {
   clearLocalAndStateReducer,
   setLocalAndAccountReducer,
   setStateReducer,
   unsetLocalAndAccountReducer,
-} from '@renderer/utils/store';
-import {Dict, ManagedFriend} from '@shared/types';
+} from 'renderer/utils/store';
+import {Dict, ManagedFriend} from 'shared/types';
 
 const managedFriends = createSlice({
   initialState: {} as Dict<ManagedFriend>,

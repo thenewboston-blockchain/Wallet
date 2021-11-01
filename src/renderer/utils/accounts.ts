@@ -1,7 +1,5 @@
 import {sign} from 'tweetnacl';
 
-import {getKeyPairDetails} from '@renderer/utils/signing';
-
 export const truncateLongText = (text: string): string => {
   const VISIBLE_COUNT = 7;
   if (text.length <= VISIBLE_COUNT * 2 + 1) {
@@ -13,5 +11,5 @@ export const truncateLongText = (text: string): string => {
 
 export const generateAccount = () => {
   const keyPair = sign.keyPair();
-  return getKeyPairDetails(keyPair);
+  return window.electron.signing.getKeyPairDetails(keyPair);
 };

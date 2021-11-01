@@ -1,15 +1,14 @@
-import React from 'react';
 import {useSelector} from 'react-redux';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
-import Account from '@renderer/containers/Account';
-import Node from '@renderer/containers/Node';
-import NodeCenter from '@renderer/containers/NodeCenter';
+import Account from 'renderer/containers/Account';
+import Node from 'renderer/containers/Node';
+import NodeCenter from 'renderer/containers/NodeCenter';
 
-import {AccountProvider, NodeProvider} from '@renderer/context';
-import {getActiveBankConfig} from '@renderer/selectors';
-import {formatPathFromNode} from '@renderer/utils/address';
-import {SFC} from '@shared/types';
+import {AccountProvider, NodeProvider} from 'renderer/context';
+import {getActiveBankConfig} from 'renderer/selectors';
+import {formatPathFromNode} from 'renderer/utils/address';
+import {SFC} from 'shared/types';
 
 import * as S from './Styles';
 

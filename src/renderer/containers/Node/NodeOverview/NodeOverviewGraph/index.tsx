@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import format from 'date-fns/format';
 import getTime from 'date-fns/getTime';
 import parseISO from 'date-fns/parseISO';
 import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts';
 
-import Link from '@renderer/components/Link';
-import {PageTableItems} from '@renderer/components/PageTable';
-import {colors} from '@renderer/styles';
-import {truncateLongText} from '@renderer/utils/accounts';
-import {SFC} from '@shared/types';
+import Link from 'renderer/components/Link';
+import {PageTableItems} from 'renderer/components/PageTable';
+import {colors} from 'renderer/styles';
+import {truncateLongText} from 'renderer/utils/accounts';
+import {SFC} from 'shared/types';
 
 import {mockBoostData, mockBoostTableData} from './data';
 import * as S from './Styles';

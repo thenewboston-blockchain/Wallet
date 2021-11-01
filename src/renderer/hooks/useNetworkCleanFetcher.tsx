@@ -2,13 +2,13 @@ import {useCallback, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
 
-import {getCleanSockets} from '@renderer/selectors';
-import {toggleCleanProcess} from '@renderer/store/sockets';
-import {formatAddress} from '@renderer/utils/address';
-import axios from '@renderer/utils/axios';
-import {generateUuid} from '@renderer/utils/local';
-import {displayToast, ToastType} from '@renderer/utils/toast';
-import {AddressParams, AppDispatch, CleanStatus, ManagedNode, NodeCleanStatusWithAddress} from '@shared/types';
+import {getCleanSockets} from 'renderer/selectors';
+import {toggleCleanProcess} from 'renderer/store/sockets';
+import {formatAddress} from 'renderer/utils/address';
+import axios from 'renderer/utils/axios';
+import {generateUuid} from 'renderer/utils/local';
+import {displayToast, ToastType} from 'renderer/utils/toast';
+import {AddressParams, AppDispatch, CleanStatus, ManagedNode, NodeCleanStatusWithAddress} from 'shared/types';
 
 import useAddress from './useAddress';
 

@@ -1,7 +1,7 @@
-import React, {createContext, FC} from 'react';
+import {createContext, FC} from 'react';
 import noop from 'lodash/noop';
 
-interface TabsState {
+export interface TabsState {
   activeValue: string;
   onChange(newValue: string): void;
 }

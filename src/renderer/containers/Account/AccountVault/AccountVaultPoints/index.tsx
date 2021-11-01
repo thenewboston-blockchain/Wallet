@@ -1,7 +1,6 @@
-import React from 'react';
 import noop from 'lodash/noop';
-import PaginatedTable, {PageTableItems} from '@renderer/components/PaginatedTable';
-import {SFC} from '@shared/types';
+import PaginatedTable, {PageTableItems} from 'renderer/components/PaginatedTable';
+import {SFC} from 'shared/types';
 
 import data from './data';
 import * as S from './Styles';

@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-import {NOTIFICATIONS} from '@renderer/constants/actions';
+import {NOTIFICATIONS} from 'renderer/constants/actions';
 import {
   ConfirmationBlockNotificationPayload,
   CrawlStatusNotificationPayload,
@@ -9,7 +9,7 @@ import {
   NotificationType,
   PrimaryValidatorUpdatedNotificationPayload,
   ValidatorConfirmationServiceNotificationPayload,
-} from '@shared/types';
+} from 'shared/types';
 
 const notifications = createSlice({
   initialState: [] as NotificationPayload[],

@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-import {CLEAN_SOCKETS} from '@renderer/constants/actions';
+import {CLEAN_SOCKETS} from 'renderer/constants/actions';
 import {
   AddressData,
   CleanSocketState,
@@ -9,7 +9,7 @@ import {
   Id,
   NodeCleanStatus,
   SocketConnectionStatus,
-} from '@shared/types';
+} from 'shared/types';
 
 interface ToggleCleanProcessPayload extends AddressData, Id {
   signingKey: string;

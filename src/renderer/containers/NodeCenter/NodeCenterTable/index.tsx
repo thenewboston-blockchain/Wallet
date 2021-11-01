@@ -1,6 +1,5 @@
-import React from 'react';
-import {PageTableData, PageTableItems} from '@renderer/components/PageTable';
-import {SFC} from '@shared/types';
+import {PageTableData, PageTableItems} from 'renderer/components/PageTable';
+import {SFC} from 'shared/types';
 import * as S from './Styles';
 
 export enum NodeCenterTableKeys {
@@ -36,7 +35,7 @@ const headers = {
   [NodeCenterTableKeys.boostAction]: '',
 };
 
-interface NodeCenterTableProps {
+export interface NodeCenterTableProps {
   data: PageTableData[];
 }
 

@@ -1,15 +1,14 @@
-import React from 'react';
 import {useDispatch} from 'react-redux';
-import Modal from '@renderer/components/Modal';
-import {useManagedFriend} from '@renderer/hooks';
-import {unsetManagedFriend} from '@renderer/store/app';
-import {AppDispatch, SFC} from '@shared/types';
+import Modal from 'renderer/components/Modal';
+import {useManagedFriend} from 'renderer/hooks';
+import {unsetManagedFriend} from 'renderer/store/app';
+import {AppDispatch, SFC} from 'shared/types';
 
-interface ComponentProps {
+export interface DeleteFriendModalProps {
   close(): void;
 }
 
-const DeleteFriendModal: SFC<ComponentProps> = ({className, close}) => {
+const DeleteFriendModal: SFC<DeleteFriendModalProps> = ({className, close}) => {
   const dispatch = useDispatch<AppDispatch>();
   const managedFriend = useManagedFriend();
 

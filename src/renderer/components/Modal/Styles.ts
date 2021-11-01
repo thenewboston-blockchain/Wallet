@@ -1,6 +1,8 @@
 import styled, {keyframes} from 'styled-components';
-import {CloseIcon as UCloseIcon} from '@renderer/components/Icons';
-import {colors} from '@renderer/styles';
+import {mdiClose} from '@mdi/js';
+
+import Icon from 'renderer/components/Icon';
+import {colors} from 'renderer/styles';
 
 const FOOTER_HEIGHT = '60px';
 
@@ -40,7 +42,7 @@ export const Header = styled.div`
   position: relative;
 `;
 
-export const CloseIcon = styled(UCloseIcon)<{$submitting: boolean}>`
+export const CloseIcon = styled(Icon).attrs(() => ({icon: mdiClose}))<{$submitting: boolean}>`
   cursor: ${({$submitting}) => ($submitting ? 'wait' : null)};
   position: absolute;
   right: 0;
